@@ -1,3 +1,20 @@
+#windows客户端安装
+ - Git-2.8.1-64-bit.exe
+ - 设置姓名
+git config --global user.name "wei.zhou"
+- 设置email
+git config --global user.email " wei.zhou @qq.com"
+- ssh-keygen
+ 直接回车，默认保存私钥到用户目录下的.ssh/id_rsa文件中，
+公钥保存到用户目录下的.ssh/id_rsa.pub文件中。这时会提示要求输入密码：
+Enter passphrase (empty for no passphrase):
+这个是保护私钥的密码，使用私钥时需要输入这个密码。
+如不输入，则不适用密码，直接回车。
+
+
+
+
+
 # search
 (1)按照文件搜索
   android in:file
