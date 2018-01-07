@@ -1,4 +1,4 @@
-#windows客户端安装
+# windows客户端安装
  - Git-2.8.1-64-bit.exe
  - 设置姓名
 git config --global user.name "wei.zhou"
