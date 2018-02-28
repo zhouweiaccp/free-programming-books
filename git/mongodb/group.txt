@@ -1,0 +1,48 @@
+﻿//分组更新
+db.doc_1.aggregate([
+      {
+        $group:{
+              _id: "$file_id",
+              count: {$sum: 1}//,//取得总数
+        }
+      },{
+        $match:{count:1}//==1
+      }
+]).forEach(function(doc){
+   db.doc_1.update({"file_id":doc._id,"is_curVerId" : {$exists:false}},{$set:{"is_curVerId" : true}})
+   console.log(doc._id)
+})
+
+//分组更新
+db.doc_1.aggregate([
+      {
+        $group:{
+              _id: "$file_id",
+              count: {$sum: 1}//,//取得总数
+        }
+      },{
+        $match:{count:{$gt:1}}//>1
+      }
+]).forEach(function(doc){
+   db.doc_1.update({"file_id":doc._id,"is_curVerId" : {$exists:false}},{$set:{"is_curVerId" : true}})
+   console.log(doc._id)
+})
+
+
+//分组删除synonymsList表中name+latin+status+sysName重复数据
+db.synonymsList.aggregate([
+      {
+        $group:{
+              _id: {name: "$name",latin:"$latin",status:"$status",sysName:"species2000"},
+              count: {$sum: 1},//取得总数
+              dups: {$addToSet: '$_id'}//暂存_id到set
+        }
+      },{
+        $match:{count:{$gt:1}}//只找出大于1的重复数据
+      }
+],{
+      allowDiskUse:true//因为数据超过16M，得使用硬盘缓存
+  }).forEach(function(doc){
+    doc.dups.shift();//将重复数据的任一条先从set中去掉，作为保留
+    db.synonymsList.remove({_id: {$in: doc.dups}});//移除掉剩下的重复数据
+})
