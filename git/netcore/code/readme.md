@@ -1,6 +1,8 @@
 ##common net
 
-* [Common.Utility](https://github.com/Jimmey-Jiang/Common.Utility) 
+* [Common.Utility](https://github.com/Jimmey-Jiang/Common.Utility) 功点上
+* [ecommon](https://github.com/tangxuehua/ecommon.git) netcore net通用类库框架，焦距ioc设计上
+
 * [NewFileX] (https://github.com/NewLifeX/X.git)                   
 * ~~[bitwarden](https://github.com/bitwarden/core.git)~~
 * [CatLib](https://github.com/CatLib/Core.git)
