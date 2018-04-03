@@ -1,0 +1,113 @@
+mysql备份和恢复                
+
+  注意：备份不成功的原因可能是版本不一样，需执行命令#cp /usr/local/mysql/bin/mysqldump|mysqlhotcop|mysqlimport  /usr/local/bin/
+
+   (1)mysqldump备份工具
+
+   备份数据库下的表
+
+   # mysqldump -u root -paixocm --opt test c01 c02 c03 > /employees.sql         \\备份
+
+   # mysql -u root -paixocm --database test < employees.sql         \\恢复
+
+   备份指定数据库
+
+   # mysqldump -u root -paixocm --opt --database test > /employees.sql
+
+   # mysql -u root -paixocm < employees.sql
+
+   备份所有数据库
+
+   # mysqldump -u root -paixocm --opt --all-databases > /employees.sql
+
+   
+
+   锁定和解锁所有表
+
+   mysql> FLUSH TABLES WITH READ LOCK;
+
+   mysql> unlock tables;
+
+   锁定指定表
+
+   mysql> lock table cware read;
+
+   mysql> unlock tables;             \\解锁
+
+   查看锁定表
+
+   mysql> show open tables where in_use > 0;
+
+  (2)mysqlhotcopy
+
+  # mysqlhotcopy -u root -h localhost -p aixocm sxjy test /test/mydata   
+
+   
+
+  (3)mysqlimport(从文件导入数据到数据库)
+
+  # mysqlimport -u root -paixocm --fields-terminated-by=' ' --lines-terminated-by='\n' --local test(数据库名)  /test/weblog.txt(文件名应和表名一致)
+
+  
+
+  (4)xtrabackup
+
+   # tar xf percona-xtrabackup-2.2.12-Linux-x86_64.tar.gz
+
+   # mv percona-xtrabackup-2.2.12-Linux-x86_64 /usr/local/xtrabackup
+
+   # cp /usr/local/xtrabackup/bin/*  /usr/bin/            (不然会报错：innobackupex命令没有找到)
+
+   # yum install perl-Time*
+
+   (5)innobackupex
+
+   普通备份(全量备份)
+
+   # innobackupex --user=root --password=aixocm --socket=/tmp/mysql.sock /test/mydata/ (以当前的时间戳命名)
+
+   # innobackupex --user=root --password=aixocm --socket=/tmp/mysql.sock  --no-timeatamp  /test/mydata/1     (以1命名)
+
+   恢复备份   (要把/database/mydata/目录下的内容全部删除，再stop服务，备份完之后要修改/database/mydata下的权限)
+
+   # innobackupex --apply-log /test/mydata/2015-08-13_23-24-40        \\备份之前先应用日志
+
+   # innobackupex --copy-back /test/mydata/2015-08-13_23-24-40          \\备份日志
+
+   压缩备份
+
+   # innobackupex --user=root --password=aixocm --socket=/tmp/mysql.sock --stream=tar /test/mydata/ 2> /tmp/backup/mysql1.log | gzip > /test/mydata/mysql.tar.gz
+
+   备份恢复
+
+   # tar -ixf mysql.tar.gz -C /database/mydata/
+
+   增量备份
+
+   # innobackupex --user=root --password=aixocm --socket=/tmp/mysql.sock --incremental /test/mydata/ --incremental-basedir=/test/mydata/2015-08-13_23-24-40
+
+   # innobackupex --user=root --password=aixocm --socket=/tmp/mysql.sock --incremental --incremental-basedir=/test/mydata/2015-08-13_23-24-40/ /test/mydata/         (基于全量备份的增量备份)
+
+     
+
+   # innobackupex --user=root --password=aixocm --socket=/tmp/mysql.sock --incremental /test/mydata/ --incremental-basedir=/test/mydata/2015-08-13_23-24-40
+
+   # innobackupex --user=root --password=aixocm --socket=/tmp/mysql.sock --incremental /test/mydata --incremental-basedir=/test/mydata/2015-08-13_23-29-04/ /test/mydata/        (基于第一个增量备份的第二个增量备份)
+
+   
+
+   备份恢复
+
+   在所有备份目录下重做已提交日志
+
+   # innobackupex --apply-log --redo-only /test/mydata/2015-08-14_14-36-31  \\重做全量备份日志
+
+   # innobackupex --apply-log --redo-only /test/mydata/2015-08-14_14-36-31 --incremental-dir=/test/mydata/2015-08-14_14-39-05  \\重做增量备份日志
+
+   # innobackupex --apply-log /test/mydata/2015-08-14_14-36-31 --incremental-dir=/test/mydata/2015-08-14_14-41-17  \\应用最后一个增量备份日志
+
+   # innobackupex --apply-log /test/mydata/2015-08-14_14-36-31  \\重新应用全量备份日志
+
+   
+
+   
