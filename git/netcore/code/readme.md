@@ -18,3 +18,6 @@ CatLib Core 是 CatLib 的最小可用框架。仅提供最基础的功能，是
 
 ##commandline
 **[commandline] (https://github.com/natemcmaster/CommandLineUtils)
+
+##netcore2.1
+dotnet install tool -g dotnetsay
