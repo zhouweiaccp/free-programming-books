@@ -1,0 +1,52 @@
+﻿Flash开启自动运行指引
+?	Chrome(谷歌浏览器)
+?	Firefox(火狐浏览器)
+?	Safari浏览器
+ 
+
+
+
+1.	在Chrome地址栏输入 chrome://settings/content/flash，确保“允许网站
+运行Flash”设置处于开启状态，以及“询问”设置处于关闭状态
+ 
+Chrome69
+
+chrome://flags/#enable-ephemeral-flash-permission
+
+ Enable Ephemeral Flash Permissions     选中 Disabled
+
+
+在Chrome地址栏输入 chrome://flags/#run-all-flash-in-allow-mode，找到“Run all Flash content when Flash setting is set to “allow””设置项， 将值设置为“Enabled”，然后重启浏览器
+ 
+
+
+
+1.	在Firefox中打开右上角菜单，点击“附加组件”
+
+ 
+
+
+2.	在左边选择“插件”，在插件列表中找到“Shockwave Flash”，并在下拉菜
+单中选择“总是激活”，切换回访问页面刷新即可
+
+如插件列表中没有“Shockwave Flash”，需要先进行安装，再按上述步骤进行激活
+ 
+
+
+
+
+1.	打开Safari浏览器的“偏好设置…”
+2.	点击“安全性”标签，然后打开“插件设置...”
+
+
+
+
+ 
+
+
+
+
+
+3.	勾选上“Adobe Flash Player”，然后选中，确保右侧设置里的
+“user.qzone.qq.com”选项为“打开”状态，点击“完成”保存设置
+
