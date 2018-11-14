@@ -117,16 +117,14 @@ source ~/.bashrc
  node -v
 
  ---------
- 1. sudo cp -r node-v0.10.28  /opt/node
+ 1. sudo cp -r node-v0.10.28  /usr/local/node
 
 2. sudo vi /etc/profile.d/node.sh
 
 3.node.sh文件内容：
+export NODE_HOME=/usr/local/node 
+export PATH=$NODE_HOME/bin:$PATH
 
-1
-2
-3
-export NODE_HOME=/opt/node
-export PATH=$PATH:$NODE_HOME/bin
-export NODE_PATH=$PATH:$NODE_HOME/lib/node_modules
  4. 重启电脑
+ln -s /usr/local/node/bin/node /usr/bin/node
+ln -s /usr/local/node/bin/npm /usr/bin/npm
