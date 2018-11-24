@@ -47,3 +47,8 @@ export PATH=/data/software/node-v8.9.0-linux-x64/bin:$PATH
 source ~/.bashrc
 测试效果,输入下面代码，看看结果
  node -v
+
+常用软件
+https://github.com/cjy37/linux-asp.net-installScript
+ https://github.com/summerblue/laravel-ubuntu-init/blob/master/16.04/install.sh 
+ https://github.com/licess/lnmp     
