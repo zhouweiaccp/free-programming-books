@@ -1,0 +1,1 @@
+https://github.com/EasyEngine/easyengine  自动化处理Install WordPress, Nginx, PHP, MySQL, Redis & deps

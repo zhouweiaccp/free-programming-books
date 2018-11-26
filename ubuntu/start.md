@@ -33,4 +33,10 @@ ln -s /usr/bin/todos /usr/bin/unix2dos
 ln -s /usr/bin/fromdos /usr/bin/dos2unix 
 或者在 ~/.bashrc里起个别名
 vi ~/.bashrc
+
 添加 alias unix2dos=todos alias dos2unix=fromdos
+
+常用软件
+https://github.com/cjy37/linux-asp.net-installScript
+ https://github.com/summerblue/laravel-ubuntu-init/blob/master/16.04/install.sh 
+ https://github.com/licess/lnmp     
