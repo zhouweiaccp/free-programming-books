@@ -15,38 +15,26 @@ sudo apt-get update
 sudo apt-get install -y python-software-properties software-properties-common
 sudo add-apt-repository ppa:chris-lea/node.js
 sudo apt-get update
-安装nodejs
-sudo apt-get install nodejs
-sudo apt install nodejs-legacy
-sudo apt install npm
-更新npm的包镜像源，方便快速下载
-sudo npm config set registry https://registry.npm.taobao.org
-sudo npm config list
-全局安装n管理器(用于管理nodejs版本)
-sudo npm install n -g
-安装最新的nodejs（stable版本）
-sudo n stable
 
-wget http://cdn.npm.taobao.org/dist/node/v8.9.0/node-v8.9.0-linux-x64.tar.xz
-1
-解压 压缩包，node-v8.9.0-linux-x64.tar.xz
- tar xvJf node-v8.9.0-linux-x64.tar.xz
-1
-测试，进入bin目录输入 ./node -v 看看输出结果
-./node -v
-v8.9.0
-1
-2
-修改环境变量
-//输入指令
+dos2unix
+（1）安装tofrodos
+sudo apt-get install tofrodos 
+实际上它安装了两个工具：todos（相当于unix2dos），和fromdos（相当于dos2unix）
+安装完即可，现在你已经可以进行文本格式的转换啦。 
+比如：
+
+todos Hello.txt (即unix2dos Hello.txt) 
+fromdos Hello.txt (即dos2unix Hello.txt)
+
+（2）做一些优化 
+由于习惯了unix2dos和dos2unix的命令，可以把上面安装的两个工具链接成unix2dos 和dos2unix，或者仅仅是起个别名，并放在启动脚本里。
+步骤：
+ln -s /usr/bin/todos /usr/bin/unix2dos 
+ln -s /usr/bin/fromdos /usr/bin/dos2unix 
+或者在 ~/.bashrc里起个别名
 vi ~/.bashrc
-//然后再最后面加入下面代码（路径根据自己解压的路径自行修改）
-export PATH=/data/software/node-v8.9.0-linux-x64/bin:$PATH
-//保存退出
-//使之生效
-source ~/.bashrc
-测试效果,输入下面代码，看看结果
- node -v
+
+添加 alias unix2dos=todos alias dos2unix=fromdos
 
 常用软件
 https://github.com/cjy37/linux-asp.net-installScript
