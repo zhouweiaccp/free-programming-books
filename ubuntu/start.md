@@ -9,6 +9,11 @@ $ vi /etc/sudoers
 # 然后添加 username 到 root 下，内容见下图
 $ chmod a-w /etc/sudoers
 
+创建用户  useradd -r -m -s /bin/bash spark 
+设置密码  passwd spark
+赋予用户root权限  vim /etc/sudoers
+添加　park ALL=(ALL:ALL) ALL
+删除用户 userdel -r spark 
 
 更新ubuntu软件源
 sudo apt-get update
