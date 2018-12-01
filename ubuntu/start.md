@@ -15,6 +15,8 @@ $ chmod a-w /etc/sudoers
 添加　park ALL=(ALL:ALL) ALL
 删除用户 userdel -r spark 
 
+xshell关闭后保持程序运行 nohup 你的指令 &
+
 更新ubuntu软件源
 sudo apt-get update
 sudo apt-get install -y python-software-properties software-properties-common

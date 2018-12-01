@@ -18,6 +18,7 @@ https://github.com/vozlt/nginx-module-sysguard  监控nginx
 ubuntu16.04
 wget http://nginx.org/keys/nginx_signing.key
 apt-key add nginx_signing.key
+vim /etc/apt/sources.list
 deb http://nginx.org/packages/ubuntu/ xenial nginx
 deb-src http://nginx.org/packages/ubuntu/ xenial nginx
 apt-get update
