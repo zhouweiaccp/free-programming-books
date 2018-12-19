@@ -22,6 +22,10 @@ CatLib Core 是 CatLib 的最小可用框架。仅提供最基础的功能，是
 ##netcore2.1
 dotnet install tool -g dotnetsay
 
-支付
+###支付
 https://github.com/xin-lai/magicodes.pay 心莱科技团队提供的统一支付库，相关库均使用.NET标准库编写，支持.NET Framework以及.NET Core。目前支持以下支付方式和功能：
 https://github.com/Weidaicheng/Aquarius.Weixin Aquarius.Weixin .net core 2.0 微信公众号开发框架
+
+###项目地址
+**[dotnet-developer-projects] (https://github.com/Microsoft/dotnet/blob/master/dotnet-developer-projects.md)
+
