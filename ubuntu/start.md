@@ -47,3 +47,6 @@ vi ~/.bashrc
 https://github.com/cjy37/linux-asp.net-installScript
  https://github.com/summerblue/laravel-ubuntu-init/blob/master/16.04/install.sh 
  https://github.com/licess/lnmp     
+
+关闭shell后如何保持程序继续运行
+nohup npm start &
