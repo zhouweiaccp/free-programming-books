@@ -1,8 +1,10 @@
 ### Index
 
 * [Angular](#angular)
+* [ClojureScript](#clojurescript)
 * [Crystal](#crystal)
 * [CSS](#css)
+* [Elm](#elm)
 * [FlexBox](#flexbox)
 * [Go](#go)
 * [Haskell](#haskell)
@@ -10,18 +12,26 @@
 * [Kotlin](#kotlin)
 * [.Net](#dotnet)
 * [Node.js](#nodejs)
+* [OCaml](#ocaml)
 * [Perl](#perl)
 * [PHP](#php)
 * [Python](#python)
 * [R](#r)
 * [Ruby](#ruby)
 * [Rust](#rust)
+* [Scala](#scala)
 * [SQL](#sql)
+* [Swift](#swift)
 
 
 ### Angular
 
 * [Plunker](http://plnkr.co)
+
+
+### ClojureScript
+
+* [Web REPL](http://clojurescript.net)
 
 
 ### Crystal
@@ -35,6 +45,11 @@
 * [CSSdeck](http://cssdeck.com)
 * [CSSdesk](http://cssdesk.com)
 * [Dabblet](http://dabblet.com)
+
+
+### Elm
+
+* [Ellie](https://ellie-app.com)
 
 
 ### FlexBox
@@ -60,7 +75,6 @@
 * [JSFiddle](http://jsfiddle.net)
 * [Plunker](http://plnkr.co)
 * [Sololearn](https://code.sololearn.com/#html)
-* [WebpackBin](https://www.webpackbin.com)
 
 
 ### Kotlin
@@ -76,6 +90,11 @@
 ### NodeJS
 
 * [Ideone](http://ideone.com)
+
+
+### OCaml
+
+* [Try OCaml](https://try.ocamlpro.com)
 
 
 ### Perl
@@ -111,14 +130,18 @@
 * [Rust Playground](http://play.integer32.com)
 
 
+### Scala
+
+* [ScalaFiddle.io](https://scalafiddle.io)
+* [ScalaFiddle.net](http://scalafiddle.net)
+* [Scastie](https://scastie.scala-lang.org)
+
+
 ### SQL
 
 * [SQLFiddle](http://sqlfiddle.com)
 
 
-### Scala
+### Swift
 
-* [ScalaFiddle.io](https://scalafiddle.io)
-* [ScalaFiddle.net](http://scalafiddle.net)
-
-
+* [Online Swift Playground](http://online.swiftplayground.run)
