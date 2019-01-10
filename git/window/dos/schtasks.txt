@@ -1,193 +1,193 @@
-��������ͳ��������л���ָ��ʱ�������С��Ӽƻ��������Ӻ�ɾ�����񣬰���Ҫ������ֹͣ������ʾ�͸��ļƻ�����
+﻿安排命令和程序定期运行或在指定时间内运行。从计划表中添加和删除任务，按需要启动和停止任务，显示和更改计划任务。
 
-�����µļƻ�����
+创建新的计划任务。
 
-�﷨
+语法
 
 schtasks/create/tnTaskName/trTaskRun/scschedule[/momodifier][/dday][/mmonth[,month...][/iIdleTime][/stStartTime][/sdStartDate][/edEndDate][/scomputer[/u[domain\]user/ppassword]][/ru{[Domain\]User|"System"} [/rpPassword]]/?
 
-����
+参数
 
 /tn TaskName
 
-ָ����������ơ�
+指定任务的名称。
 
 /tr TaskRun
 
-ָ���������еĳ������������ִ���ļ����ű��ļ����������ļ�����ȫ�ϸ��·�����ļ�����������Ը�·����SchTasks.exe ���ٶ��ļ���Systemroot\System32 Ŀ¼�¡�
+指定任务运行的程序或命令。键入可执行文件、脚本文件或批处理文件的完全合格的路径和文件名。如果忽略该路径，SchTasks.exe 将假定文件在Systemroot\System32 目录下。
 
 /sc schedule
 
-ָ���ƻ����͡���ЧֵΪ MINUTE��HOURLY��DAILY��WEEKLY��MONTHLY��ONCE��ONSTART��ONLOGON��ONIDLE��
+指定计划类型。有效值为 MINUTE、HOURLY、DAILY、WEEKLY、MONTHLY、ONCE、ONSTART、ONLOGON、ONIDLE。
 
-ֵ
+值
 
-˵��
+说明
 
-MINUTE��HOURLY��DAILY��WEEKLY��MONTHLY
+MINUTE、HOURLY、DAILY、WEEKLY、MONTHLY
 
-ָ���ƻ���ʱ�䵥λ��
+指定计划的时间单位。
 
 ONCE
 
-������ָ�������ں�ʱ������һ�Ρ�
+任务在指定的日期和时间运行一次。
 
 ONSTART
 
-������ÿ��ϵͳ������ʱ�����С�����ָ�����������ڣ�����һ��ϵͳ������ʱ����������
+任务在每次系统启动的时候运行。可以指定启动的日期，或下一次系统启动的时候运行任务。
 
 ONLOGON
 
-ÿ���û��������û�����¼��ʱ����������С�����ָ�����ڣ������´��û���¼��ʱ����������
+每当用户（任意用户）登录的时候，任务就运行。可以指定日期，或在下次用户登录的时候运行任务。
 
 ONIDLE
 
-ֻҪϵͳ������ָ����ʱ�䣬��������С�����ָ�����ڣ������´�ϵͳ���е�ʱ����������
+只要系统空闲了指定的时间，任务就运行。可以指定日期，或在下次系统空闲的时候运行任务。
 
 /mo modifier
 
-ָ����������ƻ������ڵ�����Ƶ�ʡ������������ MONTHLY �ƻ��Ǳ���ġ����� MINUTE��HOURLY��DAILY �� WEEKLY �ƻ������������Ч����Ҳ��ѡ��Ĭ��ֵΪ 1��
+指定任务在其计划类型内的运行频率。这个参数对于 MONTHLY 计划是必需的。对于 MINUTE、HOURLY、DAILY 或 WEEKLY 计划，这个参数有效，但也可选。默认值为 1。
 
-�ƻ�����
+计划类型
 
-���η�
+修饰符
 
-˵��
+说明
 
 MINUTE
 
-1��1439
+1～1439
 
-����ÿn��������һ�Ρ�
+任务每n分钟运行一次。
 
 HOURLY
 
-1��23
+1～23
 
-����ÿnСʱ����һ�Ρ�
+任务每n小时运行一次。
 
 DAILY
 
-1��365
+1～365
 
-����ÿn������һ�Ρ�
+任务每n天运行一次。
 
 WEEKLY
 
-1��52
+1～52
 
-����ÿn������һ�Ρ�
+任务每n周运行一次。
 
 MONTHLY
 
-1��12
+1～12
 
-����ÿn������һ�Ρ�
+任务每n月运行一次。
 
 LASTDAY
 
-�������·ݵ����һ�����С�
+任务在月份的最后一天运行。
 
-FIRST��SECOND��THIRD��FOURTH��LAST
+FIRST、SECOND、THIRD、FOURTH、LAST
 
-��/dday������ͬʹ��,�����ض����ܺ��������������磬���·ݵĵ�����������
+与/dday参数共同使用,并在特定的周和天运行任务。例如，在月份的第三个周三。
 
 /d dirlist
 
-ָ���ܻ��µ�һ�졣ֻ�� WEEKLY �� MONTHLY �ƻ���ͬʹ��ʱ��Ч��
+指定周或月的一天。只与 WEEKLY 或 MONTHLY 计划共同使用时有效。
 
-�ƻ�����
+计划类型
 
-����ֵ
+日期值
 
 WEEKLY
 
-��ѡ���Чֵ�� MON ~ SUN �� * ��ÿһ�죩��MON ��Ĭ��ֵ��
+可选项。有效值是 MON ~ SUN 和 * （每一天）。MON 是默认值。
 
 MONTHLY
 
-��ʹ�� FIRST��SECOND��THIRD��FOURTH �� LAST ���η� (/mo) ʱ����Ҫ MON �� SUN �е�ĳ��ֵ��1 �� 31 �ǿ�ѡ�ģ�ֻ��û�����η������η�Ϊ1 �� 12����ʱ��Ч��Ĭ��ֵ�� 1 ���·ݵĵ�һ�죩��
+在使用 FIRST、SECOND、THIRD、FOURTH 或 LAST 修饰符 (/mo) 时，需要 MON ～ SUN 中的某个值。1 ～ 31 是可选的，只在没有修饰符或修饰符为1 ～ 12类型时有效。默认值是 1 （月份的第一天）。
 
 /m month[,month...]
 
-ָ��һ���е�һ���¡���Чֵ�� JAN �� DEC �� * ��ÿ���£���/m����ֻ���� MONTHLY �ƻ���Ч����ʹ�� LASTDAY ���η�ʱ����������Ǳ���ġ��������ǿ�ѡ�ģ�Ĭ��ֵ�� * ��ÿ���£���
+指定一年中的一个月。有效值是 JAN ～ DEC 和 * （每个月）。/m参数只对于 MONTHLY 计划有效。在使用 LASTDAY 修饰符时，这个参数是必需的。否则，它是可选的，默认值是 * （每个月）。
 
 /i InitialPageFileSize
 
-ָ����������֮ǰ��������ж��ٷ��ӡ�����һ��1 �� 999֮����������������ֻ���� ONIDLE �ƻ���Ч�������Ǳ���ġ�
+指定任务启动之前计算机空闲多少分钟。键入一个1 ～ 999之间的整数。这个参数只对于 ONIDLE 计划有效，而且是必需的。
 
 /st StartTime
 
-��HH:MM:SS24 Сʱ��ʽָ��ʱ�䡣Ĭ��ֵ���������ʱ�ĵ�ǰ����ʱ�䡣/st����ֻ���� MINUTE��HOURLY��DAILY��WEEKLY��MONTHLY �� ONCE �ƻ���Ч����ֻ���� ONCE �ƻ��Ǳ���ġ�
+以HH:MM:SS24 小时格式指定时间。默认值是命令完成时的当前本地时间。/st参数只对于 MINUTE、HOURLY、DAILY、WEEKLY、MONTHLY 和 ONCE 计划有效。它只对于 ONCE 计划是必需的。
 
 /sd StartDate
 
-��MM/DD/YYYY��ʽָ���������������ڡ�Ĭ��ֵ�ǵ�ǰ���ڡ�/sd�����������еļƻ���Ч����ֻ���� ONCE �ƻ��Ǳ���ġ�
+以MM/DD/YYYY格式指定任务启动的日期。默认值是当前日期。/sd参数对于所有的计划有效，但只对于 ONCE 计划是必需的。
 
 /ed EndDate
 
-ָ������ƻ����е�������ڡ��˲����ǿ�ѡ�ġ������� ONCE��ONSTART��ONLOGON �� ONIDLE �ƻ���Ч��Ĭ������£��ƻ�û�н������ڡ�
+指定任务计划运行的最后日期。此参数是可选的。它对于 ONCE、ONSTART、ONLOGON 或 ONIDLE 计划无效。默认情况下，计划没有结束日期。
 
 /s Computer
 
-ָ��Զ�̼���������ƻ� IP ��ַ�����л���û�з�б�ܣ���Ĭ��ֵ�Ǳ��ؼ������
+指定远程计算机的名称或 IP 地址（带有或者没有反斜杠）。默认值是本地计算机。
 
 /u [domain\]user
 
-ʹ���ض��û��ʻ���Ȩ���������Ĭ������£�ʹ���ѵ�¼������ SchTasks �ļ�����ϵ��û���Ȩ���������
+使用特定用户帐户的权限运行命令。默认情况下，使用已登录到运行 SchTasks 的计算机上的用户的权限运行命令。
 
 /p password
 
-ָ����/u������ָ�����û��ʻ������롣���ʹ��/u����������Ҫ�ò�����
+指定在/u参数中指定的用户帐户的密码。如果使用/u参数，则需要该参数。
 
 /ru {[Domain\]User|"System"}
 
-ʹ��ָ���û��ʻ���Ȩ����������Ĭ������£�ʹ���û���¼������ SchTasks �ļ�����ϵ�Ȩ����������
+使用指定用户帐户的权限运行任务。默认情况下，使用用户登录到运行 SchTasks 的计算机上的权限运行任务。
 
-ֵ
+值
 
-˵��
+说明
 
  	 
 [domain\}User?
 
-ָ���û��ʻ���
+指定用户帐户。
 
-"System"��""
+"System"或""
 
-ָ������ϵͳʹ�õ� NT Authority\System �ʻ���
+指定操作系统使用的 NT Authority\System 帐户。
 
 /p Password
 
-ָ���û��ʻ������룬���û��ʻ���/u������ָ���������ָ���û��ʻ���ʱ����������������SchTasks.exe ����ʾ������������Ҳ���ʾ������ı���ʹ�� NT Authority\System �ʻ�Ȩ�����е�������Ҫ���룬SchTasks.exe Ҳ������ʾ��Ҫ���롣
+指定用户帐户的密码，该用户帐户在/u参数中指定。如果在指定用户帐户的时候忽略了这个参数，SchTasks.exe 会提示您输入密码而且不显示键入的文本。使用 NT Authority\System 帐户权限运行的任务不需要密码，SchTasks.exe 也不会提示索要密码。
 
 /?
 
-��������ʾ����ʾ������
+在命令提示符显示帮助。
 
  
 
-����
+范例
 
-�ƻ�����ÿ 20 ��������һ�Ρ�
+计划任务每 20 分钟运行一次。
 
-���������ƻ���ȫ�ű� Sec.vbs ÿ 20 ��������һ�Ρ���������û�а�����ʼ���ڻ�ʱ�䣬������������� 20 ���Ӻ��������˺�ÿ��ϵͳ��������ÿ 20 ��������һ�Ρ���ע�⣬��ȫ�ű�Դ�ļ�λ��Զ�̼�����ϣ��������ڱ��ؼ�����ϼƻ���ִ�С�
+下面的命令计划安全脚本 Sec.vbs 每 20 分钟运行一次。由于命令没有包含起始日期或时间，任务在命令完成 20 分钟后启动，此后每当系统运行它就每 20 分钟运行一次。请注意，安全脚本源文件位于远程计算机上，但任务在本地计算机上计划并执行。
 
-schtasks /create /sc minute /mo 20 /tn "Security scr��pt" /tr \\central\data\scr��pts\sec.vbs
+schtasks /create /sc minute /mo 20 /tn "Security scrīpt" /tr \\central\data\scrīpts\sec.vbs
 
  
 
-����
+范例
 
-�ƻ�������ÿСʱ����ֵ�ʱ�����С�
+计划命令在每小时过五分的时候运行。
 
-���������ƻ� MyApp �������ҹ�����������ÿСʱ����һ�Ρ���Ϊ������/mo����������ʹ����Сʱ�ƻ���Ĭ��ֵ����ÿ (1) Сʱ������������� 12:05 A.M ֮�����ɣ������ڵڶ���Ż����С�
+下面的命令将计划 MyApp 程序从午夜过后五分钟起每小时运行一次。因为忽略了/mo参数，命令使用了小时计划的默认值，即每 (1) 小时。如果该命令在 12:05 A.M 之后生成，程序将在第二天才会运行。
 
 schtasks /create /sc hourly /st 00:05:00 /tn "My App" /tr c:\apps\myapp.exe
 
-�ƻ�����ÿ��Сʱ����һ��
+计划命令每五小时运行一次
 
-���������ƻ� MyApp ����� 2001 �� 3 �µĵ�һ����ÿ��Сʱ����һ�Ρ���ʹ��/mo������ָ�����ʱ�䣬ʹ��/sd������ָ����ʼ���ڡ���������û��ָ����ʼʱ�䣬��ǰʱ�䱻������ʼʱ�䡣
+下面的命令计划 MyApp 程序从 2001 年 3 月的第一天起每五小时运行一次。它使用/mo参数来指定间隔时间，使用/sd参数来指定起始日期。由于命令没有指定起始时间，当前时间被用作起始时间。
 
 schtasks /create /sc hourly /mo 5 /sd 03/01/2001 /tn "My App" /tr c:\apps\myapp.exe
 
@@ -195,26 +195,26 @@ schtasks create daily
 
  
 
-����
+范例
 
-�ƻ�����ÿ������һ��
+计划任务每天运行一次
 
-����ķ����ƻ� MyApp ������ÿ��� 8:00 A.M. ����һ�Σ�ֱ�� 2001 �� 12 �� 31 �ս�����������������/mo����������ʹ��Ĭ�ϼ�� 1 ��ÿ���������
+下面的范例计划 MyApp 程序在每天的 8:00 A.M. 运行一次，直到 2001 年 12 月 31 日结束。由于它忽略了/mo参数，所以使用默认间隔 1 来每天运行命令。
 
 schtasks /create /tn "My App" /tr c:\apps\myapp.exe /sc daily /st 08:00:00 /ed 12/31/2001
 
-�ƻ�����ÿ��һ������һ��
+计划任务每隔一天运行一次
 
  
 
-����
+范例
 
-�ƻ�����ÿ��������һ��
+计划任务每六周运行一次
 
-���������ƻ� MyApp ������Զ�̼������ÿ��������һ�Ρ�������ʹ��/mo������ָ���������Ҳʹ��/s������ָ��Զ�̼������ʹ��/ru�������ƻ��������û��� Administrator �ʻ�Ȩ�����С���Ϊ������/rp������SchTasks.exe ����ʾ�û����� Administrator �ʻ����롣
+下面的命令计划 MyApp 程序在远程计算机上每六周运行一次。该命令使用/mo参数来指定间隔。它也使用/s参数来指定远程计算机，使用/ru参数来计划任务以用户的 Administrator 帐户权限运行。因为忽略了/rp参数，SchTasks.exe 会提示用户输入 Administrator 帐户密码。
 
-���⣬��Ϊ������Զ�����еģ��������������е�·���������� MyApp.exe ��·��������ָ��Զ�̼�����ϵ�·����
+另外，因为命令是远程运行的，所以命令中所有的路径，包括到 MyApp.exe 的路径，都是指向远程计算机上的路径。
 
 schtasks /create /tn "My App" /tr c:\apps\myapp.exe /sc weekly /mo 6 /s Server16 /ru Admin01
 
-�ƻ�����ÿ��һ������������
+计划任务每隔一周在周五运行

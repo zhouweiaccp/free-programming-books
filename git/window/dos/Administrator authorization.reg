@@ -1,8 +1,8 @@
-Windows Registry Editor Version 5.00 
+ï»¿Windows Registry Editor Version 5.00 
 
 [HKEY_CLASSES_ROOT\*\shell\runas] 
 
-@="¹ÜÀíÔ±ÊÚÈ¨" 
+@="ç®¡ç†å‘˜æˆæƒ" 
 
  "NoWorkingDirectory"=""  
 
@@ -16,7 +16,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\exefile\shell\runas2] 
 
-@="¹ÜÀíÔ±ÊÚÈ¨" 
+@="ç®¡ç†å‘˜æˆæƒ" 
 
  "NoWorkingDirectory"=""  
 
@@ -30,7 +30,7 @@ administrators:F"
 
 [HKEY_CLASSES_ROOT\Directory\shell\runas]
 
- @="¹ÜÀíÔ±ÊÚÈ¨"  
+ @="ç®¡ç†å‘˜æˆæƒ"  
 
 "NoWorkingDirectory"=""  
 
