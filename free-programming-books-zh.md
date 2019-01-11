@@ -737,3 +737,6 @@
 ### WebAssembly
 
 * [C/C++面向WebAssembly编程](https://github.com/3dgen/cppwasm-book)
+
+### pdf
+* [awesome-programming-books](https://github.com/zhouweiaccp/awesome-programming-books)
