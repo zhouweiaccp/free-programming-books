@@ -46,7 +46,9 @@ vi ~/.bashrc
 常用软件
 https://github.com/cjy37/linux-asp.net-installScript
  https://github.com/summerblue/laravel-ubuntu-init/blob/master/16.04/install.sh 
- https://github.com/licess/lnmp     
-
+ * [lnmp](https://github.com/licess/lnmp)     自动安装 
+* [lamp](https://lamp.sh/install.html) 安装全一些
+* [oneinstack lamp](https://github.com/oneinstack/lamp)   更标准一些 This script is written using the shell, in order to quickly deploy LEMP/LAMP/LNMP/LNMPA/LTMP(Linux, Nginx/Tengine/OpenResty, MySQL in a production environment/MariaDB/Percona, PHP, JAVA), applicable to CentOS 6 ~ 7(including redhat), Debian 6 ~ 9, Ubuntu 12 ~ 18, Fedora 27~28 of 32 and 64
+* [宝塔Linux面](https://www.bt.cn/download/linux.html) 宝塔Linux面板 6.8 环境
 关闭shell后如何保持程序继续运行
 nohup npm start &
