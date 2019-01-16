@@ -11,7 +11,7 @@ https://github.com/angristan/nginx-autoinstall  安装脚本
 https://github.com/valentinxxx/nginxconfig.io 用法
 https://github.com/jaywcjlove/nginx-tutorial
 https://nginx.rails365.net/chapters/2.html
-
+https://github.com/DocsHome/nginx-docs 中文翻译
 https://github.com/denji/nginx-tuning  配置
 https://github.com/vozlt/nginx-module-sysguard  监控nginx
 安装
