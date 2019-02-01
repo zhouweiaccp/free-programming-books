@@ -51,7 +51,7 @@ end;
 
 1.可以通过查询系统表查看该job信息
 
-select * from user_jobs；
+select * from user_jobs;
 
 
 2.手动sql调用job   (直接调用job可以忽略开始时间)
