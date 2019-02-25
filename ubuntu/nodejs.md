@@ -8,6 +8,9 @@ make
 sudo make install
 node -v
 
+升级
+npm install -g n
+n stable
 
 方式一：直接安装
 
