@@ -17,3 +17,5 @@ pagekite 官网: https://pagekite.net/ https://github.com/pagekite/PyPagekite
 http://ngrok.ciqiuwl.cn/
 
 https://github.com/PassByYou888/ZServer4D  学习资料
+https://github.com/cnlh/nps
+https://github.com/fatedier/frp
