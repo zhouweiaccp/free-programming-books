@@ -11,3 +11,6 @@ https://github.com/qiu-deqing/FE-interview  总结
 https://github.com/paddingme/Front-end-Web-Development-Interview-Question  比较全
 https://github.com/helloqingfeng/Awsome-Front-End-learning-resource  学习教程
 https://github.com/linhuai/vue_Interview_question   vue
+
+
+https://github.com/getify/You-Dont-Know-JS/tree/1ed-zh-CN 你不懂JS（系列丛书）
