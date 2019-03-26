@@ -23,5 +23,6 @@ https://github.com/fatedier/frp
 
 
 ## sqlite工具
-* [sqlitestudio](#https://sqlitestudio.pl/index.rvt?act=download)
+* [sqlitestudio](https://sqlitestudio.pl/index.rvt?act=download)
+* [SQLiteSpy](https://www.yunqa.de/delphi/downloads/SQLiteSpy_1.9.13.zip)
 
