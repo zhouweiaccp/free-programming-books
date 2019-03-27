@@ -3,6 +3,7 @@
 
   * [sqlite工具](#sqlite工具)
   * [内网穿透](#内网穿透)
+   * [调试工具](#调试工具)
 
 ## 内网穿透
 https://github.com/ffay/lanproxy/blob/master/README.md
@@ -26,3 +27,5 @@ https://github.com/fatedier/frp
 * [sqlitestudio](https://sqlitestudio.pl/index.rvt?act=download)
 * [SQLiteSpy](https://www.yunqa.de/delphi/downloads/SQLiteSpy_1.9.13.zip)
 
+## 调试工具
+* [winddbg](https://docs.microsoft.com/zh-cn/windows-hardware/drivers/debugger/debugger-download-tools)
