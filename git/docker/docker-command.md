@@ -16,3 +16,20 @@ docker load不能对载入的镜像重命名，而docker import可以为镜像�
 
 docker save -o images.tar postgres:9.6 mongo:3.4     docker load -i images.tar
 docker export -o postgres-export.tar postgres docker import postgres-export.tar postgres:latest
+
+
+部署新的堆栈或更新现有堆栈
+docker stack deploy -c docker-compose.yml stack-demo
+
+列出现有堆栈
+docker stack ls
+
+列出堆栈中的任务
+docker stack ps stack-demo
+
+删除一个或多个堆栈
+docker stack rm stack-demo
+
+列出堆栈中的服务
+docker stack services stack-demo
+
