@@ -1,5 +1,19 @@
+基本用法
+* [dotnetcore](https://docs.docker.com/engine/examples/dotnetcore/)
+ docker build -t aspnetapp .
+ docker run -d -p 8080:80 --name myapp aspnetapp  -i -t ubuntu bash
+ docker exec -it 4ba8754ce8a3 bash
+ docker logs --follow 4ba8754ce8a3
+ docker commit --message "5.8.00ok" 4ba8754ce8a3  edoc2:v3
+docker login -uzhouwei -pAA1qaz2WSX 192.168.251.21                    docker login --username=cheergoivan registry.cn-hangzhou.aliyuncs.com
+
+（13）删除镜像
+docker rmi c861a419888a（镜像ID）
+ （15）创建容器
+ docker commit -p xxxxxxxxxxx（容器id） name（快照名称）
 
 
+docker run -v /testdocker:/soft --name oracle -d -p 1521:1521 -e ORACLE_ALLOW_REMOTE=true wnameless/oracle-xe-11g
 
 cp 从容器里面拷文件到宿主机
 docker cp 942377f48ede:/etc/hostname d:/hostname.txt
