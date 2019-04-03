@@ -47,3 +47,19 @@ docker stack rm stack-demo
 列出堆栈中的服务
 docker stack services stack-demo
 
+
+
+
+docker run -d -p 9000:9000 -l portainer=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+
+https://www.kancloud.cn/websoft9/docker-guide/829734
+yum install docker
+systemctl start docker
+systemctl enable docker
+docker volume create portainer_data
+docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+cd /usr/libexec/docker/
+sudo ln -s docker-runc-current docker-runc
+
+
+https://github.com/liufee/docker 最新lnmp环境，包含php, java,nginx, mysql, go, node, mongodb, openssh server, redis, crond xhprof,maven等服务
