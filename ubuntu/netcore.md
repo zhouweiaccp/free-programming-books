@@ -31,3 +31,8 @@ dotnet nuget 用法
 dotnet nuget add package NLog
 dotnet pack   #运行 dotnet pack 命令，它也会自动生成项目
 dotnet nuget push AppLogger.1.0.0.nupkg -k qz2jga8pl3dvn2akksyquwcs9ygggg4exypy3bhxy6w6x6 -s https://api.nuget.org/v3/index.json
+
+
+https://docs.microsoft.com/zh-cn/dotnet/core/tools/global-json   
+dotnet --list-sdks
+dotnet new global.json --sdk-version 2.1.402
