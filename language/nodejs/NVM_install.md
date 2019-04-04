@@ -88,3 +88,5 @@ nvm install 5.3.0 32
 mac端：
 
 nvm install 5.3.0
+
+npm config set registry https://registry.npm.taobao.org

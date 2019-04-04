@@ -18,6 +18,15 @@ docker run -p 8080:80 --name test1c1 test1image
 docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=1qaz2WSX'  -p 1433:1433 --name sql1  -d mcr.microsoft.com/mssql/server:2017-latest
 docker exec -it sql1 "bash"
 /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P '1qaz2WSX'
+CREATE DATABASE TestDB
+SELECT Name from sys.Databases
+go
+USE TestDB
+CREATE TABLE Inventory (id INT, name NVARCHAR(50), quantity INT)
+INSERT INTO Inventory VALUES (1, 'banana', 150); INSERT INTO Inventory VALUES (2, 'orange', 154);
+go
+
+
 
 netcore 镜像
 https://github.com/dotnet/dotnet-docker
