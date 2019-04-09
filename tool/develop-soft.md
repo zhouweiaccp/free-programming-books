@@ -1,6 +1,7 @@
 
 # Table of Contents
 * [apm](#apm)
+* [规范](#规范)
 * [mysql工具](#mysql工具)
 * [mssql工具](#mssql工具)
 * [sqlite工具](#sqlite工具)
@@ -12,7 +13,12 @@
 * [pinpoint](https://github.com/naver/pinpoint)
 * [incubator-skywalking](https://github.com/apache/incubator-skywalking)  参考https://github.com/JaredTan95/skywalking-docker  https://github.com/OpenSkywalking/skywalking-netcore
 * [学习链接](https://cloud.tencent.com/developer/article/1345706)
-
+## 规范
+* [OpenTracing](https://opentracing.io/docs/overview/what-is-tracing/)开放式分布式追踪规范
+* [zeromq]()
+* [IdentityServer4]()
+* []()
+* []()
 ## 内网穿透
 https://github.com/ffay/lanproxy/blob/master/README.md
 https://blog.csdn.net/zhangguo5/article/details/77848658?utm_source=5ibc.net&utm_medium=referral
