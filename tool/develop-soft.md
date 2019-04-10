@@ -16,8 +16,10 @@
 ## 规范
 * [OpenTracing](https://opentracing.io/docs/overview/what-is-tracing/)开放式分布式追踪规范
 * [zeromq]()
-* [IdentityServer4]()
-* []()
+* [IdentityServer4](https://identityserver.io/)sing .NET to build identity and access control solutions for modern applications, including single sign-on, identity management, authorization, and API security.
+* [jwt](https://jwt.io/)JSON Web Tokens are an open, industry standard RFC 7519 method for representing claims securely between two parties.
+
+JWT.IO allows you to decode, verify and generate JWT
 * []()
 ## 内网穿透
 https://github.com/ffay/lanproxy/blob/master/README.md
