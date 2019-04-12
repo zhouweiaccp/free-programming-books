@@ -15,7 +15,7 @@ docker run -p 8080:80 --name test1c1 test1image
 
 
 ----------SQL Server 2017 Linux 容器映像  (https://docs.microsoft.com/zh-cn/sql/linux/quickstart-install-connect-docker?view=sql-server-2017&pivots=cs1-bash)
-docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=1qaz2WSX'  -p 1433:1433 --name sql1  -d mcr.microsoft.com/mssql/server:2017-latest
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=1qaz2WSX' -e "TZ=Asia/Shanghai" -p 1433:1433 --name sql1  -d mcr.microsoft.com/mssql/server:2017-latest
 docker exec -it sql1 "bash"
 /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P '1qaz2WSX'
 CREATE DATABASE TestDB
