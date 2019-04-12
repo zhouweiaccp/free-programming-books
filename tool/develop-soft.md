@@ -7,6 +7,7 @@
 * [sqlite工具](#sqlite工具)
 * [内网穿透](#内网穿透)
 * [调试工具](#调试工具)
+* [window_shell](#window_shell)
 
 ## apm
 * [cat](https://github.com/dianping/cat) -大宗点评网开源
@@ -53,3 +54,6 @@ https://github.com/fatedier/frp
 
 ## 调试工具
 * [winddbg](https://docs.microsoft.com/zh-cn/windows-hardware/drivers/debugger/debugger-download-tools)
+
+## window_shell
+* [mobaxterm](https://mobaxterm.mobatek.net/download.html)
