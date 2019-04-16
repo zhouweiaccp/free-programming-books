@@ -1,1 +1,0 @@
-sc start "EDoc2.OrgService"
