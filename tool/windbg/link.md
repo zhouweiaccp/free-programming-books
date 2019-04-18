@@ -6,7 +6,10 @@ https://www.cnblogs.com/gaochundong/p/windbg_cheat_sheet.html#buildin_help_cmds
 
 http://download.microsoft.com/download/A/6/A/A6AC035D-DA3F-4F0C-ADA4-37C8E5D34E3D/setup/WinSDKDebuggingTools/dbg_x86.msi
 http://download.microsoft.com/download/A/6/A/A6AC035D-DA3F-4F0C-ADA4-37C8E5D34E3D/setup/WinSDKDebuggingTools_amd64/dbg_amd64.msi
+https://download.microsoft.com/download/5/C/3/5C3770A3-12B4-4DB4-BAE7-99C624EB32AD/windowssdk/winsdksetup.exe win10
 
+
+https://docs.microsoft.com/zh-cn/dotnet/framework/tools/sos-dll-sos-debugging-extension   .net调试命令
 https://www.cnblogs.com/bluesummer/p/8125013.html
 2.命令
 1.基本命令
@@ -50,5 +53,26 @@ Q 退出
 !helproot -查看gcroot的帮助
 
 在解析.Net程序时首先要加载运行环境framework版本对应的SOS.DLL：
-
+srv*d:\debug\symbols*http://msdl.microsoft.com/download/symbols
 .load C:\Windows\Microsoft.NET\Framework64\v4.0.30319\SOS.DLL
+.load C:\Windows\Microsoft.NET\Framework64\v4.0.30319\clr.DLL
+
+!dumpheap –stat 统计堆栈内存
+!threads
+!synblk
+
+
+CPU高
+-如果与业务量没有提升，有线程在长时间的处理
+核心问题，找到占用CPU的线程
+!runaway
+~*e!clrstack
+
+核心问题：找到锁定的线程
+!threads
+!syncblk
+~*e!clrstack
+•两条指令可以解决大部分的问题
+•!dumpheap –stat
+•~*e!clrstack
+原文：https://blog.csdn.net/kntao/article/details/7086616 

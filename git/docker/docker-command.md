@@ -15,6 +15,8 @@ docker rmi c861a419888a（镜像ID）
 
 docker run -v /testdocker:/soft --name oracle -d -p 1521:1521 -e ORACLE_ALLOW_REMOTE=true wnameless/oracle-xe-11g
 
+https://docs.docker.com/compose/compose-file/   Compose and Docker compatibility matrix   docker-compose.yml version与安装程序对应关系
+
 cp 从容器里面拷文件到宿主机
 docker cp 942377f48ede:/etc/hostname d:/hostname.txt
 从宿主机拷文件到容器里面
