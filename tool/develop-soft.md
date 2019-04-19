@@ -7,6 +7,7 @@
 * [sqlite工具](#sqlite工具)
 * [内网穿透](#内网穿透)
 * [调试工具](#调试工具)
+* [团队文档协作](#团队文档协作)
 * [window_shell](#window_shell)
 
 ## apm
@@ -54,6 +55,12 @@ https://github.com/fatedier/frp
 
 ## 调试工具
 * [winddbg](https://docs.microsoft.com/zh-cn/windows-hardware/drivers/debugger/debugger-download-tools)
+
+## 团队文档协作
+* [GitBook Editor](https://www.gitbook.com/editor)   GitBook + GitLab 团队文档协作 https://www.jianshu.com/p/e74dad6845d1
+* [GitBook CI](https://github.com/GitbookIO/gitbook-cli)
+* []()
+
 
 ## window_shell
 * [mobaxterm](https://mobaxterm.mobatek.net/download.html)
