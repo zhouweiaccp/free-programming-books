@@ -10,7 +10,7 @@ begin
 backup database @database to disk=@filename --with differential
 --EXEC sp_addumpdevice 'disk', 'mybackupdisk', @filename ;
 
---É¾³ı´ÅÅÌ±¸·İÉè±¸
+--åˆ é™¤ç£ç›˜å¤‡ä»½è®¾å¤‡
 --EXEC sp_dropdevice 'mybackupdisk', 'delfile' ;
 end
 --select * from  sys.backup_devices;

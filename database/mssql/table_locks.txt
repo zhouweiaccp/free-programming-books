@@ -1,4 +1,4 @@
-É±µôËÀËøµÄsqlserver½ø³Ì
+æ€æ‰æ­»é”çš„sqlserverè¿›ç¨‹
  
 SELECT request_session_id spid,OBJECT_NAME
 (resource_associated_entity_id)tableName 
@@ -7,33 +7,33 @@ FROM sys.dm_tran_locks
  
 WHERE resource_type='OBJECT ' 
  
-KILL spidºÅ
+KILL spidå·
 
-kill·½Ê½ÊÇÉ±µô½ø³Ì£¬µ«ÊÇÓĞÊ±ºòĞèÒªÈ¡ÏûÏà¹ØSQLÓï¾ä£¬²ÉÓÃÒÔÏÂ·½Ê½£º
+killæ–¹å¼æ˜¯æ€æ‰è¿›ç¨‹ï¼Œä½†æ˜¯æœ‰æ—¶å€™éœ€è¦å–æ¶ˆç›¸å…³SQLè¯­å¥ï¼Œé‡‡ç”¨ä»¥ä¸‹æ–¹å¼ï¼š
 
-²é¿´ÄÄĞ©SQLÓï¾äÕıÔÚÖ´ĞĞ£¬Óï¾äÈçÏÂ£º
+æŸ¥çœ‹å“ªäº›SQLè¯­å¥æ­£åœ¨æ‰§è¡Œï¼Œè¯­å¥å¦‚ä¸‹ï¼š
 
 SELECT datname,procpid,query_start, current_query,waiting,client_addr FROM pg_stat_activity WHERE waiting='t';
 
-ËµÃ÷£º
+è¯´æ˜ï¼š
 
-datname±íÊ¾Êı¾İ¿âÃû
+datnameè¡¨ç¤ºæ•°æ®åº“å
 
-procpid±íÊ¾µ±Ç°µÄSQL¶ÔÓ¦µÄPID
+procpidè¡¨ç¤ºå½“å‰çš„SQLå¯¹åº”çš„PID
 
-query_start±íÊ¾SQLÖ´ĞĞ¿ªÊ¼Ê±¼ä
+query_startè¡¨ç¤ºSQLæ‰§è¡Œå¼€å§‹æ—¶é—´
 
-current_query±íÊ¾µ±Ç°Ö´ĞĞµÄSQLÓï¾ä
+current_queryè¡¨ç¤ºå½“å‰æ‰§è¡Œçš„SQLè¯­å¥
 
-waiting±íÊ¾ÊÇ·ñÕıÔÚÖ´ĞĞ£¬t±íÊ¾ÕıÔÚÖ´ĞĞ£¬f±íÊ¾ÒÑ¾­Ö´ĞĞÍê³É
+waitingè¡¨ç¤ºæ˜¯å¦æ­£åœ¨æ‰§è¡Œï¼Œtè¡¨ç¤ºæ­£åœ¨æ‰§è¡Œï¼Œfè¡¨ç¤ºå·²ç»æ‰§è¡Œå®Œæˆ
 
-client_addr±íÊ¾¿Í»§¶ËIPµØÖ·
+client_addrè¡¨ç¤ºå®¢æˆ·ç«¯IPåœ°å€
 
-killÓĞÁ½ÖÖ·½Ê½£¬µÚÒ»ÖÖÊÇ£º
+killæœ‰ä¸¤ç§æ–¹å¼ï¼Œç¬¬ä¸€ç§æ˜¯ï¼š
 SELECT pg_cancel_backend(PID);
-ÕâÖÖ·½Ê½Ö»ÄÜkill select²éÑ¯£¬¶Ôupdate¡¢delete ¼°DML²»ÉúĞ§)
+è¿™ç§æ–¹å¼åªèƒ½kill selectæŸ¥è¯¢ï¼Œå¯¹updateã€delete åŠDMLä¸ç”Ÿæ•ˆ)
 
-µÚ¶şÖÖÊÇ£º
+ç¬¬äºŒç§æ˜¯ï¼š
 SELECT pg_terminate_backend(PID);
-ÕâÖÖ¿ÉÒÔkillµô¸÷ÖÖ²Ù×÷(select¡¢update¡¢delete¡¢dropµÈ)²Ù×÷
+è¿™ç§å¯ä»¥killæ‰å„ç§æ“ä½œ(selectã€updateã€deleteã€dropç­‰)æ“ä½œ
 

@@ -1,4 +1,4 @@
-SELECT * FROM
+ï»¿SELECT * FROM
 [Master].[dbo].[SYSPROCESSES] WHERE [DBID] IN ( SELECT 
    [DBID]
 FROM 
@@ -10,7 +10,7 @@ WHERE
 SELECT @@MAX_CONNECTIONS
 
 
-/*²éÑ¯Á¬½ÓÊı*/
+/*æŸ¥è¯¢è¿æ¥æ•°*/
 select loginame,count(1) as Nums
 from sys.sysprocesses
 group by loginame
@@ -19,13 +19,13 @@ order by 2 desc
 --select spid,ecid,status,loginame,hostname,cmd,request_id 
 --from sys.sysprocesses where loginame='' and hostname=''
 
---Á¬½Ó³¬Ê±
+--è¿æ¥è¶…æ—¶
 select * from master.dbo.sysconfigures where comment like'%timeout%'
 select value from master.dbo.sysconfigures where [config]=103
 
 
---¡¢ÉèÖÃ×î´óÁ¬½ÓÊı
-----ÏÂÃæµÄT-SQL Óï¾ä¿ÉÒÔÅäÖÃSQL Server ÔÊĞíµÄ²¢·¢ÓÃ»§Á¬½ÓµÄ×î´óÊıÄ¿¡£
+--ã€è®¾ç½®æœ€å¤§è¿æ¥æ•°
+----ä¸‹é¢çš„T-SQL è¯­å¥å¯ä»¥é…ç½®SQL Server å…è®¸çš„å¹¶å‘ç”¨æˆ·è¿æ¥çš„æœ€å¤§æ•°ç›®ã€‚
 --exec sp_configure 'show advanced options', 1
 --exec sp_configure 'user connections', 100
  

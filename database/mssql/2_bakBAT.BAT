@@ -1,3 +1,3 @@
 echo off
 @sqlcmd -S 192.168.252.20 -Usa -P1234 -i E:\212\sqlserverbackup.sql -o E:\212\sqlserverbackup.out 
-@echo ¡­¡­ÕýÔÚ±¸·ÝÖÐ¡­¡­
+@echo â€¦â€¦æ­£åœ¨å¤‡ä»½ä¸­â€¦â€¦

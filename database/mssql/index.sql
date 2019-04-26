@@ -1,7 +1,7 @@
---É¾³ıÖ÷¼ü
-alter table ±íÃû drop constraint Ö÷¼üÃû
---Ìí¼ÓÖ÷¼ü
---alter table ±íÃû add constraint Ö÷¼üÃû primary key(×Ö¶ÎÃû1,×Ö¶ÎÃû2¡­¡­)
+ï»¿--åˆ é™¤ä¸»é”®
+alter table è¡¨å drop constraint ä¸»é”®å
+--æ·»åŠ ä¸»é”®
+--alter table è¡¨å add constraint ä¸»é”®å primary key(å­—æ®µå1,å­—æ®µå2â€¦â€¦)
 
 alter table [dms_instanceCfg125] add   CONSTRAINT [PK_DMS_INSTANCECFG125] PRIMARY KEY CLUSTERED 
 (
