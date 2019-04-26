@@ -65,3 +65,4 @@ sudo ln -s docker-runc-current docker-runc
 
 
 https://github.com/liufee/docker 最新lnmp环境，包含php, java,nginx, mysql, go, node, mongodb, openssh server, redis, crond xhprof,maven等服务
+https://github.com/lpxxn/godockerswarm  docker swarms demo
