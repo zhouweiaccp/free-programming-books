@@ -1,4 +1,4 @@
-
+﻿
 //字段是否存在
 db.doc_1.find({"file_id":{$gt: 0},"is_curVerId" : {$exists:false}})
 //范围查询
