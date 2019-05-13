@@ -295,3 +295,149 @@ SQLite 视图是只读的，因此可能无法在视图上执行 DELETE、INSERT
  
      DROP VIEW view_name;
 复制代码
+
+2 创建数据表
+
+sqlite> create table users(userid varchar(20) PRIMARY KEY,
+   ...> age int,
+   ...> birthday datetime);
+3 添加记录
+
+insert into users values('wang',20,'1989-5-4');
+insert into users values('li',22,'1987-11-16');
+4 查询记录
+
+select * from users order by birthday;
+5 删除记录
+
+delete from users where userid='wang';
+6 退出sqlite
+
+sqlite> .exit
+SQLite数据库的数据结构是存贮在 "sqlite_master" 表中
+
+具体命令可以输入 .help查看或参考帮助文档
+
+sqlite详细使用：
+
+
+(1)创建数据库
+   在命令行中切换到sqlite.exe所在的文件夹
+   在命令中键入sqlite3 test.db;即可创建了一个名为test.db的数据库
+   由于此时的数据库中没有任何表及数据存在，这时候是看不到test.db的，必须往里面插入一张表即可看到数据库
+
+(2)创建表
+   create table Test(Id Integer primary key, value text);
+   此时即可完成表的创建，当把主键设为Integer时，则该主键为自动增长，插入数据时，可直接使用如下语句:
+   insert into Test values(null,'Acuzio');
+
+(3)获取最后一次插入的主键: select last_insert_rowid();
+
+(4)sqlite>.mode col
+   sqlite>.headers on
+   在数据库查询的时候，显示行数和头!
+
+(5)在DOS中，键入Ctrl+C,退出数据库，Unix中，使用Ctrl+D
+
+(6)SQLite Master Table Schema
+-----------------------------------------------------------------
+Name                       Description
+-----------------------------------------------------------------
+type          The object’s type (table, index, view, trigger)
+name          The object’s name
+tbl_name      The table the object is associated with
+rootpage      The object’s root page index in the database (where it begins)
+sql           The object’s SQL definition (DDL)
+
+eg.
+sqlite> .mode col
+sqlite> .headers on
+sqlite> select type, name, tbl_name, sql from sqlite_master order by type;
+这样就能看到所有数据库中的信息，表、索引、视图等等
+
+(7)导出数据
+.output [filename],导出到文件中,如果该文件不存在，则自动创建
+.dump 导出数据命令
+.output stdout 返回输出到屏幕(进行其他操作)
+
+eg.
+sqlite>.output Acuzio.sql
+sqlite>.dump
+sqlite>.output stdout
+这样就可以把数据导入到Acuzio.sql中
+
+(8)导入数据
+导入数据使用.read命令
+eg.
+如导入(7)中的数据
+sqlite>.read Acuio.sql
+
+(9)备份数据库
+在切换到Sqlite文件夹
+sqlite3 test.db .dump > test.sql
+如果在数据库中
+sqlite> .output file.sql
+sqlite> .dump
+sqlite> .exit
+
+(10)导入数据库
+在切换到Sqlite文件夹
+sqlite3 test.db < test.sql
+
+(11)备份二进制格式数据库，vacuum:释放掉已经被删除的空间(数据和表等被删除，不会被清空空间)
+sqlite3 test.db VACUUM
+cp test.db test.backup
+
+(12)获取数据库信息
+如果想获得物理数据库结构的信息，可以去SQLite网站上下载SQLite Analyzer工具
+使用: sqlite3_analyzer test.db
+
+(13)其他的SQLite工具
+SQLite Database Browser (http://sqlitebrowser.sourceforge.net)
+SQLite Control Center (http://bobmanc.home.comcast.net/sqlitecc.html)
+SQLiteManager (www.sqlabs.net/sqlitemanager.php)
+
+(13)SQLite 与其他数据库不同，它是以(;)来执行语句，而不是(go).
+
+(14)SQLite注释(--)或(/* */)
+eg.
+-- This is a comment on one line
+/* This is a comment spanning
+two lines */
+
+(15)创建表结构
+
+CREATE [TEMP|TEMPORARY] TABLE table_name (column_definitions [, constraints]);
+
+关键字TEMP、TEMPORARY表示创建的是临时表
+
+(16)在SQLite中有5种基本类型:
+Integer/Real/Text/Blob/Null
+
+(17)确保唯一性可以用关键字UNIQUE
+eg.
+CREATE TABLE contacts ( id INTEGER PRIMARY KEY,
+name TEXT NOT NULL COLLATE NOCASE,
+phone TEXT NOT NULL DEFAULT 'UNKNOWN',
+UNIQUE (name,phone) );
+
+(18)修改表
+ALTER TABLE table { RENAME TO name | ADD COLUMN column_def }
+eg.
+sqlite> ALTER TABLE contacts
+ADD COLUMN email TEXT NOT NULL DEFAULT '' COLLATE NOCASE;
+sqlite> .schema contacts
+CREATE TABLE contacts ( id INTEGER PRIMARY KEY,
+name TEXT NOT NULL COLLATE NOCASE,
+phone TEXT NOT NULL DEFAULT 'UNKNOWN',
+email TEXT NOT NULL DEFAULT '' COLLATE NOCASE,
+UNIQUE (name,phone) );
+
+(19)查询
+SELECT DISTINCT heading FROM tables WHERE predicate
+GROUP BY columns HAVING predicate
+ORDER BY columns LIMIT count,offset;
+
+(20)Limit和Offset关键字
+Limit 指返回记录的最大行数
+Offset 指跳过多少行数据
