@@ -1,6 +1,7 @@
 
 # Table of Contents
 * [apm](#apm)
+* [awesome](#awesmoe)
 * [规范](#规范)
 * [mysql工具](#mysql工具)
 * [mssql工具](#mssql工具)
@@ -17,6 +18,16 @@
 * [pinpoint](https://github.com/naver/pinpoint)
 * [incubator-skywalking](https://github.com/apache/incubator-skywalking)  参考https://github.com/JaredTan95/skywalking-docker  https://github.com/OpenSkywalking/skywalking-netcore
 * [学习链接](https://cloud.tencent.com/developer/article/1345706)
+
+## awesome
+* [https://github.com:zhouweiaccp/awesome-dotnet.git](awesome-dotnet)
+* [https://github.com:zhouweiaccp/free-programming-books.git](free-programming-books)
+* [https://github.com:zhouweiaccp/awesome-javascript.git](awesome-javascript)
+* [https://github.com:zhouweiaccp/awesome-dotnet-core.git](awesome-dotnet-core)
+* [awesome-github-vue](https://github.com/zhouweiaccp/awesome-github-vue)
+* []()
+
+
 ## 规范
 * [OpenTracing](https://opentracing.io/docs/overview/what-is-tracing/)开放式分布式追踪规范
 * [zeromq]()
@@ -92,5 +103,3 @@ https://github.com/fatedier/frp
 * []()
 * []()
 * []()
-
-
