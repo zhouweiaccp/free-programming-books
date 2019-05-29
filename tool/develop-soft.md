@@ -55,7 +55,7 @@ https://github.com/fatedier/frp
 
 ## mysql工具
 * [mycli](https://github.com/dbcli/mycli)
-* []()
+* [HeidiSQL](https://www.heidisql.com/?place=lblAppWebpage)"Heidi" lets you see and edit data and structures from computers running one of the database systems MariaDB, MySQL, Microsoft SQL or PostgreSQL. Invented in 2002 by Ansgar, with a development peak between 2009 and 2013, HeidiSQL belongs to the most popular tools for MariaDB and MySQL worldwide
 * []()
 * []()
 
