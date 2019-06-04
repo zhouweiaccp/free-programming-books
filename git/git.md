@@ -249,6 +249,12 @@ $ git reset --hard [commit]
 # 重置当前HEAD为指定commit，但保持暂存区和工作区不变
 $ git reset --keep [commit]
 
+#重置上一次提交可以执行多次
+ git reset HEAD^
+
+#提交前备份
+git branch bak_xx
+
 # 新建一个commit，用来撤销指定commit
 # 后者的所有变化都将被前者抵消，并且应用到当前分支
 $ git revert [commit]
