@@ -12,3 +12,15 @@ apt-get install inetutils-ping
 docker inspect -f '{{.State.Pid}}' 49b98b2fbad2
 2. 查看连接： 
 nsenter -t 1840 -n netstat |grep ESTABLISHED
+
+
+ceontos 安装 [https://www.cnblogs.com/linnuo/p/7159268.html]
+yum install http://ftp.riken.jp/Linux/fedora/epel/6/i386/epel-release-6-8.noarch.rpm
+cd /etc/yum.repos.d && wget http://www.hop5.in/yum/el6/hop5.repo
+yum install docker-io
+docker -h
+6、启动docker
+service docker start
+
+7、停止docker
+service docker stop
