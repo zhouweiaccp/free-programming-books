@@ -11,7 +11,9 @@ docker login -uzhouwei -pAA1qaz2WSX 192.168.251.21                    docker log
 （13）删除镜像
 docker rmi c861a419888a（镜像ID）
  （15）创建容器
- docker commit -p xxxxxxxxxxx（容器id） name（快照名称）
+ docker commit  6746a0ecd213  openldap:v1
+
+ docker inspect -f "{{ .Config.Env }}"  6746a0ecd213
 
 
 docker run -v /testdocker:/soft --name oracle -d -p 1521:1521 -e ORACLE_ALLOW_REMOTE=true wnameless/oracle-xe-11g
@@ -33,6 +35,9 @@ docker load不能对载入的镜像重命名，而docker import可以为镜像�
 
 docker save -o images.tar postgres:9.6 mongo:3.4     docker load -i images.tar
 docker export -o postgres-export.tar postgres docker import postgres-export.tar postgres:latest
+
+Linux scp命令
+scp -P 22 local_file remote_username@remote_ip:remote_folder 
 
 
 部署新的堆栈或更新现有堆栈
@@ -67,3 +72,8 @@ sudo ln -s docker-runc-current docker-runc
 
 https://github.com/liufee/docker 最新lnmp环境，包含php, java,nginx, mysql, go, node, mongodb, openssh server, redis, crond xhprof,maven等服务
 https://github.com/lpxxn/godockerswarm  docker swarms demo
+
+
+docker images  |grep 20190605154729
+docker tag 192.168.251.78/xx/orgsync:20190605155018 192.168.251.119:5000/xx/orgsync:20190605155018
+docker push  192.168.251.119:5000/xx/orgsync:20190605155018

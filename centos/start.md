@@ -18,3 +18,5 @@ https://blog.csdn.net/wanda3086/article/details/50571417
 ln -s /usr/local/rar/rar /usr/local/bin/rar
 ln -s /usr/local/rar/unrar /usr/local/bin/unrar
 
+
+yum install zip unzip
