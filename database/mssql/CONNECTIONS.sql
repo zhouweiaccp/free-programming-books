@@ -130,6 +130,115 @@ ORDER BY qs.last_worker_time DESC
 --------------------- https://blog.csdn.net/yenange/article/details/77187569
 
 
+--脚本能够直观的看到数据库中SQL 的运行状态，快速找到执行缓慢的语句。这是我使用最频繁的脚本之一.https://blog.csdn.net/z10843087/article/details/76040459
+SELECT
+    es.session_id,
+    database_name=DB_NAME(er.database_id),
+    er.cpu_time,
+    er.reads,
+    er.writes,
+    er.logical_reads,
+    login_name,
+    er.status,
+    blocking_session_id,
+    wait_type,
+    wait_resource,
+    wait_time,
+    individual_query=SUBSTRING(qt.text,(er.statement_start_offset/2)+1,((CASE  WHEN  er.statement_end_offset=-1 THEN  LEN(CONVERT(NVARCHAR(MAX),qt.text))* 2 ELSE   er.statement_end_offset  END-er.statement_start_offset)/2)+1),
+    parent_query=qt.text,
+    program_name,
+    host_name,
+    nt_domain,
+    start_time,
+    DATEDIFF(MS,er.start_time,GETDATE())as duration,
+    (SELECT  query_plan  FROM  sys.dm_exec_query_plan (er.plan_handle))AS  query_plan
+FROM
+    sys.dm_exec_requests er
+    INNER  JOIN  sys.dm_exec_sessions  es  ON er.session_id=es.session_id
+    CROSS  APPLY  sys.dm_exec_sql_text (er.sql_handle)AS  qt
+WHERE
+    es.session_id> 50         
+    AND  es.session_Id  NOT  IN(@@SPID)
+ORDER BY 1,2
+
+-- 重要信息
+-- logical_reads:逻辑读，衡量语句的执行开销。如果大于10w，说明此语句开销很大。可以检查下索引是否合理
+
+-- status：进程的状态。running 表示正在运行，sleeping 表示处于睡眠中，未运行任何语句，suspend 表示等待，runnable 等待cpu 调度
+
+-- blocking_session_id: 如果不为0,例如 60 。表示52号进程正在被60阻塞。50 进程必须等待60执行完成，才能执行下面的语句
+
+-- host_name ：发出请求的服务器名
+
+-- program_name:发出请求的应用程序名
+
+-- duration: 请求的执行时间
+
+--10. Get the top 10 queries consuming High CPU using below query:https://blogs.msdn.microsoft.com/docast/2017/07/30/sql-high-cpu-troubleshooting-checklist/
+
+SELECT s.session_id,
+
+r.status,
+
+r.blocking_session_id 'Blk by',
+
+r.wait_type,
+
+wait_resource,
+
+r.wait_time / (1000 * 60) 'Wait M',
+
+r.cpu_time,
+
+r.logical_reads,
+
+r.reads,
+
+r.writes,
+
+r.total_elapsed_time / (1000 * 60) 'Elaps M',
+
+Substring(st.TEXT,(r.statement_start_offset / 2) + 1,
+
+((CASE r.statement_end_offset
+
+WHEN -1
+
+THEN Datalength(st.TEXT)
+
+ELSE r.statement_end_offset
+
+END - r.statement_start_offset) / 2) + 1) AS statement_text,
+
+Coalesce(Quotename(Db_name(st.dbid)) + N'.' + Quotename(Object_schema_name(st.objectid, st.dbid)) + N'.' +
+Quotename(Object_name(st.objectid, st.dbid)), '') AS command_text,
+r.command,
+
+s.login_name,
+
+s.host_name,
+
+s.program_name,
+
+s.last_request_end_time,
+
+s.login_time,
+
+r.open_transaction_count
+
+FROM sys.dm_exec_sessions AS s
+
+JOIN sys.dm_exec_requests AS r
+
+ON r.session_id = s.session_id
+
+CROSS APPLY sys.Dm_exec_sql_text(r.sql_handle) AS st
+
+WHERE r.session_id != @@SPID
+
+ORDER BY r.cpu_time desc
+
+
 
 -- 这些内存一般都是Sql Server运行时候用作缓存的:
 -- 1. 数据缓存：执行个查询语句，Sql Server会将相关的数据页（Sql Server操作的数据都是以页为单位的）加载到内存中来， 下一次如果再次请求此页的数据的时候，就无需读取磁盘了，大大提高了速度。
