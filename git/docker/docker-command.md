@@ -1,6 +1,7 @@
 基本用法
 * [dotnetcore](https://docs.docker.com/engine/examples/dotnetcore/)
  docker build -t aspnetapp .
+ docker build -f  Dockerfile.test -t image-train-test .
  docker run -d -p 8080:80 --name myapp aspnetapp  -i -t ubuntu bash
  docker exec -it 4ba8754ce8a3 bash
  docker logs --follow 4ba8754ce8a3
