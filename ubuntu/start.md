@@ -12,7 +12,8 @@ $ chmod a-w /etc/sudoers
 创建用户  useradd -r -m -s /bin/bash root1 
 设置密码  passwd root1
 赋予用户root权限  vim /etc/sudoers
-添加　park ALL=(ALL:ALL) ALL
+添加　root1 ALL=(ALL:ALL) ALL NOPASSWD: ALL
+
 删除用户 userdel -r spark 
 
 xshell关闭后保持程序运行 nohup 你的指令 &
