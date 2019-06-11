@@ -1,0 +1,23 @@
+﻿
+说明:
+1. 支持操作系统 centos 7.4,ubuntu 16.04
+2.
+
+使用方法:
+例如: 旧镜像名称  registry.edoc2.com:5000/edoc2v5/edoc2:v5.7.rc1  
+      新镜像名称  registry.edoc2.com:5000/edoc2v5/edoc2:v5.7.rc2
+
+解压文件
+进入diff文件夹下运行以下命令
+sh image_create_diff.sh registry.edoc2.com:5000/edoc2v5/edoc2:v5.7.rc1 registry.edoc2.com:5000/edoc2v5/edoc2:v5.7.rc2
+
+执行完后会生成一个v5.7.rc1-to-v5.7.rc2.tar.gz 文件
+
+还原方法:
+
+1.把v5.7.rc1-to-v5.7.rc2.tar.gz上传到需要更新镜像的服务器
+2.解压文件
+tar -zxvf v5.7.rc1-to-v5.7.rc2.tar.gz
+3.进入文件夹
+cd v5.7.rc1-to-v5.7.rc2
+sh image_recover.sh
