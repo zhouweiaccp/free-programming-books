@@ -15,6 +15,7 @@ https://docs.microsoft.com/zh-cn/dotnet/core/versions/selection
 
 dotnet new global.json --sdk-version <SDK版本号>
 dotnet new global.json --sdk-version 2.1.300
+dotnet new global.json --sdk-version 2.2.101  --force
 netcore跟SDK及runtime对照表：
 https://dotnet.microsoft.com/download/dotnet-core/2.2
 https://dotnet.microsoft.com/download/dotnet-core/2.1
