@@ -1,3 +1,12 @@
+镜像地址
+https://github.com/Microsoft/aspnet-docker
+https://github.com/dotnet/dotnet-docker    netcore
+
+https://hub.docker.com/_/microsoft-dotnet-core-runtime/
+https://github.com/dotnet/dotnet-docker/blob/master/2.2/runtime/bionic/amd64/Dockerfile
+https://github.com/dotnet/dotnet-docker/blob/master/2.2/runtime/stretch-slim/amd64/Dockerfile
+
+
 https://docs.microsoft.com/zh-cn/dotnet/core/tools/dotnet-new?tabs=netcore21
 
 https://docs.microsoft.com/zh-cn/dotnet/core/versions/
