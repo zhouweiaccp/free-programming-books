@@ -77,3 +77,14 @@ https://github.com/lpxxn/godockerswarm  docker swarms demo
 docker images  |grep 20190605154729
 docker tag 192.168.251.78/xx/orgsync:20190605155018 192.168.251.119:5000/xx/orgsync:20190605155018
 docker push  192.168.251.119:5000/xx/orgsync:20190605155018
+
+Linux查看文件大小的几种方法
+stat ~/Downloads/jdk-8u60-linux-x64.tar.gz
+du -h  ~/Downloads/jdk-8u60-linux-x64.tar.gz
+ls -lh  ~/Downloads/jdk-8u60-linux-x64.tar.gz
+
+查看Linux系统版本信息
+cat /proc/version
+cat /etc/issue
+cat /etc/redhat-release，这种方法只适合Redhat系的Linux
+uname -a
