@@ -20,6 +20,12 @@ rpm --import "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3FA7E03280
 su -c 'curl https://download.mono-project.com/repo/centos7-stable.repo | tee /etc/yum.repos.d/mono-centos7-stable.repo'
 yum install mono-devel
 
+netcore download 
+https://github.com/dotnet/core/tree/master/release-notes
+https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/2.2/releases.json
+https://github.com/dotnet/core/blob/master/release-notes/2.2/2.2.5/2.2.5-download.md  
+
+
  curl -o /usr/local/bin/nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
  alias nuget="mono /usr/local/bin/nuget.exe"
 
