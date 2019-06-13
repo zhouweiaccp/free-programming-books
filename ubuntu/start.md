@@ -53,3 +53,18 @@ https://github.com/cjy37/linux-asp.net-installScript
 * [宝塔Linux面](https://www.bt.cn/download/linux.html) 宝塔Linux面板 6.8 环境
 关闭shell后如何保持程序继续运行
 nohup npm start &
+
+
+ 添加PATH环境变量(临时)
+export PATH=/opt/STM/STLinux-2.3/devkit/sh4/bin:$PATH
+
+永久添加环境变量(影响当前用户)
+vim ~/.bashrc
+export PATH="/opt/STM/STLinux-2.3/devkit/sh4/bin:$PATH"
+
+5.永久添加环境变量(影响所有用户)
+# vim /etc/profile
+在文档最后，添加:
+export PATH="/opt/STM/STLinux-2.3/devkit/sh4/bin:$PATH"
+保存，退出，然后运行：
+#source /etc/profile
