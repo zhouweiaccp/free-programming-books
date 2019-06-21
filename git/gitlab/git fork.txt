@@ -22,7 +22,8 @@ git checkout -b 新分支名称 upstream/新分支名称
 1.设置账户(需要和github账户设置一致)
 git config --global user.name xxx
 git config --global user.email xxx@foxmail.com
- 
+ssh-keygen
+
 2.查看设置
 git config --list
 user.name=xxx
