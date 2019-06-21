@@ -1,3 +1,28 @@
+https://nginx.org/en/linux_packages.html#RHEL-CentOS
+ yum install yum-utils
+To set up the yum repository, create the file named /etc/yum.repos.d/nginx.repo with the following contents:
+
+[nginx-stable]
+name=nginx stable repo
+baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
+gpgcheck=1
+enabled=1
+gpgkey=https://nginx.org/keys/nginx_signing.key
+
+[nginx-mainline]
+name=nginx mainline repo
+baseurl=http://nginx.org/packages/mainline/centos/$releasever/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=https://nginx.org/keys/nginx_signing.key
+
+By default, the repository for stable nginx packages is used. If you would like to use mainline nginx packages, run the following command:
+
+yum-config-manager --enable nginx-mainline
+yum install -y nginx
+
+
+
 https://www.centos.bz/2018/04/nginx-%E4%BD%BF%E7%94%A8-geoip-%E6%A8%A1%E5%9D%97%E5%8C%BA%E5%88%86%E7%94%A8%E6%88%B7%E5%9C%B0%E5%8C%BA/
 
 
