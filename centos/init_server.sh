@@ -16,4 +16,17 @@ echo "CLASSPATH=$JAVA_HOME/lib/" >> /etc/profile
 echo "PATH=$PATH:$JAVA_HOME/bin" >> /etc/profile
 echo "export PATH JAVA_HOME CLASSPATH" >> /etc/profile
 source /etc/profile
-java version
+
+echo "install node"
+wget https://npm.taobao.org/mirrors/node/v11.0.0/node-v11.0.0.tar.gz
+tar -xvf node-v11.0.0.tar.gz
+cd node-v11.0.0
+sudo yum install gcc gcc-c++
+./configure
+make
+sudo make install
+node -v
+
+
+npm install -g n
+n stable
