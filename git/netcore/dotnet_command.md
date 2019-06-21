@@ -29,3 +29,15 @@ netcore跟SDK及runtime对照表：
 https://dotnet.microsoft.com/download/dotnet-core/2.2
 https://dotnet.microsoft.com/download/dotnet-core/2.1
 https://dotnet.microsoft.com/download/dotnet-core/3.0
+
+https://docs.microsoft.com/zh-cn/dotnet/core/tools/dotnet-add-package
+dotnet new console
+dotnet add  logdemo.csproj package NLog
+dotnet add ToDo.csproj package Microsoft.Azure.DocumentDB.Core -v 1.0.0
+
+添加项目引用：
+dotnet add app/app.csproj reference lib/lib.csproj
+向当前目录中的项目添加多个项目引用：
+dotnet add reference lib1/lib1.csproj lib2/lib2.csproj
+
+dotnet run

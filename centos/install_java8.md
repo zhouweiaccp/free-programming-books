@@ -1,1 +1,14 @@
-wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2Ftechnetwork%2Fjava%2Fjavase%2Fdownloads%2Fjre8-downloads-2133155.html; oraclelicense=accept-securebackup-cookie"  "https://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jdk-8u201-linux-x64.rpm" && yum localinstall -y jdk-8u201-linux-x64.rpm 
+	
+wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7/jdk-8u141-linux-x64.tar.gz"
+
+mkdir -p /usr/java
+tar -zxvf jdk-8u141-linux-x64.tar.gz
+cp -r /home/root1/logdemo/jdk1.8.0_141 /usr/java/jdk1.8.0_141
+
+vim /etc/profile
+JAVA_HOME=/usr/java/jdk1.8.0_141
+CLASSPATH=$JAVA_HOME/lib/
+PATH=$PATH:$JAVA_HOME/bin
+export PATH JAVA_HOME CLASSPATH
+
+source /etc/profile
