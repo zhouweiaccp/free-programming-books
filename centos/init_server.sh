@@ -17,16 +17,27 @@ echo "PATH=$PATH:$JAVA_HOME/bin" >> /etc/profile
 echo "export PATH JAVA_HOME CLASSPATH" >> /etc/profile
 source /etc/profile
 
-echo "install node"
-wget https://npm.taobao.org/mirrors/node/v11.0.0/node-v11.0.0.tar.gz
-tar -xvf node-v11.0.0.tar.gz
-cd node-v11.0.0
-sudo yum install gcc gcc-c++
-./configure
-make
-sudo make install
-node -v
+# echo "install node source"
+# wget https://npm.taobao.org/mirrors/node/v11.0.0/node-v11.0.0.tar.gz
+# tar -xvf node-v11.0.0.tar.gz
+# cd node-v11.0.0
+# yum install gcc gcc-c++
+# ./configure
+# make
+# make install
+# node -v
 
 
-npm install -g n
-n stable
+# npm install -g n
+# n stable
+#https://github.com/nodejs/help/wiki/Installation
+echo "install node bin"
+wget https://nodejs.org/dist/v10.16.0/node-v10.16.0-linux-x64.tar.xz
+mkdir -p /usr/local/lib/nodejs
+tar -xJvf node-v10.16.0-linux-x64.tar.xz -C /usr/local/lib/nodejs 
+echo "export PATH=/usr/local/lib/nodejs/node-v10.16.0-linux-x64/bin:$PATH" >> /etc/profile
+source /etc/profile
+
+ln -s /usr/local/lib/nodejs/node-v10.16.0-linux-x64/bin/node /usr/bin/node
+ln -s /usr/local/lib/nodejs/node-v10.16.0-linux-x64/bin/npm /usr/bin/npm
+ln -s /usr/local/lib/nodejs/node-v10.16.0-linux-x64/bin/npx /usr/bin/npx
