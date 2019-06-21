@@ -5,3 +5,7 @@ b	显示上一屏
 <down>	下移一行
 g	回到顶部
 G	回到底部
+
+问题1: /bin/sh^M: bad interpreter
+vi aa.sh
+set ff=unix
