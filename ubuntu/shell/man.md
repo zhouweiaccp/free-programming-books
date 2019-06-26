@@ -6,6 +6,9 @@ b	显示上一屏
 g	回到顶部
 G	回到底部
 
+常见查看当前系统的shell环境的命令
+ echo $SHELL
+
 问题1: /bin/sh^M: bad interpreter
 vi aa.sh
 set ff=unix
