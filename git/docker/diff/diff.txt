@@ -21,3 +21,5 @@ tar -zxvf v5.7.rc1-to-v5.7.rc2.tar.gz
 3.进入文件夹
 cd v5.7.rc1-to-v5.7.rc2
 sh image_recover.sh
+
+https://note.youdao.com/ynoteshare1/index.html?id=60220bd7642b1f1c437f60afe51134dc&type=note

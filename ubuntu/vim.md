@@ -241,3 +241,6 @@ dd: 删除当前光标所在行
 效果
 1.高亮显示搜索结果
 :set nohlsearch
+
+vimdiff  a a1
+窗口焦点切换，即切换当前窗口   CTRL-w h 跳转到左边的窗口   CTRL-w l 跳转到右边的窗口
