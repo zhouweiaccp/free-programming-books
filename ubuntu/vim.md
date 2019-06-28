@@ -1,4 +1,5 @@
-
+推荐这个配置文件 https://github.com/wklken/vim-for-server
+curl https://raw.githubusercontent.com/wklken/vim-for-server/master/vimrc > ~/.vimrc
 
 vim模式：
 

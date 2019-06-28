@@ -12,6 +12,10 @@ Enter passphrase (empty for no passphrase):
 如不输入，则不适用密码，直接回车。
 
 
+关于github【Permission denied (publickey
+chmod 755 ~/.ssh/  
+chmod 600 ~/.ssh/id_rsa ~/.ssh/id_rsa.pub   
+chmod 644 ~/.ssh/known_hosts 
 
 
 
