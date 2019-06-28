@@ -244,3 +244,11 @@ dd: 删除当前光标所在行
 
 vimdiff  a a1
 窗口焦点切换，即切换当前窗口   CTRL-w h 跳转到左边的窗口   CTRL-w l 跳转到右边的窗口
+
+文件合并
+文件比较的最终目的之一就是合并，以消除差异。如果希望把一个差异点中当前文件的内容复制到另一个文件里，可以使用命令
+dp （diff "put"）
+如果希望把另一个文件的内容复制到当前行中，可以使用命令
+
+do (diff "get"，之所以不用dg，是因为dg已经被另一个命令占用了)
+https://www.ibm.com/developerworks/cn/linux/l-vimdiff/
