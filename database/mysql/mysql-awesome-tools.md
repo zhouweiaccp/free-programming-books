@@ -1,4 +1,5 @@
 # MySQL 优秀工具推荐
+https://github.com/jobbole/awesome-mysql-cn
 https://github.com/zhishutech/awesome-tools-cn
 我想很多程序员应该记得 GitHub 上有一个 Awesome - XXX 系列的资源整理。[awesome-mysql](http://shlomi-noach.github.io/awesome-mysql/)就是 shlomi-noach 发起维护的 MySQL 资源列表，内容包括：分析工具、备份、性能测试、配置、部署、GUI 等。
 
