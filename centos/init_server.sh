@@ -41,3 +41,9 @@ source /etc/profile
 ln -s /usr/local/lib/nodejs/node-v10.16.0-linux-x64/bin/node /usr/bin/node
 ln -s /usr/local/lib/nodejs/node-v10.16.0-linux-x64/bin/npm /usr/bin/npm
 ln -s /usr/local/lib/nodejs/node-v10.16.0-linux-x64/bin/npx /usr/bin/npx
+
+echo "python3"
+yum install -y epel-release
+yum install -y python34
+curl -O https://bootstrap.pypa.io/get-pip.py
+/usr/bin/python3.4 get-pip.py
