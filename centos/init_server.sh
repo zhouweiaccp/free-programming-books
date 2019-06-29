@@ -53,3 +53,6 @@ yum install -y epel-release
 yum install -y python34
 curl -O https://bootstrap.pypa.io/get-pip.py
 /usr/bin/python3.4 get-pip.py
+
+echo "vim setting"
+curl https://raw.githubusercontent.com/wklken/vim-for-server/master/vimrc > ~/.vimrc
