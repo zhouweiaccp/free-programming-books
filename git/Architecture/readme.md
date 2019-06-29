@@ -7,3 +7,9 @@
 缓存
 通信[netty]
 调优 【jvm】
+
+
+
+
+# 数据库组件
+- [canal](https://github.com/alibaba/canal) 阿里巴巴 MySQL binlog 增量订阅&消费组件 数据库实时备份  https://github.com/alibaba/canal/wiki/AdminGuide
