@@ -42,6 +42,12 @@ ln -s /usr/local/lib/nodejs/node-v10.16.0-linux-x64/bin/node /usr/bin/node
 ln -s /usr/local/lib/nodejs/node-v10.16.0-linux-x64/bin/npm /usr/bin/npm
 ln -s /usr/local/lib/nodejs/node-v10.16.0-linux-x64/bin/npx /usr/bin/npx
 
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+alias cnpm="npm --registry=https://registry.npm.taobao.org \
+--cache=$HOME/.npm/.cache/cnpm \
+--disturl=https://npm.taobao.org/dist \
+--userconfig=$HOME/.cnpmrc"
+
 echo "python3"
 yum install -y epel-release
 yum install -y python34
