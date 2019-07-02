@@ -17,6 +17,10 @@ https://github.com/kakuilan/china_area_mysql
 ##基于canal 的 mysql 与 redis/memcached/mongodb 的 nosql 数据实时同步方案 案例 demo canal client
 https://github.com/liukelin/canal_mysql_nosql_sync
 
+
+##学习笔记
+https://github.com/lyb411/mysql  mysql笔记、研究，常见问题
+
 ##备份表
 create table bak_11 like org_user
 insert into bak_11 select * from org_user
