@@ -253,3 +253,7 @@ dp （diff "put"）
 
 do (diff "get"，之所以不用dg，是因为dg已经被另一个命令占用了)
 https://www.ibm.com/developerworks/cn/linux/l-vimdiff/
+
+:2,7 s/^/#   其中2,7代表起始结束行号，s是替换命令，/^代表行的开头/#代表替换为#号
+:2,7 s/^#// 把开头的#：号替换为空字符
+:g/^\s*$/d   vim批量删除空白行
