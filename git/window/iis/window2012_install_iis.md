@@ -2,6 +2,10 @@
 get-windowsfeature web*
 install-windowsfeature web-server
 
+#install nlb
+Install-WindowsFeature NLB -IncludeManagementTools
+
+
 Add-WindowsFeature WindowsPowerShellWebAccess
 
 
