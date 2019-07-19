@@ -1,8 +1,8 @@
 #!/bin/bash
-cd /etc/yum.repos.d
-mv ./CentOS-Base.repo ./CentOS-Base-repo.bak
-yum clean all &&yum makecache
-wget http://mirrors.163.com/.help/CentOS7-Base-163.repo
+# cd /etc/yum.repos.d
+# mv ./CentOS-Base.repo ./CentOS-Base-repo.bak
+mv /etc/yum.repos.d/CentOS-Base.repo{,_bak} && wget http://mirrors.163.com/.help/CentOS6-Base-163.repo -O /etc/yum.repos.d/CentOS-Base.repo && yum clean all &&yum makecache
+# wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 yum install -y zip unzip git tar wget
 yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo && yum install -y docker-ce-18.03.1.ce &&systemctl start docker && systemctl enable docker
 rpm -Uvh https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm  && yum install -y dotnet-sdk-2.2
@@ -11,6 +11,7 @@ wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2F
 echo "install java download done"
 mkdir -p /usr/java/jdk1.8.0_141
 tar -zxvf jdk-8u141-linux-x64.tar.gz -C /usr/java/jdk1.8.0_141
+rm jdk-8u141-linux-x64.tar.gz
 echo 'JAVA_HOME=/usr/java/jdk1.8.0_141' >> /etc/profile
 echo "CLASSPATH=$JAVA_HOME/lib/" >> /etc/profile
 echo "PATH=$PATH:$JAVA_HOME/bin" >> /etc/profile
@@ -34,7 +35,8 @@ source /etc/profile
 echo "install node bin"
 wget https://nodejs.org/dist/v10.16.0/node-v10.16.0-linux-x64.tar.xz
 mkdir -p /usr/local/lib/nodejs
-tar -xJvf node-v10.16.0-linux-x64.tar.xz -C /usr/local/lib/nodejs 
+tar -xJf node-v10.16.0-linux-x64.tar.xz -C /usr/local/lib/nodejs 
+rm node-v10.16.0-linux-x64.tar.xz
 echo "export PATH=/usr/local/lib/nodejs/node-v10.16.0-linux-x64/bin:$PATH" >> /etc/profile
 source /etc/profile
 
