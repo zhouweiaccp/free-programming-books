@@ -68,3 +68,6 @@ export PATH="/opt/STM/STLinux-2.3/devkit/sh4/bin:$PATH"
 export PATH="/opt/STM/STLinux-2.3/devkit/sh4/bin:$PATH"
 保存，退出，然后运行：
 #source /etc/profile
+
+#显示时区
+echo `date +%z`
