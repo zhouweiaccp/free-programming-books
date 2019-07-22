@@ -88,3 +88,11 @@ cat /proc/version
 cat /etc/issue
 cat /etc/redhat-release，这种方法只适合Redhat系的Linux
 uname -a
+
+
+https://docs.docker.com/engine/reference/commandline/images/
+docker images --format "{{.ID}}: {{.Repository}}"
+
+https://docs.docker.com/engine/reference/commandline/ps/
+docker ps --format "table {{.ID}}  \t {{.Image}} \t{{.RunningFor}}\t {{.Names}}"
+ docker ps --filter "name=nostalgic_stallman"
