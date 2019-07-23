@@ -71,3 +71,5 @@ export PATH="/opt/STM/STLinux-2.3/devkit/sh4/bin:$PATH"
 
 #显示时区
 echo `date +%z`
+时间不同步
+yum install -y ntp  && ntpdate ntp.aliyun.com
