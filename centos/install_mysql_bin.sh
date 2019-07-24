@@ -5,32 +5,120 @@
 #systemctl disable firewalld.service     # 禁止firewall开机启动
 #firewall-cmd --state                    # 查看默认防火墙状态,notrunning为关闭
 ## 删除mysql，mariadb
-#rpm -qa|grep mariadb
-#yum remove mariadb*
-#rpm -qa|grep mysql
-#yum remove mysql*
-#rm /etc/my.cnf   
-#rm /etc/init.d/mysqld                              
+rpm -qa|grep mariadb
+yum remove mariadb*
+rpm -qa|grep mysql
+yum remove mysql*
+rm /etc/my.cnf   
+rm /etc/init.d/mysqld                              
 ##1 下载并上传安装包
-#wget https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.25-linux-glibc2.12-x86_64.tar.gz
-#tar zxvf mysql-5.7.25-linux-glibc2.12-x86_64.tar.gz
-#mv mysql-5.7.25-linux-glibc2.12-x86_64 /usr/local/mysql
+wget http://mirrors.163.com/mysql/Downloads/MySQL-5.7/mysql-5.7.25-linux-glibc2.12-x86_64.tar.gz
+tar zxvf mysql-5.7.25-linux-glibc2.12-x86_64.tar.gz
+mv -f mysql-5.7.25-linux-glibc2.12-x86_64 /usr/local/mysql
 #3 创建用户
-groupadd mysql
+id -u mysql >/dev/null 2>&1
+[ $? -ne 0 ] && useradd -M -s /sbin/nologin mysql
 useradd -r -g mysql -s /bin/false mysql         # 创建一个不可登陆的mysql用户
 #4 创建数据目录
-cd /usr/local/mysql
-mkdir data
+mkdir -p /usr/local/mysql/data
 chown -R mysql.mysql .
 #5 初始化数据库，此时会生成临时密码，需要记录下来
 /usr/local/mysql/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data
 #注意：此时会生成一个临时密码，需要记录
 #6 建立配置
-touch /etc/my.cnf
-chmod u+rx /etc/my.cnf
-/etc/my.cnf>>[mysqld]
-/etc/my.cnf> basedir=/usr/local/mysql
-/etc/my.cnf> datadir=/usr/local/mysql/data
+
+# backup my.cf
+[ -d "/etc/mysql" ] && /bin/mv /etc/mysql{,_bak}
+cat > /etc/my.cnf << EOF
+[client]
+port = 3306
+socket = /tmp/mysql.sock
+default-character-set = utf8mb4
+ 
+[mysqld]
+port = 3306
+socket = /tmp/mysql.sock
+ 
+basedir = /usr/local/mysql
+datadir = /usr/local/mysql/data
+pid-file = /usr/local/mysql/data/mysql.pid
+user = mysql
+bind-address = 0.0.0.0
+server-id = 1
+ 
+init-connect = 'SET NAMES utf8mb4'
+character-set-server = utf8mb4
+ 
+skip-name-resolve
+skip-external-locking
+#skip-networking
+back_log = 300
+ 
+max_connections = 1000
+max_connect_errors = 6000
+open_files_limit = 65535
+table_open_cache = 128
+max_allowed_packet = 4M
+binlog_cache_size = 1M
+max_heap_table_size = 8M
+tmp_table_size = 16M
+ 
+read_buffer_size = 2M
+read_rnd_buffer_size = 8M
+sort_buffer_size = 8M
+join_buffer_size = 8M
+key_buffer_size = 4M
+thread_cache_size = 8
+query_cache_type = 1
+query_cache_size = 8M
+query_cache_limit = 2M
+ft_min_word_len = 4
+log_bin = mysql-bin
+binlog_format = mixed
+expire_logs_days = 10
+log_error = /usr/local/mysql/mysql-error.log
+slow_query_log = 1
+long_query_time = 1
+#slow_query_log_file = /usr/local/mysql/mysql-slow.log
+performance_schema = 0
+explicit_defaults_for_timestamp
+ 
+#lower_case_table_names = 1
+default_storage_engine = InnoDB
+#default-storage-engine = MyISAM
+innodb_file_per_table = 1
+innodb_open_files = 500
+innodb_buffer_pool_size = 64M
+innodb_write_io_threads = 4
+innodb_read_io_threads = 4
+innodb_thread_concurrency = 0
+innodb_purge_threads = 1
+innodb_flush_log_at_trx_commit = 2
+innodb_log_buffer_size = 2M
+innodb_log_file_size = 32M
+innodb_log_files_in_group = 3
+innodb_max_dirty_pages_pct = 90
+innodb_lock_wait_timeout = 120
+ 
+bulk_insert_buffer_size = 8M
+myisam_sort_buffer_size = 8M
+myisam_max_sort_file_size = 10G
+myisam_repair_threads = 1
+ 
+interactive_timeout = 28800
+wait_timeout = 28800
+ 
+[mysqldump]
+quick
+max_allowed_packet = 16M
+ 
+[myisamchk]
+key_buffer_size = 8M
+sort_buffer_size = 8M
+read_buffer = 4M
+write_buffer = 4M
+ 
+EOF
 #7 启动mysql
 # 启动方式一（不推荐） 手动启动
 #/usr/local/mysql/bin/mysqld_safe --user=mysql &
@@ -53,7 +141,18 @@ flush privileges;
 #- root@’%’中的root代表用户名，%代表ip地址，%也可以指定具体的ip，如：root@localhost,root@192.168.10.129
 #- flush是授权刷新命令；
 ##### 3.3 CentOS7 源码方式安装 mysql5.7
-#
+
+# /usr/local/mysql/mysql/bin/mysql -e "grant all privileges on *.* to root@'127.0.0.1' identified by \"$dbrootpwd\" with grant option;"
+# /usr/local/mysql/mysql/bin/mysql -e "grant all privileges on *.* to root@'localhost' identified by \"$dbrootpwd\" with grant option;"
+# /usr/local/mysql/mysql/bin/mysql -uroot -p$dbrootpwd -e "delete from mysql.user where Password='';"
+# /usr/local/mysql/mysql/bin/mysql -uroot -p$dbrootpwd -e "delete from mysql.db where User='';"
+# /usr/local/mysql/mysql/bin/mysql -uroot -p$dbrootpwd -e "delete from mysql.proxies_priv where Host!='localhost';"
+# /usr/local/mysql/mysql/bin/mysql -uroot -p$dbrootpwd -e "drop database test;"
+# /usr/local/mysql/mysql/bin/mysql -uroot -p$dbrootpwd -e "reset master;"
+
+
+
+
 #0 准备工作
 #
 ## 升级系统

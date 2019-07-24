@@ -95,4 +95,4 @@ docker images --format "{{.ID}}: {{.Repository}}"
 
 https://docs.docker.com/engine/reference/commandline/ps/
 docker ps --format "table {{.ID}}  \t {{.Image}} \t{{.RunningFor}}\t {{.Names}}"
- docker ps --filter "name=nostalgic_stallman"
+sudo docker ps --filter "name=ci119-zhouwei-30002_edoc2*" --format "table {{.ID}}"
