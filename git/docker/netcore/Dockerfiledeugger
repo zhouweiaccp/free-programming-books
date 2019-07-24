@@ -1,0 +1,17 @@
+FROM microsoft/dotnet:latest
+#https://www.cnblogs.com/woailibian/p/7258763.html
+RUN apt-get update
+
+RUN apt-get install curl unzip -y
+
+# RUN curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l ~/vsdbg
+#https://vsdebugger.azureedge.net/vsdbg-15-1-10630-1/vsdbg-linux-x64.zip
+COPY ./vsdbg /root/vsdbg
+
+RUN chmod 777 /root/vsdbg
+
+COPY ./publish /app
+
+WORKDIR /app
+
+ENTRYPOINT ["dotnet", "web.dll"]
