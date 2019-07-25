@@ -73,3 +73,7 @@ export PATH="/opt/STM/STLinux-2.3/devkit/sh4/bin:$PATH"
 echo `date +%z`
 时间不同步
 yum install -y ntp  && ntpdate ntp.aliyun.com
+
+#Linux下查看进程和端口信息
+netstat -aon |grep 301
+ ps -ef |grep 11753
