@@ -98,3 +98,31 @@ docker ps --format "table {{.ID}}  \t {{.Image}} \t{{.RunningFor}}\t {{.Names}}"
 sudo docker ps --filter "name=ci119-zhouwei-30002_edoc2*" --format "table {{.ID}}"
 
 https://docs.docker.com/v17.09/engine/reference/builder/#copy
+
+## docker 改网段
+1)vim /etc/docker/daemon.json（这里没有这个文件的话，自行创建）
+{
+    "bip":"192.168.0.1/24"
+}
+
+2）重启docker    systemctl restart docker
+
+方法2在docker-compose.yml配置文件中明确的指定subnet和gateway
+ 
+复制代码
+   nginx2:
+      image: nginx:1.13.12
+      container_name: nginx2
+      restart: always
+      networks:
+         extnetwork:
+            ipv4_address: 172.19.0.2
+
+networks:
+  cow-cow5:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 10.88.12.0/24
+        gateway: 10.88.12.1
