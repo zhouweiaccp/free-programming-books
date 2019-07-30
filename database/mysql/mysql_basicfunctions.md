@@ -162,3 +162,6 @@ alter view myview as select * from myview;
   select rtrim('  abc');--输出：abc
 --重复某字符串次数：repeat(str,int num)
    select repeat('abc',3);--把abc重复3次输出，abcabcabc
+
+  indexof
+  select LOCATE('bar', 'foobarbar');  
