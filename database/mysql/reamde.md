@@ -103,3 +103,6 @@ ESCAPED BY '\''
 LINES
 
 TERMINATED BY '\r\n';
+
+##将daochu.sql 导入到mysql数据库：
+在终端运行：mysql -h localhost -u root -p test < /home/chuzj/daochu.sql --default-character-set=utf8　
