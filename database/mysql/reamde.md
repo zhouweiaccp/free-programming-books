@@ -88,7 +88,7 @@ ALTER TABLE  tname ADD age INT NOT NULL;--添加一个字段,默认添加到最�
 
 ④带语言参数导出 mysqldump -u user_name -p user_password -default-character-set=latin1 -set-charset=gbk -skip-opt database_name > outfile_name.sql
 
-- [OUTFILE 用法](https://jingyan.baidu.com/article/e75057f238ad34ebc91a8932.html)
+##[OUTFILE 用法](https://jingyan.baidu.com/article/e75057f238ad34ebc91a8932.html)
  -- select  user_account,user_id into outfile 'd:\\1.txt' from org_user 
 SELECT   user_account,user_id,user_identityID,user_changeTime  FROM org_user INTO OUTFILE 'd:/t_user_2.txt'
 
@@ -106,3 +106,6 @@ TERMINATED BY '\r\n';
 
 ##将daochu.sql 导入到mysql数据库：
 在终端运行：mysql -h localhost -u root -p test < /home/chuzj/daochu.sql --default-character-set=utf8　
+
+##MySql查看表的创建时间
+SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dvpsmsdb01' ORDER BY create_time DESC;
