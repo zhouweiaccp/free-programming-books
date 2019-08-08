@@ -1,4 +1,8 @@
-﻿--删除主键
+﻿
+drop index dms_fileVerGuid.ix_clu_fordms_fileVerGuid_file_verId;
+create    index ix_clu_fordms_fileVerGuid_file_verId on dms_fileVerGuid(file_verId);
+
+--删除主键
 alter table 表名 drop constraint 主键名
 --添加主键
 --alter table 表名 add constraint 主键名 primary key(字段名1,字段名2……)
