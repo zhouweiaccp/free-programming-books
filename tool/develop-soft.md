@@ -64,6 +64,7 @@ https://github.com/fatedier/frp
 
 ## mysql工具
 * [mssql-cli](https://github.com/dbcli/mssql-cli)
+* [canal](https://github.com/alibaba/canal) 阿里巴巴 MySQL binlog 增量订阅& 消费组件 数据库实时备份
 
 ##microservice
 * [apollo](https://github.com/ctripcorp/apollo) 分布式配置中心
