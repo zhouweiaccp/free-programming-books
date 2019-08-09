@@ -17,3 +17,9 @@ https://github.com/devin87/web-uploader/  js (html5 + html4) 文件上传管理�
 https://github.com/kissygalleryteam/uploader/blob/master/doc/demo/theme-crossUploader.html  上传界面效果
 
 jQuery File Uploader、FineUploader、Uploadify、Baidu Web Uploader
+
+
+
+https://www.npmjs.com/package/spark-md5  前端通过spark-md5.js计算本地文件md5
+https://gitee.com/lsy69221/file-upload    基于Node.js的大文件分片上传
+https://blog.csdn.net/x746655242/article/details/52964623 基于node服务器的大文件（G级）上传 
