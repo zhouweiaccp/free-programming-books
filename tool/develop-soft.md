@@ -7,6 +7,7 @@
 * [mssql工具](#mssql工具)
 * [microservice](#microservice)
 * [mongodb工具](#mongodb工具)
+* [.net工具](#.net工具)
 * [sqlite工具](#sqlite工具)
 * [内网穿透](#内网穿透)
 * [调试工具](#调试工具)
@@ -76,6 +77,12 @@ https://github.com/fatedier/frp
 * [mongovue]()
 * [Robo 3T](https://www.robomongo.org/)
 * []()
+
+
+## mongodb工具
+* [ILSpy.exe]()
+* [dnSpy.exe]()
+
 
 ## sqlite工具
 * [sqlitestudio](https://sqlitestudio.pl/index.rvt?act=download)
