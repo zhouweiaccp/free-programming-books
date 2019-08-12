@@ -22,4 +22,5 @@ jQuery File Uploader、FineUploader、Uploadify、Baidu Web Uploader
 
 https://www.npmjs.com/package/spark-md5  前端通过spark-md5.js计算本地文件md5
 https://gitee.com/lsy69221/file-upload    基于Node.js的大文件分片上传
+https://github.com/sunhaikuo/uploadDemo    基于Node.js的大文件分片上传
 https://blog.csdn.net/x746655242/article/details/52964623 基于node服务器的大文件（G级）上传 
