@@ -1,4 +1,4 @@
- 
+<!--  
 create procedure my_procedure() -- 创建存储过程  
 begin -- 开始存储过程  
 declare my_user_id varchar(48); -- '唯一标识,用户id',
@@ -26,4 +26,28 @@ end; -- 结束存储过程
 
 call my_procedure();  
 
-drop procedure my_procedure; 
+drop procedure my_procedure;  -->
+
+
+create procedure test()
+    begin
+        declare a int default 5;
+        declare b int default 6;
+        declare c int default 0;
+        set c=a+b;
+        select c as num;
+    end;
+call test();
+
+
+create procedure oshu()
+    begin
+        declare i int default 1;
+        while i<11 do
+            if i%2 = 0  then
+                select i;
+            end if;
+            set i=i+1;
+        end while;
+    end;
+call oshu();
