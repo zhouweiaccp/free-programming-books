@@ -24,3 +24,8 @@ https://www.npmjs.com/package/spark-md5  前端通过spark-md5.js计算本地文
 https://gitee.com/lsy69221/file-upload    基于Node.js的大文件分片上传
 https://github.com/sunhaikuo/uploadDemo    基于Node.js的大文件分片上传
 https://blog.csdn.net/x746655242/article/details/52964623 基于node服务器的大文件（G级）上传 
+
+
+## multipart/form-data
+https://github.com/Vodurden/Http-Multipart-Data-Parser
+https://github.com/iLexDev/ASP.NET-WebApi-MultipartDataMediaFormatter
