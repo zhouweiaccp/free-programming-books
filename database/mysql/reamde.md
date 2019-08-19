@@ -113,3 +113,10 @@ SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dvpsmsdb01' ORDER 
 
 ## MySql创建数据库aa
 CREATE DATABASE IF NOT EXISTS aa CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+- 不存在建表
+CREATE TABLE IF NOT EXISTS student(id int unsigned not null primary key,name varchar(32) not null);MySQL官方对
+
+- 备份表
+drop table if exists bak_functions;
+CREATE TABLE IF NOT EXISTS bak_functions SELECT * from org_function
