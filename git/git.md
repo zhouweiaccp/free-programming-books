@@ -266,3 +266,7 @@ $ git stash pop
 
 # 生成一个可供发布的压缩包
 $ git archive
+
+https://www.cnblogs.com/lulubai/p/6001334.html
+fatal：refusing to merge unrelated histories 说是拒绝合并不相关的历史，确实本地是新加的内容还重未和线上连接过。
+解决办法：git pull origin master --allow-unrelated-histories 就是告诉系统我允许合并不相关历史的内容。， 把两段不相干的 分支进行强行合并

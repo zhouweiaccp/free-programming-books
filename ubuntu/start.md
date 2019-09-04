@@ -77,3 +77,7 @@ yum install -y ntp  && ntpdate ntp.aliyun.com
 #Linux下查看进程和端口信息
 netstat -aon |grep 301
  ps -ef |grep 11753
+
+ #ERROR: The certificate of 
+ wget https://bad.com/a.rpm --no-check-certificate
+ apt-get install ca-certificates -y
