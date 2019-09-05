@@ -266,6 +266,16 @@ $ git stash pop
 
 # 生成一个可供发布的压缩包
 $ git archive
+ git archive -o d:\archive.zip newid $(git diff --name-only oldid newid)
+
+ git archive -o d:\archive.zip f86ec701f0e52d0adc3c3754487b35ae63eb8591 $(git diff --name-only 30ff84c9a5f7cb0e53cad25ddcb3923123062c62 f86ec701f0e52d0adc3c3754487b35ae63eb8591)
+
+ git diff --name-only 30ff84c9a5f7cb0e53cad25ddcb3923123062c62 f86ec701f0e52d0adc3c3754487b35ae63eb8591| xargs tar -zcvf /d/a.tar.gz
+## 前几次提前 当前提交
+  git diff --name-only HEAD~2 HEAD| xargs tar -zcvf /d/aA.tar.gz
+
+
+
 
 https://www.cnblogs.com/lulubai/p/6001334.html
 fatal：refusing to merge unrelated histories 说是拒绝合并不相关的历史，确实本地是新加的内容还重未和线上连接过。
