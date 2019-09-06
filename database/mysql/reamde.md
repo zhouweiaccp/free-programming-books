@@ -120,3 +120,13 @@ CREATE TABLE IF NOT EXISTS student(id int unsigned not null primary key,name var
 - 备份表
 drop table if exists bak_functions;
 CREATE TABLE IF NOT EXISTS bak_functions SELECT * from org_function
+
+##表中列存在
+show columns from dms_downfilelog like 'id'  
+
+SELECT count(*)as a FROM(  
+    select COLUMN_NAME from information_schema.COLUMNS   
+        where TABLE_SCHEMA='db1'   
+        and TABLE_NAME='dms_downfilelog'   
+        and COLUMN_NAME='processstate'  
+)  t
