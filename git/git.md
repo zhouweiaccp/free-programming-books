@@ -280,3 +280,74 @@ $ git archive
 https://www.cnblogs.com/lulubai/p/6001334.html
 fatal：refusing to merge unrelated histories 说是拒绝合并不相关的历史，确实本地是新加的内容还重未和线上连接过。
 解决办法：git pull origin master --allow-unrelated-histories 就是告诉系统我允许合并不相关历史的内容。， 把两段不相干的 分支进行强行合并
+
+git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+git log  --pretty=format:"%H %b $ %ae $ %ci $ %cn $ %s " --author=xx.com  --no-merges  >E:\e1.txt
+git log --author=xx --after=2019-11-01 --before=2019-12-01 --no-merges --shortstat --pretty=format:" %b $ %an $ %ci $ %s " > 1.txt
+
+git log --author=xx --after=2019-11-01 --before=2019-12-01 --no-merges --shortstat --pretty=format:" %b $ %ae $ %ci $ %s " > 1.txt
+git log --pretty="%H $ %cn $ %s"  --since="2017-02-01" --no-merges >d:\abc_33.txt
+git log --pretty="%H %cn %cd %s"  --since="2016-06-01"  --author=test1 --no-merges >d:\ws_1.txt
+
+
+选项   说明
+%H  提交对象（commit）的完整哈希字串
+%h  提交对象的简短哈希字串
+%T  树对象（tree）的完整哈希字串
+%t  树对象的简短哈希字串
+%P  父对象（parent）的完整哈希字串
+%p  父对象的简短哈希字串
+%an 作者（author）的名字
+%ae 作者的电子邮件地址
+%ad 作者修订日期（可以用 -date= 选项定制格式）
+%ar 作者修订日期，按多久以前的方式显示
+%cn 提交者(committer)的名字
+%ce 提交者的电子邮件地址
+%cd 提交日期
+%cr 提交日期，按多久以前的方式显示
+%s  提交说明
+
+
+%H: commit hash
+%h: 缩短的commit hash
+%T: tree hash
+%t: 缩短的 tree hash
+%P: parent hashes
+%p: 缩短的 parent hashes
+%an: 作者名字
+%aN: mailmap的作者名字 (.mailmap对应，详情参照git-shortlog(1)或者git-blame(1))
+%ae: 作者邮箱
+%aE: 作者邮箱 (.mailmap对应，详情参照git-shortlog(1)或者git-blame(1))
+%ad: 日期 (--date= 制定的格式)
+%aD: 日期, RFC2822格式
+%ar: 日期, 相对格式(1 day ago)
+%at: 日期, UNIX timestamp
+%ai: 日期, ISO 8601 格式
+%cn: 提交者名字
+%cN: 提交者名字 (.mailmap对应，详情参照git-shortlog(1)或者git-blame(1))
+%ce: 提交者 email
+%cE: 提交者 email (.mailmap对应，详情参照git-shortlog(1)或者git-blame(1))
+%cd: 提交日期 (--date= 制定的格式)
+%cD: 提交日期, RFC2822格式
+%cr: 提交日期, 相对格式(1 day ago)
+%ct: 提交日期, UNIX timestamp
+%ci: 提交日期, ISO 8601 格式
+%d: ref名称
+%e: encoding
+%s: commit信息标题
+%f: sanitized subject line, suitable for a filename
+%b: commit信息内容
+%N: commit notes
+%gD: reflog selector, e.g., refs/stash@{1}
+%gd: shortened reflog selector, e.g., stash@{1}
+%gs: reflog subject
+%Cred: 切换到红色
+%Cgreen: 切换到绿色
+%Cblue: 切换到蓝色
+%Creset: 重设颜色
+%C(...): 制定颜色, as described in color.branch.* config option
+%m: left, right or boundary mark
+%n: 换行
+%%: a raw %
+%x00: print a byte from a hex code
+%w([[,[,]]]): switch line wrapping, like the -w option of git-shortlog(1).
