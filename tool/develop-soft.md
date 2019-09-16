@@ -94,8 +94,8 @@ https://github.com/fatedier/frp
 ## 团队文档协作
 * [GitBook Editor](https://www.gitbook.com/editor)   GitBook + GitLab 团队文档协作 https://www.jianshu.com/p/e74dad6845d1
 * [GitBook CI](https://github.com/GitbookIO/gitbook-cli)
-* []()
-
+* [hexo](https://hexo.io/zh-cn/docs/)是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页   https://app.netlify.com/
+* [Jekyll]()
 
 ## window_shell
 - [Kitty](http://www.9bis.net/kitty/) - 高级 Putty (SSH 和 telnet 客户端)。
