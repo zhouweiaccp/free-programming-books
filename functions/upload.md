@@ -16,7 +16,8 @@ https://github.com/devin87/web-uploader/  js (html5 + html4) 文件上传管理�
 
 https://github.com/kissygalleryteam/uploader/blob/master/doc/demo/theme-crossUploader.html  上传界面效果
 
-jQuery File Uploader、FineUploader、Uploadify、Baidu Web Uploader
+jQuery File Uploader、FineUploader、Uploadify、Baidu Web Uploader   
+- [dropzone] (https://www.dropzonejs.com/#configuration)
 
 
 
