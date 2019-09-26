@@ -81,3 +81,11 @@ netstat -aon |grep 301
  #ERROR: The certificate of 
  wget https://bad.com/a.rpm --no-check-certificate
  apt-get install ca-certificates -y
+
+
+
+ #xshell 使用命令上传、下载文件
+ rpm -qa |grep lrzsz
+ yum install  lrzsz -y
+ rz  #上传文件，使用#rz，然后会弹出选择对话框，选择好文件后，点击打开就能上传到当前目录
+ sz error_logs #例如要下载当前目录下的error_logs

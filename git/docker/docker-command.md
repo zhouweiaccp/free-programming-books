@@ -126,3 +126,7 @@ networks:
       config:
       - subnet: 10.88.12.0/24
         gateway: 10.88.12.1
+
+## docker deploy
+docker stack deploy -c /opt/docker-compose.yml indrive --resolve-image never    (https://docs.docker.com/engine/reference/commandline/deploy/)  
+(“always”|”changed”|”never”)
