@@ -10,6 +10,15 @@ sudo apt-get install apt-transport-https
 sudo apt-get update
 sudo apt-get install dotnet-sdk-2.2
 
+3.0-ubuntu.18.0.4
+sudo apt-get install software-properties-common -y
+wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+sudo add-apt-repository universe
+sudo apt-get update
+sudo apt install apt-transport-https -y
+sudo apt-get update
+sudo apt install dotnet-sdk-3.0 -y
 
 The SSL connection could not be established on Ubuntu #32300 https://github.com/dotnet/corefx/issues/32300 
 export SSL_CERT_FILE=/etc/ssl/certs/ca-bundle.crt 
