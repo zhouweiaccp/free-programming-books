@@ -40,4 +40,8 @@ dotnet add app/app.csproj reference lib/lib.csproj
 向当前目录中的项目添加多个项目引用：
 dotnet add reference lib1/lib1.csproj lib2/lib2.csproj
 
-dotnet run
+
+https://docs.microsoft.com/zh-cn/dotnet/standard/frameworks   目标框架  netcoreapp2.2
+https://docs.microsoft.com/zh-cn/dotnet/core/rid-catalog  NET Core RID 目录
+dotnet clean --configuration Debug
+dotnet publish -c Release -o obj/Docker/publish --framework netcoreapp2.2 --runtime win10-x64 --self-contained true test1.csproj

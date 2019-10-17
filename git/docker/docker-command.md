@@ -3,6 +3,7 @@
  docker build -t aspnetapp .
  docker build -f  Dockerfile.test -t image-train-test .
  docker run -d -p 8080:80 --name myapp aspnetapp  -i -t ubuntu bash
+  docker run -itd -v /d/deveolp:soft centos /bin/bash
  docker exec -it 4ba8754ce8a3 bash
  docker logs --follow 4ba8754ce8a3
  docker commit --message "5.8.00ok" 4ba8754ce8a3  edoc2:v3
