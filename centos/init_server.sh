@@ -56,5 +56,14 @@ yum install -y python34
 curl -O https://bootstrap.pypa.io/get-pip.py
 /usr/bin/python3.4 get-pip.py
 
+mkdir ~/.pip
+cat > ~/.pip/pip.conf<<efo
+[global]
+index-url = https://mirrors.aliyun.com/pypi/simple
+[install]
+trusted-host = https://pypi.tuna.tsinghua.edu.cn
+efo
+
+
 echo "vim setting"
 curl https://raw.githubusercontent.com/wklken/vim-for-server/master/vimrc > ~/.vimrc

@@ -156,3 +156,5 @@ https://github.com/fatedier/frp
 
 -[awesome-http](https://github.com/semlinker/awesome-http) HTTP、HTTP Cache、CORS、HTTPS、HTTP/2、Fiddler、WireShark、Web Crawler
 -[awesome-spider](https://github.com/facert/awesome-spider) 爬虫集合
+-[码农周刊分类整理](https://github.com/nemoTyrant/manong)
+-[node.js中文资料导航](https://github.com/sergtitov/NodeJS-Learning/blob/master/cn_resource.md)
