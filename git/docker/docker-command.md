@@ -131,3 +131,19 @@ networks:
 ## docker deploy
 docker stack deploy -c /opt/docker-compose.yml indrive --resolve-image never    (https://docs.docker.com/engine/reference/commandline/deploy/)  
 (“always”|”changed”|”never”)
+
+## Docker CE 的具体加速
+一般来说你需要找到 docker daemon 的配置文件 /etc/docker/daemon.json
+{
+  "insecure-registries" : [
+    "registry.mirrors.aliyuncs.com"
+  ],
+  "debug" : true,
+  "experimental" : false,
+  "registry-mirrors" : [
+    "https://docker.mirrors.ustc.edu.cn",
+    "https://dockerhub.azk8s.cn",
+    "https://reg-mirror.qiniu.com",
+    "https://registry.docker-cn.com"
+  ]
+}

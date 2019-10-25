@@ -16,3 +16,15 @@ efo
 #index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 #trusted-host = pypi.tuna.tsinghua.edu.cn
 
+
+
+# 以下可以选用其一
+
+# # 清华：
+# pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+# # 阿里：
+# pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
+# # 华为：
+# pip config set global.index-url https://mirrors.huaweicloud.com/repository/pypi/simple
+# # 豆瓣：
+# pip config set global.index-url https://pypi.douban.com/simple

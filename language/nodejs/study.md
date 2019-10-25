@@ -22,3 +22,11 @@
 - [url](https://github.com/zhouweiaccp/be-a-professional-programmer.git)
 
 [http://blog.fens.me/series-nodejs/] (从零开始nodejs系列文章)
+
+
+
+## Node 和 npm/Yarn可以更换镜像
+阿里：yarn config set registry https://registry.npm.taobao.org
+华为：yarn config set registry https://mirrors.huaweicloud.com/repository/npm/
+Node-Sass：npm config set sass_binary_site https://mirrors.huaweicloud.com/node-sass/
+（https://segmentfault.com/a/1190000020693560?utm_source=tag-newest#articleHeader16）
