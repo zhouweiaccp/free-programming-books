@@ -14,3 +14,6 @@ make && make install
 #4.创建软连接
 ln -s /usr/local/python3/bin/python3 /usr/local/bin/python3
 ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3
+
+pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
+pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
