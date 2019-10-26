@@ -89,3 +89,20 @@ netstat -aon |grep 301
  yum install  lrzsz -y
  rz  #上传文件，使用#rz，然后会弹出选择对话框，选择好文件后，点击打开就能上传到当前目录
  sz error_logs #例如要下载当前目录下的error_logs
+
+ # linux shell 最后一行添加内容
+sed '1i 添加的内容' file  #这是在第一行前添加字符串
+sed '$i 添加的内容' file  #这是在最后一行行前添加字符串
+sed '$a添加的内容' file  #这是在最后一行行后添加字符串
+ sed -i '$a\/etc\/install.sh' ho
+
+# 出包dpkg 后面一行加33333
+ sed -i '/dpkg/a\3333333333' netocre.sh
+
+ # 在包含小明的行前一行增加一行
+ sed '/xiaoming/i\#!/bin/bash' test_sed
+ 删除文档的第一行
+	sed -i '1d' <file>
+
+2、删除文档的最后一行
+	sed -i '$d' <file>
