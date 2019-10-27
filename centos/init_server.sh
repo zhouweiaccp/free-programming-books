@@ -9,7 +9,7 @@ rpm -Uvh https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rp
 echo "install java"
 wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7/jdk-8u141-linux-x64.tar.gz"
 echo "install java download done"
-mkdir -p /usr/java/jdk1.8.0_141
+mkdir -p /usr/java/jdk1.8.0_141/jdk1.8.0_141
 tar -zxvf jdk-8u141-linux-x64.tar.gz -C /usr/java/jdk1.8.0_141
 rm jdk-8u141-linux-x64.tar.gz
 echo 'JAVA_HOME=/usr/java/jdk1.8.0_141' >> /etc/profile
