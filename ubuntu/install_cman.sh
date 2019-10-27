@@ -38,6 +38,7 @@ cd ~
 #sudo gedit .bashrc
 cp .bashrc .bashrc_bak
 sed -i '$aalias cman='\''man -M \/usr\/local\/zhman\/share\/man\/zh_CN' .bashrc
+sed -i "s/@@/'/g" .bashrc
  #  sed -i '$aalias cman='\''man -M \/usr\/local\/zhman\/share\/man\/zh_CN@@' ho
 #最后需要加单引号
 #5、在.bashrc最后一行增加:
