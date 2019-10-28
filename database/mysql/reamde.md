@@ -130,3 +130,9 @@ SELECT count(*)as a FROM(
         and TABLE_NAME='dms_downfilelog'   
         and COLUMN_NAME='processstate'  
 )  t
+
+
+
+## 类型转换
+
+SELECT  CONCAT('a',cast(123 as char),';-- user_id=',22) as n1;

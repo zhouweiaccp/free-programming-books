@@ -20,7 +20,7 @@
 - [Nodejs学习路线图](http://blog.fens.me/nodejs-roadmap/)
 - [如何学习nodejs](http://stackoverflow.com/questions/2353818/how-do-i-get-started-with-node-js/9629682#9629682)
 - [url](https://github.com/zhouweiaccp/be-a-professional-programmer.git)
-
+-  [node.js中文资料导航](https://github.com/youyudehexie/node123)
 [http://blog.fens.me/series-nodejs/] (从零开始nodejs系列文章)
 
 
