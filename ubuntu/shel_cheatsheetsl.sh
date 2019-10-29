@@ -586,6 +586,7 @@ awk '/str/ {print $2}' file        # 打印文件中包含 str 的所有行的�
 awk -F ',' '{print $NF}' file      # 打印逗号分隔的文件中的每行最后一列 
 awk '{s+=$1} END {print s}' file   # 计算所有第一列的合
 awk 'NR%3==1' file                 # 从第一行开始，每隔三行打印一行
+awk -F ':' 'BEGIN {count=0;} {name[count] = $1;count++;}; END{for (i = 0; i < NR; i++) print i, name[i]}' /etc/passwd
 
 sed 's/find/replace/' file         # 替换文件中首次出现的字符串并输出结果 
 sed '10s/find/replace/' file       # 替换文件第 10 行内容
