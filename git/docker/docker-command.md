@@ -147,3 +147,6 @@ docker stack deploy -c /opt/docker-compose.yml indrive --resolve-image never    
     "https://registry.docker-cn.com"
   ]
 }
+
+## 进入容器
+docker exec -it $(docker ps | grep elasticsearch:v6.7.1.0|awk '{print $1}') bash

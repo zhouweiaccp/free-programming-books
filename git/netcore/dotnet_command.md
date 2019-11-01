@@ -45,3 +45,7 @@ https://docs.microsoft.com/zh-cn/dotnet/standard/frameworks   目标框架  netc
 https://docs.microsoft.com/zh-cn/dotnet/core/rid-catalog  NET Core RID 目录
 dotnet clean --configuration Debug
 dotnet publish -c Release -o obj/Docker/publish --framework netcoreapp2.2 --runtime win10-x64 --self-contained true test1.csproj
+
+
+##createdump 内存分析
+/usr/share/dotnet/shared/Microsoft.NETCore.App/2.2.4/createdump -u -f 
