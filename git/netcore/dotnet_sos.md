@@ -2,7 +2,8 @@
 LLDB Debugger (LLDB) 是一个开源、底层调试器(low level debugger)，具有REPL (Read-Eval-Print Loop，交互式解释器)、C++和Python插件，位于Xcode窗口底部控制台中，也可以在terminal中使用。具有流向控制 (flow control) 和数据检查 (data inspection) 功能。
 LLDB使用了LLVM项目中的一些组件，如编译器、解释器、构建器等。LLDB是非常强大的工具，可以输出代码中变量，访问macOS系统底层的Unix，进行个性化配置等，且整个过程无需终止会话
 
-
+## install
+https://github.com/dotnet/diagnostics/blob/master/documentation/installing-sos-instructions.md
 
 C:\Program Files\dotnet\shared\Microsoft.NETCore.App\2.2.7\sos.dll
 /usr/share/dotnet/shared/Microsoft.NETCore.App/2.2.4/libsosplugin.so
