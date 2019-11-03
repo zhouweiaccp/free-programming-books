@@ -14,7 +14,11 @@ CatLib Core 是 CatLib 的最小可用框架。仅提供最基础的功能，是
 * [ILRuntime](https://github.com/Ourpalm/ILRuntime)
 
 ##common netcore
-**[] ()
+*[samples] (git@github.com:dotnet/samples.git) 官方示例demo
+*[practical-aspnetcore](git@github.com:dodyg/practical-aspnetcore.git) demo
+*[]()
+*[]()
+*[]()
 
 ##commandline
 **[commandline] (https://github.com/natemcmaster/CommandLineUtils)
