@@ -106,3 +106,8 @@ sed '$a添加的内容' file  #这是在最后一行行后添加字符串
 
 2、删除文档的最后一行
 	sed -i '$d' <file>
+
+## Tasksel
+sudo apt-get install tasksel
+sudo tasksel
+https://help.ubuntu.com/community/Tasksel
