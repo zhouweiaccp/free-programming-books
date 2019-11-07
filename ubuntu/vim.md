@@ -1,6 +1,7 @@
 推荐这个配置文件 https://github.com/wklken/vim-for-server
 curl https://raw.githubusercontent.com/wklken/vim-for-server/master/vimrc > ~/.vimrc
 
+https://github.com/skywind3000/awesome-cheatsheets/blob/master/editors/vim.txt
 vim模式：
 
 编辑模式(命令模式)
