@@ -20,7 +20,7 @@ echo 'apt update....'
   mkdir -p /etc/docker
 tee /etc/docker/daemon.json <<-'EOF'
 {
-  "registry-mirrors": ["https://dist7hw1.mirror.aliyuncs.com"]
+  "registry-mirrors": ["https://dist7hw1.mirror.aliyuncs.com","https://registry.docker-cn.com","https://cr.console.aliyun.com","http://hub-mirror.c.163.com"]
 }
 EOF
  systemctl daemon-reload &&systemctl restart docker
