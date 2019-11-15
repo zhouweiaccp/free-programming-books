@@ -351,3 +351,16 @@ git log --pretty="%H %cn %cd %s"  --since="2016-06-01"  --author=test1 --no-merg
 %%: a raw %
 %x00: print a byte from a hex code
 %w([[,[,]]]): switch line wrapping, like the -w option of git-shortlog(1).
+
+
+## Git仓库迁移而不丢失log的方法
+git clone --bare git://192.168.10.XX/git_repo/project_name.git
+cd /path/to/path/
+mkdir new_project_name.git
+git init --bare new_project_name.git
+git push --mirror git@192.168.20.XX/path/to/path/new_project_name.git
+
+## 如何拉取一个本地仓库没有的分支
+git fetch git@192.168.251.11:xx/apache.git feature-nhibernate
+git checkout -b wangshao/apache-feature-nhibernate FETCH_HEAD
+git checkout feature-nhibernate
