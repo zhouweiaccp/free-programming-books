@@ -13,3 +13,13 @@
 
 https://github.com/Kr1s77/awesome-python-login-model/ 模拟登陆一些大型网站，还有一些简单的爬虫，希望对你们有所帮
 
+
+https://www.bilibili.com/video/av47963962?p=21
+思路一：分析Javascript代码找到请求数据
+1. Chrome + F12开发者选项
+2. Firefox + Firebug
+思路二：利用浏览器内核或JS引擎执行Javascript代码
+1. Selenium + PhantomJs
+2. PyQt /QtWebkit
+3. CasperJS
+4. PyExecJS
