@@ -111,3 +111,7 @@ sed '$a添加的内容' file  #这是在最后一行行后添加字符串
 sudo apt-get install tasksel
 sudo tasksel
 https://help.ubuntu.com/community/Tasksel
+
+
+## 显示ip
+ ifconfig |awk '/inet/ && !($2 ~/^127/){print $2}'
