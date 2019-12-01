@@ -115,3 +115,8 @@ https://help.ubuntu.com/community/Tasksel
 
 ## 显示ip
  ifconfig |awk '/inet/ && !($2 ~/^127/){print $2}'
+
+ ## 安装rpm包
+  apt-get install alien
+  alien xxxx.rpm
+  dpkg -i xxxx.deb 
