@@ -42,3 +42,7 @@ https://github.com/guanguans/notes/blob/master/MongoDB/SQL%E5%88%B0Mongo%E7%9A%8
 | 文档数据小幅增加 | 文档数据大幅增加 |
 | 数据通常需要执行二次查询才能获得 | 数据通常不包含在结果中 |
 | 快速读取 | 快速写入 |
+
+## mongodb中帮助信息和命令
+db.help()
+db.coll.help()

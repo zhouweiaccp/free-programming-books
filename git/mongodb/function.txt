@@ -1,4 +1,5 @@
-﻿
+﻿//按时间查询，排序为正序  ,倒序为.sort({OptTime:-1});
+db.LogOperationDataEntity.find({"$and":[{"UserId":2 },{"OptTime":{"$gt":ISODate("2019-11-01T01:16:33.303Z")}},{"OptTime":{"$lt":ISODate("2019-12-05T01:16:33.303Z")}}]},{IP:1,UserRealName:1,OptSourceName:1,_id:0,OptType:1,UserId:1,OptTime:1}).limit(50).sort({OptTime:1});
 //字段是否存在
 db.doc_1.find({"file_id":{$gt: 0},"is_curVerId" : {$exists:false}})
 //范围查询
