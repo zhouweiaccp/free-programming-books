@@ -1,4 +1,36 @@
-﻿//分组更新
+﻿$group	将collection中的document分组，可用于统计结果
+$match	过滤数据，只输出符合结果的文档
+$project	修改输入文档的结构(例如重命名，增加、删除字段，创建结算结果等)
+$sort	将结果进行排序后输出
+$limit	限制管道输出的结果个数
+$skip	跳过制定数量的结果，并且返回剩下的结果
+$unwind	将数组类型的字段进行拆分
+https://www.jianshu.com/p/72fc4409936c
+
+//批量添加
+for(i=0;i<222;i++){
+    db.LogOperationDataEntity.insertOne({
+  
+    "OptId" : 0,
+    "InstanceId" : 1,
+    "OptType" : 33,
+    "OptTime" : ISODate("2019-12-03T06:15:44.624Z"),
+    "UserId" : 7,
+    "UserRealName" : "aa",
+    "OptResult" : 0,
+    "OptSourceId" : 19,
+    "OptSourceName" : "ppp",
+    "OptSourceParentId" : 16,
+    "OptSourceParentName" : "PersonalRoot\\aa_3",
+    "OptDestId" : 0,
+    "OptDestName" : "",
+    "OptContent" : "{\"OperateType\":401,\"SrcSecondObjId\":0,\"OperatorId\":3,\"DescSecondObjId\":0,\"DescSecondObjName\":\"\",\"DescSecondPathId\":0,\"SrcSecondObjName\":\"\",\"SrcSecondPathId\":16,\"InnerSecondPath\":false,\"type\":\"\",\"oldData\":\"\",\"newData\":\"\"}",
+    "MessageFromType" : 0,
+    "IP" : null
+})
+}
+
+//分组更新
 db.doc_1.aggregate([
       {
         $group:{
@@ -46,3 +78,28 @@ db.synonymsList.aggregate([
     doc.dups.shift();//将重复数据的任一条先从set中去掉，作为保留
     db.synonymsList.remove({_id: {$in: doc.dups}});//移除掉剩下的重复数据
 })
+
+## 时间 
+//https://docs.mongodb.com/v3.2/reference/operator/aggregation-date/
+db.getCollection('LogOperationDataEntity').aggregate([
+{$match : { UserId : 3 }},//过滤数据，只输出符合结果的文档
+     {
+       $project: {//$project	修改输入文档的结构(例如重命名，增加、删除字段，创建结算结果等)
+           "_id":0,
+           "OptTime":1,
+           "UserId":1,
+          Year: { $dateToString: { format: "%Y", date: "$OptTime" } },
+          Month: { $dateToString: { format: "%m", date: "$OptTime" } },
+          Day: { $dateToString: { format: "%d", date: "$OptTime" } },
+          yearMonthDay: { $dateToString: { format: "%Y-%m-%d", date: "$OptTime" } },
+         hours: { $dateToString: { format: "%H", date: "$OptTime"} },
+          Time: { $dateToString: { format: "%H:%M:%S:%L", date: "$OptTime"} }
+       }
+     }
+,{ $sort: { Time: -1 } }//$sort	将结果进行排序后输出
+,{ $limit:1 }//$limit	限制管道输出的结果个数
+]).forEach(function(doc){
+     print(doc["_id"].toString());
+   // db.LogOperationDataEntity.deleteOne({"_id":doc["_id"]});
+   //   db.QQ_OrderReturn.update({"_id":item._id},{$set:{"Status":NumberInt(0)}})
+    })

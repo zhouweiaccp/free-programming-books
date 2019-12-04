@@ -4,7 +4,7 @@
 * [awesome](#awesmoe)
 * [规范](#规范)
 * [mysql工具](#mysql工具)
-* [mssql工具](#mssql工具)
+* [mssql数据库文档生成](#mssql数据库文档生成)
 * [mirror](#mirror)
 * [microservice](#microservice)
 * [mongodb工具](#mongodb工具)
@@ -72,6 +72,12 @@ https://github.com/fatedier/frp
 * [mssql-cli](https://github.com/dbcli/mssql-cli)
 * [canal](https://github.com/alibaba/canal) 阿里巴巴 MySQL binlog 增量订阅& 消费组件 数据库实时备份
 
+
+## mssql数据库文档生成
+ * [DBCHM](https://gitee.com/lztkdr/DBCHM)
+ * [Kalman.Studio](https://github.com/loamen/Kalman.Studio/releases)
+
+ 
 ## mirror
 * [huaweicloud](https://mirrors.huaweicloud.com/)
 * [alibaba](https://opsx.alibaba.com/mirror)
