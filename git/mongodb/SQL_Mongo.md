@@ -51,4 +51,15 @@ db.coll.help()
 mongo localhost:27017/local t.js
 mongo test --eval "printjson(db.getCollectionNames())"
 
+4. 在mongo shell 交互模式下，运行一个js文件
+mongo test
+load("/root/mongojs/userfindone.js")
+
+userfindone.js 文件内容：
+conn = new Mongo("127.0.0.1:27017");
+db = conn.getDB("test");
+printjson(db.users.findOne());
+在命令行下运行：
+mongo --nodb userfindone.js
+
 https://docs.mongodb.com/manual/tutorial/write-scripts-for-the-mongo-shell/
