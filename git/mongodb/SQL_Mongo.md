@@ -46,3 +46,9 @@ https://github.com/guanguans/notes/blob/master/MongoDB/SQL%E5%88%B0Mongo%E7%9A%8
 ## mongodb中帮助信息和命令
 db.help()
 db.coll.help()
+
+## mongo.exe 
+mongo localhost:27017/local t.js
+mongo test --eval "printjson(db.getCollectionNames())"
+
+https://docs.mongodb.com/manual/tutorial/write-scripts-for-the-mongo-shell/
