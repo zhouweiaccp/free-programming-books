@@ -5,6 +5,8 @@ db.doc_1.find({"file_id":{$gt: 0},"is_curVerId" : {$exists:false}})
 //范围查询
 db.doc_1.find({"file_id":{"$in":[5,4]}})
 
+## id查询
+db.getCollection('LogOperationDataEntity').find({"_id":ObjectId("5de5d6d866362269a6d73fce")})
 
 
 -----------更新
