@@ -63,3 +63,4 @@ printjson(db.users.findOne());
 mongo --nodb userfindone.js
 
 https://docs.mongodb.com/manual/tutorial/write-scripts-for-the-mongo-shell/
+https://docs.mongodb.com/manual/reference/method/db.collection.aggregate/
