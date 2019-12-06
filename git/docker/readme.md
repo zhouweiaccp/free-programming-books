@@ -27,7 +27,8 @@ service docker stop
 
 
 
-
+## docker 环境变量
+printenv
 
 ## pouch
 https://yq.aliyun.com/articles/272475
