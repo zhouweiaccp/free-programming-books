@@ -71,6 +71,7 @@ https://github.com/fatedier/frp
 ## mysql工具
 * [mssql-cli](https://github.com/dbcli/mssql-cli)
 * [canal](https://github.com/alibaba/canal) 阿里巴巴 MySQL binlog 增量订阅& 消费组件 数据库实时备份
+* [Zebra](https://github.com/Meituan-Dianping/Zebra) 高性能的数据库访问层解决方案，是美团点评内部使用的数据库访问层中间件。具有以下的功能点：
 
 
 ## mssql数据库文档生成
