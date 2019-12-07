@@ -7,12 +7,13 @@ yum install -y zip unzip git tar wget
 yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo && yum install -y docker-ce-18.03.1.ce &&systemctl start docker && systemctl enable docker
 rpm -Uvh https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm  && yum install -y dotnet-sdk-2.2
 echo "install java"
-wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7/jdk-8u141-linux-x64.tar.gz"
+#wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "https://download.oracle.com/otn/java/jdk/8u231-b11/5b13a193868b4bf28bcb45c792fce896/jdk-8u231-linux-x64.tar.gz"
+wget https://repo.huaweicloud.com/java/jdk/8u201-b09/jdk-8u201-linux-x64.tar.gz
 echo "install java download done"
-mkdir -p /usr/java/jdk1.8.0_141/jdk1.8.0_141
-tar -zxvf jdk-8u141-linux-x64.tar.gz -C /usr/java/jdk1.8.0_141
-rm jdk-8u141-linux-x64.tar.gz
-echo 'JAVA_HOME=/usr/java/jdk1.8.0_141' >> /etc/profile
+mkdir -p /usr/java/
+tar -zxvf jdk-8u201-linux-x64.tar.gz -C /usr/java/
+rm jdk-8u201-linux-x64.tar.gz
+echo 'JAVA_HOME=/usr/java/jdk1.8.0_201' >> /etc/profile
 echo "CLASSPATH=$JAVA_HOME/lib/" >> /etc/profile
 echo "PATH=$PATH:$JAVA_HOME/bin" >> /etc/profile
 echo "export PATH JAVA_HOME CLASSPATH" >> /etc/profile
