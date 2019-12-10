@@ -150,7 +150,12 @@ docker stack deploy -c /opt/docker-compose.yml indrive --resolve-image never    
 
 ## 进入容器
 docker exec -it $(docker ps | grep elasticsearch:v6.7.1.0|awk '{print $1}') bash
- docker exec -it  `docker ps | grep zhouwei| grep org|awk '{print $1}'`  bash
+docker exec -it  `docker ps | grep zhouwei| grep org|awk '{print $1}'`  bash
+
+## 普通用户添加docker 权限
+sudo groupadd docker     #添加docker用户组
+sudo gpasswd -a $USER docker     #将登陆用户加入到docker用户组中
+newgrp docker     #更新用户组
 
 swarm join-token ：可以查看或更换join token。
 docker swarm join-token worker：查看加入woker的命令。
