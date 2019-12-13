@@ -289,6 +289,8 @@ git log --author=xx --after=2019-11-01 --before=2019-12-01 --no-merges --shortst
 git log --pretty="%H $ %cn $ %s"  --since="2017-02-01" --no-merges >d:\abc_33.txt
 git log --pretty="%H %cn %cd %s"  --since="2016-06-01"  --author=test1 --no-merges >d:\ws_1.txt
 
+## git查看某个文件的修改历史
+git log --follow -p <filename>
 
 选项   说明
 %H  提交对象（commit）的完整哈希字串
