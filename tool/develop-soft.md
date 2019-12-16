@@ -20,6 +20,7 @@
 * [服务器](#服务器)
 * [手机测试](#手机测试)
 * [代理](#代理)
+* [下载歌曲](#下载歌曲)
 
 
 ## apm
@@ -167,7 +168,9 @@ https://github.com/fatedier/frp
 * [mitmproxy]()   python
 * []()
 
-
+## 下载歌曲
+* [SoundPirate](https://github.com/seekerlee/SoundPirate)支持豆瓣FM，豆瓣音乐人，虾米，QQ音乐，网易云音乐，酷我，echo回声等.
+* []()
 
 
 
