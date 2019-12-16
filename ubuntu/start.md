@@ -120,3 +120,9 @@ https://help.ubuntu.com/community/Tasksel
   apt-get install alien
   alien xxxx.rpm
   dpkg -i xxxx.deb 
+
+
+
+  ##  DevOps
+  * [kjyw](https://gitee.com/aqztcom/kjyw) kjyw 快捷运维
+  * [shell]( git@github.com:zhouweiaccp/shell.git) shell 语法
