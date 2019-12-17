@@ -875,5 +875,5 @@ https://github.com/LeCoupa/awesome-cheatsheets/blob/master/languages/bash.sh
 https://devhints.io/bash
 https://github.com/jlevy/the-art-of-command-line
 https://yq.aliyun.com/articles/68541
-
+http://c.biancheng.net/view/1169.html  学习站点
 # vim: set ts=4 sw=4 tw=0 et :
