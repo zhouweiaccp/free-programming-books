@@ -14,11 +14,16 @@ mkdir -p /usr/java/
 tar -zxvf jdk-8u201-linux-x64.tar.gz -C /usr/java/
 rm jdk-8u201-linux-x64.tar.gz
 echo 'JAVA_HOME=/usr/java/jdk1.8.0_201' >> /etc/profile
+source /etc/profile
 echo "CLASSPATH=$JAVA_HOME/lib/" >> /etc/profile
+source /etc/profile
 echo "PATH=$PATH:$JAVA_HOME/bin" >> /etc/profile
+source /etc/profile
 echo "export PATH JAVA_HOME CLASSPATH" >> /etc/profile
 source /etc/profile
 
+ sed -i "\$a alias ll='ls -lth --time-style=\"+%Y-%m-%d %H:%M:%S\"'" ~/.bashrc # 转义单引号 双引号
+ source ~/.bashrc
 # echo "install node source"
 # wget https://npm.taobao.org/mirrors/node/v11.0.0/node-v11.0.0.tar.gz
 # tar -xvf node-v11.0.0.tar.gz
