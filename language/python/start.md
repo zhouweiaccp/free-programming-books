@@ -1,6 +1,6 @@
 
 
- apt install -y xdg-utils
+apt install -y xdg-utils
 apt-get install python3-pip
 #apt-get remove python3-pip
 pip install --upgrade pip
@@ -18,3 +18,7 @@ sudo yum install python34-devel epel-release libxslt-devel libxml2-devel
 
 pip3 install Scrapy
 sudo apt-get install build-essential python3-dev libssl-dev libffi-dev libxml2 libxml2-dev libxslt1-dev zlib1g-dev
+
+
+## 项目
+* [awesome-python](git@github.com:zhouweiaccp/awesome-python.git) python 学习练习
