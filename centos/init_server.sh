@@ -1,9 +1,15 @@
 #!/bin/bash
-# cd /etc/yum.repos.d
-# mv ./CentOS-Base.repo ./CentOS-Base-repo.bak
-mv /etc/yum.repos.d/CentOS-Base.repo{,_bak} && wget http://mirrors.163.com/.help/CentOS6-Base-163.repo -O /etc/yum.repos.d/CentOS-Base.repo && yum clean all &&yum makecache
+set -x
+currentDate=`date "+%Y%m%d%H%M%S"`
+cp  /etc/yum.repos.d/CentOS-Base.repo  /etc/yum.repos.d/CentOS-Base.repo_currentDate
+curl http://mirrors.163.com/.help/CentOS6-Base-163.repo -o /etc/yum.repos.d/CentOS-Base.repo
 # wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+yum clean all &&yum makecache
 yum install -y zip unzip git tar wget
+#显示时区
+echo `date +%z`
+#时间不同步
+yum install -y ntp  && ntpdate ntp.aliyun.com
 yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo && yum install -y docker-ce-18.03.1.ce &&systemctl start docker && systemctl enable docker
 rpm -Uvh https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm  && yum install -y dotnet-sdk-2.2
 echo "install java"
