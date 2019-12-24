@@ -64,11 +64,17 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
 
 echo "python3"
 yum install -y epel-release
-yum install -y python34
-curl -O https://bootstrap.pypa.io/get-pip.py
-/usr/bin/python3.4 get-pip.py
+ yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+#yum install -y python34
+#curl -O https://bootstrap.pypa.io/get-pip.py  /usr/bin/python3.4 get-pip.py
+yum -y install python36u
+yum -y install python36u-pip
+#使用python3去使用Python3.6：
+ln -s /usr/bin/python3.6 /usr/bin/python3
+#复制代码pip3.6同理：
+ln -s /usr/bin/pip3.6 /usr/bin/pip3
 
-mkdir ~/.pip
+test ! -d ~/pip && mkdir ~/.pip
 cat > ~/.pip/pip.conf<<efo
 [global]
 index-url = https://mirrors.aliyun.com/pypi/simple
