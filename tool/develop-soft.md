@@ -125,6 +125,8 @@ https://github.com/fatedier/frp
 - [MTPuTTY](http://ttyplus.com/multi-tabbed-putty/) - 多标签 PuTTY。
 - [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) - SSH 和 telnet 客户端。
 - [Terminus](https://eugeny.github.io/terminus/) - 基于Web技术的现代高度可配置的终端应用程序。
+- [windows terminal](https://github.com/microsoft/terminal) - window10
+- [conemu](https://conemu.github.io/en/Downloads.html) -   
 
 ## 测试工具
 * [Apache Bench](https://www.apachelounge.com/download/) apache 服务器自带的一个web压力测试工具，简称ab，对发起负载的本机要求很低，根据ab命令可以创建很多的并发访问线程，模拟多个访问者同时对某一URL地址进行访问，因此可以用来测试目标服务器的负载压力。总的来说ab工具小巧简单，上手学习较快，可以提供需要的基本性能指标，但是没有图形化结果，不能监控
