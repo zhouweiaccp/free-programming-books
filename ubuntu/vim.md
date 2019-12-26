@@ -263,8 +263,9 @@ https://www.ibm.com/developerworks/cn/linux/l-vimdiff/
 v 进入字符可视化模式
 V 进入行可视化模式
 Ctrl+v 进入块可视化模式
-
-块选择 Ctrl+v
+Ctrl+g切换可视模式和选择模式
+Ctrl+o切换可视模式两端光标
+tab+ < > 左右移
 
 # 批量插入
 2,7s/^/#/g，在2到7行首插入#
