@@ -11,7 +11,16 @@ echo `date +%z`
 #时间不同步
 yum install -y ntp  && ntpdate ntp.aliyun.com
 yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo && yum install -y docker-ce-18.03.1.ce &&systemctl start docker && systemctl enable docker
-rpm -Uvh https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm  && yum install -y dotnet-sdk-2.2
+
+## Docker启动Get Permission Denied 
+sudo groupadd docker     #添加docker用户组
+sudo gpasswd -a $USER docker     #将登陆用户加入到docker用户组中
+newgrp docker     #更新用户组
+docker ps    #测试docker命令是否可以使用sudo正常使用
+
+echo 'install netcore'
+rpm -Uvh https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm  && yum install -y dotnet-sdk-3.0
+
 echo "install java"
 #wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "https://download.oracle.com/otn/java/jdk/8u231-b11/5b13a193868b4bf28bcb45c792fce896/jdk-8u231-linux-x64.tar.gz"
 wget https://repo.huaweicloud.com/java/jdk/8u201-b09/jdk-8u201-linux-x64.tar.gz
@@ -82,6 +91,6 @@ index-url = https://mirrors.aliyun.com/pypi/simple
 trusted-host = https://pypi.tuna.tsinghua.edu.cn
 efo
 
-
+# ./install_python3_code.sh  #source install python
 echo "vim setting"
 curl https://raw.githubusercontent.com/wklken/vim-for-server/master/vimrc > ~/.vimrc
