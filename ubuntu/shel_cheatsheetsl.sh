@@ -110,6 +110,7 @@ basename {fn}       # 查看文件的名字（不包括路径）
 dirname {fn}        # 查看文件的路径（不包括名字）
 grep {pat} {fn}     # 在文件中查找出现过 pat 的内容
 grep -r {pat} .     # 在当前目录下递归查找所有出现过 pat 的文件内容
+man curl |grep -E '\-\q' #正则查找 -q
 stat {fn}           # 显示文件的详细信息
 
 

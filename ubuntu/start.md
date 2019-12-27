@@ -124,5 +124,5 @@ https://help.ubuntu.com/community/Tasksel
 
 
   ##  DevOps
-  * [kjyw](https://gitee.com/aqztcom/kjyw) kjyw 快捷运维
+  * [kjyw](https://gitee.com/aqztcom/kjyw) kjyw 快捷运维 目基于shell、python，运维脚本工具库，收集各类运维常用工具脚本，实现快速安装nginx、mysql、php、redis、nagios、运维经常使用的脚本等等
   * [shell]( git@github.com:zhouweiaccp/shell.git) shell 语法
