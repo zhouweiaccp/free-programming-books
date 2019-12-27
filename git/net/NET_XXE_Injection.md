@@ -1,3 +1,4 @@
+https://www.cnblogs.com/zhuawang/p/10194474.html
 接下来关于.NET中XXE注入的内容来自Dean Fleming单元测试的Web站点：https://github.com/deanf1/dotnet-security-unit-tests。该站点覆盖了目前.NET下支持的所有XML解析器，且测试用例均展示了哪些情况下它们对于XXE注入而言是安全的，哪些情况下又是不安全的。这些内容更早之前是基于James Jardine这篇关于.NET XXE的杰出文章：https://www.jardinesoftware.net/2016/05/26/xxe-and-net/。与微软这篇在.NET下如何预防XXE以及XML拒绝服务的老文章http://msdn.microsoft.com/en-us/magazine/ee335713.aspx 相比它提供了更新更全的内容，但与Dean Fleming的Web站点覆盖的地方相比还是有些不准确的地方。
 
 下表罗列了.NET下所有支持的XML解析器其默认的安全级别：
