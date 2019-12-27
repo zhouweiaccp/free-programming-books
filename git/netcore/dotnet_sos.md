@@ -51,3 +51,62 @@ llvm源码安装指导文档
 http://releases.llvm.org/3.9.0/docs/GettingStarted.html
 网友centos7安装llvm，clang，lldb等给力脚本
 https://github.com/owent-utils/bash-shell/blob/master/LLVM%26Clang%20Installer/3.9/installer.sh
+生产环境(基于docker)故障排除？ 有感于博客园三番五次翻车
+https://www.cnblogs.com/JulianHuang/p/11365593.html
+③ 执行 ./createdump  -f  -u {PId} 命令导出coredump文件，默认生成 /tmp/coredump.%d dump文件，  使用Visual Studio 或者Windebug调试dump文件
+
+容器中遇到的障碍
+ .netcore app容器中需要有容器特权模式才能执行createdump命令， 否则会如下图错误
+
+
+         ps：可通过在docker run 生成该容器时增加--privileged = true操作特权
+
+  常规.netcore app容器内不包含ps命令， 难以明确容器内dotnet 进程PID
+
+  容器内导出的coredump文件，还需要使用 docker cp 命令导出到docker 主机，再行调试。
+
+针对容器内.NetCore app生产调试，国外大牛已经针对 .NetCore特定runtime版本制成了工具镜像
+
+Analyze running container
+　　以下假设待分析容器使用的.netcore runtime与6opuc/lldb-netcore 工具镜像内runtime 相同。
+
+1.找到待分析容器id (docker ps)，例如： b5063ef5787c
+
+2.运行包含createdump工具的容器（需要sys_admin,sys_ptrace特权）， 如果运行的容器已经包含这个特权，可附加待分析容器并在容器中执行createdump工具
+
+docker run --rm -it --cap-add sys_admin --cap-add sys_ptrace --net=container:b5063ef5787c --pid=container:b5063ef5787c -v /tmp:/tmp 6opuc/lldb-netcore /bin/bash
+ --net=container:b5063ef5787c 重用待分析容器的网络堆栈
+
+--pid=container:b5063ef5787c 加入待分析容器的PID命名空间
+Joining another container’s pid namespace can be used for debugging that container
+3. 找到待分析dotnet进程PID:    px aux
+
+4. 生成dotnet进程的 coredump文件，并退出容器
+
+createdump -u -f  /tmp/coredump 7            # 7是dotnet进程id
+exit
+5. 使用debugger打开coredump文件
+
+docker run --rm -it -v /tmp/coredump:/tmp/coredump 6opuc/lldb-netcore
+  output：
+
+复制代码
+(lldb) target create "/usr/bin/dotnet" --core "/tmp/coredump"
+Core file '/tmp/coredump' (x86_64) was loaded.
+(lldb) plugin load /coreclr/libsosplugin.so
+(lldb) sos PrintException
+There is no current managed exception on this thread
+(lldb)
+复制代码
+6. 在lldb shell ： help命令继续探索
+
+　　lldb使用方式可参考https://docs.microsoft.com/en-us/dotnet/framework/tools/sos-dll-sos-debugging-extension
+
+常见用例
+该DockerHub Repo还提供了基于docker 生产故障排除的常见用例：
+
+Process hang with idle CPU
+Process hang with high CPU usage
+Process crash
+Excessive memory usage
+这个镜像对于基于容器的故障排除相当有用，不敢自称原创镜像；
