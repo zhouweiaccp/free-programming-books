@@ -62,3 +62,7 @@ http://stormzhang.com/git/2014/01/29/git-flow/
 5. 总结
 
 以上就是我分享给你们的关于分支的所有知识，一个人你也许感受不到什么，但是实际工作中大都以团队协作为主，而分支是团队协作必备技能，而 Git Flow 是我推荐给你们的一个很流行的分支管理流程，也是我们薄荷团队内部一直在实践的一套流程，希望对你们有借鉴意义。
+
+
+## github gitee backup
+-[](https://gitee.com/oschina/bgit)
