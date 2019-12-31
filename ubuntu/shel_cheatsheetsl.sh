@@ -488,6 +488,12 @@ for i in {1..10}; do
     echo $i
 done
 
+for i in $(seq 1 1 10)  
+do
+echo $i   
+#echo $(expr $i \* 3 + 1);  
+done  
+
 for name [in list]; do
     statements
 done
