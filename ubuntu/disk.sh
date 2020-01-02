@@ -18,3 +18,5 @@ mkfs.ext4 /dev/vdb1  #mkfs.ext4 /dev/vdb1
 # sd：SCSI 磁盘
 # tty：terminals
 # vd：virtio 磁盘
+
+# IOtest.sh  测试
