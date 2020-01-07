@@ -20,3 +20,12 @@ mkfs.ext4 /dev/vdb1  #mkfs.ext4 /dev/vdb1
 # vd：virtio 磁盘
 
 # IOtest.sh  测试
+
+fdisk /dev/sdb 创建磁盘的分区
+3、mkfs -t ext4 /dev/sdb 格式化文件系统
+4、mkdir /data; 
+mount /dev/sdb /data
+
+5、设计开机启动自动加载
+vim /etc/fstab
+/dev/sdb /data ext4 defaults 0 0
