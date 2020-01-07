@@ -1,7 +1,9 @@
 
 
 sudo fdisk -l #查看硬盘的分区 #
- hdparm -i /dev/hda　#查看IDE硬盘信息 #sud
+lsblk #查看已有磁盘
+cat /proc/partitions #查看当前分区表中的分区信息 https://www.linuxidc.com/Linux/2019-08/160262.htm
+hdparm -i /dev/hda　#查看IDE硬盘信息 #sud
 hdparm -I /dev/sda 
 sudo apt-get install blktool #sudo blktool /dev/sda id #　查看STAT硬盘信息 #sudo hdparm -I /dev/sda 或 #sudo apt-get install blktool #sudo blktool /dev/sda id
 df -h #　查看硬盘剩余空间 #df -h #df -H
@@ -46,3 +48,8 @@ vim /etc/fstab
 修复由/etc/fstab文件配制错误引起的系统不能启动问题
 启动后根据提示按 m 进入root命令行页面，更改/etc/fstab文件，然后重新启动。如果不能修改/etc/fstab文件，可能是根分区挂载权限问题，可使用 mount -o remount,rw / 重新挂载根分区，其中rw代表读写权限。修改好后，重启完成修复
 原文链接：https://blog.csdn.net/qq_21950671/article/details/85098022
+
+
+
+## 发现硬盘坏道
+badblocks -s -v -o /root/bb.log /dev/sda
