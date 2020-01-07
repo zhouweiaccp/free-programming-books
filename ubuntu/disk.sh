@@ -29,3 +29,18 @@ mount /dev/sdb /data
 5、设计开机启动自动加载
 vim /etc/fstab
 /dev/sdb /data ext4 defaults 0 0
+
+参数解释：
+
+具体说明，以挂载/dev/sdb1为例：
+：分区定位，可以给UUID或LABEL，例如：UUID=6E9ADAC29ADA85CD或LABEL=software
+：具体挂载点的位置，例如：/data
+：挂载磁盘文件系统类型，linux分区一般为ext4，windows分区一般为ntfs
+：挂载参数，一般为defaults
+：指定分区是否被dump备份，0代表不备份，1代表每天备份，2代表不定期备份。
+：磁盘检查，默认为0，不需要检查
+修改完/etc/fstab文件后，运行命令：sudo mount -a如果没有报错就证明配制好了。如果配置不正确可能会导致系统无法正常启动。
+重启系统 命令：sudo reboot
+修复由/etc/fstab文件配制错误引起的系统不能启动问题
+启动后根据提示按 m 进入root命令行页面，更改/etc/fstab文件，然后重新启动。如果不能修改/etc/fstab文件，可能是根分区挂载权限问题，可使用 mount -o remount,rw / 重新挂载根分区，其中rw代表读写权限。修改好后，重启完成修复
+原文链接：https://blog.csdn.net/qq_21950671/article/details/85098022
