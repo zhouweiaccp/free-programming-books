@@ -21,7 +21,9 @@ mkfs.ext4 /dev/vdb1  #mkfs.ext4 /dev/vdb1
 
 # IOtest.sh  测试
 
-fdisk /dev/sdb 创建磁盘的分区
+fdisk /dev/sdb 创建磁盘的分区 [](https://jingyan.baidu.com/album/aa6a2c14bd8cc70d4c19c4c8.html?picindex=2)
+我们为这个硬盘创建分区，输入fdisk /dev/sdb，依次输入n，p，1，w，其中n分别表示创建一个新分区，p表示分区类型为主分区，1表示分区编号是1，w表示保存
+
 3、mkfs -t ext4 /dev/sdb 格式化文件系统
 4、mkdir /data; 
 mount /dev/sdb /data
