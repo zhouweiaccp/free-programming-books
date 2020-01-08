@@ -14,3 +14,8 @@ C10K问题：最初的服务器是基于进程/线程模型，新到来一个TCP
 
 ## nginx 优化
 https://github.com/zhengwen09/database-profiler
+
+
+
+## 插件
+* [nginx-waf](https://docs.nginx.com/nginx/admin-guide/dynamic-modules/nginx-waf/) Protect against Layer 7 attacks such as SQLi, XSS, CSRF, LFI, RFI, and more. The NGINX web application firewall (WAF) is built on ModSecurity 3.0.  [ngx_lua_waf](https://www.cnblogs.com/Template/p/9668305.html)
