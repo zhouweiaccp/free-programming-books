@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 #https://docs.docker.com/install/linux/docker-ce/ubuntu/
 apt-get install -y \
     apt-transport-https \
@@ -25,6 +25,27 @@ tee /etc/docker/daemon.json <<-'EOF'
 EOF
  systemctl daemon-reload &&systemctl restart docker
   #apt-get purge docker-ce
+
+#sudo groupadd docker     #添加docker用户组
+sudo gpasswd -a $USER docker     #将登陆用户加入到docker用户组中
+newgrp docker     #更新用户组
+docker ps    #测试docker命令是否可以使用sudo正常使用
+
+# docker 更改目录
+function changedir(){
+  # https://www.cnblogs.com/insist-forever/p/11739207.html
+ systemctl stop docker
+ mkdir -p /etc/systemd/system/docker.service.d/
+  mkdir -p /opt/docker/lib/docker/
+ echo "  [Service]">  /etc/systemd/system/docker.service.d/devicemapper.conf
+ echo " ExecStart=">>  /etc/systemd/system/docker.service.d/devicemapper.conf
+ echo " ExecStart=/usr/bin/dockerd --graph=/opt/docker/lib/docker">>  /etc/systemd/system/docker.service.d/devicemapper.conf
+  systemctl daemon-reload
+    systemctl restart docker
+    systemctl enable docker
+docker info
+}
+
 function install_bin(){
   #https://blog.csdn.net/yangqinjiang/article/details/80792313
   #https://www.cnblogs.com/xiaochina/p/10469715.html
