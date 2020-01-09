@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+# 删除安装的软件包
+#yum -y remove `yum list installed | grep docker |awk '{print $1}'`
 #yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo && yum install -y docker-ce-18.03.1.ce &&systemctl start docker && systemctl enable docker
 
 #https://www.cnblogs.com/yufeng218/p/8370670.html
@@ -7,8 +10,50 @@ yum remove docker  docker-common docker-selinux docker-engine
 yum install -y yum-utils device-mapper-persistent-data lvm2
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 if [ `arch` == 'aarch64' ]; then
-wget  https://download.docker.com/linux/centos/7/aarch64/stable/Packages/docker-ce-cli-19.03.5-3.el7.aarch64.rpm
-rpm -ivh docker-ce-cli-19.03.5-3.el7.aarch64.rpm
+# wget  https://download.docker.com/linux/centos/7/aarch64/stable/Packages/docker-ce-cli-19.03.5-3.el7.aarch64.rpm
+# rpm -ivh docker-ce-cli-19.03.5-3.el7.aarch64.rpm
+#https://www.cnblogs.com/xiaochina/p/10469715.html
+wget https://download.docker.com/linux/static/stable/aarch64/docker-18.06.3-ce.tgz
+tar zxf docker-18.06.3-ce.tgz && mv docker/* /usr/bin/ && rm -rf docker*.tgz 
+cat >/etc/systemd/system/docker.service <<-EOF
+[Unit]
+Description=Docker Application Container Engine
+Documentation=https://docs.docker.com
+After=network-online.target firewalld.service
+Wants=network-online.target
+  
+[Service]
+Type=notify
+# the default is not to use systemd for cgroups because the delegate issues still
+# exists and systemd currently does not support the cgroup feature set required
+# for containers run by docker
+ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock
+ExecReload=/bin/kill -s HUP $MAINPID
+# Having non-zero Limit*s causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+# Uncomment TasksMax if your systemd version supports it.
+# Only systemd 226 and above support this version.
+#TasksMax=infinity
+TimeoutStartSec=0
+# set delegate yes so that systemd does not reset the cgroups of docker containers
+Delegate=yes
+# kill only the docker process, not all processes in the cgroup
+KillMode=process
+# restart the docker process if it exits prematurely
+Restart=on-failure
+StartLimitBurst=3
+StartLimitInterval=60s
+  
+[Install]
+WantedBy=multi-user.target
+EOF
+
+chmod +x /etc/systemd/system/docker.service
+systemctl daemon-reload  # //重载systemd下 xxx.service文件
+systemctl start docker    #   //启动Docker
 else
 sudo yum install docker-ce docker-ce-cli containerd.io
 fi
@@ -19,8 +64,16 @@ systemctl start docker
 systemctl enable docker
 docker version
 
-
-
+# 安装2
+# tee /etc/yum.repos.d/docker.repo <<-'EOF'
+# [dockerrepo]
+# name=Docker Repository
+# baseurl=https://yum.dockerproject.org/repo/main/centos/7/
+# enabled=1
+# gpgcheck=1
+# gpgkey=https://yum.dockerproject.org/gpg
+# EOF
+# yum install docker-engin
 
 
 
