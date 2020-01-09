@@ -54,10 +54,17 @@ source /etc/profile
 # n stable
 #https://github.com/nodejs/help/wiki/Installation
 echo "install node bin"
+if [ `arch` == 'aarch64' ]; then
+wget https://nodejs.org/dist/v10.16.0/node-v10.16.0-linux-arm64.tar.xz
+tar -xf node-v10.16.0-linux-arm64.tar.xz -C /usr/local/lib/nodejs
+rm node-v10.16.0-linux-arm64.tar.xz
+else
 wget https://nodejs.org/dist/v10.16.0/node-v10.16.0-linux-x64.tar.xz
 mkdir -p /usr/local/lib/nodejs
 tar -xJf node-v10.16.0-linux-x64.tar.xz -C /usr/local/lib/nodejs 
 rm node-v10.16.0-linux-x64.tar.xz
+fi
+
 echo "export PATH=/usr/local/lib/nodejs/node-v10.16.0-linux-x64/bin:$PATH" >> /etc/profile
 source /etc/profile
 
