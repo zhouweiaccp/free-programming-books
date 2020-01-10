@@ -1,4 +1,6 @@
 #!/bin/bash
+
+# http://arm.cloud-onlinelab.cn/     arm kunpeng
 #https://github.com/overnote/serverside/blob/master/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/00-Mysql%E5%AE%89%E8%A3%85.md
 # 关闭防火墙
 #systemctl stop firewalld.service        # 停止firewall
