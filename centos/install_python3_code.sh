@@ -31,7 +31,27 @@ efo
 pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
 pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
 
+wget https://twistedmatrix.com/Releases/Twisted/19.10/Twisted-19.10.0.tar.bz2
+tar -xjf Twisted-19.10.0.tar.bz2
+cd Twisted-19.10.0
+python3  setup.py install
 pip3 install scrapy --user
+
+
+# gcc  安装过程
+#  wget https://obs-mirror-ftp4.obs.cn-north-4.myhuaweicloud.com/genome-software/gcc-9.2.0.tar.gz
+#  tar -C /opt/software/ -zxf gcc-9.2.0.tar.gz
+#  cd /opt/software/gcc-9.2.0/
+#   yum install -y *lbzip2*
+#  ./contrib/download_prerequisites
+# mkdir build
+# cd build/
+# ../configure --enable-checking=release --enable-languages=c,c++ --disable-multilib
+# make
+# make install
+# cp /usr/local/bin/* /usr/bin/
+# gcc --version
+# g++ --version
 # pip install --upgrade pip  -i http://pypi.douban.com/simple/
 
 # yum install -y epel-release 

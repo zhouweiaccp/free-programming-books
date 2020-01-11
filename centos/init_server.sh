@@ -67,7 +67,7 @@ rm node-v10.16.0-linux-x64.tar.xz
 echo "export PATH=/usr/local/lib/nodejs/node-v10.16.0-linux-x64/bin:$PATH" >> /etc/profile
 fi
 
-
+chmod 755 -R /usr/local/lib/nodejs
 source /etc/profile
 
 ln -s /usr/local/lib/nodejs/node-v10.16.0-linux-x64/bin/node /usr/bin/node
