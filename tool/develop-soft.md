@@ -2,6 +2,7 @@
 # Table of Contents
 * [apm](#apm)
 * [awesome](#awesmoe)
+* [git](#git)
 * [规范](#规范)
 * [mysql工具](#mysql工具)
 * [mssql数据库文档生成](#mssql数据库文档生成)
@@ -30,6 +31,15 @@
 * [pinpoint](https://github.com/naver/pinpoint)
 * [incubator-skywalking](https://github.com/apache/incubator-skywalking)  参考https://github.com/JaredTan95/skywalking-docker  https://github.com/OpenSkywalking/skywalking-netcore
 * [学习链接](https://cloud.tencent.com/developer/article/1345706)
+
+
+## git
+* [gitolite](https://github.com/sitaramc/gitolite) perl 权限管理
+* [gitosis](https://github.com/res0nat0r/gitosis)  python 权限管理
+* []() 
+* []() 
+* []() 
+
 
 ## awesome
 * [https://github.com:zhouweiaccp/awesome-dotnet.git](awesome-dotnet)
