@@ -1,8 +1,9 @@
 
 tracert www.baidu.com
+nslookup  www.baidu.com  用于测试或解决DNS服务器问题，该命令用两种模式:(1)非交互式模式；(2)交互式模式
+nbtstat -n  命令使用TCP/IP上的NetBIOS显示协议统计和当前TCP/IP连接，使用这个命令你可以得到远程主机的NETBIOS信息，比如用户名、所属的工作组、网卡的MAC地址等
 
-路由信息
-route print
+route print  路由信息
 route -p add 134.105.0.0 mask 255.255.0.0 134.105.64.1  意思是：所有需要发往134.105.0.0/16地址段的IP数据包，全部由134.105.64.1路径转发。
 route delete 10.0.0.0 mask 255.0.0.0 192.168.1.1 则是删除上面添加的路
 

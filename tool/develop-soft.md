@@ -2,6 +2,7 @@
 # Table of Contents
 * [apm](#apm)
 * [awesome](#awesmoe)
+* [curl](#curl)
 * [git](#git)
 * [规范](#规范)
 * [mysql工具](#mysql工具)
@@ -32,6 +33,10 @@
 * [incubator-skywalking](https://github.com/apache/incubator-skywalking)  参考https://github.com/JaredTan95/skywalking-docker  https://github.com/OpenSkywalking/skywalking-netcore
 * [学习链接](https://cloud.tencent.com/developer/article/1345706)
 
+## curl
+* [](https://curl.haxx.se/windows/dl-7.68.0/curl-7.68.0-win64-mingw.zip) https://curl.haxx.se/windows/
+* []() 
+* []() 
 
 ## git
 * [gitolite](https://github.com/sitaramc/gitolite) perl 权限管理
