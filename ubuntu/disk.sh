@@ -2,6 +2,7 @@
 
 sudo fdisk -l #查看硬盘的分区 #
 lsblk #查看已有磁盘
+df -T  #可以用来查看分区的文件系统
 cat /proc/partitions #查看当前分区表中的分区信息 https://www.linuxidc.com/Linux/2019-08/160262.htm
 hdparm -i /dev/hda　#查看IDE硬盘信息 #sud
 hdparm -I /dev/sda 
