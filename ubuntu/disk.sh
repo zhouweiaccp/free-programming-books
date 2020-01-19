@@ -54,3 +54,14 @@ vim /etc/fstab
 
 ## 发现硬盘坏道
 badblocks -s -v -o /root/bb.log /dev/sda
+
+
+## nas 
+NAS，网络附加存储，中心词“存储”，是的，它是一个存储设备。比如我装个openfiler或freenas系统，再加几块硬盘，对外提供NAS功能，那么这个openfiler或freenas服务器就变成了很简单的“NAS设备”。当然，如果是对于小公司来说，一个openfiler做NAS设备足够了。
+而CIFS，是微软提出的，全称叫通用internet文件共享，它是一种协议。NFS，网络文件共享，也是一种协议。那两者之间有什么区别呢？一句话，CIFS用于UNIX和windows间共享，而NFS用于UNIX和UNIX之间共享。
+所以，NAS是一个设备，一个功能。而CIFS/NFS是一种协议。可以在NAS上启用CIFS/NFS协议，这样，用户就能使用CIFS/NFS协议进行访问了。
+yum -y install cifs-utils samba-common
+mount -t cifs -o username="test",password="password123" //nasserver01.cn.extech/sharedrive /mnt/sharedrive
+
+10.82.113.173:/vx/RA_20130906   /nas01   nfs     rw,hard,nointr,rsize=65536,wsize=65536,tcp,noac,nolock,vers=3  0       0
+10.82.113.173:/vx/sz_gerp_nas01   /gerpnas   nfs     rw,hard,nointr,rsize=65536,wsize=65536,tcp,noac,nolock,vers=3  0       0

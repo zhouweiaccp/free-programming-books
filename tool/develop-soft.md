@@ -25,6 +25,7 @@
 * [手机测试](#手机测试)
 * [代理](#代理)
 * [下载歌曲](#下载歌曲)
+* [私有同步云盘](#私有同步云盘)
 
 
 ## apm
@@ -216,6 +217,16 @@ https://github.com/fatedier/frp
 * []()
 
 
+
+## 私有同步云盘
+* [Nextcloud](https://docs.nextcloud.com/server/18/admin_manual/installation/)php 开发Nextcloud是一款开源免费的私有云存储网盘项目，可以让你快速便捷地搭建一套属于自己或团队
+* [Seafile](https://github.com/haiwen/seafile) C开发，有一键部署脚本，无论是windows还是linux平台部署都比较简单，但是linux的一键脚本还不够自动化，开机启动，webdav等功能需要手动配置脚本，好在国产程序文档比较清楚，有点基础的一般不难配置成功  https://cloud.seafile.com/published/seafile-manual-cn/deploy/README.md
+* [Cloudreve](https://github.com/cloudreve/Cloudreve)支持多家云存储的云盘系统 (A project helps you build your own cloud in minutes) https://cloudreve.org
+* [go-fastdfs](https://github.com/sjqzhang/go-fastdfs)
+* []()
+* []()
+* []()
+* []()
 
 -[awesome-http](https://github.com/semlinker/awesome-http) HTTP、HTTP Cache、CORS、HTTPS、HTTP/2、Fiddler、WireShark、Web Crawler
 -[awesome-spider](https://github.com/facert/awesome-spider) 爬虫集合
