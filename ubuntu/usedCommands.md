@@ -406,6 +406,7 @@ iwconfig eth1 show configuration of a wireless network card
 hostname show hostname 
 host www.example.com lookup hostname to resolve name to ip address and viceversa 
 nslookup www.example.com lookup hostname to resolve name to ip address and viceversa 
+dig +trace www.baidu.com
 whois www.example.com lookup on Whois database
 
 全能系统监控工具dstat
