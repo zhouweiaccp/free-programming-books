@@ -80,6 +80,12 @@ http://ngrok.ciqiuwl.cn/
 https://github.com/PassByYou888/ZServer4D  学习资料
 https://github.com/cnlh/nps
 https://github.com/fatedier/frp
+ZeroTier，这个限制到100个接入电脑，而且是开源的。还能给你分配IPv6的地址。但常年实测稳定性比蒲公英稍差。因为内网穿透连接初期要到一个中转服务器拿到底层链路信息，ZeroTier和TeamViewer都要到国外绕一下，没有国内蒲公英（就是花生壳公司）的流畅
+openvpn
+teamviewer/向日葵/pcanywhere都是通过本地登录的方式实现远程连接，如果目标端进入屏保状态往往就会卡住。远程桌面是不一样的原理，跟本地登录无关（实际上是互斥的，不改注册表，同一个账户远程登录了本地就会退出），只要机器取消睡眠设置，不会有TV那样的问题
+目前市面上做SD-WAN的提供商差不多有十家，他们分别是Aryaka Networks、Cisco Meraki、CiscoViptela、Citrix、Cradlepoint、Riverbed、Silver Peak、Talari、VMware和Versa Networks。IT团队可以根据供应商当前的SD-WAN技术
+- [SD-WAN]() software-defined networking in a wide area network 
+   - [](蒲公英VPN)
 
 ## mysql工具
 * [mycli](https://github.com/dbcli/mycli)
