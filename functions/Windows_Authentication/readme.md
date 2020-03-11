@@ -39,6 +39,12 @@ TCP 139	用户和计算机身份验证，复制	DFSN，NetBIOS会话服务，Net
 
 
 
+## kerberos
+- [kerberos](https://www.cnblogs.com/artech/archive/2011/01/24/kerberos.html)  
+- [](https://blog.csdn.net/wy_97/article/details/87649262)
+- [authentication-concepts](https://docs.microsoft.com/zh-cn/windows/win32/secauthn/basic-authentication-concepts)
+- [NTLM](https://www.cnblogs.com/artech/archive/2011/01/25/NTLM.html)
+
 
 https://docs.microsoft.com/zh-cn/archive/blogs/mist/windows-authentication-http-request-flow-in-iis
 https://support.microsoft.com/en-us/help/973917/description-of-the-update-that-implements-extended-protection-for-auth
