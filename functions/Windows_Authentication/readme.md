@@ -1,6 +1,41 @@
 
 
 
+在由基于Windows Server 2003的域控制器组成的域中，默认的动态端口范围为1025至5000。Windows Server 2008 R2和Windows Server 2008符合互联网号码分配机构（IANA）的建议，增加了动态端口连接范围。新的默认开始端口是49152，并且新的默认端口是65535.因此，您必须增加防火墙中的远程过程调用（RPC）端口范围。如果您的混合域环境包含Windows Server 2008 R2和Windows Server 2008服务器以及Windows Server 2003，请允许通过端口1025至5000以及49152至65535的流量。
+
+当您在下表中的协议和端口列中看到"TCP Dynamic"时，它指的是端口1025到5000（Windows Server 2003的默认端口范围）以及端口49152到65535，这是从Windows Server 2008开始的默认端口范围。
+
+您可以使用以下的netsh命令运行Windows Server 2008 的计算机上查看的动态端口范围：
+
+netsh int ipv4 show dynamicport tcp
+
+netsh int ipv4 show dynamicport udp
+
+netsh int ipv6 show dynamicport tcp
+
+netsh int ipv6 show dynamicport udp
+
+TCP和UDP 389	目录，复制，用户和计算机认证，组策略，信任	LDAP
+TCP 636	目录，复制，用户和计算机认证，组策略，信任	LDAP SSL
+TCP 3268	目录，复制，用户和计算机认证，组策略，信任	LDAP GC
+TCP 3269	目录，复制，用户和计算机认证，组策略，信任	LDAP GC SSL
+TCP和UDP 88	用户和计算机身份验证，林级信任	Kerberos
+TCP和UDP 53	用户和计算机认证，名称解析，信任	DNS
+TCP和UDP 445	复制，用户和计算机身份验证，组策略，信任	SMB，CIFS，SMB2，DFSN，LSARPC，NbtSS，NetLogonR，SamR，SrvSvc
+TCP 25	复制	SMTP
+TCP 135	复制	RPC，EPM
+TCP Dynamic	复制，用户和计算机身份验证，组策略，信任	RPC，DCOM，EPM，DRSUAPI，NetLogonR，SamR，FRS
+TCP 5722	文件复制	RPC，DFSR（SYSVOL）
+UDP 123	Windows时间，信任	Windows Time
+TCP和UDP 464	复制，用户和计算机认证，信任	Kerberos更改/设置密码
+UDP Dynamic	组策略	DCOM，RPC，EPM
+UDP 138	DFS，组策略	DFSN，NetLogon，NetBIOS数据报服务
+TCP 9389	AD DS Web服务	SOAP
+UDP 67和UDP 2535	DHCP	DHCP，MADCAP
+	（DHCP不是核心的AD DS服务，但它经常出现在许多AD DS部署中。）	
+UDP 137	用户和计算机认证，	NetLogon，NetBIOS名称解析
+TCP 139	用户和计算机身份验证，复制	DFSN，NetBIOS会话服务，NetLogon
+
 
 
 
