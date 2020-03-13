@@ -14,3 +14,7 @@ https://cloud.tencent.com/developer/article/1398971 Linux路由实践」之实�
 
 ICMP 监测 电力谐波和UPS电源也是列入定期检查的内容  https://wenku.baidu.com/view/29493f7327284b73f242506b.html
 IP地址漂移的实现与原理   https://www.bbsmax.com/A/x9J2ZnBZJ6/
+
+
+## 显示 IP 地址和其他信息
+netsh interface ipv4 show config
