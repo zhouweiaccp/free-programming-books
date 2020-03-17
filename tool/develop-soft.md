@@ -159,6 +159,8 @@ teamviewer/向日葵/pcanywhere都是通过本地登录的方式实现远程连�
 * [wrk]( https://github.com/wg/wrk.git)
 * [Locust]()  yum -y install python-pip
   - [用法](https://www.cnblogs.com/grizz/p/11570801.html)
+* [SuperBenchmarker]( https://github.com/aliostad/SuperBenchmarker) netcore  [](https://www.cnblogs.com/yyfh/p/12447263.html)
+
 
 ## 渗透测试工具
 * [burp suite](https://portswigger.net)
