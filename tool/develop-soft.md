@@ -11,6 +11,7 @@
 * [microservice](#microservice)
 * [mongodb工具](#mongodb工具)
 * [.net工具](#.net工具)
+* [nuget](#nuget)
 * [sqlite工具](#sqlite工具)
 * [内网穿透](#内网穿透)
 * [调试工具](#调试工具)
@@ -127,6 +128,10 @@ teamviewer/向日葵/pcanywhere都是通过本地登录的方式实现远程连�
 ## .net工具
 * [ILSpy.exe]()
 * [dnSpy.exe]()
+
+## nuget
+* [nexus-repository](https://www.sonatype.com/product-nexus-repository) [](https://www.sonatype.com/nexus-repository-oss)
+* []()
 
 
 ## sqlite工具
