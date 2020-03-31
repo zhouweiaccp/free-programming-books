@@ -225,7 +225,10 @@ teamviewer/向日葵/pcanywhere都是通过本地登录的方式实现远程连�
 ##  服务器
 * [iperf](https://iperf.fr/iperf-download.php) 服务器之间带宽测试
 * [zabbix]()
-* []()
+* [jumpserver](https://docs.jumpserver.org/zh/docs/setup_by_prod.html) 管理后台, 管理员可以通过 Web 页面进行资产管理、用户管理、资产授权等操作, 用户可以通过 Web 页面进行资产登录, 文件管理等操作
+koko 为 SSH Server 和 Web Terminal Server 。用户可以使用自己的账户通过 SSH 或者 Web Terminal 访问 SSH 协议和 Telnet 协议资产
+Luna 为 Web Terminal Server 前端页面, 用户使用 Web Terminal 方式登录所需要的组件
+Guacamole 为 RDP 协议和 VNC 协议资产组件, 用户可以通过 Web Terminal 来连接 RDP 协议和 VNC 协议资产 (暂时只能通过 Web Terminal 来访问)
 
 ##  手机测试
 * [Appium](http://appium.io/) 一个开源测试自动化框架,可用于原生,混合和移动Web应用程序测试。 它使用WebDriver协议驱动iOS,Android和Windows应
