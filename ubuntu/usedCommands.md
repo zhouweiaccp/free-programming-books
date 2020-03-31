@@ -6,6 +6,9 @@ watch -n 15 who
 4.look 命令用于搜索以某个特定字符串开头的单词
 
 
+生成随机字符串
+cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 50
+
 系统信息 
 lscpu arch 显示机器的处理器架构(1) 
 uname -m 显示机器的处理器架构(2) 
