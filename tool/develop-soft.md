@@ -140,6 +140,18 @@ teamviewer/向日葵/pcanywhere都是通过本地登录的方式实现远程连�
 
 ## 调试工具
 * [winddbg](https://docs.microsoft.com/zh-cn/windows-hardware/drivers/debugger/debugger-download-tools)
+* [PerfView]()基于Windows事件跟踪（ETW）事件。这是一个内置的日志记录系统，运行速度非常快，Windows的每个部分都可以使用它。一切都将事件记录到ETW，包括内核，Windows操作系统，CLR运行时，IIS，ASP.NEt框架，WPF等
+* [Performance Monitor (PerfMon)]()Windows中有一种称为“性能计数器”的内置机制。这些计数器可让你根据计算机上发生的事情跟踪大量有用的指标。这些可能是系统范围内的指标，也可能是针对特定过程的指标
+* [ProcDump]()保存转储文件的命令行工具。它可以立即或在触发器上生成转储。例如，在崩溃或挂起时创建转储。这是我推荐的用于捕获转储的工具
+* [Process Monitor]()允许你监视流程活动事件。具体的说，你可以弹道注册表事件，文件事件，网络事件，线程活动和性能分析事件。如果你想找出你的过程涉及哪些文件或注册表，那么ProcMon可以为你提供帮助
+* [SysInternals Suite]()Windows软件进行故障排除和监视的实用程序。它包括一些我们调试所需的最重要的工具。我建议下载整个套件并将其保存在易于命令行键入的位置
+* [SciTech's .NET Memory Profiler](https://memprofiler.com)
+* [dotPeek]()
+* [dotTrace]()
+* [dnSpy]()
+* []()
+* []()
+* [](https://www.cnblogs.com/sesametech-netcore/p/12365896.html) 10常用调试工具
 
 ## 团队文档协作
 * [GitBook Editor](https://www.gitbook.com/editor)   GitBook + GitLab 团队文档协作 https://www.jianshu.com/p/e74dad6845d1
