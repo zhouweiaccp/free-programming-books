@@ -20,3 +20,7 @@ PriceDate DateTime
 SET IDENTITY_INSERT Orders ON
 INSERT INTO Orders (OrderID ,PriceDate ) VALUES(1,GETDATE())
 SET IDENTITY_INSERT Orders OFF
+
+
+## 客户端下载
+[](https://download.microsoft.com/download/f/e/b/feb0e6be-21ce-4f98-abee-d74065e32d0a/SSMS-Setup-CHS.exe)
