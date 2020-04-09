@@ -9,3 +9,14 @@ GO
 ALTER LOGIN sa WITH PASSWORD = 'password' unlock, check_policy = off,
 check_expiration = off ;
 GO
+
+
+
+## 主键插入IDENTITY
+CREATE TABLE Orders(
+OrderID    INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+PriceDate DateTime
+)
+SET IDENTITY_INSERT Orders ON
+INSERT INTO Orders (OrderID ,PriceDate ) VALUES(1,GETDATE())
+SET IDENTITY_INSERT Orders OFF
