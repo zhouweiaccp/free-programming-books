@@ -16,6 +16,7 @@
 * [内网穿透](#内网穿透)
 * [调试工具](#调试工具)
 * [团队文档协作](#团队文档协作)
+* [原型图](#原型图)
 * [window_shell](#window_shell)
 * [测试工具](#测试工具)
 * [网络测试](#网络测试)
@@ -159,6 +160,25 @@ teamviewer/向日葵/pcanywhere都是通过本地登录的方式实现远程连�
 * [hexo](https://hexo.io/zh-cn/docs/)是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页   https://app.netlify.com/
 * [Jekyll]()
 * [bookstack](https://www.bookstack.cn/read/help/opensource.md)基于MinDoc，使用Beego开发的在线文档管理系统，功能类似Gitbook和看云
+
+
+## 原型图
+- [axure](https://www.axure.com/)
+- [Sketch]()好用的插件：包括标注、自动生成内容、icon、批量替换等等和设计、甚至开发之间，更顺畅的工作流
+- [naotu](https://naotu.baidu.com/)
+- [processon](https://www.processon.com/)
+- [Blumind]()
+- [XMIND]()
+- [VISIO]()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+
+
+
 
 ## window_shell
 - [Kitty](http://www.9bis.net/kitty/) - 高级 Putty (SSH 和 telnet 客户端)。
