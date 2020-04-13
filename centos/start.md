@@ -20,3 +20,7 @@ ln -s /usr/local/rar/unrar /usr/local/bin/unrar
 
 
 yum install zip unzip
+
+
+## perf性能分析工具
+yum install -y perf
