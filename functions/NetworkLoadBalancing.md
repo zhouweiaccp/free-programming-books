@@ -22,4 +22,19 @@ nlb要求mac地址的伪传输必须是打开的
 
 
 ## iis  windowsAuthentication
+[](https://stackoverflow.com/questions/8616818/integrated-windows-auth-ntlm-on-a-mac-using-google-chrome-or-safari)
 appcmd set config /section:windowsAuthentication /-providers.[value='Negotiate']
+
+!/bin/bash
+cd /Applications/Google\ Chrome.app/Contents/MacOS/
+if [ -f 'Google Chrome.bin' ];
+then
+   echo "Already Modified"
+else
+   sudo chmod u+wr ./
+   sudo mv 'Google Chrome' 'Google Chrome.bin'
+   sudo echo "#!/bin/bash" > "Google Chrome"
+   sudo echo 'exec /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome.bin --args --auth-server-whitelist="*DOMAIN.TLD" --auth-negotiate-delegate-whitelist="*DOMAIN.TLD" --auth-schemes="digest,ntlm,negotiate"' >> "Google Chrome"
+   sudo chmod a+x 'Google Chrome'
+   echo "NTLM Will now work in chrome"
+fi
