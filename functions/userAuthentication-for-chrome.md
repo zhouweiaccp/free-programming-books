@@ -5,7 +5,8 @@ https://specopssoft.com/blog/configuring-chrome-and-firefox-for-windows-integrat
 https://stackoverflow.com/questions/52895711/chrome-browser-enable-integrated-windows-authentication-auto-logon
 https://stackoverflow.com/questions/7800938/how-to-enable-auto-logon-user-authentication-for-google-chrome
 
-
+## 
+gpmc.msc 是域控端管理组策略的工具 gpedit.msc 是系统自带工具
 
 http://woshub.com/how-to-configure-google-chrome-via-group-policies/  
 
