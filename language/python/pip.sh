@@ -1,5 +1,11 @@
 #!/bin/bash
 #https://blog.csdn.net/sinat_21591675/article/details/82770360
+# (b) windows下，直接在user目录中创建一个pip目录，如：C:\Users\xx\pip，然后新建文件pip.ini，即 %HOMEPATH%\pip\pip.ini，在pip.ini文件中输入以下内容（以豆瓣镜像为例）：
+
+# [global]
+# index-url = http://pypi.douban.com/simple
+# [install]
+# trusted-host = pypi.douban.com
 mkdir ~/.pip
 cat > ~/.pip/pip.conf<<efo
 [global]
