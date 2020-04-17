@@ -8,6 +8,8 @@
   - [ASP.NET-Core---Intermediate](https://channel9.msdn.com/Series/ASP.NET-Core---Intermediate) 官网视频站点
   - [aspnetcore](https://gitter.im/DotNetStudyGroup/aspnetcore) 聊天
 - [dotnet-developer-projects](https://github.com/microsoft/dotnet/blob/master/dotnet-developer-projects.md#messaging)NET Open Source Developer Projects
-- []()
+- [ews-managed-api](https://github.com/OfficeDev/ews-managed-api/blob/master/README.md)
+   - [how-to-set-the-ews-service-url-by-using-the-ews-managed-api](https://docs.microsoft.com/en-us/exchange/client-developer/exchange-web-services/how-to-set-the-ews-service-url-by-using-the-ews-managed-api) https://computername.domain.contoso.com/EWS/Exchange.asmx
+   - [Exchange-2013-101-Code](http://code.msdn.microsoft.com/Exchange-2013-101-Code-3c38582c)
 - []()
 - []()

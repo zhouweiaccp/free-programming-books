@@ -22,3 +22,4 @@ sudo apt-get install build-essential python3-dev libssl-dev libffi-dev libxml2 l
 
 ## 项目
 * [awesome-python](git@github.com:zhouweiaccp/awesome-python.git) python 学习练习
+* [JobSpiders](https://github.com/wqh0109663/JobSpiders) 基于Scrapy框架的Python3就业信息Jobspiders爬虫
