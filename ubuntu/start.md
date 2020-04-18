@@ -127,6 +127,13 @@ mount rw -o remount /
 fsck.ext4 -y /dev/vda
 
 
+
+## dns缓存清理
+nscd restart
+nscd -i hosts
+
+yum -y install nscd
+
 ## perf性能分析工具
 apt install -y linux-tools-common
 
