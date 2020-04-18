@@ -18,3 +18,7 @@ IP地址漂移的实现与原理   https://www.bbsmax.com/A/x9J2ZnBZJ6/
 
 ## 显示 IP 地址和其他信息
 netsh interface ipv4 show config
+
+
+##  dns缓存清理
+ipconfig/flushdns
