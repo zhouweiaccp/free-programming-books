@@ -1,6 +1,21 @@
 
 
 
+
+
+
+
+## windows server 2008 R2 enterprise AD域控服务器安装
+- [https://blog.51cto.com/12476193/2123191](https://blog.51cto.com/12476193/2123191)  dcpromo
+
+
+
+
+
+
+
+
+
 在由基于Windows Server 2003的域控制器组成的域中，默认的动态端口范围为1025至5000。Windows Server 2008 R2和Windows Server 2008符合互联网号码分配机构（IANA）的建议，增加了动态端口连接范围。新的默认开始端口是49152，并且新的默认端口是65535.因此，您必须增加防火墙中的远程过程调用（RPC）端口范围。如果您的混合域环境包含Windows Server 2008 R2和Windows Server 2008服务器以及Windows Server 2003，请允许通过端口1025至5000以及49152至65535的流量。
 
 当您在下表中的协议和端口列中看到"TCP Dynamic"时，它指的是端口1025到5000（Windows Server 2003的默认端口范围）以及端口49152到65535，这是从Windows Server 2008开始的默认端口范围。
