@@ -157,6 +157,15 @@ sudo groupadd docker     #添加docker用户组
 sudo gpasswd -a $USER docker     #将登陆用户加入到docker用户组中
 newgrp docker     #更新用户组
 
+## network "school-service-net" is declared as external, but could not be found. You need to create a swarm-scoped network before the stack is deployed
+docker network create --driver overlay school-service-net
+
+## user_defined_bridge" is declared as external, but it is not in the right scope: "local" instead of "swarm"
+docker network create --scope=swarm --driver=bridge --subnet=172.22.0.0/16 --gateway=172.22.0.1 user_defined_bridge
+
+## endpoint-mode:dnsrr
+服务器是无法直接通过端口映射被外边访问的
+
 swarm join-token ：可以查看或更换join token。
 docker swarm join-token worker：查看加入woker的命令。
 docker swarm join-token manager：查看加入manager的命令

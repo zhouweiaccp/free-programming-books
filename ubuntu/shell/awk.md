@@ -19,7 +19,20 @@ RS                 控制记录分隔符
 $0变量是指整条记录。$1表示当前行的第一个域,$2表示当前行的第二个域,......以此类推。
 $NF是number finally,表示最后一列的信息，跟变量NF是有区别的，变量NF统计的是每行列的总数
 
-
+## 其他函数
+toupper()：字符转为大写。
+tolower()：字符转为小写。
+length()：返回字符串长度。
+substr()：返回子字符串。 
+substr($1,2)：返回第一个字段，从第2个字符开始一直到结束。 
+substr($1,2,3)：返回第一个字段，从第2个字符开始开始后的3个字符。 
+sin()：正弦。
+cos()：余弦。
+sqrt()：平方根。
+rand()：随机数。
+### demo
+ echo "aa BB  cc dd  ee ff" | awk  '{print length($2)}'
+ echo "aa BB  cc dd  ee ff" | awk  '{print tolower($2)}'
 
 ## 统计/etc/passwd:文件名，每行的行号，每行的列数，对应的完整行内容:
 awk -F: '{printf ("filename:%10s, linenumber:%3s,column:%3s,content:%3f\n",FILENAME,NR,NF,$0)}' /etc/passwd
