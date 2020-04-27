@@ -196,3 +196,12 @@ docker service rm       #删除某个服务（-f强制删除）
 docker service scale    #设置某个服务个数
 docker service update   #更新某个服务
 docker service update --force --image 192.168.251.78/edoc2v5/orgsync:20200427003 --replicas=1 zhou_orgsync  []（https://docs.docker.com/engine/reference/commandline/service_update/）
+
+## 清理
+docker container prune # 删除所有退出状态的容器
+docker volume prune # 删除未被使用的数据卷
+docker image prune # 删除 dangling 或所有未被使用的镜像
+删除容器：docker container rm $(docker container ls -a -q)
+删除镜像：docker image rm $(docker image ls -a -q)
+删除数据卷：docker volume rm $(docker volume ls -q)
+删除 network：docker network rm $(docker network ls -q)
