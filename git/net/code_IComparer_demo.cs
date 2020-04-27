@@ -1,4 +1,43 @@
 
+
+
+## func1
+- [](https://stackoverflow.com/questions/27597770/using-icomparert-comparet-t-in-c-sharp)
+
+
+
+## func2 字符串排序
+-[](https://docs.microsoft.com/en-us/dotnet/api/system.stringcomparer?view=netframework-4.8)
+  List<string> list = new List<string>();
+
+        // Get the tr-TR (Turkish-Turkey) culture.
+        CultureInfo turkish = new CultureInfo("tr-TR");
+
+        // Get the culture that is associated with the current thread.
+        CultureInfo thisCulture = Thread.CurrentThread.CurrentCulture;
+
+        // Get the standard StringComparers.
+        StringComparer invCmp =   StringComparer.InvariantCulture;
+        StringComparer invICCmp = StringComparer.InvariantCultureIgnoreCase;
+        StringComparer currCmp = StringComparer.CurrentCulture;
+        StringComparer currICCmp = StringComparer.CurrentCultureIgnoreCase;
+        StringComparer ordCmp = StringComparer.Ordinal;
+        StringComparer ordICCmp = StringComparer.OrdinalIgnoreCase;
+  list.Sort(currCmp);
+
+
+
+var comparer = Comparer<T>.Default
+var comparer = Comparer<string>.Create
+(
+    (str1, str2) => str1.Length.CompareTo(str2.Length)
+);
+
+Comparison<string> comparison = (str1, str2) => str1.Length.CompareTo(str2.Length);
+var comparer = Comparer<string>.Create(comparison);
+
+
+## fuc2
 //  class A1 { 
 //     public string groupname { get; set; }
 //         public string groupcode { get; set; }
@@ -13,8 +52,12 @@
 //             list.Add(new A1 { account = "7a", groupcode = "bb", groupname = "bb" });
 // list.Sort(new A1Compareer());
 
-
+/**
+https://docs.microsoft.com/en-us/dotnet/api/system.stringcomparer?view=netframework-4.8  字符串排序默认实现
+https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icomparer-1.compare?view=netframework-4.8
+*/
 //using System.Collections.Generic;
+//包括数字，按小到大
     public class A1Compareer : IComparer<A1>
     {
           int IComparer<A1>.Compare( A1 x,  A1 y)
