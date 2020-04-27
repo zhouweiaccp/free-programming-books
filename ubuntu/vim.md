@@ -275,3 +275,10 @@ tab+ < > 左右移
 
 #  替换每一行中所有
 :%s/vivian/sky/g（等同于 :g/vivian/s//sky/g） 替换每一行中所有 vivian 为 sky
+
+## 将命令结果插入文件：
+     运行 :r! command ， command命令的结果插入光标下一行
+            :nr! command,  command命令的结果插入n行后。
+            
+## 暂时离开vim来执行命令：
+     运行:r sh，使用完sh后exit又可以返回vim   
