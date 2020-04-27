@@ -195,3 +195,4 @@ docker service ls       #查看所有服务详情
 docker service rm       #删除某个服务（-f强制删除）
 docker service scale    #设置某个服务个数
 docker service update   #更新某个服务
+docker service update --force --image 192.168.251.78/edoc2v5/orgsync:20200427003 --replicas=1 zhou_orgsync  []（https://docs.docker.com/engine/reference/commandline/service_update/）
