@@ -199,3 +199,7 @@ find /home -type d -print -exec ls {} \;
 
 ##  查找目录下所有config  中有url
 find -type f -name 'config' | xargs cat {} \ |grep git |awk -F '=' '{print $2}'
+
+## 删除乱码文件
+ls -i
+find . -inum 32983551 -delete
