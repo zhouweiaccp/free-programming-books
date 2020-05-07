@@ -236,7 +236,7 @@ netstat -i                # 显示网卡信息
 netstat -rn               # 显示当前系统路由表，同 route -n
 ss -an                    # 比 netstat -an 更快速更详细
 ss -s                     # 统计 TCP 的 established, wait 等
-
+netstat -lntp or ss -plat  # 网络端口 https://github.com/jlevy/the-art-of-command-line#system-debugging
 wget {url}                # 下载文件，可加 --no-check-certificate 忽略 ssl 验证
 wget -qO- {url}           # 下载文件并输出到标准输出（不保存）
 curl -sL {url}            # 同 wget -qO- {url} 没有 wget 的时候使用

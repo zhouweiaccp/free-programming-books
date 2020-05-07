@@ -47,5 +47,8 @@ dotnet clean --configuration Debug
 dotnet publish -c Release -o obj/Docker/publish --framework netcoreapp2.2 --runtime win10-x64 --self-contained true test1.csproj
 
 
-##createdump 内存分析
+## createdump 内存分析
 /usr/share/dotnet/shared/Microsoft.NETCore.App/2.2.4/createdump -u -f 
+
+## netcore5.0
+- [release-notes](https://github.com/dotnet/core/tree/master/release-notes/5.0)

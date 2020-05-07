@@ -203,3 +203,6 @@ find -type f -name 'config' | xargs cat {} \ |grep git |awk -F '=' '{print $2}'
 ## 删除乱码文件
 ls -i
 find . -inum 32983551 -delete
+
+## 查询大于1M ，当前目录 并删除
+ find ./ -size +1M -maxdepth 1  -exec ls -alh {} \; -exec rm {} \;
