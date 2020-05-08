@@ -11,6 +11,41 @@ https://download.microsoft.com/download/5/C/3/5C3770A3-12B4-4DB4-BAE7-99C624EB32
 
 https://docs.microsoft.com/zh-cn/dotnet/framework/tools/sos-dll-sos-debugging-extension   .net调试命令
 https://www.cnblogs.com/bluesummer/p/8125013.html
+
+
+
+
+
+
+
+## 一个非常效率的Windbg 插件，Mex
+
+使用介绍：[https://www.cnblogs.com/tianqing/p/9369693.html]
+
+https://blogs.msdn.microsoft.com/luisdem/2016/07/19/mex-debugging-extension-for-windbg-2/
+
+下载地址：
+https://www.microsoft.com/en-us/download/details.aspx?id=53304
+
+下载之后，解压缩，有两个目录，X64和X86，大家根据自己的需要进行加载，目前我们主要用X64。当然也可以直接把这个扩展拷贝到Windbg运行目录中。
+
+这里，我们先show一下Windbg加载mex扩展：
+
+0:000> .load D:\Mex\x64\mex.dll
+Mex External 3.0.0.7172 Loaded!
+
+
+## 按例
+- [Windbg程序调试系列2](https://www.cnblogs.com/tianqing/p/9875667.html)Windbg程序调试系列2-内存泄露问题
+
+多核CPU情况下，分析每个GC托管堆的大小 !eeheap –gc
+查询内存中各类对象的总个数和总内存占用 !dumpheap –stat
+查询内存中大对象的个数和对象大小 !dumpheap –stat -mt -min 5000 -max 100000
+如果某一类或者几类对象的内存总占用很多，分析此类对象 !dumpheap –mt ***
+多次采样查看步骤4中对象的gcroot !gcroot addr
+打断gcroot中任何一个链条，释放对象引用
+
+
 2.命令
 1.基本命令
 ? 获取命令提示
