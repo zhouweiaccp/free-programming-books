@@ -1,3 +1,56 @@
+
+
+## 方法1
+https://www.cnblogs.com/IT-study/p/11165663.html
+(function noDebuger() {
+
+    function testDebuger() {
+        var d = new Date();
+        debugger;
+        if (new Date() - d > 10) {
+            document.body.innerHTML = '<div style="width: 100%;height: 50px;font-size: 30px;text-align: center;font-weight: bold;">年轻人，不要太好奇</div>';
+            return true;
+        }
+        return false;
+    }
+
+    function start() {
+        while (testDebuger()) {
+            testDebuger();
+        }
+    }
+
+    if (!testDebuger()) {
+        window.onblur = function () {
+            setTimeout(function () {
+                start();
+            }, 500)
+        }
+    }else {
+        start();
+    }
+
+
+})();
+
+
+
+ eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('(0 k(){0 1(){j d=6 7();i;9(6 7()-d>8){l.h.b=\'<3 c="a: 8%;f: e;5-o: y;x-w: z;5-A: v;">r，q</3>\';4 u}4 t}0 2(){s(1()){1()}}9(!1()){p.B=0(){g(0(){2()},m)}}n{2()}})();',38,38,'function|testDebuger|start|div|return|font|new|Date|100|if|width|innerHTML|style||50px|height|setTimeout|body|debugger|var|noDebuger|document|500|else|size|window|不要太好奇|年轻人|while|false|true|bold|align|text|30px|center|weight|onblur'.split('|'),0,{}))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 前端防止 JS 调试技巧
 
 简单模式：
