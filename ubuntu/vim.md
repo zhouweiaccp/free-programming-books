@@ -262,7 +262,14 @@ https://www.ibm.com/developerworks/cn/linux/l-vimdiff/
 ## vim 可视化模式（visual模式）
 v 进入字符可视化模式
 V 进入行可视化模式
-Ctrl+v 进入块可视化模式
+## Ctrl+v 进入块可视化模式
+- [](https://www.ibm.com/developerworks/cn/linux/l-cn-vimcolumn/)
+ctrl-v 进入纵向编辑模式
+I 进入行首插入模式  ,r 批量插入 A 光标添加
+输入所要求字符“#”
+ESC 退出纵向编辑模式的同时所有选中的字符前都添加了“# ”，回到命令模式
+
+
 Ctrl+g切换可视模式和选择模式
 Ctrl+o切换可视模式两端光标
 tab+ < > 左右移
