@@ -136,3 +136,8 @@ SELECT count(*)as a FROM(
 ## 类型转换
 
 SELECT  CONCAT('a',cast(123 as char),';-- user_id=',22) as n1;
+
+## Mysql 中完善的帮助命令
+select * from mysql.help_category;
+help Help Metadata;
+help AUTO_INCREMENT;
