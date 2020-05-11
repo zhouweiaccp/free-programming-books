@@ -5,7 +5,8 @@
 #sqlcmd -S 192.168.253.125 -U sa -P '1qazxxxx'
 #SELECT Name from sys.Databases
 #go
-
+#可以参考上一篇中的步骤，将项目部署至ubuntu系统中。这里需要注意的是，如果你其他功能访问正常，但连接数据库时出错（通过supervisor配置的输出日志/var/log/youapp.out.log 查看错误），检查你的数据库版本。需要SQL Server2008R2 sp3版本以上才可以，如果你时sql server 2008R2，可以通过下面连接下载补丁包安装，完成后重启sqlserver服务即可。
+#补丁下载：https://www.microsoft.com/en-us/download/details.aspx?id=44271
 FROM ubuntu:16.04
 
 LABEL maintainer="SQL Server Engineering Team"
