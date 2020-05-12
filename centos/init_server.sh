@@ -107,3 +107,7 @@ efo
 # ./install_python3_code.sh  #source install python
 echo "vim setting"
 curl https://raw.githubusercontent.com/wklken/vim-for-server/master/vimrc > ~/.vimrc
+
+cat > etc/docker/daemon.json<<efo
+{  "insecure-registries": ["https://192.168.75.12"]}
+efo

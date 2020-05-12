@@ -83,7 +83,10 @@ sudo gpasswd -a $USER docker     #将登陆用户加入到docker用户组中
 newgrp docker     #更新用户组
 docker ps    #测试docker命令是否可以使用sudo正常使用
 
-
+## 解决跟Docker私有仓库登陆，推送，拉取镜像出现的报错
+cat > etc/docker/daemon.json<<efo
+{  "insecure-registries": ["https://192.168.75.12"]}
+efo
 
 #https://www.huaweicloud.com/kunpeng/software/docker.html
 # 这个命令总是会安装最新版本的docker-ce，如果需要安装指定版本的可以参考下面的操作：

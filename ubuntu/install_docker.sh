@@ -20,11 +20,17 @@ echo 'apt update....'
   mkdir -p /etc/docker
 tee /etc/docker/daemon.json <<-'EOF'
 {
-  "registry-mirrors": ["https://dist7hw1.mirror.aliyuncs.com","https://registry.docker-cn.com","https://cr.console.aliyun.com","http://hub-mirror.c.163.com"]
+  "registry-mirrors": ["https://dist7hw1.mirror.aliyuncs.com","https://registry.docker-cn.com","https://cr.console.aliyun.com","http://hub-mirror.c.163.com"],
+  "graph": "/var/lib/docker",
+  "bip": "172.16.0.1/24"
 }
 EOF
- systemctl daemon-reload &&systemctl restart docker
+systemctl daemon-reload &&systemctl restart docker
   #apt-get purge docker-ce
+#   //registry-mirrors　　仓库地址，这里修改为国内的官方加速地址
+# //graph　　　　　　 镜像、容器的存储路径，默认是/var/lib/docker
+# //bip　　　　　　　  容器的IP网段
+#“insecure-registries”: [“120.123.122.123:12312”], ———————设置私有仓库地址可以设为http
 
 #sudo groupadd docker     #添加docker用户组
 sudo gpasswd -a $USER docker     #将登陆用户加入到docker用户组中

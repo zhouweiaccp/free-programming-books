@@ -157,6 +157,14 @@ sudo groupadd docker     #添加docker用户组
 sudo gpasswd -a $USER docker     #将登陆用户加入到docker用户组中
 newgrp docker     #更新用户组
 
+
+## Error response from daemon: Get https://192.168.75.12/v2/: dial tcp 192.168.75.12:443: connect: connection refused
+vim /etc/docker/daemon.json 
+{
+   "insecure-registries": ["https://192.168.75.12"]
+}
+
+systemctl restart docker
 ## network "school-service-net" is declared as external, but could not be found. You need to create a swarm-scoped network before the stack is deployed
 docker network create --driver overlay school-service-net
 
