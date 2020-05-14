@@ -44,7 +44,7 @@ MERGE
 create table bak_11 like org_user
 insert into bak_11 select * from org_user
 
-#3. 增加新用户：grant select on db_name.* to user_name@login_host identified by 'user_password'     [https://github.com/ycrao/mynotes/blob/master/mysql/basic.md]
+# 3. 增加新用户：grant select on db_name.* to user_name@login_host identified by 'user_password'     [https://github.com/ycrao/mynotes/blob/master/mysql/basic.md]
 /* mysql grant命令添加用户常用的三种模式 */
 grant all PRIVILEGES on *.* to 'test'@'localhost' identified by '123';
 grant all PRIVILEGES on *.* to 'test'@'%' identified by '123';
@@ -54,6 +54,10 @@ grant all PRIVILEGES on *.* to 'test'@'10.22.225.18' identified by '123';
 最后条命令在数据库服务器上给 '10.22.225.18' 机器添加一个用户'test'，一般用于web服务器和数据库服务器分离的情况。
 注意：
 真正使用的时候不会用 grant all PRIVILEGES on *.* ，而是根据实际需要设定相关的权限。 比如 grant select,insert,delete,update on test.* to 'test'@'localhost' identified by '123';
+
+## 权限参考
+![Privileges_ProvidedbyMySQL](Privileges_ProvidedbyMySQL.md)
+
 
 #6. 增加字段：alter table table_name [ add field_name field_type / other_sql_expression ]
 在表 user 中添加了一个字段 user_pic ，类型为 varchar(40)，默认值为 NULL alter table user add user_pic varchar(40) default NULL;
