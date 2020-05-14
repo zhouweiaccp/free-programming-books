@@ -27,6 +27,7 @@
 * [手机测试](#手机测试)
 * [代理](#代理)
 * [下载歌曲](#下载歌曲)
+* [下载](#下载)
 * [私有同步云盘](#私有同步云盘)
 
 
@@ -265,7 +266,10 @@ Guacamole 为 RDP 协议和 VNC 协议资产组件, 用户可以通过 Web Termi
 * [SoundPirate](https://github.com/seekerlee/SoundPirate)支持豆瓣FM，豆瓣音乐人，虾米，QQ音乐，网易云音乐，酷我，echo回声等.
 * []()
 
-
+## 下载
+* [motrix]https://motrix.app/zh-CN/features)  (https://github.com/agalwood/Motrix)Motrix 是一款全能的下载工具，支持下载 HTTP、FTP、BT、磁力链、某盘等资源。它的界面简洁易用，希望大家喜欢 
+* []()
+* []()
 
 ## 私有同步云盘
 * [Nextcloud](https://docs.nextcloud.com/server/18/admin_manual/installation/)php 开发Nextcloud是一款开源免费的私有云存储网盘项目，可以让你快速便捷地搭建一套属于自己或团队
