@@ -111,3 +111,11 @@ curl https://raw.githubusercontent.com/wklken/vim-for-server/master/vimrc > ~/.v
 cat > etc/docker/daemon.json<<efo
 {  "insecure-registries": ["https://192.168.75.12"]}
 efo
+
+echo 'Create new user ...https://github.com/zhouweiaccp/shell/base/ssh.sh'
+for name in root1
+do
+ useradd -r -m -s /bin/bash $name
+ echo "root1" | passwd --stdin $name
+# history –c
+done
