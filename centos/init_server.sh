@@ -1,5 +1,6 @@
 #!/bin/bash
 set -x
+starttime=`date +'%Y-%m-%d %H:%M:%S'`
 currentDate=`date "+%Y%m%d%H%M%S"`
 cp  /etc/yum.repos.d/CentOS-Base.repo  /etc/yum.repos.d/CentOS-Base.repo_currentDate
 curl http://mirrors.163.com/.help/CentOS6-Base-163.repo -o /etc/yum.repos.d/CentOS-Base.repo
@@ -17,10 +18,10 @@ yum install -y ntp  && ntpdate ntp.aliyun.com
 yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo && yum install -y docker-ce-18.03.1.ce &&systemctl start docker && systemctl enable docker
 
 ## Docker启动Get Permission Denied 
-sudo groupadd docker     #添加docker用户组
-sudo gpasswd -a $USER docker     #将登陆用户加入到docker用户组中
-newgrp docker     #更新用户组
-docker ps    #测试docker命令是否可以使用sudo正常使用
+# sudo groupadd docker     #添加docker用户组
+# sudo gpasswd -a $USER docker     #将登陆用户加入到docker用户组中
+# newgrp docker     #更新用户组
+# docker ps    #测试docker命令是否可以使用sudo正常使用
 
 echo 'install netcore'
 rpm -Uvh https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm  && yum install -y dotnet-sdk-3.0
@@ -77,6 +78,7 @@ source /etc/profile
 ln -s /usr/local/lib/nodejs/node-v10.16.0-linux-x64/bin/node /usr/bin/node
 ln -s /usr/local/lib/nodejs/node-v10.16.0-linux-x64/bin/npm /usr/bin/npm
 ln -s /usr/local/lib/nodejs/node-v10.16.0-linux-x64/bin/npx /usr/bin/npx
+chmod -R 777 /usr/local/lib/nodejs/node-v10.16.0-linux-x64/
 
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 alias cnpm="npm --registry=https://registry.npm.taobao.org \
@@ -85,24 +87,25 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
 --userconfig=$HOME/.cnpmrc"
 
 echo "python3"
-yum install -y epel-release
- yum -y install https://centos7.iuscommunity.org/ius-release.rpm
-#yum install -y python34
-#curl -O https://bootstrap.pypa.io/get-pip.py  /usr/bin/python3.4 get-pip.py
-yum -y install python36u
-yum -y install python36u-pip
-#使用python3去使用Python3.6：
-ln -s /usr/bin/python3.6 /usr/bin/python3
-#复制代码pip3.6同理：
-ln -s /usr/bin/pip3.6 /usr/bin/pip3
+./install_python3_code.sh
+# yum install -y epel-release
+# #yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+# #yum install -y python34
+# #curl -O https://bootstrap.pypa.io/get-pip.py  /usr/bin/python3.4 get-pip.py
+# yum -y install python36u
+# yum -y install python36u-pip
+# #使用python3去使用Python3.6：
+# ln -s /usr/bin/python3.6 /usr/bin/python3
+# #复制代码pip3.6同理：
+# ln -s /usr/bin/pip3.6 /usr/bin/pip3
 
-test ! -d ~/pip && mkdir ~/.pip
-cat > ~/.pip/pip.conf<<efo
-[global]
-index-url = https://mirrors.aliyun.com/pypi/simple
-[install]
-trusted-host = https://pypi.tuna.tsinghua.edu.cn
-efo
+# test ! -d ~/pip && mkdir ~/.pip
+# cat > ~/.pip/pip.conf<<efo
+# [global]
+# index-url = https://mirrors.aliyun.com/pypi/simple
+# [install]
+# trusted-host = https://pypi.tuna.tsinghua.edu.cn
+# efo
 
 # ./install_python3_code.sh  #source install python
 echo "vim setting"
@@ -116,6 +119,18 @@ echo 'Create new user ...https://github.com/zhouweiaccp/shell/base/ssh.sh'
 for name in root1
 do
  useradd -r -m -s /bin/bash $name
- echo "root1" | passwd --stdin $name
+ echo "accp123" | passwd --stdin $name
 # history –c
 done
+
+## chang ssh port 2202 ,root1 sudo
+sed -i 's@#Port 22@Port 2202@g'/etc/ssd/sshd_config
+/bin/systemctl restart sshd.service
+echo 'root1   ALL=(ALL)       NOPASSWD: ALL' >>/etc/sudoers \
+
+
+#执行程序
+endtime=`date +'%Y-%m-%d %H:%M:%S'`
+start_seconds=$(date --date="$starttime" +%s);
+end_seconds=$(date --date="$endtime" +%s);
+echo "本次运行时间： "$((end_seconds-start_seconds))"s"
