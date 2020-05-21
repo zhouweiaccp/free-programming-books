@@ -52,3 +52,4 @@ dotnet publish -c Release -o obj/Docker/publish --framework netcoreapp2.2 --runt
 
 ## netcore5.0
 - [release-notes](https://github.com/dotnet/core/tree/master/release-notes/5.0)
+- [DataProtection](https://github.com/dotnet/aspnetcore/blob/master/src/DataProtection/samples/EntityFrameworkCoreSample/Program.cs) https://docs.microsoft.com/zh-cn/aspnet/core/security/data-protection/consumer-apis/overview?view=aspnetcore-3.1
