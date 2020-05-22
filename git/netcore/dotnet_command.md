@@ -54,3 +54,4 @@ dotnet publish -c Release -o obj/Docker/publish --framework netcoreapp2.2 --runt
 - [release-notes](https://github.com/dotnet/core/tree/master/release-notes/5.0)
 - [DataProtection](https://github.com/dotnet/aspnetcore/blob/master/src/DataProtection/samples/EntityFrameworkCoreSample/Program.cs) https://docs.microsoft.com/zh-cn/aspnet/core/security/data-protection/consumer-apis/overview?view=aspnetcore-3.1
 - [fluentmigrator](https://fluentmigrator.github.io/articles/fluent-interface.html)Fluent Migrator是一个基于.NET的迁移框架   https://github.com/fluentmigrator/fluentmigrator
+- [Pipelines.Sockets](https://github.com/mgravell/Pipelines.Sockets.Unofficial)  零复制缓冲区  stream 内存池     [Pipelines - .NET中的新IO API指引](https://www.cnblogs.com/cerl/p/9925879.html) ![ObjectPool](./function/ObjectPool.md)
