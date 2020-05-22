@@ -108,7 +108,7 @@ sed '$a添加的内容' file  #这是在最后一行行后添加字符串
 	sed -i '$d' <file>
 
 ## grep -o显示用户
-grep -o '^[a-zA-Z_-]\+' /etc/passwd
+grep -o '^[0-9a-zA-Z_-]\+' /etc/passwd
 
 ## Tasksel
 sudo apt-get install tasksel
@@ -118,6 +118,10 @@ https://help.ubuntu.com/community/Tasksel
 
 ## 显示ip
  ifconfig |awk '/inet/ && !($2 ~/^127/){print $2}'
+
+
+## --stdin用法
+ssh 10.10.17.2 "echo 'a2p13mvh' | passwd --stdin root"
 
 ## 目录大小
 du -h --max-depth=0  code/
