@@ -35,8 +35,8 @@ minikube start
 
 ## link
 - [concepts](https://kubernetes.io/zh/docs/concepts/)
-- []()
-- []()
+- [k8s-deploy](https://github.com/cookcodeblog/k8s-deploy/blob/master/kubeadm_v1.13.0/03_install_kubernetes.sh) kubernetes 安装手册
+- [kubeadm-playbook](https://github.com/ReSearchITEng/kubeadm-playbook/tree/master/demo)
 - []()
 - []()
 - []()
