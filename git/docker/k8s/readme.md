@@ -4,16 +4,27 @@
 
 
 ## install
+
+centos7.4 系统
+swapoff -a  # 关闭swap
+sytemctl stop firewalld
+systemctl disable firewalld
+sed -i 's/enforcing/disabled' /etc/selinux/config
+setenfore 0
+
+
+### 1.minkube
 - [](https://kubernetes.io/zh/docs/tasks/tools/install-minikube/)
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
+
+### 2.kubeadm
+- [kubeadmin](kubeadm)
+
+
+###　3二进制
+- [二进制](https://www.cnblogs.com/lonelyxmas/p/10621762.html)
+
+
+
 ### window minikube
 - [](https://minikube.sigs.k8s.io/docs/drivers/hyperv/)
 - [](https://minikube.sigs.k8s.io/docs/start/)
