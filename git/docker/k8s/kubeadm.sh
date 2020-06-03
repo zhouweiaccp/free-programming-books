@@ -202,6 +202,11 @@ kubectl create -f ingress.yaml
 curl 192.168.83.135/foo -H 'Host: foo.bar.com'
 curl 192.168.83.135/other -H 'Host: foo.bar.com'
 
-
+#https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/install-kubeadm/   官方手册
 #https://www.cnblogs.com/lonelyxmas/p/10621663.html
 # 原文链接：https://blog.csdn.net/maliao1123/article/details/79379390
+
+
+# 确保每个节点上 MAC 地址和 product_uuid 的唯一性
+# 您可以使用命令 ip link 或 ifconfig -a 来获取网络接口的 MAC 地址
+# 可以使用 sudo cat /sys/class/dmi/id/product_uuid 命令对 product_uuid 校验
