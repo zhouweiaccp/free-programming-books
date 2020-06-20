@@ -8,7 +8,7 @@
 
 ### 前端标签
 - [Jcrop](https://github.com/tapmodo/Jcrop/tree/v0.9.12) 图片剪切
-- []()
+- [cropperjs](https://fengyuanchen.github.io/cropperjs/)   功能更强
 - []()
 - []()
 - []()
