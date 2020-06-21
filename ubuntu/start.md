@@ -157,6 +157,6 @@ ufw status
   * [the-book-of-secret-knowledge](https://github.com/trimstray/the-book-of-secret-knowledge) A collection of inspiring lists, manuals, cheatsheets, blogs, hacks, one-liners, cli/web 
 tools and more.
  * [the-art-of-command-line](https://github.com/jlevy/the-art-of-command-line)本文是一份我在 Linux 上工作时，发现的一些命令行使用技巧的摘要。有些技巧非常基础，而另一些则相当复杂，甚至晦涩难懂。这篇文章并不长，但当你能够熟练掌握这里列出的所有技巧时
- * []()
+ * [growing-up](https://github.com/mylxsw/growing-up) 程序猿成长计划
  * []()
  * []()
