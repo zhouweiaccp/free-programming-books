@@ -10,7 +10,7 @@
 - [Jcrop](https://github.com/tapmodo/Jcrop/tree/v0.9.12) 图片剪切
 - [cropperjs](https://fengyuanchen.github.io/cropperjs/)   功能更强
 - [perfect-scrollbar](git@github.com:zhouweiaccp/perfect-scrollbar.git) 滚动条
-- []()
+- [measure](https://utom.design/measure.html) Sketch Measure http://www.cutterman.cn/zh
 - []()
 - []()
 - []()
