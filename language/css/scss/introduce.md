@@ -1,6 +1,31 @@
 
 
 
+
+## install
+https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.7.1-1/rubyinstaller-devkit-2.7.1-1-x64.exe
+ gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
+ gem sources -l
+
+
+你可以用 Bundler 的 Gem 源代码镜像命令。
+ bundle config mirror.https://rubygems.org https://gems.ruby-china.com
+
+
+# 添加 TUNA 源并移除默认源  https://mirror.tuna.tsinghua.edu.cn/help/rubygems/
+gem sources --add https://mirrors.tuna.tsinghua.edu.cn/rubygems/ --remove https://rubygems.org/
+# 列出已有源
+gem sources -l
+
+
+
+
+
+
+
+
+
+
 https://sass.bootcss.com/ruby-sass
 Ruby Sass 是 Sass 的最初实现，但是 已经于 2019年 3 月 26 日将寿终正寝。我们已经不再对它提供任何支持了，请 Ruby Sass 用户 迁移到其它实现版本（LibSass 或 Dart Sass）。
 
