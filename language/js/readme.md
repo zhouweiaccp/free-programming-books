@@ -11,8 +11,8 @@
 - [cropperjs](https://fengyuanchen.github.io/cropperjs/)   功能更强
 - [perfect-scrollbar](git@github.com:zhouweiaccp/perfect-scrollbar.git) 滚动条
 - [measure](https://utom.design/measure.html) Sketch Measure http://www.cutterman.cn/zh
-- []()
-- []()
+- [localstorage-browser-polyfill](https://www.npmjs.com/package/localstorage-browser-polyfill)
+- [promise-polyfill](https://github.com/taylorhakes/promise-polyfill)If you would like to add a global Promise object (Node or Browser) if native Promise doesn't exist (polyfill Promise). Use the method below. This is useful it you are building a website and want to support older browsers. Javascript library authors should NOT use this method
 - []()
 - []()
 - []()
