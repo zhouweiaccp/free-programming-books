@@ -1,6 +1,6 @@
 https://github.com/kristoferjoseph/flexboxgrid   使用Flexible实现手淘H5页面的终端适配
 https://github.com/chesscai/flexible-adaptive   适配宽度方案flexible + 适配高度方案adaptive
-
+https://www.zybuluo.com/gongzhen/note/170557     消除viewport的疑惑-移动网页开发
 
 
 原文: http://www.w3cplus.com/mobile/lib-flexible-for-html5-layout.html
