@@ -3,6 +3,10 @@ https://github.com/chesscai/flexible-adaptive   适配宽度方案flexible + 适
 https://www.zybuluo.com/gongzhen/note/170557     消除viewport的疑惑-移动网页开发
 
 
+## 基于vue-cli3的vue项目移动端样式适配，lib-flexible和postcss-px2rem  https://www.cnblogs.com/lml2017/p/9953429.html
+npm install lib-flexible --save
+npm install postcss-px2rem --save
+
 原文: http://www.w3cplus.com/mobile/lib-flexible-for-html5-layout.html
 
 大漠的文章（简洁）：https://github.com/amfe/article/issues/17

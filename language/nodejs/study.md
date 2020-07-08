@@ -30,3 +30,6 @@
 华为：yarn config set registry https://mirrors.huaweicloud.com/repository/npm/
 Node-Sass：npm config set sass_binary_site https://mirrors.huaweicloud.com/node-sass/
 （https://segmentfault.com/a/1190000020693560?utm_source=tag-newest#articleHeader16）
+
+### The engine “node” is incompatible with this module. Expected version
+yarn config set ignore-engines true
