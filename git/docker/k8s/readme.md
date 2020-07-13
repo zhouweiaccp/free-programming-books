@@ -33,6 +33,17 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 choco install minikube
 minikube start
 
+## 常用命令
+kubectl --kubeconfig=/home/pimrec/it-ufm-zxdev.kubeconfig delete -f /home/edoc2/dockercompose/ci/dev/dev-master/edoc2.yml
+kubectl --kubeconfig=/home/pimrec/it-ufm-zxdev.kubeconfig apply -f /home/edoc2/dockercompose/ci/dev/dev-master/edoc2.yml
+
+kubectl-dev -n it-ufm logs -f edoc2-76f4c4c875-kztl8
+kubectl-dev get pods
+kubectl-dev exec -it edoc2-76f4c4c875-kztl8  -n it-ufm  /bin/sh
+
+ kubectl get pods -o wide  #查看所有的pods（详细）
+ kubectl get pod --all-namespaces
+
 ## link
 - [concepts](https://kubernetes.io/zh/docs/concepts/)
 - [k8s-deploy](https://github.com/cookcodeblog/k8s-deploy/blob/master/kubeadm_v1.13.0/03_install_kubernetes.sh) kubernetes 安装手册
