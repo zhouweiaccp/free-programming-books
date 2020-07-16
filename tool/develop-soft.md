@@ -10,6 +10,7 @@
 * [mirror](#mirror)
 * [microservice](#microservice)
 * [mongodb工具](#mongodb工具)
+* [redis](#redis)
 * [.net工具](#.net工具)
 * [nuget](#nuget)
 * [sqlite工具](#sqlite工具)
@@ -94,8 +95,8 @@ teamviewer/向日葵/pcanywhere都是通过本地登录的方式实现远程连�
 ## mysql工具
 * [mycli](https://github.com/dbcli/mycli)
 * [HeidiSQL](https://www.heidisql.com/?place=lblAppWebpage)"Heidi" lets you see and edit data and structures from computers running one of the database systems MariaDB, MySQL, Microsoft SQL or PostgreSQL. Invented in 2002 by Ansgar, with a development peak between 2009 and 2013, HeidiSQL belongs to the most popular tools for MariaDB and MySQL worldwide
-* []()
-* []()
+* [beekeeper-studio](https://github.com/beekeeper-studio/beekeeper-studio) https://www.beekeeperstudio.io/ 直接运行
+* [dbeaver](https://github.com/dbeaver/dbeaver) java
 
 ## mysql工具
 * [mssql-cli](https://github.com/dbcli/mssql-cli)
@@ -124,8 +125,16 @@ teamviewer/向日葵/pcanywhere都是通过本地登录的方式实现远程连�
 * [studio-3t-x64]()
 * [mongovue]()
 * [Robo 3T](https://www.robomongo.org/)
-* []()
+* [Mongood](https://github.com/RenzHoly/Mongood) 开源Mongood
 
+## redis 
+* [redis-tui](https://github.com/mylxsw/redis-tui/releases)
+* [RedisDesktopManager](https://github.com/uglide/RedisDesktopManager)
+* [AnotherRedisDesktopManager](https://github.com/qishibo/AnotherRedisDesktopManager/releases)
+* []()
+* []()
+* []()
+* []()
 
 ## .net工具
 * [ILSpy.exe]()
