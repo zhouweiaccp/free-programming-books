@@ -41,7 +41,7 @@
 
 ## curl
 * [](https://curl.haxx.se/windows/dl-7.68.0/curl-7.68.0-win64-mingw.zip) https://curl.haxx.se/windows/
-* []() 
+* [wget](https://eternallybored.org/misc/wget/)    [https://nchc.dl.sourceforge.net/project/gnuwin32/wget/1.11.4-1/wget-1.11.4-1-setup.exe]
 * []() 
 
 ## git
