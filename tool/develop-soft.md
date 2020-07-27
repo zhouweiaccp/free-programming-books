@@ -8,6 +8,7 @@
 * [mysql工具](#mysql工具)
 * [mssql数据库文档生成](#mssql数据库文档生成)
 * [mirror](#mirror)
+* [ftp](#ftp)
 * [microservice](#microservice)
 * [mongodb工具](#mongodb工具)
 * [redis](#redis)
@@ -40,7 +41,7 @@
 
 ## curl
 * [](https://curl.haxx.se/windows/dl-7.68.0/curl-7.68.0-win64-mingw.zip) https://curl.haxx.se/windows/
-* []() 
+* [wget](https://eternallybored.org/misc/wget/)    [https://nchc.dl.sourceforge.net/project/gnuwin32/wget/1.11.4-1/wget-1.11.4-1-setup.exe]
 * []() 
 
 ## git
@@ -112,6 +113,14 @@ teamviewer/向日葵/pcanywhere都是通过本地登录的方式实现远程连�
 ## mirror
 * [huaweicloud](https://mirrors.huaweicloud.com/)
 * [alibaba](https://opsx.alibaba.com/mirror)
+* []()
+* []()
+* []()
+
+## ftp
+* [filezilla](https://www.filezilla.cn/download/client)
+* []()
+* []()
 * []()
 * []()
 * []()
