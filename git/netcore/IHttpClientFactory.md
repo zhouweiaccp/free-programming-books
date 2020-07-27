@@ -92,11 +92,6 @@ using Microsoft.Extensions.DependencyInjection;
             var serviceProvider = new ServiceCollection().AddHttpClient().BuildServiceProvider();
             IHttpClientFactory _httpClientFactory = serviceProvider.GetService<IHttpClientFactory>();
             var _httpClient = _httpClientFactory.CreateClient("CTCCMonitor");
-
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(contentType));
-
-
             string content = JsonConvert.SerializeObject(obj);
 
             var httpContent = new StringContent(content, Encoding.UTF8, contentType);
