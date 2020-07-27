@@ -16,3 +16,17 @@
 - [csharpcodi](https://www.csharpcodi.com/csharp-examples/System.IServiceProvider.GetService()/)  示例代码
 - [Migrate from ASP.NET Core 2.2 to 3.0](https://docs.microsoft.com/en-us/aspnet/core/migration/22-to-30?view=aspnetcore-3.0&tabs=visual-studio) Migrate from ASP.NET Core 2.2 to 3.0
 -[older.Admin.AntdVue](https://gitee.com/Coldairarrow/Colder.Admin.AntdVue)Web后台快速开发框架,.NETCore3.1+Ant Design Vue版本
+
+
+
+
+
+## 常见问题
+
+
+### Thread Theft
+https://stackexchange.github.io/StackExchange.Redis/ThreadTheft.html
+https://www.cnblogs.com/dudu/p/6251266.html  又踩.NET Core的坑：在同步方法中调用异步方法Wait时发生死锁(deadlock)
+<add key="aspnet:UseTaskFriendlySynchronizationContext" value="true" />
+这告诉ASP.NET使用全新的异步管道，它遵循CLR约定来启动异步操作，包括在必要时将线程返回到ThreadPool。ASP.NET 4.0及其以下版本遵循自己的约定，违背了CLR原则，如果交换机未启用，则    异步方法非常容易同步运行，死锁请求或以其他方式不按预期运行。
+ 
