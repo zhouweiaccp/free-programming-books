@@ -307,7 +307,7 @@ Guacamole 为 RDP 协议和 VNC 协议资产组件, 用户可以通过 Web Termi
 - [WireShark——IP](https://www.cnblogs.com/CSAH/p/13170860.html)WireShark——IP协议包分析(Ping分析IP协议包)
 - [WireShark——ARP](https://www.cnblogs.com/CSAH/p/12749368.html)WireShark——ARP 协议包分析
 - [wireshark怎么抓包、wireshark抓包详细图文教程](https://www.cnblogs.com/moonbaby/p/10528401.html)c、wireshark抓包详细图文教程
-- []()
+- [FiddlerGenerateHttpClientCode](https://github.com/sunilpottumuttu/FiddlerGenerateHttpClientCode)
 - []()
 - []()
 - []()
