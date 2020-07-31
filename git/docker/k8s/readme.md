@@ -43,6 +43,7 @@ kubectl-dev exec -it edoc2-76f4c4c875-kztl8  -n it-ufm  /bin/sh
 
  kubectl get pods -o wide  #查看所有的pods（详细）
  kubectl get pod --all-namespaces
+ kubectl-dev -n it-ufm  get deployment edoc2 -owide  # 运行对应镜像
 
 ## link
 - [concepts](https://kubernetes.io/zh/docs/concepts/)
