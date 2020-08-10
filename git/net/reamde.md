@@ -16,6 +16,7 @@
 - [csharpcodi](https://www.csharpcodi.com/csharp-examples/System.IServiceProvider.GetService()/)  示例代码
 - [Migrate from ASP.NET Core 2.2 to 3.0](https://docs.microsoft.com/en-us/aspnet/core/migration/22-to-30?view=aspnetcore-3.0&tabs=visual-studio) Migrate from ASP.NET Core 2.2 to 3.0
 -[older.Admin.AntdVue](https://gitee.com/Coldairarrow/Colder.Admin.AntdVue)Web后台快速开发框架,.NETCore3.1+Ant Design Vue版本
+-[Newbe.Claptrap](https://gitee.com/yks/Newbe.Claptrap)以事件溯源和Actor模式作为基本理论的一套服务端开发框架。于此之上，开发者可以更为简单的开发出“分布式”、“可水平扩展”、“可测试性高”的应用系统
 
 
 
