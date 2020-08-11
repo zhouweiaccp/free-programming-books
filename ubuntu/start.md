@@ -136,7 +136,8 @@ du -h --max-depth=0  code/
 mount rw -o remount / 
 fsck.ext4 -y /dev/vda
 
-
+## echo '0' > /proc/sys/net/ipv4/tcp_timestamps
+echo '0' > /proc/sys/net/ipv4/tcp_tw_recycle [解Bug之路-记一次调用外网服务概率性失败问题的排查](https://www.cnblogs.com/alchemystar/p/13444964.html)
 
 ## dns缓存清理
 nscd restart
