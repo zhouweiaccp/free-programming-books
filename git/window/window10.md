@@ -1,4 +1,7 @@
-Windows 10任务栏右键快速跳转列表显示数量修改
+## fsutil  10G
+fsutil file createnew y:\10G.dat 10737418240
+
+## Windows 10任务栏右键快速跳转列表显示数量修改
 HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
 选择Advanced项目，然后在右边空白处右键新建一个 32位的DWORD值。
 改名为JumpListItems_Maximum
