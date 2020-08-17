@@ -24,7 +24,16 @@ Lax(relax的缩写？)属性只会在使用危险HTTP方法发送跨域cookie的
 
 同时，需要注意，不要将所有的cookie都设置SameSite属性，因为不同的cookie有不同的用途，如果你的网站使用有会话cookie，它可以被设置为Lax属性；其他的可以设置为Strict属性。这可能是一种合适的方式。
 
+## SameSiteMode
+SameSiteMode.Strict，只允许相同的站点。SameSiteMode.Lax允许以安全的 http方式附加到不同站点或相同站点
+
+sameSite="None" 必须和 requireSSL="true" 配合使用.
 
 https://www.anquanke.com/post/id/83773
 https://www.jianshu.com/p/eee9426c42df
 https://docs.microsoft.com/zh-cn/aspnet/samesite/system-web-samesite  在 ASP.NET 中使用 SameSite cookie
+
+https://www.cnblogs.com/qixinbo/p/12495995.html  IdentityServer4登录后无法跳转samesite=none
+https://docs.microsoft.com/zh-cn/dotnet/core/compatibility/3.0-3.1 
+https://docs.microsoft.com/zh-cn/aspnet/samesite/system-web-samesite 在 ASP.NET 中使用 SameSite cookie
+https://docs.microsoft.com/zh-cn/aspnet/samesite/system-web-samesite#sob
