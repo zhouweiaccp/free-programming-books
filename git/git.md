@@ -366,3 +366,7 @@ git push --mirror git@192.168.20.XX/path/to/path/new_project_name.git
 git fetch git@192.168.251.11:xx/apache.git feature-nhibernate
 git checkout -b wangshao/apache-feature-nhibernate FETCH_HEAD
 git checkout feature-nhibernate
+
+
+## git SSL certificate problem: unable to get local issuer certificate
+git config --global http.sslVerify false
