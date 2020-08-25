@@ -11,6 +11,7 @@
 * [ftp](#ftp)
 * [microservice](#microservice)
 * [mongodb工具](#mongodb工具)
+* [mock](#mock)
 * [redis](#redis)
 * [.net工具](#.net工具)
 * [nuget](#nuget)
@@ -135,6 +136,19 @@ teamviewer/向日葵/pcanywhere都是通过本地登录的方式实现远程连�
 * [mongovue]()
 * [Robo 3T](https://www.robomongo.org/)
 * [Mongood](https://github.com/RenzHoly/Mongood) 开源Mongood
+
+
+## mock
+* [fastmock](https://www.fastmock.site/)  /mock/6c270ede0a0f3f1063a056314c3cde0c/base2/api/abc1 
+* []()
+* []()
+* []()
+* []()
+* []()
+* []()
+* []()
+* []()
+
 
 ## redis 
 * [redis-tui](https://github.com/mylxsw/redis-tui/releases)
