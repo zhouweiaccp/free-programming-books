@@ -41,17 +41,28 @@ MERGE
 将MyISAM表组合，作为一个对象引用它们，可以突破对单个MyISAM表大小的限制。
 
 ## 备份表
+
+### 方法1
 create table bak_11 like org_user
 insert into bak_11 select * from org_user
 
+### 方法2
 CREATE  TABLE IF NOT EXISTS tb_base_select SELECT * FROM tb_base; 
 
-
+### 方法3
 CREATE TABLE tb_base(
 id INT NOT NULL PRIMARY KEY,
 name VARCHAR(10),
 KEY ix_name (name))
 ENGINE='MyISAM',CHARSET=utf8,COMMENT 'a' ;
+
+### 方法4
+SELECT @rowNum:=0;
+CREATE  TABLE IF NOT EXISTS qqb_base_selwwct SELECT @rowNum:=@rowNum + 1 AS rowid,a.file_id,a.file_name  FROM dms_file a,(SELECT @rowNum:=0) b  ORDER BY a.file_createTime desc;
+
+## Mysql查询结果带行号
+SELECT @rowNum:=0;
+SELECT @rowNum:=@rowNum + 1 AS rowid,a.file_id,a.file_name  FROM dms_file a,(SELECT @rowNum:=0) b  ORDER BY a.file_createTime desc;
 
 # 3. 增加新用户：grant select on db_name.* to user_name@login_host identified by 'user_password'     [https://github.com/ycrao/mynotes/blob/master/mysql/basic.md]
 /* mysql grant命令添加用户常用的三种模式 */
