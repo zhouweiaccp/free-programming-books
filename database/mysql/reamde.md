@@ -64,6 +64,9 @@ CREATE  TABLE IF NOT EXISTS qqb_base_selwwct SELECT @rowNum:=@rowNum + 1 AS rowi
 SELECT @rowNum:=0;
 SELECT @rowNum:=@rowNum + 1 AS rowid,a.file_id,a.file_name  FROM dms_file a,(SELECT @rowNum:=0) b  ORDER BY a.file_createTime desc;
 
+
+## MySQL数据库 之 添加一个字段并设置为自增主键gd
+ALTER TABLE qqb_base_s55elsswwct ADD id INT(16) NOT NULL  PRIMARY KEY AUTO_INCREMENT FIRST;
 # 3. 增加新用户：grant select on db_name.* to user_name@login_host identified by 'user_password'     [https://github.com/ycrao/mynotes/blob/master/mysql/basic.md]
 /* mysql grant命令添加用户常用的三种模式 */
 grant all PRIVILEGES on *.* to 'test'@'localhost' identified by '123';
