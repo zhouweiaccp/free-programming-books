@@ -168,3 +168,19 @@ SELECT  CONCAT('a',cast(123 as char),';-- user_id=',22) as n1;
 select * from mysql.help_category;
 help Help Metadata;
 help AUTO_INCREMENT;
+
+
+## --相差1天
+　　select TIMESTAMPDIFF(DAY, '2018-03-20 23:59:00', '2015-03-22 00:00:00');
+　　--相差49小时
+　　select TIMESTAMPDIFF(HOUR, '2018-03-20 09:00:00', '2018-03-22 10:00:00');
+　　--相差2940分钟
+　　select TIMESTAMPDIFF(MINUTE, '2018-03-20 09:00:00', '2018-03-22 10:00:00');
+
+　　--相差176400秒
+
+　　select TIMESTAMPDIFF(SECOND, '2018-03-20 09:00:00', '2018-03-22 10:00:00');
+
+　　--相差大于等于15秒
+
+ 　　SELECT * FROM 表名 WHERE   TIMESTAMPDIFF(SECOND,start_time(较小的时间),stop_time(较大的时间)) >= 15
