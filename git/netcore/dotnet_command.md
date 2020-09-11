@@ -46,6 +46,10 @@ https://docs.microsoft.com/zh-cn/dotnet/core/rid-catalog  NET Core RID 目录
 dotnet clean --configuration Debug
 dotnet publish -c Release -o obj/Docker/publish --framework netcoreapp2.2 --runtime win10-x64 --self-contained true test1.csproj
 
+## dotnet nuget push
+dotnet nuget push <你的包路径> -k <你的key> -s <需要发布的包源地址>
+dotnet nuget push foo.nupkg -k 4003d786-cc37-4004-bfdf-c4f3e8ef9b3a -s https://api.nuget.org/v3/index.json
+  *1.https://docs.microsoft.com/zh-cn/dotnet/core/tools/dotnet-nuget-push
 
 ## createdump 内存分析
 /usr/share/dotnet/shared/Microsoft.NETCore.App/2.2.4/createdump -u -f 
