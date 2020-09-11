@@ -100,10 +100,16 @@ teamviewer/向日葵/pcanywhere都是通过本地登录的方式实现远程连�
 * [beekeeper-studio](https://github.com/beekeeper-studio/beekeeper-studio) https://www.beekeeperstudio.io/ 直接运行
 * [dbeaver](https://github.com/dbeaver/dbeaver) java
 
-## mysql工具
+## mssql工具
 * [mssql-cli](https://github.com/dbcli/mssql-cli)
 * [canal](https://github.com/alibaba/canal) 阿里巴巴 MySQL binlog 增量订阅& 消费组件 数据库实时备份
 * [Zebra](https://github.com/Meituan-Dianping/Zebra) 高性能的数据库访问层解决方案，是美团点评内部使用的数据库访问层中间件。具有以下的功能点：
+* [SQL Server Management Studio](https://docs.microsoft.com/zh-cn/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)https://download.microsoft.com/download/d/9/7/d9789173-aaa7-4f5b-91b0-a2a01f4ba3a6/SSMS-Setup-CHS.exe
+* []()
+* []()
+* []()
+* []()
+* []()
 
 
 ## mssql数据库文档生成
