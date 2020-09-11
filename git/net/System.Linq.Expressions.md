@@ -1,6 +1,6 @@
 
 
-
+```csharp
 //  Expression<Func<Banner, bool>> expre = x => x.Status == 1;
 //             if (!string.IsNullOrEmpty(search))
 //             {
@@ -85,12 +85,12 @@ namespace Common
         }
     }
 }
-
+```
 
 
 
 ##  demo2
-
+```csharp
 // var where = PredicateBuilder.True<BaoGaiTouBit>();
 // where = where.And(e => e.IsEnable);
 // where = where.And(e => e.DeadLine >= mindate);
@@ -128,3 +128,71 @@ return Expression.Lambda<Func<T, bool>>
 (Expression.And(expr1.Body, invokedExpr), expr1.Parameters);
 }
 }
+```
+
+## demo3 ToDataTable
+```csharp
+public static TTable ToDataTable<T, TTable>(this IEnumerable<T> source, TTable table, params Expression<Func<T, object>>[] expressions) where TTable : DataTable
+{
+	MemberInfo[] members = PrepareMemberInfos(expressions).ToArray();
+	members = BuildOrBindSchema(table, members);
+	Func<T, object[]> func = CreateShredder<T>(members);
+	table.BeginLoadData();
+	try
+	{
+		foreach (T item in source)
+		{
+			DataRow dataRow = table.NewRow();
+			dataRow.ItemArray = func(item);
+			table.Rows.Add(dataRow);
+		}
+		return table;
+	}
+	finally
+	{
+		table.EndLoadData();
+	}
+}
+
+private static IEnumerable<MemberInfo> PrepareMemberInfos<T>(ICollection<Expression<Func<T, object>>> expressions)
+{
+	if (expressions == null || expressions.Count == 0)
+	{
+		return typeof(T).GetMembers(BindingFlags.Instance | BindingFlags.Public).Where(delegate(MemberInfo m)
+		{
+			if (m.MemberType != MemberTypes.Field)
+			{
+				PropertyInfo propertyInfo = m as PropertyInfo;
+				if ((object)propertyInfo != null && propertyInfo.CanRead)
+				{
+					return propertyInfo.GetIndexParameters().Length == 0;
+				}
+				return false;
+			}
+			return true;
+		});
+	}
+	try
+	{
+		return expressions.Select(GetAccessedMember);
+	}
+	catch (ArgumentException innerException)
+	{
+		throw new ArgumentException("One of the supplied expressions is not allowed.", "expressions", innerException);
+	}
+	MemberInfo GetAccessedMember(LambdaExpression lambda)
+	{
+		Expression expression = lambda.Body;
+		if (expression.NodeType == ExpressionType.Convert || expression.NodeType == ExpressionType.ConvertChecked)
+		{
+			expression = ((UnaryExpression)expression).Operand;
+		}
+		MemberExpression memberExpression = expression as MemberExpression;
+		if (memberExpression == null || memberExpression.Expression.NodeType != ExpressionType.Parameter)
+		{
+			throw new ArgumentException($"Illegal expression: {lambda}", "lambda");
+		}
+		return memberExpression.Member;
+	}
+}
+```
