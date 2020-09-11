@@ -171,6 +171,14 @@ docker network create --driver overlay school-service-net
 ## user_defined_bridge" is declared as external, but it is not in the right scope: "local" instead of "swarm"
 docker network create --scope=swarm --driver=bridge --subnet=172.22.0.0/16 --gateway=172.22.0.1 user_defined_bridge
 
+
+
+## Your kernel does not support swap limit capabilities or the cgroup is not mounted. Memory limited without swap.
+修改系统的/etc/default/grub file文件。使用vim在这个文件中添加一行；
+GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"
+sudo update-grub
+改动在系统下次重启后生效
+
 ## endpoint-mode:dnsrr
 服务器是无法直接通过端口映射被外边访问的
 
