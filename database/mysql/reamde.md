@@ -176,11 +176,16 @@ help AUTO_INCREMENT;
 　　select TIMESTAMPDIFF(HOUR, '2018-03-20 09:00:00', '2018-03-22 10:00:00');
 　　--相差2940分钟
 　　select TIMESTAMPDIFF(MINUTE, '2018-03-20 09:00:00', '2018-03-22 10:00:00');
-
 　　--相差176400秒
-
 　　select TIMESTAMPDIFF(SECOND, '2018-03-20 09:00:00', '2018-03-22 10:00:00');
-
 　　--相差大于等于15秒
-
  　　SELECT * FROM 表名 WHERE   TIMESTAMPDIFF(SECOND,start_time(较小的时间),stop_time(较大的时间)) >= 15
+ ## 当前时间
+ ```sql
+SELECT current_timestamp();
+SELECT current_time();
+SELECT CURRENT_DATE();
+SELECT  now();
+SELECT curdate();
+SELECT curtime();
+```
