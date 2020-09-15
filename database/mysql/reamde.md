@@ -189,3 +189,18 @@ SELECT  now();
 SELECT curdate();
 SELECT curtime();
 ```
+
+## Insert into select请慎用
+解决方案 [](https://www.cnblogs.com/javastack/p/13670978.html)
+由于查询条件会导致order_today全表扫描，什么能避免全表扫描呢，很简单嘛，给pay_success_time字段添加一个idx_pay_suc_time索引就可以了，由于走索引查询，就不会出现扫描全表的情况而锁表了，只会锁定符合条件的记录。
+关于 MySQL 索引的详细用法有实战，大家可以关注公众号Java技术栈在后台回复mysql获取系列干货文章。
+最终的sql
+INSERT INTO order_record SELECT
+    *
+FROM
+    order_today FORCE INDEX (idx_pay_suc_time)
+WHERE
+    pay_success_time <= '2020-03-08 00:00:00';
+执行过程
+总结
+使用insert into tablA select * from tableB语句时，一定要确保tableB后面的where，order或者其他条件，都需要有对应的索引，来避免出现tableB全部记录被锁定的情况
