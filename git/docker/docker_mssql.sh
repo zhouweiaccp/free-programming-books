@@ -1,7 +1,9 @@
 
 
 
-
+## Windows10下Docker安装SQL Server启动失败解决方案
+经过查阅资料发现，原来在Windows环境下，其中两个参数需要使用双引号，而不是单引号，正确的启动容器命令如下
+https://github.com/Microsoft/mssql-docker/issues/20#issuecomment-273783368
 
 
 
