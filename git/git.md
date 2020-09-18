@@ -262,6 +262,7 @@ $ git revert [commit]
 # 暂时将未提交的变化移除，稍后再移入
 git stash save  sss 保成名为sss
 git stash pop  应用第一个
+git stash pop stash@{1} 应用第二个
 git stash drop stash@{1}  #第二个删除
 十、其他
 
