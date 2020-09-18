@@ -46,3 +46,23 @@ android fork:true
 项目的github’地址。欢迎大家补充
 
 android location:beijing
+
+
+## Understanding the search syntax
+https://docs.github.com/en/github/searching-for-information-on-github/understanding-the-search-syntax
+
+* stars
+stars:>5000
+
+* Qualifier	Example
+is:curated	is:curated javascript matches topics that are curated and contain the word "javascript."
+is:featured	is:featured javascript matches topics that are featured on https://github.com/topics/ and contain the word "javascript."
+is:not-curated	is:not-curated javascript matches topics that don't have extra information, such as a description or logo, and contain the word "javascript."
+is:not-featured	is:not-featured javascript matches topics that aren't featured on https://github.com/topics/ and contain the word "javascript."
+repositories:n	repositories:>5000 matches topics that have more than 5000 repositories.
+created:YYYY-MM-DD	Serverless created:>2019-01-01 matches topics with the word "serverless" that were created after 2018.
+
+* Search by the file contents or file path
+in:file	octocat in:file matches code where "octocat" appears in the file contents.
+in:path	octocat in:path matches code where "octocat" appears in the file path.
+octocat in:file,path matches code where "octocat" appears in the file contents or the file path.
