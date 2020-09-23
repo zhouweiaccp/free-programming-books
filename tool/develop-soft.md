@@ -146,8 +146,8 @@ teamviewer/向日葵/pcanywhere都是通过本地登录的方式实现远程连�
 
 ## mock
 * [fastmock](https://www.fastmock.site/)  /mock/6c270ede0a0f3f1063a056314c3cde0c/base2/api/abc1 
-* []()
-* []()
+* [mocky](https://designer.mocky.io/design)
+* [](https://github.com/easy-mock/easy-mock)
 * []()
 * []()
 * []()
