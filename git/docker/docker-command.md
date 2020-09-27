@@ -179,6 +179,18 @@ GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"
 sudo update-grub
 改动在系统下次重启后生效
 
+## http: server gave HTTP response to HTTPS client & Get https://192.168.2.119/v2/: dial tcp 192.168.2.119:443: getsockopt: connection refused
+出现这问题的原因是：Docker自从1.3.X之后docker registry交互默认使用的是HTTPS，但是搭建私有镜像默认使用的是HTTP服务，所以与私有镜像交时出现以上错误
+docker start $(docker ps -aq)
+如果上述方法还是不能解决，还可以通过以下办法解决：
+1.vim  /etc/docker/daemon.json    增加一个daemon.json文件
+{ "insecure-registries":["192.168.1.100:5000"] }
+保存退出
+
+2.重启docker服务
+systemctl daemon-reload
+systemctl restart docker
+
 ## endpoint-mode:dnsrr
 服务器是无法直接通过端口映射被外边访问的
 
