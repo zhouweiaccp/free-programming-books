@@ -2,7 +2,7 @@ https://github.com/osixia/docker-openldap
 https://hub.docker.com/r/windfisch/phpldapadmin/
 
 
---demo
+## demo
 https://github.com/samisalkosuo/openldap-docker
 Get Docker image: docker pull kazhar/openldap-demo
 Run Docker image: docker run -d -p 389:389 kazhar/openldap-demo
@@ -12,7 +12,16 @@ Admin user: cn=admin,dc=farawaygalaxy,dc=net
 Password: passw0rd
 Or you can download/clone this repo and create and build your own image.
 
+## demo2
+https://github.com/rroemhild/docker-test-openldap
+docker run --privileged -d -p 389:389 rroemhild/test-openldap
+dc=planetexpress,dc=com
+Admin	Secret
+cn=admin,dc=planetexpress,dc=com	GoodNewsEveryone
 
+Exposed ports
+389
+636
 
 
 ## test
