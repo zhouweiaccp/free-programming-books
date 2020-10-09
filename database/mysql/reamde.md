@@ -106,7 +106,7 @@ alter table tname CHARSET=utf8;--修改表字编码
 ALTER TABLE  tname ADD age INT NOT NULL AFTER  'uid';--添加一个字段，在tname表中的uid之后age字段，整型，不为空
 ALTER TABLE  tname ADD age INT NOT NULL;--添加一个字段,默认添加到最后
 
-#8.备份数据库：
+# 8.备份数据库：
 ① 导出整个数据库，导出文件默认是存在mysql\bin目录下 mysqldump -u user_name -p user_password db_name > new_db_name.sql
 
 ② 导出一个表 mysqldump -u user_name -p user_password database_name table_name > outfile_name.sql
@@ -115,7 +115,7 @@ ALTER TABLE  tname ADD age INT NOT NULL;--添加一个字段,默认添加到最�
 
 ④带语言参数导出 mysqldump -u user_name -p user_password -default-character-set=latin1 -set-charset=gbk -skip-opt database_name > outfile_name.sql
 
-##[OUTFILE 用法](https://jingyan.baidu.com/article/e75057f238ad34ebc91a8932.html)
+## [OUTFILE 用法](https://jingyan.baidu.com/article/e75057f238ad34ebc91a8932.html)
 load data infile '/tmp/stud.txt' into table students;
  -- select  user_account,user_id into outfile 'd:\\1.txt' from org_user 
 SELECT   user_account,user_id,user_identityID,user_changeTime  FROM org_user INTO OUTFILE 'd:/t_user_2.txt'
@@ -132,10 +132,10 @@ LINES
 
 TERMINATED BY '\r\n';
 
-##将daochu.sql 导入到mysql数据库：
+# #将daochu.sql 导入到mysql数据库：
 在终端运行：mysql -h localhost -u root -p test < /home/chuzj/daochu.sql --default-character-set=utf8　
 
-##MySql查看表的创建时间
+## MySql查看表的创建时间
 SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dvpsmsdb01' ORDER BY create_time DESC;
 
 ## MySql创建数据库aa
@@ -148,7 +148,7 @@ CREATE TABLE IF NOT EXISTS student(id int unsigned not null primary key,name var
 drop table if exists bak_functions;
 CREATE TABLE IF NOT EXISTS bak_functions SELECT * from org_function
 
-##表中列存在
+## 表中列存在
 show columns from dms_downfilelog like 'id'  
 
 SELECT count(*)as a FROM(  
