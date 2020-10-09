@@ -126,7 +126,7 @@ teamviewer/向日葵/pcanywhere都是通过本地登录的方式实现远程连�
 
 ## ftp
 * [filezilla](https://www.filezilla.cn/download/client)
-* []()
+* [freesshd](http://www.freesshd.com/?ctt=download) window 下sftp
 * []()
 * []()
 * []()
