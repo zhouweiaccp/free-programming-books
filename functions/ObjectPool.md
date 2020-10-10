@@ -23,3 +23,8 @@ https://github.com/dotnet/coreclr/blob/39f9e894aa16113c2c0dda1e99ce5dd606bd45a6/
 
 
 https://github.com/yanggujun/commonsfornet/blob/master/src/Commons.Pool/GenericObjectPool.cs
+
+
+
+## PipeReader 
+[PipeReader ](https://github.com/davidfowl/TcpEcho/blob/master/src/Server/Program.cs)  ![](.\PipeReader.cs)
