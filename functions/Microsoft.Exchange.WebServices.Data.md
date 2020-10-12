@@ -17,8 +17,8 @@
 * [api](https://docs.microsoft.com/en-us/exchange/client-developer/exchange-web-services/explore-the-ews-managed-api-ews-and-web-services-in-exchange?redirectedfrom=MSDN)
 * [earching-of-folders-in-public-folders](https://stackoverflow.com/questions/14561124/searching-of-folders-in-public-folders-by-giving-its-path-name)
 * [exchangeserver](https://social.msdn.microsoft.com/Forums/en-US/home?category=exchangeserver&forum=exchangesvrdevelopment&filter=alltypes&brandIgnore=True&sort=relevancedesc&category=exchangeserver&forum=exchangesvrdevelopment&filter=alltypes&sort=relevancedesc&brandIgnore=true&filter=alltypes&searchTerm=foldername) 
-* []()
-* []()
+* [ews-managed-api](https://github.com/OfficeDev/ews-managed-api) 官网 不在更新
+* [](https://developer.microsoft.com/en-us/graph/blogs/upcoming-changes-to-exchange-web-services-ews-api-for-office-365/)  exchang 新版接口，
 * []()
 * []()
 * []()
