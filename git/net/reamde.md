@@ -31,6 +31,20 @@ https://www.cnblogs.com/dudu/p/6251266.html  又踩.NET Core的坑：在同步�
 <add key="aspnet:UseTaskFriendlySynchronizationContext" value="true" />
 这告诉ASP.NET使用全新的异步管道，它遵循CLR约定来启动异步操作，包括在必要时将线程返回到ThreadPool。ASP.NET 4.0及其以下版本遵循自己的约定，违背了CLR原则，如果交换机未启用，则    异步方法非常容易同步运行，死锁请求或以其他方式不按预期运行。
 
+
+## webconfig中配置编码
+<globalization fileEncoding="utf-8" requestEncoding="utf-8" responseEncoding="gb2312"/>
+    </system.web>
+    <location path="weather.aspx">
+      <system.web>
+        <globalization  requestEncoding="gb2312" responseEncoding="gb2312"/>
+      </system.web>
+    </location>
+  <location path="updatesoft.aspx">
+    <system.web>
+      <globalization  requestEncoding="gb2312" responseEncoding="gb2312"/>
+    </system.web>
+  </location>
 ### 短网址
 
  -[aspnetcore-url-shortener]()  ![aspnetcore-url-shortener](GenerateShortURL.cs)
