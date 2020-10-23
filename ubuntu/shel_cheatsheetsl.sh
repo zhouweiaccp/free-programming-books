@@ -789,7 +789,8 @@ ssh -CqTnN -D localhost:1080  user@202.115.8.1
 # 终端下正确设置 ALT 键和 BackSpace 键
 http://www.skywind.me/blog/archives/2021
 
-
+#  清空文本
+:> aa.txt   [Linux Tools Quick Tutorial](https://linuxtools-rst.readthedocs.io/zh_CN/latest/base/03_text_processing.html)
 ##############################################################################
 # 有用的函数
 ##############################################################################
