@@ -880,6 +880,10 @@ export LESS_TERMCAP_so=$'\E[1m\E[33m\E[44m'
 "\eK": end-of-line
 
 
+## set 用法
+https://wangdoc.com/bash/set.html
+https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html
+
 ##############################################################################
 # References
 ##############################################################################
