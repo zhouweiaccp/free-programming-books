@@ -84,13 +84,13 @@ netstat -aon |grep 301
 
 
 
- #xshell 使用命令上传、下载文件
+ ## xshell 使用命令上传、下载文件
  rpm -qa |grep lrzsz
  yum install  lrzsz -y
  rz  #上传文件，使用#rz，然后会弹出选择对话框，选择好文件后，点击打开就能上传到当前目录
  sz error_logs #例如要下载当前目录下的error_logs
 
- # linux shell 最后一行添加内容
+ ## linux shell 最后一行添加内容
 sed '1i 添加的内容' file  #这是在第一行前添加字符串
 sed '$i 添加的内容' file  #这是在最后一行行前添加字符串
 sed '$a添加的内容' file  #这是在最后一行行后添加字符串
@@ -151,6 +151,10 @@ apt install -y linux-tools-common
 ## 防火墙
 ufw status
 
+
+## 查看服务列表代码  
+sudo service --status-all
+sudo initctl list
   ##  DevOps
   * [kjyw](https://gitee.com/aqztcom/kjyw) kjyw 快捷运维 目基于shell、python，运维脚本工具库，收集各类运维常用工具脚本，实现快速安装nginx、mysql、php、redis、nagios、运维经常使用的脚本等等
   * [shell]( git@github.com:zhouweiaccp/shell.git) shell 语法

@@ -6,7 +6,7 @@ yum install -y dos2unix
 yum install -y unzip zip
 
 
-java
+## java
  yum -y install java-1.8.0-openjdk*
 
 
@@ -25,8 +25,45 @@ yum install zip unzip
 ## perf性能分析工具
 yum install -y perf
 
-## 
- #CentOS6.5查看防火墙的状态：
+
+## 查看服务列表代码  
+systemctl   list-unit-files
+systemd-cgls   以树形列出正在运行的进程
+查看服务是否开机启动：   systemctl is-enabled postfix.service
+查看已启动的服务列表：   systemctl list-unit-files | grep enabled
+查看启动失败的服务列表：   systemctl --failed
+命令：systemctl [command] [unit]
+### 2.1 unit类型
+Unit 一共分成12种类型:
+
+类型	含义
+Service unit	系统服务
+Target unit	多个 Unit 构成的一个组
+Device Unit	硬件设备
+Mount Unit	文件系统的挂载点
+Automount Unit	自动挂载点
+Path Unit	文件或路径
+Scope Unit	不是由 Systemd 启动的外部进程
+Slice Unit	进程组
+Snapshot Unit	Systemd 快照，可以切回某个快照
+Socket Unit	进程间通信的 socket
+Swap Unit	swap 文件
+Timer Unit	定时器
+
+#command主要包含：
+start：启动unit
+stop：关闭unit
+restart：重启unit
+reload：重载unit的配置
+enable：设置下次开机时，unit会被启动
+disable：设置下次开机时，unit不会被启动
+is-active ：目前有没有正在运行中
+is-enable ：开机时有没有默认要启用这个unit
+show:显示某个 Unit 的所有底层参数
+
+[CentOS7服务管理](https://www.cnblogs.com/tkqasn/p/9379242.html)
+
+## CentOS6.5查看防火墙的状态：
 service iptable status
 servcie iptables stop                    --临时关闭防火墙
 chkconfig iptables off                    --永久关闭防火墙
