@@ -887,7 +887,7 @@ https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html
 ##############################################################################
 # References
 ##############################################################################
-
+https://github.com/jaywcjlove/linux-command  当前仓库搜集了 570 多个 Linux 命令，是一个非盈利性的仓库，生成了一个 web 网站方便使用
 https://github.com/Idnan/bash-guide
 http://www.linuxstall.com/linux-command-line-tips-that-every-linux-user-should-know/
 https://ss64.com/bash/syntax-keyboard.html
