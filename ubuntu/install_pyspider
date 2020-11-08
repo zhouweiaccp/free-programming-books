@@ -1,0 +1,28 @@
+## centos
+yum groupinstall "Development Tools" -y
+yum install glibc-static libstdc++-static -y
+yum install gcc libffi-devel python-devel openssl-devel -y
+wget https://bootstrap.pypa.io/get-pip.py
+sudo python3 get-pip.py
+
+## ubuntu20.4
+apt-get install libcurl4-openssl-dev  libffi-dev g++ libssl-dev   libcurl-devel   libcurl4-openssl-dev libxml2-dev libxslt1-dev python-lxml libssl-dev zlib1g-dev
+pip3 install pycurl  pyspider
+
+
+
+## 源码安装
+https://phantomjs.org/build.html
+ apt-get install build-essential g++ flex bison gperf ruby perl \
+  libsqlite3-dev libfontconfig1-dev libicu-dev libfreetype6 libssl-dev \
+  libpng-dev libjpeg-dev python libx11-dev libxext-dev
+
+git clone git://github.com/ariya/phantomjs.git
+cd phantomjs
+git checkout 2.1.1
+git submodule init
+git submodule update
+
+  ## windowns下安装pyspider报 "Please specify --curl-dir=/path/to/built/libcurl"
+https://download.lfd.uci.edu/pythonlibs/z2tqcw5k/pycurl-7.43.0.4-cp37-cp37m-win_amd64.whl
+pip3 install pycurl-7.43.0.4-cp37-cp37m-win_amd64.whl
