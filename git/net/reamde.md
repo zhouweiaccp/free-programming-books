@@ -20,8 +20,15 @@
 -[](https://github.com/egametang/ET)ET是一个开源的游戏客户端（基于unity3d）服务端双端框架，服务端是使用C# .net core开发的分布式游戏服务端，其特点是开发效率高，性能强，双端共享逻辑代码，客户端服务端热更机制完善，同时支持可靠udp tcp websocket协议，支持服务端3D recast寻路等等
 -[MoreLINQ] (https://github.com/morelinq/MoreLINQ)  linq 扩展方法lefjoin   totable 等
 - [LRUCache](https://github.com/duyanming/Anno.LRUCache/blob/master/Anno.LRUCache/LRUCache.cs)
-
-
+- [](https://archive.codeplex.com/?p=aspnet#Samples%2fNet4%2fCS%2fWebApi%2fHttpRangeRequestSample%2fReadMe.txt)We just shipped Visual Studio 2012, .NET 4.5, MVC 4, Web API and Web Pages 2. We are working on our next release and we are working to have a preview available at the Build conference and an RTM before the end of year. The following items are what we are tentatively targeting for this next relea  [](链接: https://pan.baidu.com/s/1ZBrJFQk3Pev_BTVysRxkyA 提取码: 34xu 复制这段内容后打开百度网盘手机App，操作更方便哦)
+- [](https://github.com/tpeczek/Lib.Web.Mvc)helper classes for ASP.NET MVC such as strongly typed jqGrid helper, attribute and helper providing support for HTTP/2 Server Push with Cache Digest, attribute and helpers providing support for Content Security Policy Level 2, FileResult providing support for Range Requests, action result and helper providing support for XSL transformation and more.
+- [html5_video_play_largefile](https://gitee.com/abccc123/html5_video_play_largefile/blob/master/README.md)  html5视频播放分段下载
+- [AutofacDemo](https://github.com/das2017/14-AutofacDemo) AutofacDemo 配置文件示例 企业架构demo比较全
+    - [Examples](https://github.com/autofac/Examples/)  autofac 应用 wcf mvc webapi  netcore的demo
+- []()
+- []()
+- []()
+- []()
 
 ## 常见问题
 
