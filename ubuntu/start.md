@@ -151,6 +151,21 @@ apt install -y linux-tools-common
 ## 防火墙
 ufw status
 
+##  Screen是一个可以在多个进程之间多路复用一个物理终端的全屏窗口管理器
+apt-get install screen
+yum install screen
+1.1 创建screen会话
+可以先执行：screen -S lnmp ，screen就会创建一个名字为lnmp的会话。 VPS侦探 https://www.vpser.net/
+
+1.2 暂时离开，保留screen会话中的任务或程序
+当需要临时离开时（会话中的程序不会关闭，仍在运行）可以用快捷键Ctrl+a d(即按住Ctrl，依次再按a,d)
+
+1.3 恢复screen会话
+当回来时可以再执行执行：screen -r lnmp
+1.4 关闭screen的会话
+执行：exit 
+https://www.vpser.net/manage/screen.html
+
 
 ## 查看服务列表代码  
 sudo service --status-all

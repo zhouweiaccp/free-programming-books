@@ -131,7 +131,7 @@ do
 done
 
 ## chang ssh port 2202 ,root1 sudo
-sed -i 's@#Port 22@Port 2202@g'/etc/ssd/sshd_config
+sed -i 's@#Port 22@Port 2202@g' /etc/ssd/sshd_config
 /bin/systemctl restart sshd.service
 echo 'root1   ALL=(ALL)       NOPASSWD: ALL' >>/etc/sudoers \
 
