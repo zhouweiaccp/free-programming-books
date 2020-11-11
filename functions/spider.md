@@ -28,3 +28,11 @@ https://www.bilibili.com/video/av47963962?from=search&seid=278397473739362240
 
 ## 识别图片
 Tesseract和pytesseract_recv
+
+
+## Flash+加密的解决
+
+当你写爬虫时遇上 Flash+加密的解决方式 https://zhuanlan.zhihu.com/p/45508079
+当你写爬虫抓不到 APP 请求包的时候该怎么办？ [初级篇] https://zhuanlan.zhihu.com/p/46433599   proxydroid
+当你写爬虫抓不到 APP 请求包的时候该怎么办？ [中级篇] https://zhuanlan.zhihu.com/p/56397466
+听说这个爬虫面试题很难？看完你就知道怎么做了 https://zhuanlan.zhihu.com/p/59005948

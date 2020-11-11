@@ -23,3 +23,8 @@ namespace Microsoft.AspNetCore.Http
         }
     }
 }
+
+
+
+## IHostLifetime
+- [探索 ASP.Net Core 3.0系列五：引入IHostLifetime并弄清Generic Host启动交互](https://www.cnblogs.com/runningsmallguo/p/11617246.html)
