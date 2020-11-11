@@ -44,7 +44,7 @@ vi ~/.bashrc
 
 添加 alias unix2dos=todos alias dos2unix=fromdos
 
-常用软件
+## 常用软件
 https://github.com/cjy37/linux-asp.net-installScript
  https://github.com/summerblue/laravel-ubuntu-init/blob/master/16.04/install.sh 
  * [lnmp](https://github.com/licess/lnmp)     自动安装 
