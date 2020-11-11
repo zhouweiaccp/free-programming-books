@@ -1,3 +1,6 @@
+ 
+
+ ## pyspider 需要python3.6
 ## centos
 yum groupinstall "Development Tools" -y
 yum install glibc-static libstdc++-static -y
