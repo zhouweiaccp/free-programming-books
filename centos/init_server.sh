@@ -65,27 +65,31 @@ sed -i "\$a alias ll='ls -lth --time-style=\"+%Y-%m-%d %H:%M:%S\"'" ~/.bashrc # 
 # npm install -g n
 # n stable
 #https://github.com/nodejs/help/wiki/Installation
-echo "install node bin"
+
+##https://npm.taobao.org/mirrors/node/v14.15.0/node-v14.15.0.tar.gz
+# https://nodejs.org/dist/v${nodever}/node-vv14.15.0-linux-arm64.tar.xz
+nodever=14.15.0
+echo "install node bin "
 test ! -d /usr/local/lib/nodejs && mkdir -p /usr/local/lib/nodejs
 if [ `arch` == 'aarch64' ]; then
-wget https://nodejs.org/dist/v10.16.0/node-v10.16.0-linux-arm64.tar.xz
-tar -xf node-v10.16.0-linux-arm64.tar.xz -C /usr/local/lib/nodejs
-rm node-v10.16.0-linux-arm64.tar.xz
-echo "export PATH=/usr/local/lib/nodejs/node-v10.16.0-linux-arm64/bin:$PATH" >> /etc/profile
+wget https://nodejs.org/dist/v${nodever}/node-v${nodever}-linux-arm64.tar.xz
+tar -xf node-v${nodever}-linux-arm64.tar.xz -C /usr/local/lib/nodejs
+rm node-v${nodever}-linux-arm64.tar.xz
+echo "export PATH=/usr/local/lib/nodejs/node-v${nodever}-linux-arm64/bin:$PATH" >> /etc/profile
 else
-wget https://nodejs.org/dist/v10.16.0/node-v10.16.0-linux-x64.tar.xz
-tar -xJf node-v10.16.0-linux-x64.tar.xz -C /usr/local/lib/nodejs 
-rm node-v10.16.0-linux-x64.tar.xz
-echo "export PATH=/usr/local/lib/nodejs/node-v10.16.0-linux-x64/bin:$PATH" >> /etc/profile
+wget https://nodejs.org/dist/v${nodever}/node-v${nodever}-linux-x64.tar.xz
+tar -xJf node-v${nodever}-linux-x64.tar.xz -C /usr/local/lib/nodejs 
+rm node-v${nodever}-linux-x64.tar.xz
+echo "export PATH=/usr/local/lib/nodejs/node-v${nodever}-linux-x64/bin:$PATH" >> /etc/profile
 fi
 
 chmod 755 -R /usr/local/lib/nodejs
 source /etc/profile
 
-ln -s /usr/local/lib/nodejs/node-v10.16.0-linux-x64/bin/node /usr/bin/node
-ln -s /usr/local/lib/nodejs/node-v10.16.0-linux-x64/bin/npm /usr/bin/npm
-ln -s /usr/local/lib/nodejs/node-v10.16.0-linux-x64/bin/npx /usr/bin/npx
-chmod -R 777 /usr/local/lib/nodejs/node-v10.16.0-linux-x64/
+ln -s /usr/local/lib/nodejs/node-v${nodever}-linux-x64/bin/node /usr/bin/node
+ln -s /usr/local/lib/nodejs/node-v${nodever}-linux-x64/bin/npm /usr/bin/npm
+ln -s /usr/local/lib/nodejs/node-v${nodever}-linux-x64/bin/npx /usr/bin/npx
+chmod -R 777 /usr/local/lib/nodejs/node-v${nodever}-linux-x64/
 
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 alias cnpm="npm --registry=https://registry.npm.taobao.org \
