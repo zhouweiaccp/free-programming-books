@@ -172,8 +172,9 @@ There is a screen on:
 (base) [root1@iZttsp3neog1bkZ root]$ screen -ls
 No Sockets found in /var/run/screen/S-root1.
 
-https://www.vpser.net/manage/screen.html
 
+## 关闭SSH其他用户会话连接
+pkill -kill -t pts/1
 
 ## 查看服务列表代码  
 sudo service --status-all
