@@ -6,9 +6,11 @@ HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
 选择Advanced项目，然后在右边空白处右键新建一个 32位的DWORD值。
 改名为JumpListItems_Maximum
 
+## windows cmd中查看某个命令所在的路径
+where python
 
+## 关闭hypervi
 关闭
-
 bcdedit /set hypervisorlaunchtype off
 启用
 
