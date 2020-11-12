@@ -163,7 +163,15 @@ yum install screen
 1.3 恢复screen会话
 当回来时可以再执行执行：screen -r lnmp
 1.4 关闭screen的会话
-执行：exit 
+(base) [root1@iZttsp3neog1bkZ root]$ screen -ls
+There is a screen on:
+        4481.a  (Detached)
+1 Socket in /var/run/screen/S-root1.
+
+(base) [root1@iZttsp3neog1bkZ root]$ screen -X -S 4481 quit
+(base) [root1@iZttsp3neog1bkZ root]$ screen -ls
+No Sockets found in /var/run/screen/S-root1.
+
 https://www.vpser.net/manage/screen.html
 
 
