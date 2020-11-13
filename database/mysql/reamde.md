@@ -190,6 +190,20 @@ SELECT curdate();
 SELECT curtime();
 ```
 
+
+## MySQL审计日志
+下载地址 https://bintray.com/mcafee/mysql-audit-plugin/release/1.1.4-725#files
+https://github.com/mcafee/mysql-audit
+解压插件包
+# unzip audit-plugin-mysql-5.7-1.1.4-725.zip
+将解压好的插件复制到 MySQL 的插件目录下
+# cd audit-plugin-mysql-5.7-1.1.4-725/lib/
+# cp libaudit_plugin.so /usr/local/mysql/lib/plugin/
+root@localhost 18:18: [(none)]> install plugin audit soname 'libaudit_plugin.so';
+root@localhost 18:19: [(none)]> show variables like '%audit_json_file%';
+root@localhost 18:20: [(none)]> set global audit_json_file = 1;
+show global status like 'AUDIT_version';
+
 ## Insert into select请慎用
 解决方案 [](https://www.cnblogs.com/javastack/p/13670978.html)
 由于查询条件会导致order_today全表扫描，什么能避免全表扫描呢，很简单嘛，给pay_success_time字段添加一个idx_pay_suc_time索引就可以了，由于走索引查询，就不会出现扫描全表的情况而锁表了，只会锁定符合条件的记录。

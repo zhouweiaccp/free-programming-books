@@ -53,3 +53,10 @@ sudo apt-get install aspnetcore-runtime-3.1
 ## 20.04
 wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
+
+
+## dotnet-sdk-5.0.100-rc.2.20479
+ wget https://download.visualstudio.microsoft.com/download/pr/69cb8922-7bb0-4d3a-aa92-8cb885fdd0a6/2fd4da9e026f661caf8db9c1602e7b2f/dotnet-sdk-5.0.100-rc.2.20479.15-linux-x64.tar.gz
+ mkdir -p $HOME/dotnet && tar zxf dotnet-sdk-5.0.100-rc.2.20479.15-linux-x64.tar.gz -C $HOME/dotnet
+export DOTNET_ROOT=$HOME/dotnet
+export PATH=$PATH:$HOME/dotnet
