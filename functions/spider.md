@@ -12,6 +12,7 @@
 -[learn_python3_spider](https://github.com/wistbean/learn_python3_spider)python爬虫教程系列、从0到1学习python爬虫，包括浏览器抓包，手机APP抓包，如 fiddler、mitmproxy，各种爬虫涉及的模块的使用，如：requests、beautifulSoup、selenium、appium、scrapy等，以及IP代理，验证码识别，Mysql，MongoDB数据库的python使用
 - [crawlab](https://github.com/crawlab-team/crawlab) 分布式爬虫管理平台，支持任何语言和框架  https://docs.crawlab.cn/zh/
 https://github.com/Kr1s77/awesome-python-login-model/ 模拟登陆一些大型网站，还有一些简单的爬虫，希望对你们有所帮
+- [python_spider_pyspider](https://github.com/crifan/python_spider_pyspider)PySpider是一个简单易用且强大的Python主流爬虫框架。此处总结PySpider的安装和基本的使用，以及安装和启动时常见问题，并且给出查找定位元素的PyQuery的基本用法举例，以及一些高级用法，比如self.craw、config.json、data目录、phantomjs，和一些心得和常见的坑，且给出一些实际的例子供参考
 
 
 https://www.bilibili.com/video/av47963962?p=21
