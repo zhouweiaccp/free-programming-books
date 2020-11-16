@@ -1,2 +1,2 @@
 https://www.iis.net/downloads/microsoft/urlscan
-打开URL Scan的配置文件（ C:\Windows\System32\inetsrv\urlscan\UrlScan.ini），找到“RemoveServerHeader”，将值设置为1。配置之前：
+鎵撳紑URL Scan鐨勯厤缃枃浠讹紙 C:\Windows\System32\inetsrv\urlscan\UrlScan.ini锛夛紝鎵惧埌鈥淩emoveServerHeader鈥濓紝灏嗗�艰缃负1銆傞厤缃箣鍓嶏細

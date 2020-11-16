@@ -1,4 +1,4 @@
-rem 备份当前文件 xcopy
+rem 锟斤拷锟捷碉拷前锟侥硷拷 xcopy
 set DaysAgo=1
 set Today=%date:~0,4%%date:~5,2%%date:~8,2%
 set /a PassDays=%Today%-1
