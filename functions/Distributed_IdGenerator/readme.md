@@ -7,9 +7,12 @@
 - [uid-generator](https://github.com/baidu/uid-generator/blob/master/README.zh_cn.md)
 - [滴滴开源的TinyId](https://github.com/didi/tinyid/wiki/tinyid%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D)
 - [Leaf](https://github.com/Meituan-Dianping/Leaf)
-- []()
-- []()
+- [ObjectId](git\net\ObjectId.cs)
+- [snowflake](snowflake)
 
+## 去重算法
+- [hash](DotnetSpider-master\src\DotnetSpider\Scheduler\Component\HashSetDuplicateRemover.cs)
+- [BloomFilter](DotnetSpider-master\src\DotnetSpider\Scheduler\Component\BloomFilterDuplicateRemover.cs)
 
 ID是数据的唯一标识，传统的做法是利用UUID和数据库的自增ID，在互联网企业中，大部分公司使用的都是Mysql，并且因为需要事务支持，所以通常会使用Innodb存储引擎，UUID太长以及无序，所以并不适合在Innodb中来作为主键，自增ID比较合适，但是随着公司的业务发展，数据量将越来越大，需要对数据进行分表，而分表后，每个表中的数据都会按自己的节奏进行自增，很有可能出现ID冲突。这时就需要一个单独的机制来负责生成唯一ID，生成出来的ID也可以叫做**分布式ID**，或**全局ID**。下面来分析各个生成分布式ID的机制。
 
