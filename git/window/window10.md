@@ -26,7 +26,10 @@ bcdedit /set hypervisorlaunchtype auto
 ）然后在最底部文件夹Parameters里面，新建 DWORD（32）位值（D）。文件名 “AllowEncryptionOracle” ，值 : 2，保存，重启
 
 
-
+## forfile
+https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/forfiles
+forfiles /p "E:\pictures" /m * /d -1 /c "cmd /c  del /Q @file" 
+大致意思就是删除E:\pictures目录以及其子目录下的修改时间为一天前的文件（此处用了通配符适配所有文件）
 
 添加项
 Windows Registry Editor Version 5.00
