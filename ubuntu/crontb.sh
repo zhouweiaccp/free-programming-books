@@ -10,7 +10,11 @@ yum install crontabs
 /sbin/service crond reload //重新载入配置 
 
 ## 状态
-service crond status
+service crond start //启动服务
+service crond stop //关闭服务
+service crond restart //重启服务
+service crond reload //重新载入配置
+service crond status //查看服务状态
 
  cat /etc/crontab
 # SHELL=/bin/bash

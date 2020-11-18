@@ -7,12 +7,15 @@
 - [uid-generator](https://github.com/baidu/uid-generator/blob/master/README.zh_cn.md)
 - [滴滴开源的TinyId](https://github.com/didi/tinyid/wiki/tinyid%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D)
 - [Leaf](https://github.com/Meituan-Dianping/Leaf)
-- [ObjectId](git\net\ObjectId.cs)
-- [snowflake](snowflake)
+- [ObjectId](./git/net/ObjectId.cs)
+- [snowflake](./snowflake)
 
 ## 去重算法
 - [hash](DotnetSpider-master\src\DotnetSpider\Scheduler\Component\HashSetDuplicateRemover.cs)
-- [BloomFilter](DotnetSpider-master\src\DotnetSpider\Scheduler\Component\BloomFilterDuplicateRemover.cs)
+- [BloomFilter](DotnetSpider-master\src\DotnetSpider\Scheduler\Component\BloomFilterDuplicateRemover.cs) 布隆过滤器 同样是这个元素经过哈希函数计算后得到所有的偏移位置，若这些位置全都为1，则判断这个元素在这个集合中，若有一个不为1，则判断这个元素不在这个集合中。就是这么简单
+- [MurmurHash](https://zhuanlan.zhihu.com/p/50587308) MurmurHash是一种非加密型哈希算法，一般用于哈希检索操作。是Austin Appleby在2008年发明的，并出现了多个变种版本，当前版本是MurmurHash3,能够产生出32-bit或128-bit的哈希值。这种哈希算法对于随机分布特征表现更加优良，被广泛运用redis、Hadoop等。  pip3 install mmh3
+  - [hastdepot](https://github.com/ssg/HashDepot) I have been implementing various hash functions that are absent in .NET framework. I decided to converge them into a library. My primary goals are to provide well-tested and performant implementations. The library currently supports SipHash, MurmurHash3, xxHash, and FNV-1a.
+  - [Data.HashFunction](https://github.com/brandondahler/Data.HashFunction/) All implementation packages depend on the Data.HashFunction.Interfaces and Data.HashFunction.Core NuGet packages.
 
 ID是数据的唯一标识，传统的做法是利用UUID和数据库的自增ID，在互联网企业中，大部分公司使用的都是Mysql，并且因为需要事务支持，所以通常会使用Innodb存储引擎，UUID太长以及无序，所以并不适合在Innodb中来作为主键，自增ID比较合适，但是随着公司的业务发展，数据量将越来越大，需要对数据进行分表，而分表后，每个表中的数据都会按自己的节奏进行自增，很有可能出现ID冲突。这时就需要一个单独的机制来负责生成唯一ID，生成出来的ID也可以叫做**分布式ID**，或**全局ID**。下面来分析各个生成分布式ID的机制。
 
