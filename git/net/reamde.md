@@ -25,7 +25,7 @@
 - [html5_video_play_largefile](https://gitee.com/abccc123/html5_video_play_largefile/blob/master/README.md)  html5视频播放分段下载
 - [AutofacDemo](https://github.com/das2017/14-AutofacDemo) AutofacDemo 配置文件示例 企业架构demo比较全
     - [Examples](https://github.com/autofac/Examples/)  autofac 应用 wcf mvc webapi  netcore的demo
-- []()
+- [CSharpFlink](git@gitee.com:wxzz/CSharpFlink.git) netcore5.0 数据计算 用上 DotNetty  Microsoft.CodeAnalysis.CSharp 
 - []()
 - []()
 - []()
