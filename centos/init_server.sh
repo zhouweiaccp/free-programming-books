@@ -97,6 +97,10 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
 --disturl=https://npm.taobao.org/dist \
 --userconfig=$HOME/.cnpmrc"
 
+curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+ yum install yarn -y
+ #https://yarn.bootcss.com/docs/install/#centos-stable
+ 
 echo "python3"
 ./install_python3_code.sh
 # yum install -y epel-release
