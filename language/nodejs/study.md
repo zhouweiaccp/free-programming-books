@@ -26,15 +26,19 @@
 
 
 ## Node 和 npm/Yarn可以更换镜像
-yarn install   https://classic.yarnpkg.com/zh-Hans/docs/install/#windows-stable   https://github-production-release-asset-2e65be.s3.amazonaws.com/49970642/d78d7b00-61e5-11ea-93f6-feccc62e1d63?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20200709%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200709T082622Z&X-Amz-Expires=300&X-Amz-Signature=5a5fb74bbbfd31db93ce1d0efa099338405972124e217ea5708e2b3023b14572&X-Amz-SignedHeaders=host&actor_id=0&repo_id=49970642&response-content-disposition=attachment%3B%20filename%3Dyarn-1.22.4.msi&response-content-type=application%2Foctet-stream
-
-node intall 
+npm install -g yarn
+yarn install 
+https://classic.yarnpkg.com/zh-Hans/docs/install/#windows-stable  
 https://cdn.npm.taobao.org/dist/node/v10.9.0/node-v10.9.0-x64.msi
 
+yarn config get registry
+官方：https://registry.yarnpkg.com
 阿里：yarn config set registry https://registry.npm.taobao.org
 华为：yarn config set registry https://mirrors.huaweicloud.com/repository/npm/
 Node-Sass：npm config set sass_binary_site https://mirrors.huaweicloud.com/node-sass/
 （https://segmentfault.com/a/1190000020693560?utm_source=tag-newest#articleHeader16）
+
+npm config set registry https://registry.npm.taobao.org
 
 ### The engine “node” is incompatible with this module. Expected version
 yarn config set ignore-engines true
