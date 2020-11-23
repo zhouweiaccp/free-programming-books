@@ -26,5 +26,30 @@ namespace Microsoft.AspNetCore.Http
 
 
 
+## netcore静态文件目录访问
+```cscharp
+app.UseStaticFiles();//提供将wwwroot目录开放访问,例如：http://localhost:52723/css/site.css将访问wwwroot目录下的css目录中的site.css文件
+
+app.UseStaticFiles(new StaticFileOptions()//自定义自己的文件路径,例如提供访问D盘下的Study目录，http://localhost:52723/MyStudy/README.md将访问D盘的Study目录中的README.md文件
+            {
+                FileProvider = new PhysicalFileProvider(@"D:\Study"),//指定实际物理路径
+                RequestPath = new PathString("/MyStudy")//对外的访问路径
+            });
+
+
+app.UseDirectoryBrowser(new DirectoryBrowserOptions()//提供文件目录访问形式
+            {
+                FileProvider = new PhysicalFileProvider(@"D:\Study"),
+                RequestPath = new PathString("/Study")
+            });
+app.UseFileServer(new FileServerOptions()//直接开启文件目录访问和文件访问
+            {
+                EnableDirectoryBrowsing = true,//开启目录访问
+                FileProvider = new PhysicalFileProvider(@"D:\Git"),
+                RequestPath = new PathString("/Git")
+            });
+
+```
+
 ## IHostLifetime
 - [探索 ASP.Net Core 3.0系列五：引入IHostLifetime并弄清Generic Host启动交互](https://www.cnblogs.com/runningsmallguo/p/11617246.html)
