@@ -67,16 +67,13 @@ SELECT @rowNum:=@rowNum + 1 AS rowid,a.file_id,a.file_name  FROM dms_file a,(SEL
 
 ## MySQL数据库 之 添加一个字段并设置为自增主键gd
 ALTER TABLE qqb_base_s55elsswwct ADD id INT(16) NOT NULL  PRIMARY KEY AUTO_INCREMENT FIRST;
+
 # 3. 增加新用户：grant select on db_name.* to user_name@login_host identified by 'user_password'     [https://github.com/ycrao/mynotes/blob/master/mysql/basic.md]
 /* mysql grant命令添加用户常用的三种模式 */
-grant all PRIVILEGES on *.* to 'test'@'localhost' identified by '123';
-grant all PRIVILEGES on *.* to 'test'@'%' identified by '123';
-grant all PRIVILEGES on *.* to 'test'@'10.22.225.18' identified by '123';
-说明：
-第一条命令添加一个本地用户 'test' ，一般用于web服务器和数据库服务器在一起的情况； 第二条命令添加一个用户 'test' ，只要能连接数据库服务器的机器都可以使用，这个比较危险，一般不用；
-最后条命令在数据库服务器上给 '10.22.225.18' 机器添加一个用户'test'，一般用于web服务器和数据库服务器分离的情况。
-注意：
-真正使用的时候不会用 grant all PRIVILEGES on *.* ，而是根据实际需要设定相关的权限。 比如 grant select,insert,delete,update on test.* to 'test'@'localhost' identified by '123';
+grant all PRIVILEGES on *.* to 'test'@'localhost' identified by 'password';
+grant all PRIVILEGES on *.* to 'test'@'%' identified by 'password';
+grant all PRIVILEGES on *.* to 'test'@'10.22.225.18' identified by 'password';
+
 
 ## 权限参考
 ![Privileges_ProvidedbyMySQL](Privileges_ProvidedbyMySQL.md)

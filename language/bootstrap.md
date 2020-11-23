@@ -31,3 +31,15 @@ Bootstrap 4用ES6重写了所有插件。现在提供UMD支持、泛型拆解方
 https://segmentfault.com/a/1190000013051472 bootstrap4之栅格系统
 https://segmentfault.com/a/1190000008291037  bootstrap4新特性
 http://segmentfault.com/a/1190000013332869
+
+
+
+
+## bootstrap 居中布局
+在bootstrap中实现元素居中的方法主要有这几种：
+
+1.加类.text-center（子元素居中）
+
+2.加类.center-block（自身居中）
+
+3.利用bootstrap中列偏移的概念。例如：col-md-offset-2(外边距向右偏移两列)

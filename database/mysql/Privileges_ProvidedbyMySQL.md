@@ -3,10 +3,7 @@
 
 ## CREATE USER
 CREATE USER 'jeffrey'@'localhost' IDENTIFIED BY 'password';
-
-CREATE USER 'jeffrey'@'localhost'
-  IDENTIFIED WITH sha256_password BY 'new_password'
-  PASSWORD EXPIRE INTERVAL 180 DAY;
+CREATE USER 'jeffrey'@'localhost' IDENTIFIED WITH sha256_password BY 'new_password' PASSWORD EXPIRE INTERVAL 180 DAY;
 
 
   

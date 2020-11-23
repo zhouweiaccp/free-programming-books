@@ -25,7 +25,7 @@
 - [html5_video_play_largefile](https://gitee.com/abccc123/html5_video_play_largefile/blob/master/README.md)  html5视频播放分段下载
 - [AutofacDemo](https://github.com/das2017/14-AutofacDemo) AutofacDemo 配置文件示例 企业架构demo比较全
     - [Examples](https://github.com/autofac/Examples/)  autofac 应用 wcf mvc webapi  netcore的demo
-- []()
+- [CSharpFlink](git@gitee.com:wxzz/CSharpFlink.git) netcore5.0 数据计算 用上 DotNetty  Microsoft.CodeAnalysis.CSharp 
 - []()
 - []()
 - []()
@@ -38,6 +38,25 @@ https://stackexchange.github.io/StackExchange.Redis/ThreadTheft.html
 https://www.cnblogs.com/dudu/p/6251266.html  又踩.NET Core的坑：在同步方法中调用异步方法Wait时发生死锁(deadlock)
 <add key="aspnet:UseTaskFriendlySynchronizationContext" value="true" />
 这告诉ASP.NET使用全新的异步管道，它遵循CLR约定来启动异步操作，包括在必要时将线程返回到ThreadPool。ASP.NET 4.0及其以下版本遵循自己的约定，违背了CLR原则，如果交换机未启用，则    异步方法非常容易同步运行，死锁请求或以其他方式不按预期运行。
+
+### 捉拿真凶 StackExchange.Redis.Extensions 归案
+- [](https://www.cnblogs.com/cmt/p/14008145.html)
+https://github.com/cnblogs/StackExchange.Redis.Extensions/blob/a363a3edc995aa71d72f2671645054f7d97f9527/src/core/StackExchange.Redis.Extensions.Core/Implementations/RedisCacheConnectionPoolManager.cs
+https://github.com/imperugo/StackExchange.Redis.Extensions/pull/356/files
+``` csharp
+private Task EmitConnection()
+        {
+            return Task.Run(
+                async () =>
+                {
+                    this.logger.LogDebug("Creating new Redis connection.");
+                    var multiplexer = await ConnectionMultiplexer.ConnectAsync(redisConfiguration.ConfigurationOptions);
+                    if (this.redisConfiguration.ProfilingSessionProvider != null)
+                        multiplexer.RegisterProfiler(this.redisConfiguration.ProfilingSessionProvider);
+                    this.connections.Add(this.redisConfiguration.StateAwareConnectionFactory(multiplexer, logger));
+                });
+        }
+```
 
 
 ## webconfig中配置编码
@@ -53,6 +72,7 @@ https://www.cnblogs.com/dudu/p/6251266.html  又踩.NET Core的坑：在同步�
       <globalization  requestEncoding="gb2312" responseEncoding="gb2312"/>
     </system.web>
   </location>
+
 ### 短网址
 
  -[aspnetcore-url-shortener]()  ![aspnetcore-url-shortener](GenerateShortURL.cs)
