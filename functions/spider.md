@@ -13,7 +13,7 @@
 - [crawlab](https://github.com/crawlab-team/crawlab) 分布式爬虫管理平台，支持任何语言和框架  https://docs.crawlab.cn/zh/
 https://github.com/Kr1s77/awesome-python-login-model/ 模拟登陆一些大型网站，还有一些简单的爬虫，希望对你们有所帮
 - [python_spider_pyspider](https://github.com/crifan/python_spider_pyspider)PySpider是一个简单易用且强大的Python主流爬虫框架。此处总结PySpider的安装和基本的使用，以及安装和启动时常见问题，并且给出查找定位元素的PyQuery的基本用法举例，以及一些高级用法，比如self.craw、config.json、data目录、phantomjs，和一些心得和常见的坑，且给出一些实际的例子供参考
-
+- [anycodes](https://space.bilibili.com/35850273/channel/detail?cid=34163)  好的python spider教程
 
 
 ## lib
