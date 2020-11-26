@@ -15,6 +15,12 @@ https://github.com/Kr1s77/awesome-python-login-model/ 模拟登陆一些大型�
 - [python_spider_pyspider](https://github.com/crifan/python_spider_pyspider)PySpider是一个简单易用且强大的Python主流爬虫框架。此处总结PySpider的安装和基本的使用，以及安装和启动时常见问题，并且给出查找定位元素的PyQuery的基本用法举例，以及一些高级用法，比如self.craw、config.json、data目录、phantomjs，和一些心得和常见的坑，且给出一些实际的例子供参考
 
 
+
+## lib
+- [HtmlAgilityPack](https://github.com/zzzprojects/html-agility-pack)
+- [AngleSharp](https://github.com/AngleSharp/AngleSharp)
+- [PuppeteerSharp](https://github.com/hardkoded/puppeteer-sharp) Puppeteer 是一个Google 开源的NodeJS 库，它提供了一个高级API 来通过DevTools协议控制Chromium 浏览器。Puppeteer 默认以无头(Headless) 模式运行，但是可以通过修改配置运行“有头”模式。
+
 https://www.bilibili.com/video/av47963962?p=21
 https://www.bilibili.com/video/av75870288?from=search&seid=278397473739362240
 https://www.bilibili.com/video/av47963962?from=search&seid=278397473739362240
