@@ -26,7 +26,7 @@
 - [AutofacDemo](https://github.com/das2017/14-AutofacDemo) AutofacDemo 配置文件示例 企业架构demo比较全
     - [Examples](https://github.com/autofac/Examples/)  autofac 应用 wcf mvc webapi  netcore的demo
 - [CSharpFlink](git@gitee.com:wxzz/CSharpFlink.git) netcore5.0 数据计算 用上 DotNetty  Microsoft.CodeAnalysis.CSharp 
-- []()
+- [ipaddressrange](https://github.com/jsakamoto/ipaddressrange) This library allows you to parse range of IP address string such as "192.168.0.0/24" and "192.168.0.0/255.255.255.0" and "192.168.0.0-192.168.0.255", and can contains check. This library supports both IPv4 and IPv6.
 - []()
 - []()
 
