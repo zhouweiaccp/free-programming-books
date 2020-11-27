@@ -261,11 +261,11 @@ teamviewer/向日葵/pcanywhere都是通过本地登录的方式实现远程连�
 * [nslookup]()
 * [netcat](https://eternallybored.org/misc/netcat/) ![linux](apt-get -y install netcat-traditional )
 * [postwoman]( git@github.com:liyasthomas/postwoman.git) https://postwoman.io/
-* [charlesproxy](https://www.charlesproxy.com/overview/features/) 收费
-* [mitmproxy](https://www.mitmproxy.org) a free and open source interactive HTTPS proxy.
+* [Charles](https://www.charlesproxy.com/overview/features/) 收费
+* [mitmproxy](https://www.mitmproxy.org) a free and open source interactive HTTPS proxy.  python
 * [mitmproxy](https://github.com/wuchangming/node-mitmproxy)
 * [anyproxy](http:///github.com/alibaba/anyproxy)anyproxy是阿里巴巴开发的一个优秀的代理的轮子，nodejs
-* []()
+* [fiddler]()
 * []()
 * []()
 
