@@ -26,7 +26,7 @@
 - [AutofacDemo](https://github.com/das2017/14-AutofacDemo) AutofacDemo 配置文件示例 企业架构demo比较全
     - [Examples](https://github.com/autofac/Examples/)  autofac 应用 wcf mvc webapi  netcore的demo
 - [CSharpFlink](git@gitee.com:wxzz/CSharpFlink.git) netcore5.0 数据计算 用上 DotNetty  Microsoft.CodeAnalysis.CSharp 
-- []()
+- [ipaddressrange](https://github.com/jsakamoto/ipaddressrange) This library allows you to parse range of IP address string such as "192.168.0.0/24" and "192.168.0.0/255.255.255.0" and "192.168.0.0-192.168.0.255", and can contains check. This library supports both IPv4 and IPv6.
 - []()
 - []()
 
@@ -77,3 +77,21 @@ private Task EmitConnection()
 
  -[aspnetcore-url-shortener]()  ![aspnetcore-url-shortener](GenerateShortURL.cs)
 
+
+
+### 关注改过的项目
+- [TopsehelfService](git@gitee.com:abccc123/TopsehelfService.git) netframework  后台常用  技术栈 
+      AutoMapper.4.1.1                        Nancy.Authentication.Forms.1.4.1
+      Common.Logging.3.4.1                    Nancy.Authentication.Token.1.4.1
+      Common.Logging.Core.3.4.1               Nancy.Hosting.Self.1.4.1
+      Dapper.1.50.2                           Nancy.Viewengines.Razor.1.4.3
+      Dapper.SimpleCRUD.ModelGenerator.1.0.3  Newtonsoft.Json.10.0.3
+      EnyimMemcached.2.16.0                   NPOI.1.2.5
+      log4net.2.0.8                           NVelocity.1.0.3
+      Microsoft.AspNet.Razor.2.0.30506.0      Quartz.2.6.0
+      Microsoft.Bcl.1.1.10                    RabbitMQ.Client.3.5.7
+      Microsoft.Bcl.Build.1.0.21              SharpZipLib.0.86.0
+      Nancy.1.4.4                             System.Data.SQLite.Core.1.0.105.2
+      sqliteSugar.3.5.2.7
+- [aspnetCore20](git@gitee.com:abccc123/aspnetCore20.git) 自己练手的 ，总结一些用法
+- [quartznet]( git@github.com:zhouweiaccp/quartznet.git) 调度器用法
