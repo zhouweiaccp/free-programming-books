@@ -305,8 +305,10 @@ Guacamole 为 RDP 协议和 VNC 协议资产组件, 用户可以通过 Web Termi
 
 
 ##  代理
-* [anyproxy](http:///github.com/alibaba/anyproxy)anyproxy是阿里巴巴开发的一个优秀的代理的轮子，nodejs
-* [mitmproxy]()   python
+* [caddys](https://caddyserver.com/docs/getting-started) go语言 比nginx 简单
+* []()
+* []()
+* []()
 * []()
 
 ## 下载歌曲
@@ -315,7 +317,8 @@ Guacamole 为 RDP 协议和 VNC 协议资产组件, 用户可以通过 Web Termi
 
 ## 下载
 * [motrix]https://motrix.app/zh-CN/features)  (https://github.com/agalwood/Motrix)Motrix 是一款全能的下载工具，支持下载 HTTP、FTP、BT、磁力链、某盘等资源。它的界面简洁易用，希望大家喜欢 
-* []()
+* [Aria2](http://aria2.github.io/) 几乎全能的下载神器 https://github.com/mayswind/AriaNg  https://github.com/aria2/aria2
+    -[](https://www.cnblogs.com/jiangwenwen1/p/10241293.html)
 * []()
 
 ## 私有同步云盘
