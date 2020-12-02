@@ -179,7 +179,9 @@ pkill -kill -t pts/1
 ## 查看服务列表代码  
 sudo service --status-all
 
-
+##  Redis the tcp backlog
+echo 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' >> /etc/rc.local 
+chmod +x /etc/rc.d/rc.local 
 ## getent 
  getent group consul >/dev/null || groupadd -r consul
 
