@@ -192,26 +192,52 @@ SELECT curtime();
 下载地址 https://bintray.com/mcafee/mysql-audit-plugin/release/1.1.4-725#files
 https://github.com/mcafee/mysql-audit
 解压插件包
-# unzip audit-plugin-mysql-5.7-1.1.4-725.zip
+ unzip audit-plugin-mysql-5.7-1.1.4-725.zip
 将解压好的插件复制到 MySQL 的插件目录下
-# cd audit-plugin-mysql-5.7-1.1.4-725/lib/
-# cp libaudit_plugin.so /usr/local/mysql/lib/plugin/
+ cd audit-plugin-mysql-5.7-1.1.4-725/lib/
+ cp libaudit_plugin.so /usr/local/mysql/lib/plugin/
 root@localhost 18:18: [(none)]> install plugin audit soname 'libaudit_plugin.so';
 root@localhost 18:19: [(none)]> show variables like '%audit_json_file%';
 root@localhost 18:20: [(none)]> set global audit_json_file = 1;
 show global status like 'AUDIT_version';
+
+
+
+## 查找表中多余的重复记录，重复记录是根据单
+-- 查找表中多余的重复记录，重复记录是根据单个字段（peopleId）来判断
+select * from people where peopleId in (select peopleId from people group by peopleId having count(peopleId) > 1)
+-- 删除表中多余的重复记录，重复记录是根据单个字段（peopleId）来判断，只留有rowid最小的记录
+delete from people 
+where peopleId in (select peopleId from people group by peopleId having count(peopleId) > 1)
+and rowid not in (select min(rowid) from people group by peopleId having count(peopleId )>1)
+-- 查找表中多余的重复记录（多个字段）
+select * from vitae a
+where (a.peopleId,a.seq) in (select peopleId,seq from vitae group by peopleId,seq having count(*) > 1)
+-- 删除表中多余的重复记录（多个字段），只留有rowid最小的记录
+delete from vitae a
+where (a.peopleId,a.seq) in (select peopleId,seq from vitae group by peopleId,seq having count(*) > 1) and rowid not in (select min(rowid) from vitae group by peopleId,seq having count(*)>1)
+-- 查找表中多余的重复记录（多个字段），不包含rowid最小的记录
+select * from vitae a
+where (a.peopleId,a.seq) in (select peopleId,seq from vitae group by peopleId,seq having count(*) > 1) and rowid not in (select min(rowid) from vitae group by peopleId,seq having count(*)>1)
+- [](https://github.com/jaywcjlove/mysql-tutorial/blob/master/21-minutes-MySQL-basic-entry.md)
 
 ## Insert into select请慎用
 解决方案 [](https://www.cnblogs.com/javastack/p/13670978.html)
 由于查询条件会导致order_today全表扫描，什么能避免全表扫描呢，很简单嘛，给pay_success_time字段添加一个idx_pay_suc_time索引就可以了，由于走索引查询，就不会出现扫描全表的情况而锁表了，只会锁定符合条件的记录。
 关于 MySQL 索引的详细用法有实战，大家可以关注公众号Java技术栈在后台回复mysql获取系列干货文章。
 最终的sql
-INSERT INTO order_record SELECT
-    *
-FROM
-    order_today FORCE INDEX (idx_pay_suc_time)
-WHERE
-    pay_success_time <= '2020-03-08 00:00:00';
+INSERT INTO order_record SELECT  *  FROM  order_today FORCE INDEX (idx_pay_suc_time)   WHERE  pay_success_time <= '2020-03-08 00:00:00';
 执行过程
 总结
 使用insert into tablA select * from tableB语句时，一定要确保tableB后面的where，order或者其他条件，都需要有对应的索引，来避免出现tableB全部记录被锁定的情况
+
+
+## 资源
+- [mysqltools](https://github.com/Neeky/mysqltools)一个用于快速构建大规模，高质量，全自动化的 mysql分布式集群环境的工具；包含mysql 安装、备份、监控、高可用、读写分离、优化、巡检、自行化运维
+- [MySQL 资源大全中文版](https://github.com/jobbole/awesome-mysql-cn)MySQL 资源大全中文版
+- [mysql2sqlite](https://github.com/dumblob/mysql2sqlite)
+- [awesome-mysql](https://github.com/jaywcjlove/mysql-tutorial/blob/master/awesome-mysql.md)MySQL入门教程
+- [SQL-exercise](https://github.com/XD-DENG/SQL-exercise) 适合入门到精通练习
+- [](https://github.com/liukelin/canal_mysql_nosql_sync)基于canal 的 mysql 与 redis/memcached/mongodb 的 nosql 数据实时同步方案 案例 demo canal client
+- [](https://github.com/aleenzz/MYSQL_SQL_BYPASS_WIKI)  mysql注入,bypass的一些心得
+- [](https://github.com/aneasystone/mysql-deadlocks) 在工作过程中偶尔会遇到死锁问题，虽然这种问题遇到的概率不大，但每次遇到的时候要想彻底弄懂其原理并找到解决方案却并不容易
