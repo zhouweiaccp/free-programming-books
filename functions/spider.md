@@ -14,7 +14,18 @@
 https://github.com/Kr1s77/awesome-python-login-model/ 模拟登陆一些大型网站，还有一些简单的爬虫，希望对你们有所帮
 - [python_spider_pyspider](https://github.com/crifan/python_spider_pyspider)PySpider是一个简单易用且强大的Python主流爬虫框架。此处总结PySpider的安装和基本的使用，以及安装和启动时常见问题，并且给出查找定位元素的PyQuery的基本用法举例，以及一些高级用法，比如self.craw、config.json、data目录、phantomjs，和一些心得和常见的坑，且给出一些实际的例子供参考
 - [anycodes](https://space.bilibili.com/35850273/channel/detail?cid=34163)  好的python spider教程
-
+- [eggjs-spider](https://github.com/cklwblove/eggjs-spider) nodejs  eggjs Puppeteer
+- [xlong-spider-egg](https://github.com/xLong1029/xlong-spider-egg)
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
 
 ## lib
 - [HtmlAgilityPack](https://github.com/zzzprojects/html-agility-pack)
@@ -43,3 +54,8 @@ Tesseract和pytesseract_recv
 当你写爬虫抓不到 APP 请求包的时候该怎么办？ [初级篇] https://zhuanlan.zhihu.com/p/46433599   proxydroid
 当你写爬虫抓不到 APP 请求包的时候该怎么办？ [中级篇] https://zhuanlan.zhihu.com/p/56397466
 听说这个爬虫面试题很难？看完你就知道怎么做了 https://zhuanlan.zhihu.com/p/59005948
+
+
+## puppeteer install
+npm config set puppeteer_download_host=https://npm.taobao.org/mirrors
+npm i puppeteer    or "yarn add puppeteer"
