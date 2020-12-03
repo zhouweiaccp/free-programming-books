@@ -201,7 +201,9 @@ root@localhost 18:19: [(none)]> show variables like '%audit_json_file%';
 root@localhost 18:20: [(none)]> set global audit_json_file = 1;
 show global status like 'AUDIT_version';
 
-
+## 如何查看mysql执行的所有SQL
+set global general_log='ON';
+show variables like 'general_log%';
 
 ## 查找表中多余的重复记录，重复记录是根据单
 -- 查找表中多余的重复记录，重复记录是根据单个字段（peopleId）来判断
