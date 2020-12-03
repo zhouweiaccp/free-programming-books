@@ -240,6 +240,7 @@ INSERT INTO order_record SELECT  *  FROM  order_today FORCE INDEX (idx_pay_suc_t
 - [mysql2sqlite](https://github.com/dumblob/mysql2sqlite)
 - [awesome-mysql](https://github.com/jaywcjlove/mysql-tutorial/blob/master/awesome-mysql.md)MySQL入门教程
 - [SQL-exercise](https://github.com/XD-DENG/SQL-exercise) 适合入门到精通练习
-- [](https://github.com/liukelin/canal_mysql_nosql_sync)基于canal 的 mysql 与 redis/memcached/mongodb 的 nosql 数据实时同步方案 案例 demo canal client
-- [](https://github.com/aleenzz/MYSQL_SQL_BYPASS_WIKI)  mysql注入,bypass的一些心得
-- [](https://github.com/aneasystone/mysql-deadlocks) 在工作过程中偶尔会遇到死锁问题，虽然这种问题遇到的概率不大，但每次遇到的时候要想彻底弄懂其原理并找到解决方案却并不容易
+- [数据实时同步方案 ](https://github.com/liukelin/canal_mysql_nosql_sync)基于canal 的 mysql 与 redis/memcached/mongodb 的 nosql 数据实时同步方案 案例 demo canal client
+- [mysql注入](https://github.com/aleenzz/MYSQL_SQL_BYPASS_WIKI)  mysql注入,bypass的一些心得
+- [dbatools 性能测试](https://github.com/xiepaup/dbatools)  About-MySQL/Linux/Redis Tools
+- [死锁](https://github.com/aneasystone/mysql-deadlocks) 在工作过程中偶尔会遇到死锁问题，虽然这种问题遇到的概率不大，但每次遇到的时候要想彻底弄懂其原理并找到解决方案却并不容易
