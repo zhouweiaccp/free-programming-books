@@ -5,7 +5,7 @@
 - [coding-interview-university](https://github.com/jwasham/coding-interview-university)
 - [](https://www.nowcoder.com/contestRoom?from=cyc_github)
 - [](https://github.com/lengyue1024/BAT_interviews) 享最新BAT面试题(包含机器学习,Linux,PHP,大数据,Python,Java
-- []()
+- [](https://github.com/resumejob/awesome-resume)程序员简历例句，程序员简历范例，Java简历模版，Python简历模版
 - []()
 - []()
 - []()
