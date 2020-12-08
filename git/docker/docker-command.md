@@ -191,6 +191,25 @@ docker start $(docker ps -aq)
 systemctl daemon-reload
 systemctl restart docker
 
+
+
+## ## docker 环境变量
+printenv
+
+## 将node1节点下线。如果要删除node1节点
+温馨提示：更改节点的availablity状态
+swarm集群中node的availability状态可以为 active或者drain，其中：
+active状态下，node可以接受来自manager节点的任务分派；
+drain状态下，node节点会结束task，且不再接受来自manager节点的任务分派（也就是下线节点）。
+ 
+[root@manager-node ~]# docker node update --availability drain node1    //将node1节点下线。如果要删除node1节点，命令是"docker node rm --force node1"
+
+
+
+## 策略
+spread: 默认策略，尽量均匀分布，找容器数少的结点调度
+binpack: 和spread相反，尽量把一个结点占满再用其他结点
+random: 随机
 ## endpoint-mode:dnsrr
 服务器是无法直接通过端口映射被外边访问的
 
