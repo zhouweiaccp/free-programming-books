@@ -7,6 +7,7 @@
 * [规范](#规范)
 * [mysql工具](#mysql工具)
 * [mssql数据库文档生成](#mssql数据库文档生成)
+* [nuget](#nuget)
 * [mirror](#mirror)
 * [ftp](#ftp)
 * [microservice](#microservice)
@@ -119,11 +120,16 @@ teamviewer/向日葵/pcanywhere都是通过本地登录的方式实现远程连�
  * [DBCHM](https://gitee.com/lztkdr/DBCHM)
  * [Kalman.Studio](https://github.com/loamen/Kalman.Studio/releases)
 
- 
-## mirror
+
+## nuget
 * [huaweicloud](https://mirrors.huaweicloud.com/)
 * [alibaba](https://opsx.alibaba.com/mirror)
 * []()
+* []()
+* []()
+ 
+## mirror
+* [BaGet](https://github.com/mirecad/BaGet) A lightweight NuGet and Symbol server.
 * []()
 * []()
 
