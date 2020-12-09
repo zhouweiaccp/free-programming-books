@@ -111,4 +111,6 @@ private Task EmitConnection()
 - [quartznet]( git@github.com:zhouweiaccp/quartznet.git) 调度器用法
 - [Prism](https://github.com/PrismLibrary/Prism)Prism is a framework for building loosely coupled, maintainable, and testable XAML applications in WPF, Xamarin Forms, Uno Platform and WinUI
  * [BenchmarkDotNet](https://github.com/dotnet/BenchmarkDotNet) - Powerful .NET library for benchmarking.
+     * [getting-started](https://benchmarkdotnet.org/articles/guides/getting-started.html)
+     * [Demo.BenchmarkDotNet](https://github.com/WilsonPan/Net.Demos/tree/master/Demo.BenchmarkDotNet)
      * [demo1](https://github.com/serilog/serilog/blob/998f33da0da35cb1b71a83a90b1b22937e6460f8/NuGet.config#L0-L1)
