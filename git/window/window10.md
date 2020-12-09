@@ -17,6 +17,9 @@ bcdedit /set hypervisorlaunchtype off
 bcdedit /set hypervisorlaunchtype auto
 
 
+## 因为在此系统上禁止运行脚本。有关详细信息
+set-executionpolicy remotesigned
+
 ## 远程登录-出现身份验证错误[可能是由于CredSSP加
 解决方法1
 运行 gpedit.msc 本地组策略，“计算机配置”->“管理模板”->“系统”->“凭据分配”但是我的却找不到“加密Oracle修正”选项，选择启用并选择易受攻击。

@@ -110,3 +110,5 @@ private Task EmitConnection()
 - [aspnetCore20](git@gitee.com:abccc123/aspnetCore20.git) 自己练手的 ，总结一些用法
 - [quartznet]( git@github.com:zhouweiaccp/quartznet.git) 调度器用法
 - [Prism](https://github.com/PrismLibrary/Prism)Prism is a framework for building loosely coupled, maintainable, and testable XAML applications in WPF, Xamarin Forms, Uno Platform and WinUI
+ * [BenchmarkDotNet](https://github.com/dotnet/BenchmarkDotNet) - Powerful .NET library for benchmarking.
+     * [demo1](https://github.com/serilog/serilog/blob/998f33da0da35cb1b71a83a90b1b22937e6460f8/NuGet.config#L0-L1)
