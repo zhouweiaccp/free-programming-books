@@ -179,6 +179,10 @@ pkill -kill -t pts/1
 ## 查看服务列表代码  
 sudo service --status-all
 
+## watch可以帮你监测一个命令的运行结果
+watch -n 1 -d "uptime"
+watch -n 1 -d 'pstree|grep http'  #每隔一秒高亮显示http链接数的变化情况
+
 ##  Redis the tcp backlog
 echo 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' >> /etc/rc.local 
 chmod +x /etc/rc.d/rc.local 
