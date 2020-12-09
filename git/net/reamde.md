@@ -109,3 +109,4 @@ private Task EmitConnection()
       sqliteSugar.3.5.2.7
 - [aspnetCore20](git@gitee.com:abccc123/aspnetCore20.git) 自己练手的 ，总结一些用法
 - [quartznet]( git@github.com:zhouweiaccp/quartznet.git) 调度器用法
+- [Prism](https://github.com/PrismLibrary/Prism)Prism is a framework for building loosely coupled, maintainable, and testable XAML applications in WPF, Xamarin Forms, Uno Platform and WinUI

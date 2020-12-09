@@ -205,6 +205,10 @@ show global status like 'AUDIT_version';
 set global general_log='ON';
 show variables like 'general_log%';
 
+
+## 数据库中查询一下连接数的配置情况
+SELECT @@max_user_connections, @@max_connections, @@wait_timeout, @@interactive_timeout;
+
 ## 查找表中多余的重复记录，重复记录是根据单
 -- 查找表中多余的重复记录，重复记录是根据单个字段（peopleId）来判断
 select * from people where peopleId in (select peopleId from people group by peopleId having count(peopleId) > 1)
