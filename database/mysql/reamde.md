@@ -205,6 +205,8 @@ show global status like 'AUDIT_version';
 set global general_log='ON';
 show variables like 'general_log%';
 
+## 如何查看mysql字符集
+show variables like '%char%';
 
 ## 数据库中查询一下连接数的配置情况
 SELECT @@max_user_connections, @@max_connections, @@wait_timeout, @@interactive_timeout;
