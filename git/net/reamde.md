@@ -118,7 +118,7 @@ private Task EmitConnection()
 - [miniprofiler](https://miniprofiler.com/dotnet/AspDotNetCore)MiniProfiler helps you debug issues and optimize performance 测试code  ef
 - [AutoMapper](https://github.com/AutoMapper/AutoMapper) - Convention-based object-object mapper in .NET.
 - [Mapster](https://github.com/MapsterMapper/Mapster) 比 AutoMapper 还高性能的对象映射
-- []()
+- [furion](https://monksoul.gitee.io/furion/docs/appstartup) 脚手架 类似 vue-cli
 - []()
 - []()
 - []()
