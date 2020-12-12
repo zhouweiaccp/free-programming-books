@@ -91,7 +91,7 @@ grant all PRIVILEGES on *.* to 'test'@'10.22.225.18' identified by 'password';
 删除某个索引 alter table employee drop index emp_name;
 
 增加字段 alter table user add user_pic varchar(40) default NULL;
-
+mysql中修改字段长度 ALTER TABLE tb_article MODIFY COLUMN NAME VARCHAR(50);
 修改原字段名称及类型 ALTER TABLE table_name CHANGE old_field_name new_field_name field_type;
 
 删除字段 ALTER TABLE table_name DROP field_name;
