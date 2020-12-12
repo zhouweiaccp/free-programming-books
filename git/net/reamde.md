@@ -116,6 +116,8 @@ private Task EmitConnection()
      * [demo1](https://github.com/serilog/serilog/blob/998f33da0da35cb1b71a83a90b1b22937e6460f8/NuGet.config#L0-L1)
 - [CompareFiles](https://github.com/wakuflair/MyBlogDemoCode/tree/master/CompareFiles) NET CORE下最快比较两个文件内容是否相同的方法 - 续
 - [miniprofiler](https://miniprofiler.com/dotnet/AspDotNetCore)MiniProfiler helps you debug issues and optimize performance 测试code  ef
+- [AutoMapper](https://github.com/AutoMapper/AutoMapper) - Convention-based object-object mapper in .NET.
+- [Mapster](https://github.com/MapsterMapper/Mapster) 比 AutoMapper 还高性能的对象映射
 - []()
 - []()
 - []()
