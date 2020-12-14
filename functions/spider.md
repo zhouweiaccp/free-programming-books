@@ -16,7 +16,7 @@ https://github.com/Kr1s77/awesome-python-login-model/ 模拟登陆一些大型�
 - [anycodes](https://space.bilibili.com/35850273/channel/detail?cid=34163)  好的python spider教程
 - [eggjs-spider](https://github.com/cklwblove/eggjs-spider) nodejs  eggjs Puppeteer
 - [xlong-spider-egg](https://github.com/xLong1029/xlong-spider-egg)
-- []()
+- [firefox](https://github.com/deepsweet/foxr) Node.js API to control Firefox.
 - []()
 - []()
 - []()
