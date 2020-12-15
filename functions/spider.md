@@ -31,6 +31,8 @@ https://github.com/Kr1s77/awesome-python-login-model/ 模拟登陆一些大型�
 - [HtmlAgilityPack](https://github.com/zzzprojects/html-agility-pack)
 - [AngleSharp](https://github.com/AngleSharp/AngleSharp)
 - [PuppeteerSharp](https://github.com/hardkoded/puppeteer-sharp) Puppeteer 是一个Google 开源的NodeJS 库，它提供了一个高级API 来通过DevTools协议控制Chromium 浏览器。Puppeteer 默认以无头(Headless) 模式运行，但是可以通过修改配置运行“有头”模式。
+- [结合项目来谈谈 Puppeteer](https://juejin.cn/post/6844903903000166407#heading-19)
+- [])(https://zhaoqize.github.io/puppeteer-api-zh_CN/)
 
 https://www.bilibili.com/video/av47963962?p=21
 https://www.bilibili.com/video/av75870288?from=search&seid=278397473739362240
