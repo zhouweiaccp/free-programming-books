@@ -21,7 +21,23 @@ SELECT datediff(n,'2011-06-10 10:10','2011-06-10 10:11') --计算多少分钟 �
 SELECT datediff(ss,'2011-06-10 10:10:00','2011-06-10 10:10:10') --计算多少秒
 SELECT datediff(ms,'2011-06-16 10:10:10','2011-06-16 10:10:11') --计算多少毫秒
 
+## SQL语句增加列、修改列、删除列 
 
+1.增加列：
+1.alter table tableName add columnName varchar(30)  
+2.ALTER TABLE dbo.doc_exa ADD column_b VARCHAR(20) NULL, column_c INT NULL ;
+
+2.1. 修改列类型：
+1.alter table tableName alter column columnName varchar(4000)  
+
+2.2. 修改列的名称：
+1.EXEC  sp_rename   'tableName.column1' , 'column2'  (把表名为tableName的column1列名修改为column2)
+下面的示例将 TerritoryID 表中的 Sales.SalesTerritory 列重命名为 TerrID。 将以下示例复制并粘贴到查询窗口中，然后单击“执行” 
+EXEC sp_rename 'Sales.SalesTerritory.TerritoryID', 'TerrID', 'COLUMN';  
+GO  
+3.删除列： 1.alter table tableName drop column columnName
+4,指定表中某列默认数据
+ALTER TABLE dbo.doc_exz ADD CONSTRAINT col_b_def DEFAULT 50 FOR column_b ;
 ## 主键插入IDENTITY
 CREATE TABLE Orders(
 OrderID    INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
