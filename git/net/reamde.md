@@ -115,3 +115,17 @@ private Task EmitConnection()
      * [Demo.BenchmarkDotNet](https://github.com/WilsonPan/Net.Demos/tree/master/Demo.BenchmarkDotNet)
      * [demo1](https://github.com/serilog/serilog/blob/998f33da0da35cb1b71a83a90b1b22937e6460f8/NuGet.config#L0-L1)
 - [CompareFiles](https://github.com/wakuflair/MyBlogDemoCode/tree/master/CompareFiles) NET CORE下最快比较两个文件内容是否相同的方法 - 续
+- [miniprofiler](https://miniprofiler.com/dotnet/AspDotNetCore)MiniProfiler helps you debug issues and optimize performance 测试code  ef
+- [AutoMapper](https://github.com/AutoMapper/AutoMapper) - Convention-based object-object mapper in .NET.
+- [Mapster](https://github.com/MapsterMapper/Mapster) 比 AutoMapper 还高性能的对象映射
+- [furion](https://monksoul.gitee.io/furion/docs/appstartup) 脚手架 类似 vue-cli
+- [.Net Core DevOps -免费用Azure四步实现自动化发布（CI/CD](https://www.cnblogs.com/zhaozhengyan/p/azure-devops-aliyun.html)
+- [lin-cms-dotnetcore](https://github.com/luoyunchong/lin-cms-dotnetcore) practical CMS implemented by .NET 5 + FreeSql；前后端分离、Docker部署、OAtuh2授权登录、自动化部署DevOps、自动同步至Gitee、代码生成器、仿掘金专栏
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()

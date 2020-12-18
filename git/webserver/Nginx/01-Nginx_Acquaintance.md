@@ -136,3 +136,5 @@ kill -HUP pid   # pid其实也被nginx记录了下来，可以使用该命令：
 - 步骤4：从容关闭旧版 `kill -WINCH 旧版pid`，此时旧版工作进程会在处理所有连接后退出。  
 
 
+## 插件
+- [基于 nginx-rtmp-module 的流媒体服务器](https://github.com/winshining/nginx-http-flv-module/blob/master/README.CN.md)

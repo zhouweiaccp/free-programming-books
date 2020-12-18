@@ -66,3 +66,15 @@ created:YYYY-MM-DD	Serverless created:>2019-01-01 matches topics with the word "
 in:file	octocat in:file matches code where "octocat" appears in the file contents.
 in:path	octocat in:path matches code where "octocat" appears in the file path.
 octocat in:file,path matches code where "octocat" appears in the file contents or the file path.
+
+## 高级搜索
+[](https://docs.github.com/en/free-pro-team@latest/github/searching-for-information-on-github/searching-for-repositories)
+in:name example		名字中有“example”
+in:readme example		readme中有“example”
+in:description example	描述中有“example”
+
+stars:>1000		star>1000
+forks:>1000		fork>1000
+pushed:>2019-09-01		2019年9月1日后有更新的
+language:java		用Java编写的项目
+topic:TOPIC
