@@ -126,3 +126,7 @@ Nginx服务器在工作进程中实现了Run-Loop事件处理循环模型的使�
 
 
 
+
+
+## link
+- [巩固你的Nginx知识体系](https://juejin.cn/post/6870264679063617550)

@@ -121,7 +121,7 @@ private Task EmitConnection()
 - [furion](https://monksoul.gitee.io/furion/docs/appstartup) 脚手架 类似 vue-cli
 - [.Net Core DevOps -免费用Azure四步实现自动化发布（CI/CD](https://www.cnblogs.com/zhaozhengyan/p/azure-devops-aliyun.html)
 - [lin-cms-dotnetcore](https://github.com/luoyunchong/lin-cms-dotnetcore) practical CMS implemented by .NET 5 + FreeSql；前后端分离、Docker部署、OAtuh2授权登录、自动化部署DevOps、自动同步至Gitee、代码生成器、仿掘金专栏
-- []()
+- [Npoi](https://github.com/donnytian/Npoi.Mapper)
 - []()
 - []()
 - []()
