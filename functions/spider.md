@@ -17,7 +17,7 @@ https://github.com/Kr1s77/awesome-python-login-model/ 模拟登陆一些大型�
 - [eggjs-spider](https://github.com/cklwblove/eggjs-spider) nodejs  eggjs Puppeteer
 - [xlong-spider-egg](https://github.com/xLong1029/xlong-spider-egg)
 - [firefox](https://github.com/deepsweet/foxr) Node.js API to control Firefox.
-- []()
+- [playwright](https://playwright.dev/docs/intro)Playwright enables fast, reliable and capable automation across all modern browsers. This guide covers those key differentiators to help you decide on the right tool for your automated tests
 - []()
 - []()
 - []()
