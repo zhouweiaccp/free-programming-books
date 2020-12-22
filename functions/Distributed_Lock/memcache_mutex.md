@@ -1,3 +1,20 @@
+## link
+- [redis-memolock](https://github.com/kristoff-it/redis-memolock/tree/master/csharp/redis-memolock)
+- [部分实现](https://github.com/guoming/Hummingbird)
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+
+
+
+
+
+
+
      之前在网上看过memcache-mutex的场景分析和实现代码，这里将.net方式加以实现，当然这里主要是依据原文的伪代码照猫画虎，以此做为总结及记录。如果您对相应实现感兴趣可以尝试使用本文提供的代码进行测试，如果有问题请及时与我联系。   
      原文链接：http://timyang.net/programming/memcache-mutex/ 
      本地链接：http://www.cnblogs.com/daizhj/articles/1959704.html
