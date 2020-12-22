@@ -62,3 +62,9 @@ Tesseract和pytesseract_recv
 ## puppeteer install
 npm config set puppeteer_download_host=https://npm.taobao.org/mirrors
 npm i puppeteer    or "yarn add puppeteer"
+1：跳过自动安装chromiun     
+npm install puppeteer --ignore-scripts
+
+yum update nss -y
+const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
+- [](https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#chrome-headless-doesnt-launch-on-windows)
