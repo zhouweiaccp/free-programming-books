@@ -129,3 +129,25 @@ private Task EmitConnection()
 - []()
 - []()
 - []()
+
+
+
+### Bounded multiple producers multiple consumers queue
+- [MPMCQueue.NET](https://github.com/alexandrnikitin/MPMCQueue.NET)
+- [BeetleX.Dispatchs](git\net\Dispatchs\DispatchCenter.cs)
+- [lock-free-algorithms](http://www.1024cores.net/home/lock-free-algorithms/queues)
+      Depending on allowed number of producer and consumer threads:
+  - Multi-producer/multi-consumer queues (MPMC)
+  - Single-producer/multi-consumer queues (SPMC)
+  - Multi-producer/single-consumer queues (MPSC)
+  - Single-producer/single-consumer queues (SPSC)
+  I hope this aspect is clear - for example, if you have only 1 producer and 1 consumer thread, you can use SPSC queue instead of more general MPMC queue, and as you may guess it will be significantly faster.
+  Depending on underlying data structure:
+  - Array-based
+  - Linked-list-based
+  - Hybrid
+  Array-based queues are generally faster, however they are usually not strictly lockfree. The drawback is that they need to preallocate memory for the worst case. Linked-list queues grow dynamically, thus no need to preallocate any memory up-front. And hybrid queues (linked-list of small fixed-size arrays) try to combine advantages of both.
+- []()
+- []()
+- []()
+- []()
