@@ -157,6 +157,26 @@ private Task EmitConnection()
 
 ###  system.net.networkInformation
 ```cs
+//C# 取ip
+ var networks=System.Net.NetworkInformation.NetworkInterface.GetAllNetworkInterfaces();
+            foreach (var item in networks)
+            {
+                var ip = item.GetIPProperties().UnicastAddresses;
+
+                if (item.GetIPProperties().GatewayAddresses.Count>0)
+                {
+                    _outputHelper.WriteLine("gat:"+item.GetIPProperties().GatewayAddresses.First().Address.ToString());
+                    foreach (var ipitem in ip)
+                    {
+                        if (ipitem.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                        {
+                          var ipadd = ipitem.Address.MapToIPv4().ToString()+",mark:"+ ipitem.IPv4Mask.ToString();
+                           _outputHelper.WriteLine(string.Join(" ",ipadd));
+                        }
+                    }
+                }
+            }
+
 NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
 foreach (NetworkInterface adapter in nics)
 {
@@ -181,4 +201,29 @@ foreach (NetworkInterface adapter in nics)
             }
      }
 }
+
+
+/// <summary>
+     /// 获取网络数据并更新到UI
+     /// </summary>
+     private void UpdateNetworkInterface()
+     {
+         NetworkInterface nic = nicArr[cboNetworkInterface.SelectedIndex];
+ 
+         IPv4InterfaceStatistics interfaceStats = nic.GetIPv4Statistics();
+ 
+         int bytesSentSpeed = (int)(interfaceStats.BytesSent - double.Parse(txtbBytesSent.Text)) / 1024;
+         int bytesReceivedSpeed = (int)(interfaceStats.BytesReceived - double.Parse(txtbBytesReceived.Text)) / 1024;
+ 
+         //更新控件
+ 
+           txtbSpeed.Text = nic.Speed.ToString()  +"  "+nic.GetPhysicalAddress().ToString().Trim()+"  "+nic.NetworkInterfaceType.ToString().Trim();
+         //  txtbInterfaceType.Text = nic.NetworkInterfaceType.ToString();
+         //txtbSpeed.Text = nic.Speed.ToString();
+         txtbBytesReceived.Text = interfaceStats.BytesReceived.ToString();
+         txtbBytesSent.Text = interfaceStats.BytesSent.ToString();
+         txtbSentSecond.Text = bytesSentSpeed.ToString() + " KB/s";
+         txtbReceivedSecond.Text = bytesReceivedSpeed.ToString() + " KB/s";
+ 
+     }
 ```
