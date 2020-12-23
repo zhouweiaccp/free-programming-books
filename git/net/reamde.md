@@ -151,3 +151,34 @@ private Task EmitConnection()
 - []()
 - []()
 - []()
+
+
+
+
+###  system.net.networkInformation
+```cs
+NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
+foreach (NetworkInterface adapter in nics)
+{
+      if (adapter.NetworkInterfaceType.ToString().Equals("Ethernet"))
+     {
+           // adapter.Name;    //网卡适配名称：“本地连接”
+          //  adapter.Description;  //适配器描述信息
+            IPInterfaceProperties ip = adapter.GetIPProperties();     //IP配置信息
+            if (ip.UnicastAddresses.Count > 0)
+            {
+                  ip.UnicastAddresses[0].Address.ToString();  //IP地址
+                    ip.UnicastAddresses[0].Address.MapToIPV4().ToString();
+                  ip.UnicastAddresses[0].IPv4Mask.ToString(); //子网掩码
+            }
+            if (ip.GatewayAddresses.Count > 0)
+                  ip.GatewayAddresses[0].Address.ToString();  //默认网关
+            if (ip.DnsAddresses.Count > 0)
+            {
+                  ip.DnsAddresses[0].ToString();      //首选DNS服务器地址
+                  if (ip.DnsAddresses.Count > 1)
+                       ip.DnsAddresses[1].ToString(); //备用DNS服务器地址
+            }
+     }
+}
+```
