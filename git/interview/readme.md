@@ -9,6 +9,27 @@
 - [CS-Wiki](https://gitee.com/veal98/CS-Wiki) 面向全栈，致力于构建完善的知识体系：数据结构、计算机网络、操作系统、算法、数据库、前端、Java、Python、机器学习、深度学习
 - [elasticsearch](http://blog.didispace.com/books/elasticsearch-definitive-guide-cn/)
    - [](https://gitee.com/explore/ebooks-manual)
+- [](https://github.com/huihut/interview#algorithm)C/C++ 技术面试基础知识总结，包括语言、程序库、数据结构、算法、系统、网络、链接装载库等知识及面试经验、招聘
+- [前端开发者面试](https://github.com/yangshun/front-end-interview-handbook/blob/master/contents/zh/javascript-questions.md)本章节是前端开发者面试问题 - JS 部分的参考答案
+- [interview_python](https://github.com/taizilongxu/interview_python) 关于Python的面试题
+- [](https://github.com/haizlin/fe-interview)前端面试每日 3+1，以面试题来驱动学习，提倡每日学习与思考，每天进步一点！每天早上5点纯手工发布面试题（死磕自己，愉悦大家），3000+道前端面试题全面覆盖，HTML/CSS/JavaScript/Vue/React/Nodejs/TypeScript/ECMAScritpt/Webpack/Jquery/小程序/软技能
+- [](https://github.com/frank-lam/fullstack-tutorial) 架构师指南 很好教程
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
 - []()
 - []()
 - []()
