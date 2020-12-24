@@ -147,7 +147,8 @@ private Task EmitConnection()
   - Linked-list-based
   - Hybrid
   Array-based queues are generally faster, however they are usually not strictly lockfree. The drawback is that they need to preallocate memory for the worst case. Linked-list queues grow dynamically, thus no need to preallocate any memory up-front. And hybrid queues (linked-list of small fixed-size arrays) try to combine advantages of both.
-- []()
+- [MpscArrayQueue](https://github.com/zhouweiaccp/DotNetty/blob/9e3a84189f149fe3aa149851a1f083f2333ace7c/src%2FDotNetty.Common%2FInternal%2FMpscArrayQueue.cs#L0-L1) A Multi-Producer-Single-Consumer queue 
+   - [java JCTools](https://github.com/JCTools/JCTools)
 - []()
 - []()
 - []()
