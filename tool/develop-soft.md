@@ -99,7 +99,7 @@ teamviewer/向日葵/pcanywhere都是通过本地登录的方式实现远程连�
 
 
 ## mysql工具
-* [mycli](https://github.com/dbcli/mycli)
+* [mycli](https://github.com/dbcli/mycli)  python -m pip install mssql-cli
 * [HeidiSQL](https://www.heidisql.com/?place=lblAppWebpage)"Heidi" lets you see and edit data and structures from computers running one of the database systems MariaDB, MySQL, Microsoft SQL or PostgreSQL. Invented in 2002 by Ansgar, with a development peak between 2009 and 2013, HeidiSQL belongs to the most popular tools for MariaDB and MySQL worldwide
 * [beekeeper-studio](https://github.com/beekeeper-studio/beekeeper-studio) https://www.beekeeperstudio.io/ 直接运行
 * [dbeaver](https://github.com/dbeaver/dbeaver) java
