@@ -330,6 +330,8 @@ AOF持久化方式记录每次对服务器写的操作,当服务器重启的时�
 
 
 
+## Redis的性能
+Redis的性能极高，读的速度是110000次/s,写的速度是81000次/s，支持事务，支持备份，丰富的数据类型。 [link](http://www.redis.cn/articles/20181020002.html)
 
 ## link 
 - [配置文件](https://github.com/chimu7/redis/redis.conf)
