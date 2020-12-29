@@ -335,3 +335,4 @@ Redis的性能极高，读的速度是110000次/s,写的速度是81000次/s，�
 
 ## link 
 - [配置文件](https://github.com/chimu7/redis/redis.conf)
+- [](http://www.redis.cn/articles.html) redis文章列表

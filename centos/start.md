@@ -25,7 +25,8 @@ yum install zip unzip
 ## perf性能分析工具
 yum install -y perf
 
-
+## ifconfig
+ yum install -y net-tools
 ## 查看服务列表代码  
 systemctl   list-unit-files
 systemd-cgls   以树形列出正在运行的进程
