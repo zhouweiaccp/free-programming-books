@@ -2,8 +2,9 @@
 
 
 
-
-
+##  info参数说明
+latest_fork_usec:2873 可以通过INFO命令返回的latest_fork_usec字段查看上一次fork操作的耗时（微秒）
+total_commands_processed  显示了Redis服务处理命令的总数
 
 
 /usr/local/redis/bin/redis-cli -h 127.0.0.1 -p 26383 -a 123456 -r 100 -i 1 info | grep used_memory_human:
@@ -192,12 +193,18 @@ LRANGE redis:log 0 0
  
 LPOP redis:log
 # 删除list的第一个value
- 
 LRANGE redis:log 0 -1
 # 显示所有list value
-
 /opt/logstash/bin/logstash agent -f /etc/logstash2/conf.d -l /var/log/logstash2/logstash.log &
 
+
+## redis Sentinel需要至少部署3个实例才能形成选举关系。
+
+关键配置：
+sentinel monitor mymaster 127.0.0.1 6379 2  #Master实例的IP、端口，以及选举需要的赞成票数
+sentinel down-after-milliseconds mymaster 60000  #多长时间没有响应视为Master失效
+sentinel failover-timeout mymaster 180000  #两次failover尝试间的间隔时长
+sentinel parallel-syncs mymaster 1  #如果有多个Slave，可以通过此配置指定同时从新Master进行数据同步的Slave数，避免所有Slave同时进行数据同步导致查询服务也不可用
 ## 以上是手动操作redis消息队列方法
  
 redis set ( each element may only appear once)
@@ -256,3 +263,8 @@ AOF的缺点：
 AOF文件通常比RDB文件更大
 性能消耗比RDB高
 数据恢复速度比RDB慢
+
+
+
+## link
+- [性能调优](https://www.cnblogs.com/276815076/p/7245333.html)
