@@ -19,21 +19,19 @@
 
  /usr/local/redis/bin/redis-cli -h 127.0.0.1 -p 26383  set "aaa2d2df2" "bbb"
 # 设置key value
-
  /usr/local/redis/bin/redis-cli -h 127.0.0.1 -p 26383  get "aaa2d2df2"
 # 查看key
-
 /usr/local/redis/bin/redis-cli -h 127.0.0.1 -p 26383 keys "aaa2d2df2"     
 /usr/local/redis/bin/redis-cli -h 127.0.0.1 -p 26383 exists "aaa2d2df2"
 # 查看某个key是否存在
 
 /usr/local/redis/bin/redis-cli -h 127.0.0.1 -p 26383  config get "*"
 # 查看redis运行期间可以临时修改的参数
-
 /usr/local/redis/bin/redis-cli -h 127.0.0.1 -p 26383  config set "maxmemory" "8000000000"
 # 修改redis的最大支持内存
-
 /usr/local/redis/bin/redis-cli -h 127.0.0.1 -p 26383 info | grep config_file
+## 查看redis运行期间可以临时修改的参数
+config set maxmemory-policy volatile-lru
 # 查看redis的配置文件在哪
 
 select 0
@@ -200,7 +198,7 @@ LRANGE redis:log 0 -1
 
 /opt/logstash/bin/logstash agent -f /etc/logstash2/conf.d -l /var/log/logstash2/logstash.log &
 
-# # 以上是手动操作redis消息队列方法
+## 以上是手动操作redis消息队列方法
  
 redis set ( each element may only appear once)
 redis set原来没有sort，后来新增带score的set支持ZRANGE
@@ -219,3 +217,42 @@ HINCRBY user:1000 visits 1 => 11
 HINCRBY user:1000 visits 10 => 21
 HDEL user:1000 visits
 HINCRBY user:1000 visits 1 => 1
+
+
+## 数据持久化
+Redis提供了将数据定期自动持久化至硬盘的能力，包括RDB和AOF两种方案，两种方案分别有其长处和短板，可以配合起来同时运行，确保数据的稳定性。
+ 1. 采用RDB持久方式，Redis会定期保存数据快照至一个rbd文件中，并在启动时自动加载rdb文件，恢复之前保存的数据。可以在配置文件中配置Redis进行快照保存的时机
+save 60 100 会让Redis每60秒检查一次数据变更情况，如果发生了100次或以上的数据变更，则进行RDB快照保存
+RDB的优点：
+
+对性能影响最小。如前文所述，Redis在保存RDB快照时会fork出子进程进行，几乎不影响Redis处理客户端请求的效率。
+每次快照会生成一个完整的数据快照文件，所以可以辅以其他手段保存多个时间点的快照（例如把每天0点的快照备份至其他存储媒介中），作为非常可靠的灾难恢复手段。
+使用RDB文件进行数据恢复比使用AOF要快很多。
+RDB的缺点：
+
+快照是定期生成的，所以在Redis crash时或多或少会丢失一部分数据。
+如果数据集非常大且CPU不够强（比如单核CPU），Redis在fork子进程时可能会消耗相对较长的时间（长至1秒），影响这期间的客户端请求。
+
+
+2. AOF
+采用AOF持久方式时，Redis会把每一个写请求都记录在一个日志文件里。在Redis重启时，会把AOF文件中记录的所有写操作顺序执行一遍，确保数据恢复到最新。
+AOF默认是关闭的，如要开启，进行如下配置：
+appendonly yes
+AOF提供了三种fsync配置，always/everysec/no，通过配置项[appendfsync]指定：
+
+appendfsync no：不进行fsync，将flush文件的时机交给OS决定，速度最快
+appendfsync always：每写入一条日志就进行一次fsync操作，数据安全性最高，但速度最慢
+appendfsync everysec：折中的做法，交由后台线程每秒fsync一次
+auto-aof-rewrite-percentage 100
+auto-aof-rewrite-min-size 64mb
+
+AOF的优点：
+
+最安全，在启用appendfsync always时，任何已写入的数据都不会丢失，使用在启用appendfsync everysec也至多只会丢失1秒的数据。
+AOF文件在发生断电等问题时也不会损坏，即使出现了某条日志只写入了一半的情况，也可以使用redis-check-aof工具轻松修复。
+AOF文件易读，可修改，在进行了某些错误的数据清除操作后，只要AOF文件没有rewrite，就可以把AOF文件备份出来，把错误的命令删除，然后恢复数据。
+AOF的缺点：
+
+AOF文件通常比RDB文件更大
+性能消耗比RDB高
+数据恢复速度比RDB慢

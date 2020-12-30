@@ -358,11 +358,11 @@ Guacamole 为 RDP 协议和 VNC 协议资产组件, 用户可以通过 Web Termi
 
 ## 国产开源软件
 - [Tendis](https://github.com/Tencent/Tendis)Tendis 是腾讯开源的分布式高性能 KV 存储数据库，兼容 Redis 核心数据结构与接口，可提供大容量、低成本、强持久化的数据库能力，适用于兼容 Redis 协议、需要大容量且较高访问性能的温冷数据存储场景
-- [](https://github.com/bytedance/terarkdb)TerarkDB 是字节跳动开源、兼容 RocksDB 的存储引擎，有极佳的性能。作为一个存储引擎，可以嵌入 MongoDB、MySQL、SSDB 等现有的存储系统中，也可以直接作为独立的存储系统进行使用
-- [](https://github.com/owncast/owncast)owncast 是你的专属视频直播服务，你可以自己运行 owncast，获得直播所有功能
-- [](https://github.com/DevUtilsApp/DevUtils-app)DevUtils-app 是一个 macOS 开发工具集，包括 JSON 格式校验、JWT 调试器、UUID 生成器、正则测试器等等10 多款开发小工具
-- [](https://github.com/n7olkachev/imgdiff) imgdiff 是一个图片对比工具，还记得很久之前的“来找茬”吗
-- []()
+- [RocksDB 的存储引擎](https://github.com/bytedance/terarkdb)TerarkDB 是字节跳动开源、兼容 RocksDB 的存储引擎，有极佳的性能。作为一个存储引擎，可以嵌入 MongoDB、MySQL、SSDB 等现有的存储系统中，也可以直接作为独立的存储系统进行使用
+- [专属视频直播服务](https://github.com/owncast/owncast)owncast 是你的专属视频直播服务，你可以自己运行 owncast，获得直播所有功能
+- [DevUtils](https://github.com/DevUtilsApp/DevUtils-app)DevUtils-app 是一个 macOS 开发工具集，包括 JSON 格式校验、JWT 调试器、UUID 生成器、正则测试器等等10 多款开发小工具
+- [图片对比工具](https://github.com/n7olkachev/imgdiff) imgdiff 是一个图片对比工具，还记得很久之前的“来找茬”吗
+- [马赛克密码还原](https://github.com/beurtschipper/Depix)一天获得 4k+ star 的马赛克密码还原
 - []()
 - []()
 - []()
