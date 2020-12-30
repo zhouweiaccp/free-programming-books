@@ -6,7 +6,7 @@ cp  /etc/yum.repos.d/CentOS-Base.repo  /etc/yum.repos.d/CentOS-Base.repo_current
 curl http://mirrors.163.com/.help/CentOS6-Base-163.repo -o /etc/yum.repos.d/CentOS-Base.repo && yum clean all &&yum makecache
 # wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo && yum clean all &&yum makecache
 
-yum install -y zip unzip git tar wget  yum-utils 
+yum install -y zip unzip git tar wget  yum-utils  bind-utils
 
 ##安装完成后生效，按下Tab键补全命令
 yum install bash-completion -y

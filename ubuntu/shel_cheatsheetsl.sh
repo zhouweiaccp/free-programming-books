@@ -224,6 +224,7 @@ mtr {host}                # 高级版本 traceroute
 host {domain}             # DNS 查询，{domain} 前面可加 -a 查看详细信息
 whois {domain}            # 取得域名 whois 信息
 dig {domain}              # 取得域名 dns 信息
+dig baidu.com +short     #取ip  yum -y install bind-utils
 route -n                  # 查看路由表
 netstat -a                # 列出所有端口
 netstat -an               # 查看所有连接信息，不解析域名
