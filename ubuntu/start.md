@@ -189,6 +189,10 @@ chmod +x /etc/rc.d/rc.local
 ## getent 
  getent group consul >/dev/null || groupadd -r consul
 
+## watch 定时执行
+watch -n 1 date
+while true; do date; sleep 1; done
+ seq 10 | xargs -i date    seq 生成一个1-10的数组。xargs兴高彩烈的拿着这个数组，准备将数组元素传给date 命令做参数。xargs -i会查找命令字符串中的{}，并用数组元素替换{}。但是xargs一看，WTF！命令里面居然没有占位符。那好吧，就执行10遍命令，让参数随风去吧。
 
 
 ## Cannot assign requested address.
@@ -208,7 +212,6 @@ net.ipv4.ip_local_port_range = 50000    65000      -----意味着50000~65000端�
 修改参数：
 $ vi /etc/sysctl.conf
 net.ipv4.ip_local_port_range = 10000     65000      -----意味着10000~65000端口可用
-
 改完后，执行命令“sysctl -p”使参数生效，不需要reboot。
  
   ##  DevOps
