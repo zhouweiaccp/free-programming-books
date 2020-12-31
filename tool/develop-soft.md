@@ -223,8 +223,8 @@ teamviewer/向日葵/pcanywhere都是通过本地登录的方式实现远程连�
 - [Blumind]()
 - [XMIND]()
 - [VISIO]()
-- []()
-- []()
+- [](https://online.visual-paradigm.com/) 在线流程图
+- [](https://app.diagrams.net/)这个网站是大家一提到思维导图流程图啥的就会搬出来的“大佬级”的网站，几乎全平台都可用，Windows、MAC、在线网站都可以直接使用。
 - []()
 - []()
 - []()

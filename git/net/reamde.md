@@ -122,7 +122,7 @@ private Task EmitConnection()
 - [.Net Core DevOps -免费用Azure四步实现自动化发布（CI/CD](https://www.cnblogs.com/zhaozhengyan/p/azure-devops-aliyun.html)
 - [lin-cms-dotnetcore](https://github.com/luoyunchong/lin-cms-dotnetcore) practical CMS implemented by .NET 5 + FreeSql；前后端分离、Docker部署、OAtuh2授权登录、自动化部署DevOps、自动同步至Gitee、代码生成器、仿掘金专栏
 - [Npoi](https://github.com/donnytian/Npoi.Mapper)
-- []()
+- [MediatrTutorial](https://github.com/MoienTajik/MediatrTutorial)A simple implementation of CQRS in ASP.NET Core using MediatR framework in .NET 5
 - []()
 - []()
 - []()
