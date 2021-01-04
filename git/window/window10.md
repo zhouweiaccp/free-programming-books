@@ -29,6 +29,10 @@ set-executionpolicy remotesigned
 ）然后在最底部文件夹Parameters里面，新建 DWORD（32）位值（D）。文件名 “AllowEncryptionOracle” ，值 : 2，保存，重启
 
 
+
+
+## 利用Windows自带的计算器计算十六进制（八进制、二进制）数据
+HEX是十六进制，DEC是十进制，OCT是八进制，BIN是二进制，大家也可以根据自己的实际需要选择是哪一种进制
 ## forfile
 https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/forfiles
 forfiles /p "E:\pictures" /m * /d -1 /c "cmd /c  del /Q @file" 
