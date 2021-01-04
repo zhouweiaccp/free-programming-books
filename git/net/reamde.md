@@ -155,6 +155,15 @@ private Task EmitConnection()
 
 
 
+## C#中ToString()格式详解
+C	货币	2.5.ToString("C")	￥2.50
+D	十进制数	25.ToString("D5")	00025
+E	科学型	25000.ToString("E")	2.500000E+005
+F	固定点	25.ToString("F2")	25.00
+G	常规	2.5.ToString("G")	2.5
+N	数字	2500000.ToString("N")	2,500,000.00
+X	十六进制	255.ToString("X")	FF
+
 
 ###  system.net.networkInformation
 ```cs
