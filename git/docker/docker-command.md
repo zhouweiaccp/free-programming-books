@@ -204,6 +204,10 @@ drain状态下，node节点会结束task，且不再接受来自manager节点的
  
 [root@manager-node ~]# docker node update --availability drain node1    //将node1节点下线。如果要删除node1节点，命令是"docker node rm --force node1"
 
+## docker service  --mount-add 挂载
+docker service  update --mount-add type=bind,src=/root/anaconda-ks.cfg,dst=/app/anaconda-ks.cfg  --force  --replicas=1  indrive_orgsync
+docker service update --mount-rm /app/anaconda-ks.cfg indrive_orgsync  #去掉挂载
+[](https://docs.docker.com/engine/reference/commandline/service_update/)
 
 
 ## 策略
