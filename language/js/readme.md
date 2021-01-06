@@ -39,6 +39,18 @@
     <img src="assets/clippy.svg" alt="Copy to clipboard">
 </button>
 ```
+
+
+### xss 
+- [](https://github.com/leizongmin/js-xss)
+```js
+<script src="https://rawgit.com/leizongmin/js-xss/master/dist/xss.js"></script>
+// 使用 filterXSS()方法处理内容
+<script>
+var html = filterXSS('<script>alert("xss");</scr' + 'ipt>');
+console(html);
+</script>
+```
 ## IE10以下支持bind()方法
 if (!Function.prototype.bind) {
     Function.prototype.bind = function (oThis) {
