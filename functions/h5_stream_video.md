@@ -261,3 +261,4 @@ hls
 3、hls.js：https://github.com/video-dev/hls.js
 4、video.js： https://github.com/videojs/video.js
 5、vue-video-player：https://github.com/surmon-china/vue-video-player
+6. [H264编码](https://www.cnblogs.com/sweet-sunshine/p/5220151.html)
