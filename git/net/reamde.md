@@ -155,6 +155,9 @@ private Task EmitConnection()
 
 
 
+
+## 区块链接技术
+-[](https://github.com/blockchainGuide/blockchainguide)
 ## C#中ToString()格式详解
 C	货币	2.5.ToString("C")	￥2.50
 D	十进制数	25.ToString("D5")	00025
