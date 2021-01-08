@@ -121,9 +121,19 @@ while (!quitLoop);
 
 
 
+
+## Linux服务器端测试Ldap同步是否验证通
+ yum install -y openldap-clients
+测试ldap配置是否验证通过：
+ldapsearch -h 192.168.251.41 -p 389 -b "dc=farawaygalaxy,dc=net" -D "cn=admin,dc=farawaygalaxy,dc=net" -w passw0rd
+注意：
+1.-h是 LDAP 主机名。
+2.-p是 LDAP 端口名。
+3.-b是 LDAP 基点值。
+4.-D是 LDAP 绑定标识。
+5.-w是 LDAP 绑定密码。
+
 ## 链接
-
-
 - [语法](https://docs.microsoft.com/zh-cn/windows/win32/adsi/search-filter-syntax?redirectedfrom=msdn)
 - [Active Directory: LDAP Syntax Filters](https://social.technet.microsoft.com/wiki/contents/articles/5392.active-directory-ldap-syntax-filters.aspx) 好例子
 - [Default LDAP Filters and Attributes for Users, Groups and Containers](https://docs.oracle.com/cd/E26217_01/E26214/html/ldap-filters-attrs-users.html)
