@@ -151,6 +151,19 @@ apt install -y linux-tools-common
 ## 防火墙
 ufw status
 
+
+## max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+
+调整内核参数:
+
+echo "vm.max_map_count=262144" >> /etc/sysctl.conf
+
+echo "fs.file-max=65536" >> /etc/sysctl.conf
+
+echo "* - nofile 65535" >> /etc/security/limits.conf
+
+sysctl -p
+
 ##  Screen是一个可以在多个进程之间多路复用一个物理终端的全屏窗口管理器
 apt-get install screen
 yum install screen
