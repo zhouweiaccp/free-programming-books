@@ -371,3 +371,9 @@ swap 对于操作系统来比较重要，当物理内存不足时，可以将一
 - [配置文件](https://github.com/chimu7/redis/redis.conf)
 - [](http://www.redis.cn/articles.html) redis文章列表
 - [Tendis](https://github.com/Tencent/Tendis)Tendis 是腾讯开源的分布式高性能 KV 存储数据库，兼容 Redis 核心数据结构与接口，可提供大容量、低成本、强持久化的数据库能力，适用于兼容 Redis 协议、需要大容量且较高访问性能的温冷数据存储场景   [](http://tendis.cn/)
+- [aerospike](https://www.aerospike.com/docs/guide/limitations.html)Aerospike VS. Redis：案例分享 [](https://brands.cnblogs.com/aerospike/p/1870)
+- []()
+- []()
+- []()
+- []()
+- []()
