@@ -235,5 +235,5 @@ net.ipv4.ip_local_port_range = 10000     65000      -----意味着10000~65000端
 tools and more.
  * [the-art-of-command-line](https://github.com/jlevy/the-art-of-command-line)本文是一份我在 Linux 上工作时，发现的一些命令行使用技巧的摘要。有些技巧非常基础，而另一些则相当复杂，甚至晦涩难懂。这篇文章并不长，但当你能够熟练掌握这里列出的所有技巧时
  * [growing-up](https://github.com/mylxsw/growing-up) 程序猿成长计划
- * []()
+ * [nux-tutorial](https://github.com/dunwu/linux-tutorial)Linux教程，主要内容：Linux 命令、Linux 系统运维、软件运维、精选常用Shell脚本
  * []()
