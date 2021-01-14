@@ -14,7 +14,7 @@
 - [interview_python](https://github.com/taizilongxu/interview_python) 关于Python的面试题
 - [](https://github.com/haizlin/fe-interview)前端面试每日 3+1，以面试题来驱动学习，提倡每日学习与思考，每天进步一点！每天早上5点纯手工发布面试题（死磕自己，愉悦大家），3000+道前端面试题全面覆盖，HTML/CSS/JavaScript/Vue/React/Nodejs/TypeScript/ECMAScritpt/Webpack/Jquery/小程序/软技能
 - [](https://github.com/frank-lam/fullstack-tutorial) 架构师指南 很好教程
-- []()
+- [biaochenxuying](https://github.com/biaochenxuying/blog)大前端技术为主，读书笔记、随笔、理财为辅，做个终身学习者。
 - []()
 - []()
 - []()
@@ -38,3 +38,8 @@
 - []()
 - [](https://github.com/gsjqwyl/JavaInterview#15jvm%E7%9A%84%E6%B0%B8%E4%B9%85%E4%BB%A3%E4%B8%AD%E4%BC%9A%E5%8F%91%E7%94%9F%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E4%B9%88)Java面试整理，涵盖基础、JVM、线程并发、框架、MySQL、微服务、Redis、中间件、数据结构与算法等。陆续完善中
 - []()
+
+
+##  理财
+-[有什么实在的理财知识或者经验？](https://www.zhihu.com/question/372277735/answer/1019388850)
+- [普通人如何合理的理财投资，有哪些书可以学习阅读？](https://www.zhihu.com/question/22818974)
