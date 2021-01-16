@@ -213,6 +213,19 @@ docker service update --mount-rm /app/anaconda-ks.cfg indrive_orgsync  #去掉�
 TCP端口2377，用于集群管理信息的交流
 TCP、UDP端口7946用于集群中节点的交流
 UDP端口4789用于overlay网络中数据报的发送与接收
+
+firewall-cmd --zone=public --add-port=2377/tcp --permanent 　　 # 集群管理端口
+
+firewall-cmd --zone=public --add-port=7946/tcp --permanent 　　 # 节点之间通讯端口
+firewall-cmd --zone=public --add-port=7946/udp --permanent
+
+firewall-cmd --zone=public --add-port=4789/tcp --permanent 　　 # overlay网络通讯端口
+firewall-cmd --zone=public --add-port=4789/udp --permanent
+firewall-cmd --reload
+
+- [docker-compose编排参数详解](https://www.cnblogs.com/wutao666/p/11332186.html)
+
+
 ## 策略
 spread: 默认策略，尽量均匀分布，找容器数少的结点调度
 binpack: 和spread相反，尽量把一个结点占满再用其他结点
