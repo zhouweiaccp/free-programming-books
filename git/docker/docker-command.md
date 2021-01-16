@@ -209,7 +209,10 @@ docker service  update --mount-add type=bind,src=/root/anaconda-ks.cfg,dst=/app/
 docker service update --mount-rm /app/anaconda-ks.cfg indrive_orgsync  #去掉挂载
 [](https://docs.docker.com/engine/reference/commandline/service_update/)
 
-
+## docker端口
+TCP端口2377，用于集群管理信息的交流
+TCP、UDP端口7946用于集群中节点的交流
+UDP端口4789用于overlay网络中数据报的发送与接收
 ## 策略
 spread: 默认策略，尽量均匀分布，找容器数少的结点调度
 binpack: 和spread相反，尽量把一个结点占满再用其他结点
