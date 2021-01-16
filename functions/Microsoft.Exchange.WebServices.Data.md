@@ -19,8 +19,8 @@
 * [exchangeserver](https://social.msdn.microsoft.com/Forums/en-US/home?category=exchangeserver&forum=exchangesvrdevelopment&filter=alltypes&brandIgnore=True&sort=relevancedesc&category=exchangeserver&forum=exchangesvrdevelopment&filter=alltypes&sort=relevancedesc&brandIgnore=true&filter=alltypes&searchTerm=foldername) 
 * [ews-managed-api](https://github.com/OfficeDev/ews-managed-api) 官网 不在更新
 * [](https://developer.microsoft.com/en-us/graph/blogs/upcoming-changes-to-exchange-web-services-ews-api-for-office-365/)  exchang 新版接口，
-* []()
-* []()
+* [Searching for folders in a mailbox by using the EWS Managed API 2.0](https://docs.microsoft.com/en-us/previous-versions/office/developer/exchange-server-2010/dd633627(v=exchg.80))
+* [多条件搜索](https://docs.microsoft.com/en-us/previous-versions/office/developer/exchange-server-2010/dd633695(v=exchg.80))
 * []()
 * []()
 * []()
@@ -155,3 +155,91 @@ namespace EmailServices.Web.IntegrationTests
             throw new Exception("Folder not found: " + folderName);
         }
 ```
+
+### Filtering on SearchFilterCollection
+```cs
+// Obtain a collection of e-mail messages that satisfy a specified Search filter.
+//https://docs.microsoft.com/en-us/previous-versions/office/developer/exchange-server-2010/dd633695(v=exchg.80)
+ItemView view = new ItemView(10);
+view.PropertySet = new PropertySet(BasePropertySet.IdOnly, ItemSchema.Subject);
+// SearchFilterCollection - Filter on mail with the word "extended” in the Subject
+// or an extended property value of six. 
+SearchFilter.SearchFilterCollection searchFilterCollection = new SearchFilter.SearchFilterCollection(LogicalOperator.Or);
+// Add the first search filter - search for the word "extended" in the Subject.
+searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.Subject, "extended"));
+// Add the second search filter - search for the extended property value of six.
+Guid MyPropertySetIdint = new Guid("{75A5486F-9267-49ca-9B4E-3D04CA9EC179}");
+ExtendedPropertyDefinition extendedPropertyDefinitionint = new ExtendedPropertyDefinition(MyPropertySetIdint, "MyFlag", MapiPropertyType.Integer);
+searchFilterCollection.Add(new SearchFilter.IsEqualTo(extendedPropertyDefinitionint, 6));
+
+FindItemsResults<Item> findResults = service.FindItems(WellKnownFolderName.Inbox, searchFilterCollection, view);
+
+```
+
+### Perform a paged search by using the EWS Managed API
+```cs
+//https://docs.microsoft.com/en-us/exchange/client-developer/exchange-web-services/how-to-perform-paged-searches-by-using-ews-in-exchange
+using Microsoft.Exchange.WebServices.Data;
+static void PageSearchItems(ExchangeService service, WellKnownFolderName folder)
+{
+    int pageSize = 5;
+    int offset = 0;
+    // Request one more item than your actual pageSize.
+    // This will be used to detect a change to the result
+    // set while paging.
+    ItemView view = new ItemView(pageSize + 1, offset);
+    view.PropertySet = new PropertySet(ItemSchema.Subject);
+    view.OrderBy.Add(ItemSchema.DateTimeReceived, SortDirection.Descending);
+    view.Traversal = ItemTraversal.Shallow;
+    bool moreItems = true;
+    ItemId anchorId = null;
+    while (moreItems)
+    {
+        try
+        {
+            FindItemsResults<Item> results = service.FindItems(folder, view);
+            moreItems = results.MoreAvailable;
+            if (moreItems && anchorId != null)
+            {
+                // Check the first result to make sure it matches
+                // the last result (anchor) from the previous page.
+                // If it doesn't, that means that something was added
+                // or deleted since you started the search.
+                if (results.Items.First<Item>().Id != anchorId)
+                {
+                    Console.WriteLine("The collection has changed while paging. Some results may be missed.");
+                }
+            }
+            if (moreItems)
+                view.Offset += pageSize;
+                
+            anchorId = results.Items.Last<Item>().Id;
+            
+            // Because you're including an additional item on the end of your results
+            // as an anchor, you don't want to display it.
+            // Set the number to loop as the smaller value between
+            // the number of items in the collection and the page size.
+            int displayCount = 0;
+            if ((results.MoreAvailable == false && results.Items.Count > pageSize) || (results.Items.Count < pageSize))
+            {
+                displayCount = results.Items.Count;
+            }
+            else
+            {
+                displayCount = pageSize;
+            }
+            
+            for (int i = 0; i < displayCount; i++)
+            {
+                Item item = results.Items[i];
+                Console.WriteLine("Subject: {0}", item.Subject);
+                Console.WriteLine("Id: {0}\n", item.Id.ToString());
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Exception while paging results: {0}", ex.Message);
+        }
+    }
+}
+````
