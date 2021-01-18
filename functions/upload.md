@@ -18,8 +18,12 @@ https://github.com/kissygalleryteam/uploader/blob/master/doc/demo/theme-crossUpl
 
 jQuery File Uploader、FineUploader、Uploadify、Baidu Web Uploader   
 - [dropzone] (https://www.dropzonejs.com/#configuration)
+- [filepond](https://github.com/pqina/filepond)A flexible and fun JavaScript file upload library  插件比较多,支持 jquery vue reat...  ![doc](https://pqina.nl/filepond/docs/)
 
 
+
+## nodejs
+-[](https://github.com/node-formidable/formidable)
 
 https://www.npmjs.com/package/spark-md5  前端通过spark-md5.js计算本地文件md5
 https://gitee.com/lsy69221/file-upload    基于Node.js的大文件分片上传
