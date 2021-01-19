@@ -54,6 +54,10 @@
 
 
 
+## MySQL 8.0retrieval of the rsa public key is not enabled for insecure
+ allowPublicKeyRetrieval=true
+ allowPublicKeyRetrieval=true&useSSL=false
+
 ## X509Certificate
 ```cs
 //https://github.com/StefH/OpenSSL-X509Certificate2-Provider  Parses OpenSSL public and private key components and returns a X509Certificate2 with RSA/RSACryptoServiceProvider
