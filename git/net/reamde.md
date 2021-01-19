@@ -52,6 +52,27 @@
 "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe" MyAPI.sln -p:Configuration=Release
 "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe" MyAPI.sln -p:Configuration=Debug
 
+
+
+## X509Certificate
+```cs
+//https://github.com/StefH/OpenSSL-X509Certificate2-Provider  Parses OpenSSL public and private key components and returns a X509Certificate2 with RSA/RSACryptoServiceProvider
+X509Certificate certificate = new X509Certificate(
+        @"c:\mySrvKeystore", KEY_PASSWORD);
+
+    public static bool ValidateCertificate(
+        object sender,
+        X509Certificate certificate,
+        X509Chain chain,
+        SslPolicyErrors errors)
+    {
+        if (errors == SslPolicyErrors.None)
+            return true;
+
+        Console.WriteLine("Certificate error: {0}", errors);
+        return false;
+    }
+```
 ### Thread Theft
 https://stackexchange.github.io/StackExchange.Redis/ThreadTheft.html
 https://www.cnblogs.com/dudu/p/6251266.html  又踩.NET Core的坑：在同步方法中调用异步方法Wait时发生死锁(deadlock)
