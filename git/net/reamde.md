@@ -47,6 +47,11 @@
 ## 常见问题
 
 
+
+## MSBuild.exe
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe" MyAPI.sln -p:Configuration=Release
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe" MyAPI.sln -p:Configuration=Debug
+
 ### Thread Theft
 https://stackexchange.github.io/StackExchange.Redis/ThreadTheft.html
 https://www.cnblogs.com/dudu/p/6251266.html  又踩.NET Core的坑：在同步方法中调用异步方法Wait时发生死锁(deadlock)
