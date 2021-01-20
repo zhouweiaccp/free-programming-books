@@ -52,11 +52,19 @@
 "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe" MyAPI.sln -p:Configuration=Release
 "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe" MyAPI.sln -p:Configuration=Debug
 
+## An operation on a socket could not be performed because the system lacked sufficient buffer space
+由于系统缺少足够的缓冲区空间或队列已满，无法对套接字执行操作  netstat -a
+解决方法：增加端口数量 或者减少CLOSE_WAIT等待时间
+打开注册表：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters
 
+建一个DWORD项，名字为MaxUserPort，值为十进制65534（十六进制0000FFFE），表示最大可用端口为65534
+
+建一个DWORD项，名字为TCPTimedWaitDelay，值为十进制30（十六进制0000001e），表示TCP连接等待时间30秒  ![link](https://blog.csdn.net/weixin_43866043/article/details/111152111)
 
 ## MySQL 8.0retrieval of the rsa public key is not enabled for insecure
  allowPublicKeyRetrieval=true
  allowPublicKeyRetrieval=true&useSSL=false
+ ![link](https://mysqlconnector.net/connection-options/)
 
 ## X509Certificate
 ```cs
