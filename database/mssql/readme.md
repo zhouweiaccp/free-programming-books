@@ -47,6 +47,23 @@ SET IDENTITY_INSERT Orders ON
 INSERT INTO Orders (OrderID ,PriceDate ) VALUES(1,GETDATE())
 SET IDENTITY_INSERT Orders OFF
 
+
+
+
+## Could not allocate a new page for database 'TEMPDB' because of insufficient disk space in filegroup 'DEFAULT
+就是因为服务器由于磁盘空间不足或数据库文件限制了最大大小，导致SQL Server无法为数据库分配新的页面，请检查磁盘空间是否足够或给数据库文件设置自动增长
+
+
+
+
+## 收缩的数据库
+USE testdb
+ALTER DATABASE testdb SET RECOVERY SIMPLE
+ALTER DATABASE testdb SET RECOVERY FULL
+DBCC SHRINKDATABASE(testdb,0)
+
+## 最大空间
+ALTER DATABASE [SQLDWDB] MODIFY ( MAXSIZE=245760 GB );
 ## 帮助文档
 - [sp_datatype_info](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-stored-procedures/sp-datatype-info-transact-sql?view=sql-server-ver15#examples)  EXEC sp_datatype_info
 - [sp_help]()EXEC sp_help;    exec sp_help @objname='Sys_PositionList'

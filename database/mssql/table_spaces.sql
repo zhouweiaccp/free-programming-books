@@ -42,3 +42,33 @@ select tabname as '表名',rowsNum as '表数据行数',reserved as '保留大�
 from #tabName
 --where tabName not like 't%'
 order by cast(rowsNum as int) desc
+
+
+ --- Could not allocate a new page for database 'TEMPDB' because of insufficient disk space in filegroup 'DEFAULT  https://www.icode9.com/content-2-754495.html
+ 
+USE [tempdb]
+GO
+SELECT     @@SERVERNAME                                                                    AS [ServerName]
+        ,[name]                                                                            AS [LogicalName]
+        ,[type_desc]                                                                       AS [TypeDesc]
+        ,[physical_name]                                                                   AS [PhysicalName]
+        ,CONVERT(NUMERIC(10,2),ROUND([size]/128.,2))                                       AS [Size(MB)]
+        ,CONVERT(NUMERIC(10,2),ROUND(FILEPROPERTY([name],'SpaceUsed')/128.,2))             AS [Used(MB)]
+        ,CONVERT(NUMERIC(10,2),ROUND(([size]-FILEPROPERTY([name],'SpaceUsed'))/128.,2))    AS [Unused(MB)]
+        ,CASE WHEN is_percent_growth = 1
+                 THEN RTRIM(CAST(Growth AS CHAR(10))) + '%'
+                 ELSE RTRIM(CAST(Growth*8.0/1024 AS CHAR(18))) + 'M'
+            END                                                                            AS [Growth(MB)]
+        ,CASE WHEN max_size = -1 THEN 'Unlimit'
+              ELSE CAST(CAST(max_size * CONVERT(FLOAT, 8)/1024/1024 AS NUMERIC(10,2)) AS VARCHAR(32))
+         END AS [MaxSize(GB)] 
+        ,is_media_read_only AS [IsReadOnlyMedia] 
+        ,is_read_only AS [IsReadOnly] 
+        ,CAST(CASE state
+                   WHEN 6 THEN 1
+                   ELSE 0
+                 END AS BIT) AS [IsOffline] 
+         ,is_sparse AS [IsSparse]
+FROM [sys].[database_files]
+ORDER BY name;
+ 
