@@ -29,7 +29,60 @@ set-executionpolicy remotesigned
 ）然后在最底部文件夹Parameters里面，新建 DWORD（32）位值（D）。文件名 “AllowEncryptionOracle” ，值 : 2，保存，重启
 
 
+## 由于系统缓冲区空间不足或队列已满，不能执行套接字上的操作
+原因：
+报错原因是socket的短连接关闭后会出现TIME_WAIT状态，这个状态在端口上多了的时候，那么这个端口就不允许再访问了。
+步骤1
+MaxUserPort
+确定当应用程序向系统请求获取可用的用户端口时，TCP/IP可指定的最高端口号
+1)启动注册表编辑器[regedit]
+2)在注册表中，找到以下注册表子项，然后单击参数：
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters
+3)在编辑菜单上，单击新建，然后添加以下注册表项：
+值的名称： MaxUserPort
+值类型： 双字节
+值数据： 65534
+有效范围： 5000-65534 （十进制）【建议50000】
+默认值： 0x1388 （5000 十进制）
 
+微软官网参考说明：
+https://support.microsoft.com/zh-cn/help/196271/when-you-try-to-connect-from-tcp-ports-greater-than-5000-you-receive-t
+
+步骤2
+TcpTimedWaitDelay
+确定 TCP/IP 在释放已关闭的连接并再次使用其资源前必须经过的时间。关闭与释放之间的这段时间称为 TIME_WAIT 状态或者两倍最大段生存期（2MSL）状态。此时间期间，重新打开到客户机和服务器的连接的成本少于建立新连接。通过减少此条目的值，TCP/IP 可以更快地释放关闭的连接，并为新连接提供更多资源。如果运行中的应用程序要求快速释放连接或创建新连接，或者由于多个连接处于TIME_WAIT状态而导致吞吐量较低，请调整此参数。
+1)启动注册表编辑器[regedit]
+2)在注册表中，找到以下注册表子项，然后单击参数：
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters
+3)在编辑菜单上，单击新建，然后添加以下注册表项：
+值的名称：TcpTimedWaitDelay
+建议值： 30（30S 十进制）
+默认值： 0xF0 （240S 十进制）
+
+步骤3
+最大连接储备
+如果同时接收到许多连接尝试，请增大操作系统支持的缺省暂挂连接数，这些值将最小可用连接数设置为20，将最大可用连接数设置为1000，每当可用连接数小于最小可用连接数时，可用连接数都会增加10
+1)启动注册表编辑器[regedit]
+2)在注册表中，找到以下注册表子项，然后单击参数：
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AFD\Parameters
+3)在编辑菜单上，单击新建，选择DWORD(32-位)值
+EnableDynamicBacklog : 1 [十六进制]
+MinimumDynamicBacklog : 20 [十六进制]
+MaximumDynamicBacklog : 1000 [十六进制]
+DynamicBacklogGrowthDelta : 16 [十六进制]
+
+
+微软官网参考说明：
+https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ff648853(v=pandp.10)
+
+步骤4
+KeepAliveInterval
+确定 TCP 在未接收到响应时重新尝试保持活动传输的频率
+1)启动注册表编辑器[regedit]
+2)在注册表中，找到以下注册表子项，然后单击参数：
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AFD\Parameters
+3)在编辑菜单上，单击新建，选择DWORD(32-位)值
+KeepAliveInterval: 1 [十六进制] 
 
 ## 利用Windows自带的计算器计算十六进制（八进制、二进制）数据
 HEX是十六进制，DEC是十进制，OCT是八进制，BIN是二进制，大家也可以根据自己的实际需要选择是哪一种进制

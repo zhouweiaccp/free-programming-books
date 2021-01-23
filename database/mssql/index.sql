@@ -1,5 +1,5 @@
 ﻿
-drop index dms_fileVerGuid.ix_clu_fordms_fileVerGuid_file_verId;
+drop index ix_clu_fordms_fileVerGuid_file_verId on dms_fileVerGuid
 create    index ix_clu_fordms_fileVerGuid_file_verId on dms_fileVerGuid(file_verId);
 
 --删除主键
