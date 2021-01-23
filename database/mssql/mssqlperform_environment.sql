@@ -82,6 +82,27 @@ GROUP BY DB_NAME(database_id)
 ORDER BY 2 DESC;
 GO
 
+--各种CPU和SQLSERVER版本组合自动配置的最大工作线程数
+--CPU数                 32位计算机                        64位计算机
+--<=4                     256                                   512
+--  8                        288                                   576
+-- 16                       352                                   704
+-- 32                       480                                   960
+
+SELECT
+scheduler_address,
+scheduler_id,
+cpu_id,
+status,
+current_tasks_count,
+current_workers_count,active_workers_count
+FROM sys.dm_os_schedulers
+go
+
+--查看CPU数和user scheduler数目
+ SELECT cpu_count,scheduler_count FROM sys.dm_os_sys_info
+ --查看最大工作线程数
+ SELECT max_workers_count FROM sys.dm_os_sys_infos
 
 --查看当前数据是否启用了快照隔离
 DBCC USEROPTIONS;
