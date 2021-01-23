@@ -46,7 +46,11 @@
 
 ## 常见问题
 
-
+### 一般引起Cookie丢失的原因
+1、Cookie的Domain设置不正确
+2、Cookie超时
+3、Cookie中含有一些非法字符，致使浏览器丢弃Cookie
+4、程序源码可能有多处重复设置或取消Cookie
 
 ## MSBuild.exe
 "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe" MyAPI.sln -p:Configuration=Release
