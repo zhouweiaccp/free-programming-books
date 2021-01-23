@@ -82,3 +82,11 @@ SET STATISTICS TIME OFF
 SET STATISTICS IO ON 
 SELECT * FROM Demo
 SET STATISTICS IO OFF
+
+
+
+USE master
+2 GO
+3 --如果要指定数据库就把注释去掉
+4 SELECT * FROM sys.[sysprocesses] WHERE [spid]>50 --AND DB_NAME([dbid])='gposdb'
+5 SELECT COUNT(*) FROM [sys].[dm_exec_sessions] WHERE [session_id]>50
