@@ -249,10 +249,30 @@ $ git reset --hard [commit]
 # 重置当前HEAD为指定commit，但保持暂存区和工作区不变
 $ git reset --keep [commit]
 
-#重置上一次提交可以执行多次
- git reset HEAD^
+# 重置上一次提交可以执行多次
+git reset --hard HEAD^  ## 1.第一步先恢复本地仓库
+git push -f ## 2.第二步再强制同步本地仓库到远程仓库
 
-#提交前备份
+# git pre-receive hook declined
+1.将所要push的内容所在的分支的protected权限关闭
+(1)进入所在项目的settings
+(2)点击进入Protected branches,点击unprotected将master分支的权限改变，即关闭master的protected权限
+
+2.新建其它分支，将项目push到新建的分支上，后期再进行merge
+(1)新建分支
+
+git branch 分支名
+(2)切换分支
+
+git checkout 分支名
+(3)进行项目上传
+git add .
+git commit -m "提交的信息"
+git remote add origin 远程仓库地址
+git push -u origin 分支名
+
+
+# 提交前备份
 git branch bak_xx
 
 # 新建一个commit，用来撤销指定commit
