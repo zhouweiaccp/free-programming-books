@@ -89,6 +89,24 @@ X509Certificate certificate = new X509Certificate(
         return false;
     }
 ```
+
+## C#编码转换
+```cs
+public static string gb2312_utf8(string text)
+{
+//声明字符集
+System.Text.Encoding utf8, gb2312;
+//gb2312
+gb2312 = System.Text.Encoding.GetEncoding("gb2312");
+//utf8
+utf8 = System.Text.Encoding.GetEncoding("utf-8");
+byte[] gb;
+gb = gb2312.GetBytes(text);
+gb = System.Text.Encoding.Convert(gb2312, utf8, gb);
+//返回转换后的字符
+return utf8.GetString(gb);
+}
+```
 ### Thread Theft
 https://stackexchange.github.io/StackExchange.Redis/ThreadTheft.html
 https://www.cnblogs.com/dudu/p/6251266.html  又踩.NET Core的坑：在同步方法中调用异步方法Wait时发生死锁(deadlock)
