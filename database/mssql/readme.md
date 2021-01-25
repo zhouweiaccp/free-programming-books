@@ -64,6 +64,32 @@ DBCC SHRINKDATABASE(testdb,0)
 
 ## 最大空间
 ALTER DATABASE [SQLDWDB] MODIFY ( MAXSIZE=245760 GB );
+
+
+
+### 慢sql
+- [用于对运行慢的查询进行分析的清单](https://docs.microsoft.com/zh-cn/previous-versions/sql/sql-server-2005/ms177500(v=sql.90))
+
+### 2.查看查询对I/0的操作情况
+
+set statistics io on
+select * from dbo.Product
+set statistics io off
+扫描计数：索引或表扫描次数
+
+逻辑读取：数据缓存中读取的页数
+
+物理读取：从磁盘中读取的页数
+
+预读：查询过程中，从磁盘放入缓存的页数
+
+lob逻辑读取：从数据缓存中读取，image，text，ntext或大型数据的页数
+
+lob物理读取：从磁盘中读取，image，text，ntext或大型数据的页数
+
+lob预读：查询过程中，从磁盘放入缓存的image，text，ntext或大型数据的页数
+https://www.cnblogs.com/knowledgesea/p/3686105.html
+
 ## 帮助文档
 - [sp_datatype_info](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-stored-procedures/sp-datatype-info-transact-sql?view=sql-server-ver15#examples)  EXEC sp_datatype_info
 - [sp_help]()EXEC sp_help;    exec sp_help @objname='Sys_PositionList'
