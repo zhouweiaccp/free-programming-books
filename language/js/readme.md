@@ -69,8 +69,88 @@ if (!Function.prototype.bind) {
     };
 }
 
-
-
 ## 日期库 Luxon，Day.js，date-fns 
 https://github.com/iamkun/dayjs
 moment 停止更新
+
+## js中的...扩展(展开)运算符
+let a = [1,2,3]
+let b = [...a]
+console.log(b)  //[ 1, 2, 3 ]
+当创建数组b和在a数组上使用扩展运算符时，不是将a数组直接插入到b中，而是将a数组扩展，然后将元素插入到b中 
+
+### 一…在展开基本数据类型时，是深copy，基本数据类型位于栈区
+let a = [1,2,3]
+let b = [...a]
+b[0] = 666;
+console.log(b) // [ 666, 2, 3 ]
+console.log(a) // [ 1, 2, 3 ]
+console.log(a === b) // false 可以发现数组b复制数组a的元素后，改变b的第一个元素，a的并没有改变，所以是深copy
+
+
+### 二.如果使用展开运算符 展开一个对象时，那么是浅copy，对象位于堆区
+let obj = {name:"wang"}
+let arr = [obj,2,3] 
+let newArr = [...arr]
+console.log(arr)  //[ { name: 'wang' }, 2, 3 ]
+console.log(newArr)  //[ { name: 'wang' }, 2, 3 ]
+newArr[0].name = "xia";
+console.log(arr)   //[ { name: 'xia' }, 2, 3 ]
+console.log(newArr)  //[ { name: 'xia' }, 2, 3 ]
+
+### 三.如果数组中是基本数据类型，深copy
+
+let arr = [1,2,3]
+let newArr = arr.slice(0)
+newArr[0] = 666;
+console.log(arr)     //[ 1, 2, 3 ]
+console.log(newArr)     //[ 666, 2, 3 ]
+
+### 四.如果数组中有对象，就是浅copy
+
+let obj = {name:"wang"}
+let arr = [obj,2,3] 
+let newArr = arr.slice(0)
+console.log(arr)     //[ { name: 'wang' }, 2, 3 ]
+console.log(newArr)     //[ { name: 'wang' }, 2, 3 ]
+newArr[0].name = "lal";
+console.log(arr)     //[ { name: 'lal' }, 2, 3 ]
+console.log(newArr)     //[ { name: 'lal' }, 2, 3 ]
+### 五.展开对象 对象就一层，是深copy
+
+let obj = {name:"wang",age:100}
+let newObj = {...obj}
+console.log(obj)    //{ name: 'wang', age: 100 }
+console.log(newObj)    //{ name: 'wang', age: 100 }
+newObj.name = "ha"
+console.log(obj)    //{ name: 'wang', age: 100 }
+console.log(newObj)    //{ name: 'ha', age: 100 }
+
+### 六.展开对象 对象是多层，是浅copy
+
+let obj = {name:"wang",age:{number:100}}
+let newObj = {...obj}
+console.log(obj)     //{ name: 'wang', age: { number: 100 } }
+console.log(newObj)     //{ name: 'wang', age: { number: 100 } }
+newObj.age.number = 666
+console.log(obj)     //{ name: 'wang', age: { number: 666 } }
+console.log(newObj)     //{ name: 'wang', age: { number: 666 } }
+
+### 七.实现多层对象的深copy
+
+let obj = {name:"wang",age:{number:100}}
+let newObj = {...obj,age:{...obj.age}}
+newObj.age.number = 666
+console.log(obj)    // { name: 'wang', age: { number: 100 } }
+console.log(newObj)    // { name: 'wang', age: { number: 666 } }
+
+### 八.通过 JSON.parse(JSON.stringify(obj))可以实现深copy
+
+let obj = {name:"wang",age:{number:100}}
+let str = JSON.stringify(obj)
+let newObj = JSON.parse(str)
+console.log(str)     //{"name":"wang","age":{"number":100}}
+console.log(newObj)     //{ name: 'wang', age: { number: 100 } }
+obj.age.number = 1000000;
+console.log(obj)     //{ name: 'wang', age: { number: 1000000 } }
+console.log(newObj)     //{ name: 'wang', age: { number: 100 } }
