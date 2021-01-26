@@ -107,6 +107,16 @@ gb = System.Text.Encoding.Convert(gb2312, utf8, gb);
 return utf8.GetString(gb);
 }
 ```
+
+
+## 一些关于SqlLocalDB的参考资料
+百度网盘下载：https://pan.baidu.com/s/12uKJ7IEE_45P0chOI4b39w
+https://docs.microsoft.com/zh-cn/sql/database-engine/configure-windows/sql-server-2016-express-localdb?view=sql-server-2017
+https://docs.microsoft.com/zh-cn/sql/2014/relational-databases/express-localdb-instance-apis/command-line-management-tool-sqllocaldb-exe?view=sql-server-2017
+https://docs.microsoft.com/zh-cn/sql/2014/tools/sqllocaldb-utility?view=sql-server-2017
+https://technet.microsoft.com/zh-cn/hh510202(v=sql.105)
+
+
 ### Thread Theft
 https://stackexchange.github.io/StackExchange.Redis/ThreadTheft.html
 https://www.cnblogs.com/dudu/p/6251266.html  又踩.NET Core的坑：在同步方法中调用异步方法Wait时发生死锁(deadlock)
