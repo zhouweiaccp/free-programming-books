@@ -240,6 +240,20 @@ INSERT INTO order_record SELECT  *  FROM  order_today FORCE INDEX (idx_pay_suc_t
 使用insert into tablA select * from tableB语句时，一定要确保tableB后面的where，order或者其他条件，都需要有对应的索引，来避免出现tableB全部记录被锁定的情况
 
 
+## MySQL自增主键归零的方法：
+truncate table table_name; -- 如果曾经的数据都不需要的话，可以直接清空所有数据，并将自增字段恢复从1开始计数：
+  2.  当用户没有truncate的权限时且曾经的数据不需要时：
+     1）删除原有主键：
+ALTER TABLE 'table_name' DROP 'id';
+     2）添加新主键：
+ALTER TABLE 'table_name' ADD 'id' int(11) NOT NULL FIRST;
+    3）设置新主键：
+ALTER TABLE 'table_name' MODIFY COLUMN 'id' int(11) NOT NULL AUTO_INCREMENT,ADD PRIMARY KEY(id);
+ 3. 当用户没有权限时：
+    可以直接设置数据表的 AUTO_INCREMENT 值为想要的初始值，比如10000：
+ALTER TABLE 'table_name' AUTO_INCREMENT= 10000;
+
+
 ## 资源
 - [mysqltools](https://github.com/Neeky/mysqltools)一个用于快速构建大规模，高质量，全自动化的 mysql分布式集群环境的工具；包含mysql 安装、备份、监控、高可用、读写分离、优化、巡检、自行化运维
 - [MySQL 资源大全中文版](https://github.com/jobbole/awesome-mysql-cn)MySQL 资源大全中文版
