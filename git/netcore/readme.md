@@ -56,6 +56,14 @@ app.UseFileServer(new FileServerOptions()//直接开启文件目录访问和文�
 
 
 
+## dotnet nuget locals
+
+https://docs.microsoft.com/zh-cn/dotnet/core/tools/dotnet-nuget-locals
+dotnet nuget locals all -l 
+C:\Users\Administrator\.nuget\packages\
+
+
+C:\Program Files (x86)\NuGet\Config\Microsoft.VisualStudio.Offline.config
 ## lib
     CSRedisCore  3.6.5  
     
