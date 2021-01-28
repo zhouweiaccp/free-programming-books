@@ -64,6 +64,17 @@ C:\Users\Administrator\.nuget\packages\
 
 
 C:\Program Files (x86)\NuGet\Config\Microsoft.VisualStudio.Offline.config
+```cs
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" protocolVersion="3" />
+  </packageSources>
+ <config> 
+    <add key="globalPackagesFolder" value="d:\Program Files\dotnet\sdk\NuGetFallbackFolder" />
+ </config>
+</configuration>
+```
 ## lib
     CSRedisCore  3.6.5  
     
