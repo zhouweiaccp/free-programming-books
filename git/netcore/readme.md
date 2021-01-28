@@ -57,7 +57,7 @@ app.UseFileServer(new FileServerOptions()//直接开启文件目录访问和文�
 
 
 ## dotnet nuget locals
-
+https://docs.microsoft.com/zh-cn/nuget/consume-packages/configuring-nuget-behavior 常见的 NuGet 配置
 https://docs.microsoft.com/zh-cn/dotnet/core/tools/dotnet-nuget-locals
 dotnet nuget locals all -l 
 C:\Users\Administrator\.nuget\packages\
@@ -71,7 +71,7 @@ C:\Program Files (x86)\NuGet\Config\Microsoft.VisualStudio.Offline.config
     <add key="nuget.org" value="https://api.nuget.org/v3/index.json" protocolVersion="3" />
   </packageSources>
  <config> 
-    <add key="globalPackagesFolder" value="d:\Program Files\dotnet\sdk\NuGetFallbackFolder" />
+    <add key="globalPackagesFolder" value="D:\Users\dist\NuGetPackages" />
  </config>
 </configuration>
 ```
