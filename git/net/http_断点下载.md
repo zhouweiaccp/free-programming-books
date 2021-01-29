@@ -1,4 +1,7 @@
 
+## 下载文件
+- [](https://github.com/zhouweiaccp/Common.Utility/blob/95db3fadb88d554cacdbe30ff168ce5f15ff0a4a/Utility%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%A4%A7%E5%85%A8/Net/WebClientHelper.cs#L245)
+
 
 ##  断点续传下载原理实现
 需求背景  [https://www.cnblogs.com/peachyy/p/7482222.html]
@@ -29,7 +32,7 @@ Content-Range: bytes 0-499/22036 ：表示返回0-499字节范围数据 资源�
 服务器端检查到客户端Range头 解析开始字节数以及结束字节数 并返回报文头 Accept-Ranges表示支持断点续传，Content-Range记录该次向客户端写入流的位置信息，然后再写入流到客户端。
 服务端可以使用ETag Last-Modified 标记一下资源是否被修改。作一些验证工作，如果验证不通过则返回错误，非必须项。
 java实现
-复制代码
+```java
  OutputStream os=null;
     InputStream inputStream =null;
     File zipFile=null;
@@ -127,18 +130,10 @@ java实现
         }
     }
 }
+```
 
 
-
-
-
-
-
-
-
-
-
-
+```cs
    /// <summary>
         /// 设置Header 信息 和输出流位置
         /// </summary>
@@ -209,3 +204,4 @@ java实现
                 }
             }
         }
+```
