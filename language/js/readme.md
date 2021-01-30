@@ -15,7 +15,7 @@
 - [promise-polyfill](https://github.com/taylorhakes/promise-polyfill)If you would like to add a global Promise object (Node or Browser) if native Promise doesn't exist (polyfill Promise). Use the method below. This is useful it you are building a website and want to support older browsers. Javascript library authors should NOT use this method
 - [requirejs-源码分析（上）](https://blog.shenfq.com/2017/requirejs-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%8A%EF%BC%89/)requirejs-源码分析（上）
 - [](https://github.com/foxiswho/city-picker)下拉面板式省市区三级联动jquery插件，视觉更清爽，交互体验更友好 
-- []()
+- [LayX](https://gitee.com/monksoul/LayX) 弹框
 - []()
 - []()
 - []()
