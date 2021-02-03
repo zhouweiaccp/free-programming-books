@@ -310,3 +310,35 @@ foreach (NetworkInterface adapter in nics)
  
      }
 ```
+
+
+## C#计算含中文字符串的长度
+```cs
+ /// <summary>
+        /// 获取实际占用长度
+        /// </summary>
+        /// <param name="str">字符串</param>
+        /// <returns>真实长度</returns>
+        static int GetStrLength(string str)
+        {
+            int strLength = 0;
+            //中文字符正则
+            Regex rx = new Regex("^[\u4e00-\u9fa5]$");
+            //全角字符正则
+            Regex rx1 = new Regex("^[\uFF00-\uFFFF]$");
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (rx.IsMatch(str[i].ToString()) || rx1.IsMatch(str[i].ToString()))
+                {//如果为中文字符或全角字符，字符串长度加2
+                    strLength += 2;
+                }
+                else
+                {//否则加1
+                    strLength += 1;
+                }
+            }
+
+            return strLength;
+        }
+```
