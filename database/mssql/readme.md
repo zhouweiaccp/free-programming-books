@@ -66,6 +66,15 @@ DBCC SHRINKDATABASE(testdb,0)
 ALTER DATABASE [SQLDWDB] MODIFY ( MAXSIZE=245760 GB );
 
 
+## SQLServer性能优化之 nolock，大幅提升数据库查询性能
+NOLOCK的使用
+
+　　NOLOCK可以忽略锁，直接从数据库读取数据。这意味着可以避开锁，从而提高性能和扩展性。但同时也意味着代码出错的可能性存在。你可能会读取到运行事务正在处理的无须验证的未递交数据。 这种风险可以量化。
+
+ROWLOCK的使用
+
+　　ROWLOCK告诉SQL Server只使用行级锁。ROWLOCK语法可以使用在SELECT,UPDATE和DELETE语句中，不过 我习惯仅仅在UPDATE和DELETE语句中使用。如果在UPDATE语句中有指定的主键，那么就总是会引发行级锁的。但是当SQL Server对几个这种UPDATE进行批处理时，某些数据正好在同一个页面(page)，这种情况在当前情况下 是很有可能发生的，这就象在一个目录中，创建文件需要较长的时间，而同时你又在更新这些文件。当页面锁引发后，事情就开始变得糟糕了。而如果在UPDATE或者DELETE时，没有指定主键，数据库当然认为很多数据会收到影响，那样 就会直接引发页面锁，事情同样变得糟糕。
+https://www.cnblogs.com/yunfeifei/p/3848644.html
 
 ### 慢sql
 - [用于对运行慢的查询进行分析的清单](https://docs.microsoft.com/zh-cn/previous-versions/sql/sql-server-2005/ms177500(v=sql.90))
