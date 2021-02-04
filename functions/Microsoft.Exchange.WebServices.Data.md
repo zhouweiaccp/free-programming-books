@@ -10,8 +10,19 @@
 
 
 
-
-
+## Exchange 服务器
+* [在 Exchange 服务器上配置邮件流和客户端访问](https://docs.microsoft.com/zh-cn/exchange/plan-and-deploy/post-installation-tasks/configure-mail-flow-and-client-access?view=exchserver-2019)
+* []()
+* []()
+* []()
+* []()
+* []()
+* []()
+* []()
+* []()
+* []()
+* []()
+* []()
 
 ## link
 * [api](https://docs.microsoft.com/en-us/exchange/client-developer/exchange-web-services/explore-the-ews-managed-api-ews-and-web-services-in-exchange?redirectedfrom=MSDN)
