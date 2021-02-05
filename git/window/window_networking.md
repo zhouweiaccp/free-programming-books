@@ -19,6 +19,9 @@ IP地址漂移的实现与原理   https://www.bbsmax.com/A/x9J2ZnBZJ6/
 ## 显示 IP 地址和其他信息
 netsh interface ipv4 show config
 
-
+### Dos命令快速设置ip、网关、dns地址
+netsh interface ip set address name="本地连接" source=static 192.168.1.8 255.255.255.0 192.168.1.1 1
+netsh interface ip set dns "本地连接" static 114.114.114.114 primary
+netsh interface ip add dns "本地连接" 8.8.8.8
 ##  dns缓存清理
 ipconfig/flushdns
