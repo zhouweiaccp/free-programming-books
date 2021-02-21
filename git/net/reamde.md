@@ -342,3 +342,10 @@ foreach (NetworkInterface adapter in nics)
             return strLength;
         }
 ```
+
+## C#using和using static 指令
+```cs
+using static System.Console;
+WriteLine("Hey you!");
+//https://docs.microsoft.com/zh-cn/dotnet/csharp/language-reference/keywords/using-static
+```
