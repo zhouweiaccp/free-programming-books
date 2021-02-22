@@ -187,8 +187,16 @@ function detectZoom (){
 
 
 ### JS代码阻止浏览器的command+F、ctrl+F
+```js
 document.addEventListener('keydown', function(e){ 
     if(e.ctrlKey && e.key === 'f'){ 
-        e.preventDefalut(); 
+        e.preventDefault(); 
     }
 })
+
+window.addEventListener("keydown",function (e) {
+    if (e.keyCode === 114 || (e.ctrlKey && e.keyCode === 70)) { 
+        e.preventDefault();
+    }
+})
+```
