@@ -184,3 +184,11 @@ function detectZoom (){
    return ratio;
 };
 ```
+
+
+### JS代码阻止浏览器的command+F、ctrl+F
+document.addEventListener('keydown', function(e){ 
+    if(e.ctrlKey && e.key === 'f'){ 
+        e.preventDefalut(); 
+    }
+})
