@@ -200,3 +200,34 @@ window.addEventListener("keydown",function (e) {
     }
 })
 ```
+
+### jquery format
+```js
+   $.format = function (source, params) {
+            if (arguments.length == 1)
+                return function () {
+                    var args = $.makeArray(arguments);
+                    args.unshift(source);
+                    return $.format.apply(this, args);
+                };
+            if (arguments.length > 2 && params.constructor != Array) {
+                params = $.makeArray(arguments).slice(1);
+            }
+            if (params.constructor != Array) {
+                params = [params];
+            }
+            $.each(params, function (i, n) {
+                source = source.replace(new RegExp("\\{" + i + "\\}", "g"), n);
+            });
+            return source;
+        };
+```
+
+### 参数
+```js
+    var __GetQueryString = function (name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+```
