@@ -328,5 +328,19 @@ document.body.addEventListener('wheel', (e) => {
         }
     }
 }, { passive: false });
+//https://www.cnblogs.com/xiaobaiou/p/10731062.html
+window.addEventListener('mousewheel', function(event){
+    if (event.ctrlKey === true || event.metaKey) {
+          event.preventDefault();
+    }
+},{ passive: false});
 
-主流浏览器，window、mac（OS / Win）可以做到，极端兼容下带测试。
+//firefox
+ window.addEventListener('DOMMouseScroll', function(event){
+    if (event.ctrlKey === true || event.metaKey) {
+           event.preventDefault();
+    }
+},{ passive: false});
+
+
+主流浏览器，window、mac（OS / Win）可以做到，极端兼容下带测试。 
