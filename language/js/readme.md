@@ -264,3 +264,69 @@ var b = window.top!=window.self;
 document.write( "当前窗口是否在一个框架中："+b );
 </script>
 你应当将框架视为窗口中的不同区域，框架是浏览器窗口中特定的部分。一个浏览器窗口可以根据你的需要分成任意多的框架，一个单个的框架也可以分成其它多个框架，即所谓的嵌套框架。
+
+
+### 禁用浏览器的缩放功能（js）
+一、移动端禁止缩放
+移动端在禁止缩放上比较简单,添加meta标签即可
+
+<meta name="viewport" 
+	content="
+		width=device-width,
+		initial-scale=1.0,
+		minimum-scale=1.0,
+		maximum-scale=1.0,
+		user-scalable=no">
+width // 设置 viewport 的宽度，正整数/字符串 device-width
+height // 设置 viewport 的高度，正整数/字符串 device-height
+initial-scale // 设置设备宽度与 viewport大小之间的缩放比例，0.0-10.0之间的正数
+maximum-scale // 设置最大缩放系数，0.0-10.0之间的正数
+minimum-scale // 设置最小缩放系数，0.0-10.0之间的正数
+user-scalable // 如果设置为 no 用户将不能缩放网页，默认为 yes，yes / no
+二、PC（web）端禁止浏览器缩放
+S（情景）
+当某些页面有了特定的布局后，开发者不希望用户通过浏览器对其进行缩放（会导致布局、排版问题）
+
+T（任务）
+我希望通过Js的方式禁止用户对浏览器进行缩放，（如果用户是通过系统设置的网页缩放，也应进行提示）
+
+A（我做了什么）
+查询了许多文章，大部分思路都集中在这篇文章内stackoverflow-传送门
+查找W3C、谷歌、火狐的官方提示（发现浏览器不希望你禁用用户的缩放功能，即缩放功能是浏览器赋予用户的权利和功能，所以它不会给出官网的禁用方式）
+采用覆盖键、覆盖鼠标滑动事件；
+具体实现代码如下：
+
+const keyCodeMap = {
+    // 91: true, // command
+    61: true,
+    107: true, // 数字键盘 +
+    109: true, // 数字键盘 -
+    173: true, // 火狐 - 号
+    187: true, // +
+    189: true, // -
+};
+// 覆盖ctrl||command + ‘+’/‘-’
+document.onkeydown = function (event) {
+    const e = event || window.event;
+    const ctrlKey = e.ctrlKey || e.metaKey;
+    if (ctrlKey && keyCodeMap[e.keyCode]) {
+        e.preventDefault();
+    } else if (e.detail) { // Firefox
+        event.returnValue = false;
+    }
+};
+// 覆盖鼠标滑动
+document.body.addEventListener('wheel', (e) => {
+    if (e.ctrlKey) {
+        if (e.deltaY < 0) {
+            e.preventDefault();
+            return false;
+        }
+        if (e.deltaY > 0) {
+            e.preventDefault();
+            return false;
+        }
+    }
+}, { passive: false });
+
+主流浏览器，window、mac（OS / Win）可以做到，极端兼容下带测试。
