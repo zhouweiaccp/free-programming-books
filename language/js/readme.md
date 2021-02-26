@@ -16,8 +16,8 @@
 - [requirejs-源码分析（上）](https://blog.shenfq.com/2017/requirejs-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%8A%EF%BC%89/)requirejs-源码分析（上）
 - [](https://github.com/foxiswho/city-picker)下拉面板式省市区三级联动jquery插件，视觉更清爽，交互体验更友好 
 - [LayX](https://gitee.com/monksoul/LayX) 弹框
-- []()
-- []()
+- [jquery-popup-overlay](https://github.com/vast-engineering/jquery-popup-overlay)
+- [jbox](https://www.npmjs.com/package/jbox)  ![](https://github.com/StephanWagner/jBox)   https://stephanwagner.me/blog  以前用过
 - []()
 - []()
 - []()
