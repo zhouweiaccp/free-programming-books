@@ -18,11 +18,16 @@
 - [LayX](https://gitee.com/monksoul/LayX) 弹框
 - [jquery-popup-overlay](https://github.com/vast-engineering/jquery-popup-overlay)
 - [jbox](https://www.npmjs.com/package/jbox)  ![](https://github.com/StephanWagner/jBox)   https://stephanwagner.me/blog  以前用过
+- [jquery.timers](https://github.com/mgaert/jquery-timers/blob/master/src/jquery.timers.ts)
 - []()
 - []()
 - []()
 - []()
-
+- []()
+- []()
+- []()
+- []()
+- []()
 
 
 ### 后台模板
