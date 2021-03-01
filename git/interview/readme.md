@@ -12,7 +12,7 @@
 - [](https://github.com/huihut/interview#algorithm)C/C++ 技术面试基础知识总结，包括语言、程序库、数据结构、算法、系统、网络、链接装载库等知识及面试经验、招聘
 - [前端开发者面试](https://github.com/yangshun/front-end-interview-handbook/blob/master/contents/zh/javascript-questions.md)本章节是前端开发者面试问题 - JS 部分的参考答案
 - [interview_python](https://github.com/taizilongxu/interview_python) 关于Python的面试题
-- [](https://github.com/haizlin/fe-interview)前端面试每日 3+1，以面试题来驱动学习，提倡每日学习与思考，每天进步一点！每天早上5点纯手工发布面试题（死磕自己，愉悦大家），3000+道前端面试题全面覆盖，HTML/CSS/JavaScript/Vue/React/Nodejs/TypeScript/ECMAScritpt/Webpack/Jquery/小程序/软技能
+- [前端面试每日 3+1](https://github.com/haizlin/fe-interview)前端面试每日 3+1，以面试题来驱动学习，提倡每日学习与思考，每天进步一点！每天早上5点纯手工发布面试题（死磕自己，愉悦大家），3000+道前端面试题全面覆盖，HTML/CSS/JavaScript/Vue/React/Nodejs/TypeScript/ECMAScritpt/Webpack/Jquery/小程序/软技能
 - [](https://github.com/frank-lam/fullstack-tutorial) 架构师指南 很好教程
 - [biaochenxuying](https://github.com/biaochenxuying/blog)大前端技术为主，读书笔记、随笔、理财为辅，做个终身学习者。
 - []()
