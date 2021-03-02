@@ -209,6 +209,21 @@ docker service  update --mount-add type=bind,src=/root/anaconda-ks.cfg,dst=/app/
 docker service update --mount-rm /app/anaconda-ks.cfg indrive_orgsync  #去掉挂载
 [](https://docs.docker.com/engine/reference/commandline/service_update/)
 
+
+
+## docker-compose -f docker-com.yml pull
+
+## docker service ps indrive_content --no-trunc 查看日志
+
+##  no suitable node (scheduling constraints not satisfied on 1 node
+ docker node update --label-add nodelabels=Middleware $(docker node ls |grep \* |awk '{print $1}')
+  修改节点标签
+执行命令：（注意：nodeid根据实际情况更改，主机的hostname即可）
+docker node update --label-add nodetype=InDrive  nodeid
+docker node update --label-add nodelabels=Middleware nodeid
+docker  node  update  --label-add  nodeportainer=Portainer   nodeid
+https://docs.docker.com/engine/reference/commandline/node_update/
+
 ## docker端口
 TCP端口2377，用于集群管理信息的交流
 TCP、UDP端口7946用于集群中节点的交流
