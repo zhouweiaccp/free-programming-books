@@ -84,12 +84,12 @@ stat ~/Downloads/jdk-8u60-linux-x64.tar.gz
 du -h  ~/Downloads/jdk-8u60-linux-x64.tar.gz
 ls -lh  ~/Downloads/jdk-8u60-linux-x64.tar.gz
 
-查看Linux系统版本信息
+## 查看Linux系统版本信息
 cat /proc/version
 cat /etc/issue
 cat /etc/redhat-release，这种方法只适合Redhat系的Linux
 uname -a
-
+cat /etc/lsb_release  或 lsb_release -a  ubuntu 版本
 
 https://docs.docker.com/engine/reference/commandline/images/
 docker images --format "{{.ID}}: {{.Repository}}"
