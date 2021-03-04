@@ -227,6 +227,30 @@ $ vi /etc/sysctl.conf
 net.ipv4.ip_local_port_range = 10000     65000      -----意味着10000~65000端口可用
 改完后，执行命令“sysctl -p”使参数生效，不需要reboot。
  
+
+
+ ## 查看cpu信息及内存大小
+1 查看物理CPU的个数
+cat /proc/cpuinfo |grep "physical id"|sort |uniq|wc -l
+2、   查看逻辑CPU的个数
+cat /proc/cpuinfo |grep "processor"|wc -l
+3、  查看CPU是几核
+cat /proc/cpuinfo |grep "cores"|uniq
+4、  查看CPU的主频
+cat /proc/cpuinfo |grep MHz|uniq 
+5、cpu是否启用超线程
+cat /proc/cpuinfo | grep -e "cpu cores"  -e "siblings" | sort | uniq
+siblings 大于 cpu cores，说明启用了超线程
+6、查看当前操作系统内核信息
+uname –a
+7、查看内存大小
+cat /proc/meminfo| grep MemTotal
+grep MemTotal /proc/meminfo
+grep MemTotal /proc/meminfo | cut -f2 -d:
+8、查看内存使用情况
+free -m
+9、查看系统中文件存储使用情况
+df –h
   ##  DevOps
   * [kjyw](https://gitee.com/aqztcom/kjyw) kjyw 快捷运维 目基于shell、python，运维脚本工具库，收集各类运维常用工具脚本，实现快速安装nginx、mysql、php、redis、nagios、运维经常使用的脚本等等
   * [shell]( git@github.com:zhouweiaccp/shell.git) shell 语法
