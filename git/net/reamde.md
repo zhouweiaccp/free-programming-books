@@ -409,3 +409,35 @@ Dictionary<string, List<string>> dicList =
         ["key3"] = new List<string> () { "value3" }
     };
 ```
+
+### This request has been blocked because sensitive information could be disclosed to third party web sites
+```cs
+return Json(new { Result = "Success", Message = "Saved Successfully"},JsonRequestBehavior.AllowGet);
+```
+```javascript
+//https://stackoverflow.com/questions/43248751/this-request-has-been-blocked-because-sensitive-information-could-be-disclosed-t
+     $(document).ready(function () {
+        $('#save').click(function () {
+            send_email();
+        });
+    });
+        function send_email() {
+$.ajax({
+    url: '/Questions/SendEmail',
+    dataType: "json",
+    type: "GET",
+    contentType: 'application/json; charset=utf-8',
+    async: false,
+    processData: false,
+    cache: false,
+    delay: 15,
+    success: function (result) {
+                    alert("Email Forwarded")
+    },
+    error: function (xhr) {
+        alert('error');
+        }
+    });
+}
+
+```
