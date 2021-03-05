@@ -441,3 +441,6 @@ $.ajax({
 }
 
 ```
+
+### solr JvmMs JvmMx
+HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Apache Software Foundation
