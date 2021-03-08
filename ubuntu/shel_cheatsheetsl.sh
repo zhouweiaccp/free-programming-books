@@ -310,6 +310,8 @@ echo "${B[@]}"            # bar a  b c
 echo "${B[1]}"            # a  b c
 echo "${C[@]}"            # bar a  b c 42
 echo "${C[@]: -2:2}"      # a  b c 42  减号前的空格是必须的
+echo ${#C[@]}             ##数组个数
+echo ${#x[*]}             ##数组个数
 
 $(UNIX command)           # 运行命令，并将标准输出内容捕获并返回
 varname=$(id -u user)     # 将用户名为 user 的 uid 赋值给 varname 变量

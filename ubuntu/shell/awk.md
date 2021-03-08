@@ -79,3 +79,7 @@ ls -l|awk '{if($5>100){count++; sum+=$5}} END{print "Count:" count,"Sum: " sum}'
 
 ## 统计显示/etc/passwd的账户
 awk -F ':' 'BEGIN {count=0;} {name[count] = $1;count++;}; END{for (i = 0; i < NR; i++) print i, name[i]}' /etc/passwd
+
+
+## 跳转第1行
+netstat -nltp|awk '{if (NR>1){print $4}}'|cut -d ':' -f 2
