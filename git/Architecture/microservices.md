@@ -4,6 +4,12 @@ https://github.com/Seedin/ConsulHelper
 
 
 做服务发现的框架常用的有
+定义：**CAP定理指的是在一个分布式系统中，Consistency（一致性）、 Availability（可用性）、Partition tolerance（分区容错性），三者不可兼得**。CAP定理的命名就是这三个指标的首字母。
+
+- **Partition tolerance** 指的是在分布式系统中，由于不同的服务器之间可能无法通讯，所以需要一定的容错机制，默认情况下认为 Partition tolerance总是成立。
+
+- **Consistency** 指的是在分布式系统中，不同的服务器上所存储的数据需要一致，可以理解成当服务器A执行操作数据的指令后，服务器B上也要应用同样的操作以保证其所提供的数据同A中的一致。
+- **Availability** 指的是分布式系统中，每当服务端收到客户端的请求，服务端都必须给出回应。
 
 zookeeper cp
 eureka    ap

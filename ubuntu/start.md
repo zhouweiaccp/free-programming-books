@@ -251,6 +251,13 @@ grep MemTotal /proc/meminfo | cut -f2 -d:
 free -m
 9、查看系统中文件存储使用情况
 df –h
+
+  ## ifconfig: 未找到命令
+   yum install net-tools -y
+
+   ## Linux命令行下抓包工具tcpdump的使用
+   yum install -y tcpdump
+   - [介绍](./tcpdump.md)
   ##  DevOps
   * [kjyw](https://gitee.com/aqztcom/kjyw) kjyw 快捷运维 目基于shell、python，运维脚本工具库，收集各类运维常用工具脚本，实现快速安装nginx、mysql、php、redis、nagios、运维经常使用的脚本等等
   * [shell]( git@github.com:zhouweiaccp/shell.git) shell 语法
