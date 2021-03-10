@@ -15,7 +15,27 @@
 - [](https://github.com/yswenli/SAEA)SAEA.Socket是一个高性能IOCP框架的 TCP，基于dotnet standard 2.0；Src中含有其应用测试场景，例如websocket、rpc、redis驱动、MVC WebAPI、轻量级消息服
 - []()
 
+## 测试How to add an item to a Mock DbSet (using Moq)
+```cs
+//方法1 https://stackoverflow.com/questions/31349351/how-to-add-an-item-to-a-mock-dbset-using-moq
+//https://www.thecodebuzz.com/mock-typed-httpclient-httpclientfactory-moq-net-core/
+dbSet.Setup(d => d.Add(It.IsAny<T>())).Callback<T>((s) => sourceList.Add(s));
+private static DbSet<T> GetQueryableMockDbSet<T>(List<T> sourceList) where T : class
+{
+    var queryable = sourceList.AsQueryable();
 
+    var dbSet = new Mock<DbSet<T>>();
+    dbSet.As<IQueryable<T>>().Setup(m => m.Provider).Returns(queryable.Provider);
+    dbSet.As<IQueryable<T>>().Setup(m => m.Expression).Returns(queryable.Expression);
+    dbSet.As<IQueryable<T>>().Setup(m => m.ElementType).Returns(queryable.ElementType);
+    dbSet.As<IQueryable<T>>().Setup(m => m.GetEnumerator()).Returns(() => queryable.GetEnumerator());
+    dbSet.Setup(d => d.Add(It.IsAny<T>())).Callback<T>((s) => sourceList.Add(s));
+
+    return dbSet.Object;
+}
+
+//方法2  https://github.com/romantitov/MockQueryable  Extensions for mocking Entity Framework Core (EFCore) operations such ToListAsync, FirstOrDefaultAsync etc. by Moq, NSubstitute or FakeItEasy When writing tests for your application it is often desirable to avoid hitting the database. The extensions allow you to achieve this by creating a context – with behavior defined by your tests – that makes use of in-memory data
+```
 
 ## 示例
 - [practical-aspnetcore](git@github.com:dodyg/practical-aspnetcore.git)  
