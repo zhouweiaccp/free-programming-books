@@ -22,3 +22,5 @@
   var reg = /^(([a-zA-Z]+[0-9])|([0-9]+[a-zA-Z]))[a-zA-Z0-9]*$/;
         var r = newPassword.value.match(reg);
 ```
+##  数字 字母 特殊符号
+var r = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[~!@#$%^&*()_+`\-={}:";'<>?,.\/]).{1,16}$/.test(newPassword.value);//newPassword.value.match(reg);

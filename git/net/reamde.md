@@ -43,7 +43,14 @@
 - [ipaddressrange](https://github.com/jsakamoto/ipaddressrange) This library allows you to parse range of IP address string such as "192.168.0.0/24" and "192.168.0.0/255.255.255.0" and "192.168.0.0-192.168.0.255", and can contains check. This library supports both IPv4 and IPv6.
 - [ef](https://docs.microsoft.com/en-us/ef/core/get-started/overview/install) Entity Framework Overview 
 - [NetEscapades.Extensions.Logging](https://github.com/andrewlock/NetEscapades.Extensions.Logging/tree/master/sample/NetCoreApp3)
-
+- [System.Threading.Tasks.Channels 主要专注于 存储 这块](https://www.cnblogs.com/ireadme/p/14502286.html) dotnet add package System.Threading.Channels
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
 ## 常见问题
 
 ### 一般引起Cookie丢失的原因
