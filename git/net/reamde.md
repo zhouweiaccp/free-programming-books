@@ -37,6 +37,15 @@ private static DbSet<T> GetQueryableMockDbSet<T>(List<T> sourceList) where T : c
 //方法2  https://github.com/romantitov/MockQueryable  Extensions for mocking Entity Framework Core (EFCore) operations such ToListAsync, FirstOrDefaultAsync etc. by Moq, NSubstitute or FakeItEasy When writing tests for your application it is often desirable to avoid hitting the database. The extensions allow you to achieve this by creating a context – with behavior defined by your tests – that makes use of in-memory data
 ```
 
+## 异常详细信息: System.IndexOutOfRangeException:
+你的两个以上的线程使用了同一个实例的 SqlDataReader，当多个线程同时调用 GetOrdinal 的时候，第一个调用的线程会首先去获取你的数据表的字段信息，并存入一个 string[] 中，并在随后的字段查找中通过 string[] 构建 Hashtable，这时，第二个线程进入，它发现 string[] 或者 Hashtable已经创建，但是此时第一个线程还在继续向 string[] 中添加字段名称，于是，第二个线程做循环字符串比较，或者通过 Hashtable判断是否存在 UId 时，就有可能找不到，因为所有的字段信息此时并没有加载完成。
+
+由于你后面提到，所有的数据库操作都失败，因此，除了检查你的代码中是否有多线程共用一个SqlDataReader实例外，请检查你的 ﻿DBHelper 创建 SqlDataReader 的方式。
+https://q.cnblogs.com/q/15945/
+https://support.microsoft.com/zh-cn/topic/kb2528583-sql-server-2008-r2-service-pack-1-%E4%B8%AD%E4%BF%AE%E5%A4%8D%E7%9A%84-bug-%E5%88%97%E8%A1%A8-72b9c864-6ff5-378f-f0dc-6cd27e8c0bcc
+https://www.cnblogs.com/caca/archive/2008/04/03/1136815.html
+原因可能是：WebApplication 的访问量比较大，数据库 Pooling 存在问题，数据访问层使用了静态方法，ADO.NET 本身存在缺陷，或者 .NET 内存分配的问题。可尝试一下这些解决办法，过一段时间重启 IIS，关闭 Pooling，数据访问层不要使用静态方法，但问题依然存在
+
 ## 示例
 - [practical-aspnetcore](git@github.com:dodyg/practical-aspnetcore.git)  
   - [ASP.NET-Core---Intermediate](https://channel9.msdn.com/Series/ASP.NET-Core---Intermediate) 官网视频站点
