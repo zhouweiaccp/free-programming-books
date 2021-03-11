@@ -5,10 +5,16 @@ mkdir -p /usr/java
 tar -zxvf jdk-8u141-linux-x64.tar.gz
 cp -r /home/root1/logdemo/jdk1.8.0_141 /usr/java/jdk1.8.0_141
 
-vim /etc/profile
-JAVA_HOME=/usr/java/jdk1.8.0_141
-CLASSPATH=$JAVA_HOME/lib/
-PATH=$PATH:$JAVA_HOME/bin
-export PATH JAVA_HOME CLASSPATH
+# vim /etc/profile
+# JAVA_HOME=/usr/java/jdk1.8.0_141
+# CLASSPATH=$JAVA_HOME/lib/
+# PATH=$PATH:$JAVA_HOME/bin
+# export PATH JAVA_HOME CLASSPATH
 
+cat >> /etc/profile << EOF1
+
+export JAVA_HOME=/usr/java/jdk1.8.0_141
+export CLASSPATH=.:\$JAVA_HOME/lib:\$CLASSPATH
+export PATH=\$JAVA_HOME/bin:\$PATH
+EOF1
 source /etc/profile
