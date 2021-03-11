@@ -162,3 +162,48 @@ wdelay 检查是否有相关的写操作，如果有则将这些写操作一起�
 no_wdelay 若有写操作则立即执行，应与 sync 配合使用
 subtree_check 若目录是一个子目录，则 nfs 服务器将检查其父目录的权限(默认设置)
 no_subtree_check 即使目录是一个子目录，nfs 服务器也不检查其父目录的权限，这样可以提高效率
+
+
+
+### install sh
+```bash
+# 说明: 本文档适用于centos系统nfs相关操作,建议使用nfs v4协议.
+
+# 1. NFS server端安装
+ yum -y install nfs-utils  rpcbind
+# 2. 配置nfs
+cat >>  /etc/exports << efo
+
+/opt/data *(rw,no_root_squash,no_all_squash,anonuid=0,anongid=0,sync)
+efo
+#注: 以上例子是通过NFS共享本地的/opt/data ,部署时请根据实际情况修改目录
+
+#3. 启动nfs服务
+systemctl  start  rpcbind
+systemctl  start  nfs
+systemctl  enable  rpcbind
+systemctl  enable  nfs
+
+# 3. 客户端挂载nfs
+# 检查本地是否支持nfs文件系统
+
+rpm -qa |grep nfs-utils
+#以上命令有输出说明己支持nfs文件系统
+
+#如果不支持需要安装nfs-utils
+yum -y install nfs-utils
+
+#挂载NFS
+mkdir /nfs
+mount -t nfs -o noac,nfsvers=4,_netdev NFS_SERVER_IP:/opt/data  /nfs
+# 设置开机自动挂载
+
+cat >>   /etc/fstab << efo
+
+NFS_SERVER_IP:/opt/data  /nfs  defautls,nfsvers=4,_netdev,noac  0  0 
+efo
+# 注: /nfs为本地路径,如果不存在,需要使用mkdir创建
+#    NFS_SERVER_IP 为NFS server的ip
+#   /opt/data  为nfs服务端共享的路径
+# 请根据实际情况修改 /nfs,NFS_SERVER_IP,/opt/data 三个参数
+```
