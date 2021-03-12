@@ -253,6 +253,44 @@ ALTER TABLE 'table_name' MODIFY COLUMN 'id' int(11) NOT NULL AUTO_INCREMENT,ADD 
     可以直接设置数据表的 AUTO_INCREMENT 值为想要的初始值，比如10000：
 ALTER TABLE 'table_name' AUTO_INCREMENT= 10000;
 
+## MySQL权限要求
+参考：
+Privileges权限	含义
+CREATE	创建新的数据库和表的权限
+REFERENCES	允许创建外键
+INDEX	权限代表是否允许创建和删除索引
+ALTER	允许修改表结构
+CREATE ROUTINE	允许创建存储过程、函数的权限
+ALTER ROUTINE	权限代表允许修改或者删除存储过程、函数的权限
+EXECUTE	权限代表允许执行存储过程和函数的权限
+CREATE VIEW	权限代表允许创建视图的权限
+SHOW VIEW	权限代表通过执行show create view命令查看视图创建的语句
+DROP	允许删除数据库、表、视图的权限
+SELECT	数据查询
+UPDATE	数据更新
+INSERT	数据添加
+DELETE	数据删除
+### 1.1标准
+1.1.1MySQL（含TIDB）需要以下权限
+CREATE,REFERENCES,INDEX,ALTER,CREATE ROUTINE,ALTER ROUTINE,EXECUTE,CREATE VIEW,SHOW VIEW,DROP,SELECT,UPDATE,INSERT,DELETE
+1.1.2授权代码参考
+CREATE USER 'admin'@'%' IDENTIFIED BY 'password';
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password';
+GRANT CREATE,REFERENCES,INDEX,ALTER,CREATE ROUTINE,ALTER ROUTINE,EXECUTE,CREATE VIEW,SHOW VIEW,DROP,SELECT,UPDATE,INSERT,DELETE ON edoc2v5.* TO 'admin'@'%';
+GRANT CREATE,REFERENCES,INDEX,ALTER,CREATE ROUTINE,ALTER ROUTINE,EXECUTE,CREATE VIEW,SHOW VIEW,DROP,SELECT,UPDATE,INSERT,DELETE ON edoc2v5.* TO 'admin'@'localhost';
+GRANT SELECT ON mysql.* TO 'admin'@'%';
+GRANT SELECT ON mysql.* TO 'admin'@'localhost';
+
+### 1.2.1MySQL（含TIDB）需要以下权限
+CREATE,INDEX,ALTER,DROP,SELECT,UPDATE,INSERT,DELETE
+1.2.2授权代码参考
+CREATE USER 'admin'@'%' IDENTIFIED BY 'password';
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password';
+GRANT CREATE,INDEX,ALTER,DROP,SELECT,UPDATE,INSERT,DELETE ON edoc2v5.* TO 'admin'@'%';
+GRANT CREATE,INDEX,ALTER,DROP,SELECT,UPDATE,INSERT,DELETE ON edoc2v5.* TO 'admin'@'localhost';
+GRANT SELECT ON mysql.* TO 'admin'@'%';
+GRANT SELECT ON mysql.* TO 'admin'@'localhost';
+![](./MySQL 新建用户为用户授权指定用户访问数据.sql)
 
 ## 资源
 - [mysqltools](https://github.com/Neeky/mysqltools)一个用于快速构建大规模，高质量，全自动化的 mysql分布式集群环境的工具；包含mysql 安装、备份、监控、高可用、读写分离、优化、巡检、自行化运维
