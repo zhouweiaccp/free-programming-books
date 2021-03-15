@@ -23,3 +23,18 @@
 - []()
 - []()
 - []()
+
+
+ ## 流程
+- [Liteflow](https://yomahub.com/liteflow/docs/)liteflow就是为解耦复杂逻辑而生，如果你要对复杂业务逻辑进行新写或者重构，用liteflow最合适不过。它是一个轻量，快速的组件式流程引擎框架，组件编排，帮助解耦业务代码，让每一个业务片段都是一个组件，并支持热加载规则配置，实现即时修改。
+- [Liteflow相比于Flowable和Activiti](https://flowable.com/open-source/)基于任务角色的流程，也能做基于逻辑的流程，并且他们的基于BPM协议，很多基于BPM协议的编辑工具都能为他们可视化编辑流程 ![比较](https://yomahub.com/liteflow/docs/)
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
