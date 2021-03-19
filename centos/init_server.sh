@@ -15,7 +15,7 @@ yum install bash-completion -y
 echo `date +%z`
 #时间不同步
 yum install -y ntp  && ntpdate ntp.aliyun.com
-yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo && yum install -y docker-ce-18.03.1.ce &&systemctl start docker && systemctl enable docker
+yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo && yum -y install docker-ce-19.03.7-3.el7 &&systemctl start docker && systemctl enable docker
 
 ## Docker启动Get Permission Denied 
 # sudo groupadd docker     #添加docker用户组

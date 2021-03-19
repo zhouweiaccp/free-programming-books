@@ -224,6 +224,14 @@ docker node update --label-add nodelabels=Middleware nodeid
 docker  node  update  --label-add  nodeportainer=Portainer   nodeid
 https://docs.docker.com/engine/reference/commandline/node_update/
 
+
+## Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the d
+ # 启动docker
+systemctl start docker
+# 重启dokcer
+systemctl restart docker 
+ # 开机自动启动docker 
+systemctl enable docker
 ## docker端口
 TCP端口2377，用于集群管理信息的交流
 TCP、UDP端口7946用于集群中节点的交流
@@ -240,7 +248,7 @@ firewall-cmd --reload
 
 - [docker-compose编排参数详解](https://www.cnblogs.com/wutao666/p/11332186.html)
 
-
+## docker service scale middleware_proxy=1
 ## 查看被docker-proxy占用的端口
 ps -aux | grep -v grep | grep docker-proxy
 service docker stop

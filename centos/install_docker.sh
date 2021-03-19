@@ -1,6 +1,23 @@
 #!/bin/bash
 
-
+function centos_docker19(){
+yum -y remove containerd.io.x86_64
+yum -y remove docker-ce.x86_64
+yum -y remove docker-ce-cli.x86_64 
+yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo && yum -y install docker-ce-19.03.7-3.el7 &&systemctl start docker && systemctl enable docker
+docker version
+docker swarm init 
+nodeid=`hostname`
+docker node update --label-add nodetype=InDrive  $nodeid
+docker node update --label-add nodelabels=Middleware $nodeid
+docker  node  update  --label-add  nodeportainer=Portainer   $nodeid
+# 启动docker
+systemctl start docker
+# 重启dokcer
+systemctl restart docker 
+ # 开机自动启动docker 
+systemctl enable docker
+}
 # 删除安装的软件包
 #yum -y remove `yum list installed | grep docker |awk '{print $1}'`
 #yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo && yum install -y docker-ce-18.03.1.ce &&systemctl start docker && systemctl enable docker
@@ -142,3 +159,8 @@ efo
  
 # For more examples and ideas, visit:
 #  https://docs.docker.com/get-started/
+
+# wget http://download.edoc2.com:5999/base/scripts/docker/docker_1903_local_install.tar.gz
+# tar -xf docker_1903_local_install.tar.gz
+# cd docker_1903_local_install
+# sh deploy.sh 
