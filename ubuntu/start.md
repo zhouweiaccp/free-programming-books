@@ -252,6 +252,10 @@ free -m
 9、查看系统中文件存储使用情况
 df –h
 
+
+## 端口占用
+ ss -tlnp |grep 80
+ netstat -anp |grep 80
   ## ifconfig: 未找到命令
    yum install net-tools -y
 
