@@ -1,0 +1,106 @@
+访问docker容器网络
+熟悉docker的朋友也许都知道在使用docker默认情况下为所有的容器准备了一个网络（docker0），并且可以通过-p参数将将主机上某个端口映射到容器内部的固定端口上。例如：
+
+docker run -name zxy-nginx -itd -p 8080:80 mynginx:v1 /bin/bash
+上面命令运行后，可以在主机上通过docker ps命令查看到多了一个叫zxy-nginx的容器（上例中假设我们主机上有一个叫mynginx:v1的nginx 容器镜像）。且docker在主机上将任意网络接口的8080访问导入到zxy-nginx容器内部。
+
+# docker ps
+CONTAINER ID.              IMAGE.            COMMAND.            CREATED.        STATUS          PORTS.         NAME
+81713f601424                mynginx:v1      “/bin/bash”              4 seconds ago  up 3 seconds 0.0.0.0:8080->80/tcp zxy-nginx
+在zxy-nginx内部启动nginx服务,并在主机上通过curl 访问nginx服务。
+
+#docker exec -it zxy-nginx /usr/local/nginx/sbin/nginx -c /usr/local/nginx/nginx.conf
+#curl http://192.168.126.222:8080
+<html>
+<head>
+<title>Welcome to nginx!</title>
+</head>
+<body bgcolor=“white“ text=“black”>
+<center><h1>Welcome to nginx!</h1></center>
+</body>
+</html>
+在上例中，我在主机上通过主机外部ip地址192.168.126.222+端口8080 访问到容器zxy-nginx内部的nginx服务。当然也可以在另外一台与主机相连的机器上，通过curl 192.168.126.222：8080访问到主机上的zxy-nginx容器内部。这是如何达成的呢？在docker默认配置时刻，docker端口暴露是通过docker-proxy加适当的iptables规则实现的。通过下面命令可以看到docker-proxy的存在：
+
+#ps aux|grep docker-proxy
+root     29724    0.0   0.0      42852.   1592  ?       Sl  22:41    0:00 /usr/bin/docker-proxy  -proto tcp -host-ip 0.0.0.0 -host-port 8080 -container-ip 172.17.0.4  -container-port 80
+但是docker-proxy却不是一定需要的，通过下面命令可以看到是否使用docker-proxy也是可以配置的：
+
+#dockerd --help|grep proxy
+       --userland-proxy             Use userland proxy for loopback traffic (default true)
+       --userland-proxy-path     Path to the userland proxy binary
+在centos 7.x上docker rpm安装方式下，可以通过/etc/docker/daemon.json里添加 “userland-proxy”:false 关闭docker-proxy
+那么docker-proxy是不是可以关闭呢？关闭了容器内部暴露端口又如何实现呢？
+
+docker-proxy如何工作
+在docker的源码中，docker-proxy代码位于vendor目录的proxy包内部，感兴趣的读者可以自行阅读proxy实现代码。本文绕开代码实现只讲实现原理，本文以tcp链接为例，udp效果等同。
+在上一章例子中，看到docker-proxy 通过-host-ip指定了docker-proxy在主机上监听的网络接口，通过-host-port指定了监听的端口号；通过-container-ip和-container-port 指定了docker-proxy链接到容器内部的容器ip和端口号。在上例中docker-proxy监听0.0.0.0:8080，那么当主机任何网络接口上有netfliter模块处理后input链到达的目标端口为8080的tcp数据包时刻，docker-proxy会接受这个链接（accept，记为input链接），并主动在连接container-ip+container-port建立一个tcp链接（记为output链接）。当此新建的与容器的链接建立后，docker-proxy会将所有来自input链接的包 发送给output链接。
+docker-proxy转发包
+docker 设置的iptables nat规则
+其实在目前的docker-proxy实现中，并不是所有的数据包都由docker-proxy完成包转发。docker配置的iptables nat也参与其中。可以通过下面命令查看到docker配置的iptables nat规则
+
+#iptables-save -t nat 
+通过上述命令我们将docker-proxy开启/关闭情况下，将iptables nat表导出可以得出下面的规则表
+
+场景	开启docker-proxy	关闭docker-proxy
+A	-t nat -A OUTPUT -d 127.0.0.0/8 -m addrtype --dst-type LOCAL -j DOCKER	-t nat -A OUTPUT -m addrtype --dst-type LOCAL -j DOCKER
+B	-t nat -A DOCKER -i docker0 -j RETURN	n/a
+C	n/a	-t nat -A POSTROUTING -o docker0 -m addrtype --src-type LOCAL -j MASQUERADE
+D	-i nat -A DOCKER -i docker0 -p tcp -m tcp --dport 8080 -j DNAT --to-destination 172.17.0.4	同开启docker-proxy时一致
+表3-1
+
+下面我们以第一章出现的例子，看看docker-proxy和iptables如何共同作用访问docker容器内部
+
+场景	开启docker-proxy时刻	关闭docker-proxy时刻
+外部主机访问目标主机192.168.126.222:8080	通过iptables nat规则访问	通过iptables nat规则访问
+在主机上访问容器192.168.126.222:8080	通过iptables nat规则访问	通过iptables nat规则访问
+在主机上访问目标容器127.0.0.1:8080	通过docker-proxy 转发	通过iptables nat规则访问
+在主机上其他容器内部访问目标容器 172.17.0.4:8080	通过docker proxy转发	通过iptables nat规则访问
+表3-2
+
+细心的读者也许会有这样的疑惑，即使在开启docker-proxy的配置下，也不是所有的包都直接由docker-proxy处理。对于外部主机访问目标主机192.168.126.222:8080和在主机上访问容器192.168.126.222:8080时刻依然会通过iptables nat表处理。其实这两种场景下iptables DNAT规则确实多余了，可以通过下面命令手动将iptables nat表中DOCKER链规则直接绕开：
+
+#iptables -t nat -I DOCKER 1 -p tcp -j RETURN
+添加这条规则后iptables nat中所有到达DOCKER链的tcp包都会直接不做dnat处理返回，此时docker-proxy起作用将数据包转发到容器内部。手动添加上述iptables规则后，表3-1中通过192.168.126.222:8080访问容器内部的场景依然可达。对于这种冗余功能逻辑的情况，我们尚未找到原因。
+通过表3-2，我们可以看到在常规使用场景中，docker-proxy存在与否都不影响docker容器的通讯。那么docker-proxy存在是否还有必要呢？
+
+docker-proxy是否有必要存在
+在网上大量的容器最佳实践中都建议关闭docker-proxy，“原因是docker会为每个容器每个暴露的端口都启动一个docker-proxy进程，这个docker-proxy会消耗大概2M的RSS内存。当宿主机环境上有几百上千个容器的时刻，那么可能有几百上千个docker-proxy，其对物理内存消耗的是非常可观的。而docker-proxy的功能完全可以被docker配置的iptables nat规则替代。所以没有docker-proxy就没有必要开启。”
+上述论断是否是正确的呢？答案是，在大多数场景下此答案正确。只有如下场景docker-proxy才是刚需：
+1、ipv6场景
+docker启动时刻可以通过ipv6参数开启docker ipv6支持功能。开启后所有docker容器都在ipv6下工作。但是此时docker在ipv6上的工作并为完善，docker并未在ipv6table上为容器添加相应的DNAT规则。如果此时关闭docker-proxy，那么容器外部无法访问到容器内部网络。在不借助任何外部手段的情况下（可以使用一个叫ipv6nat工具实现ip6table nat规则的自动添加，但即便如此ipv6场景下，docker-proxy依然有存在意义详见后文场景3），所以此场景下docker-proxy需要开启。
+2、在老内核下（2.6.x），容器内部通过hairpin 方式访问自己暴露的服务
+在第一章的例子中，如果需要在容器内部访问自己暴露的服务，那么就出现了hairpin DNAT访问方式：
+
+#docker exec -it zxy-nginx /bin/bash
+root@8173f601424 #curl http://192.168.126.222:8080
+<html>
+<head>
+<title>Welcome to nginx!</title>
+</head>
+<body bgcolor=“white“ text=“black”>
+<center><h1>Welcome to nginx!</h1></center>
+</body>
+</html>
+可以看到在容器zxy-nginx内通过主机ip+容器映射主机端口方式一样可以访问到zxy-nginx容器自己暴露的nginx服务。
+这就是hairpin DNAT模式。但是关闭docker-proxy时刻，数据包进过docker0上的prerouting链时被表3-2的DNAT命中，数据包dst-ip被转换为172.17.0.4，dst-port被转换为80，在docker0的forwarding动作中，判定此包需要送回zxy-nginx在docker0上的网络接口veth17f3d1上。默认情况下，内核bridge不允许将包发送回到源接口的；只有在内核配置了hairpin mode enable时刻，才允许此类操作。在docker处理流程中，如果用户关闭了docker-proxy，那么docker会开启内核的hairpin mode（在centos 7x上通过echo “1”>/sys/class/net/docker0/brif/vethxxx/hairpin_mode开启hairpin模式）。但是在老内核2.6.x上，没有办法启用hairpin mode。所以此时无法借助iptables nat实现容器内部网络可达。此刻就必须使用docker proxy了。关于hairpin模式的解释请参考：https://wiki.mikrotik.com/wiki/Hairpin_NAT
+3、在内核无法开启route_localnet的情况下
+正常情况下，内核不会对地址为localnet（127.0.0.0/8）的地址做forwarding，因为这部分地址被认为为martian 。但是在内核中可以通过配置
+
+echo “1”>/proc/sys/net/ipv4/conf/$BridgeName/route_localnet 
+开启。docker在启动阶段会配置此配置项。但是对于低版本内核无此参数或对于ipv6地址场景（ipv6内核无此配置项，无此功能）内核依然不会对localhost（ipv6下地址为[::1]）进行forwarding；所以在此部分场景下，如果需要在主机上，使用localhost:Port 与容器通讯依然需要依赖于docker-proxy
+
+总结
+1、在9102年的今天，如果不使用ipv6，那么完全可以关闭docker-proxy。
+2、在ipv6场景下，如果使用了ipv6nat工具配置容器的dnat，且不在主机上使用localhost:port方式与容器通讯，那么也可以关闭docker-proxy
+
+尾声：关闭docker-proxy的真实收益其实没有那么大
+在第一章中，我们的例子中看到笔者机器上docker-proxy进程rss是1592KB，如果有100个容器，关闭了docker-proxy是否真实节省了100*1592KB 约等于1.5GB物理内存？答案是否定的！docker-proxy其实逻辑很简单，它的rss占用约1.5MB是因为docker-proxy是golang语言编写，golang默认采用静态链接方式将所有的库都静态链接到可执行程序中。所以docker-proxy RSS看起来比较大。但是这里1.5MB中有很大的部分都是docker-proxy可执行程序的代码段，这部分在linux上以map方式映射到docker-proxy可执行文件上的。当多个docker-proxy进程存在时刻，这部分maps实际上是通过文件缓存在整个系统共享的。所以在真实系统上多个docker-proxy消耗的真实物理内存，其实只有docker-proxy的堆和栈，这部分大概只有几百KB，所以关闭docker-proxy的收益并没有想象的那么大。可以通过cat
+/proc/$docker-proxy-pid/smaps 中每个map段的pss，随着docker-proxy进程数目增加反而下降证明。通过下面命令可以统计docker-proxy真实的物理内存消耗:
+
+cat /proc/$docker-proxy-pid/smaps |grep -i Private |gawk ‘BEGIN{sum=0}{sum=sum+$2} END{print sum}’
+在笔者的环境上，统计出来docke-proxy在有负荷（通过nginx镜像下载10G的文件）情况下，docker-proxy内存消耗在500KB左右
+
+作者：marshalzxy
+链接：https://www.jianshu.com/p/91002d316185
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
