@@ -241,6 +241,14 @@ firewall-cmd --reload
 - [docker-compose编排参数详解](https://www.cnblogs.com/wutao666/p/11332186.html)
 
 
+## 查看被docker-proxy占用的端口
+ps -aux | grep -v grep | grep docker-proxy
+service docker stop
+docker rm $(docker ps -aq)
+rm /var/lib/docker/network/files/local-kv.db
+service docker start
+https://www.maoyuanrun.com/2017/01/12/docker-port-is-already-allocated/
+
 ## 策略
 spread: 默认策略，尽量均匀分布，找容器数少的结点调度
 binpack: 和spread相反，尽量把一个结点占满再用其他结点
