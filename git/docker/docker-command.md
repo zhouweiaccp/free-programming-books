@@ -249,6 +249,12 @@ rm /var/lib/docker/network/files/local-kv.db
 service docker start
 https://www.maoyuanrun.com/2017/01/12/docker-port-is-already-allocated/
 
+
+
+## docker-proxy如何工作
+在centos 7.x上docker rpm安装方式下，可以通过/etc/docker/daemon.json里添加 “userland-proxy”:false 关闭docker-proxy
+
+https://www.jianshu.com/p/91002d316185
 ## 策略
 spread: 默认策略，尽量均匀分布，找容器数少的结点调度
 binpack: 和spread相反，尽量把一个结点占满再用其他结点
