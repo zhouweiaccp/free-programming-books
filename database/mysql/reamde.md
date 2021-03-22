@@ -102,7 +102,8 @@ alter table tname engine=myisam;--修改表引擎
 alter table tname CHARSET=utf8;--修改表字编码
 ALTER TABLE  tname ADD age INT NOT NULL AFTER  'uid';--添加一个字段，在tname表中的uid之后age字段，整型，不为空
 ALTER TABLE  tname ADD age INT NOT NULL;--添加一个字段,默认添加到最后
-
+show index from org_user; -- MySQL 查看索引命令
+show keys from org_user;-- MySQL 查看索引命令
 # 8.备份数据库：
 ① 导出整个数据库，导出文件默认是存在mysql\bin目录下 mysqldump -u user_name -p user_password db_name > new_db_name.sql
 
