@@ -45,3 +45,6 @@ console.log(a.__proto__.__proto__ == a.prototype.__proto__); //true
       return child;
        };
  ```
+
+
+ ![](.\js_原型_proto_constructor_prototype)
