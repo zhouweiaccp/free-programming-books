@@ -43,3 +43,9 @@ npm config set registry https://registry.npm.taobao.org
 
 ### The engine “node” is incompatible with this module. Expected version
 yarn config set ignore-engines true
+
+
+
+## npx 调用项目安装的模块
+node-modules/.bin/mocha --version
+npx mocha --version
