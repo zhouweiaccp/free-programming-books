@@ -349,3 +349,14 @@ window.addEventListener('mousewheel', function(event){
 
 
 主流浏览器，window、mac（OS / Win）可以做到，极端兼容下带测试。 
+
+
+## 深究apply
+
+apply()方法调用一个具有给定this值的函数，以及作为一个数组（或类似数组对象）提供的参数。
+
+语法为func.apply(thisArg, [argsArray])。
+
+thisArg：如果这个函数处于非严格模式下，则指定为 null 或 undefined 时会自动替换为指向全局对象。浏览器环境下，这个值为null、undefined和window是等价的，测试结果如下：
+//https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
+https://www.dazhuanlan.com/2019/08/18/5d594b50e0124/
