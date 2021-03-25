@@ -352,11 +352,55 @@ window.addEventListener('mousewheel', function(event){
 
 
 ## 深究apply
-
 apply()方法调用一个具有给定this值的函数，以及作为一个数组（或类似数组对象）提供的参数。
-
 语法为func.apply(thisArg, [argsArray])。
 
 thisArg：如果这个函数处于非严格模式下，则指定为 null 或 undefined 时会自动替换为指向全局对象。浏览器环境下，这个值为null、undefined和window是等价的，测试结果如下：
 //https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
 https://www.dazhuanlan.com/2019/08/18/5d594b50e0124/
+
+## js时区时间转换
+```js
+// 背景：
+// 比赛倒计时
+// 服务器是在印度，前端通过接口返回回来的Response Headers中的Date时间去获得服务器时间。
+// 浏览器Date中的时间，会自动转成客户端当前的时区环境。
+
+// 需求：
+// 需要把浏览器获得的时区和时间，转成服务器相同的印度时区。
+//https://blog.csdn.net/manongmanongmanong/article/details/100554731
+    var timezone = 5.5; //目标时区时间，东5.5区
+    var offset_GMT = new Date("Thu, 05 Sep 2019 02:04:34 GMT").getTimezoneOffset(); // 浏览器Date中时间和格林威治的时间差，单位为分钟
+    var nowDate = new Date("Thu, 05 Sep 2019 02:04:34 GMT").getTime(); // 浏览器Date中时间距 1970 年 1 月 1 日午夜（GMT 时间）之间的毫秒数
+    var targetDate = new Date(nowDate + offset_GMT * 60 * 1000 + timezone * 60 * 60 * 1000);
+    console.log("东5.5区现在是：" + targetDate);//印度是东5.5区，中国是东8区
+```
+
+## js时区
+new Date().getTimezoneOffset()/60*-1 //时区差值
+业务场景：
+
+页面服务器时间是东八区时间，页面 JS 功能需要对比服务器时间和用户本地时间，为兼容世界各地时间，需要将用户本地时间转换为东八区时间。
+基本概念
+格林威治时间
+
+格林威治子午线上的地方时，或零时区（中时区）的区时叫做格林威治时间，也叫世界时。（更多详细的概念不说了，这里我们不需要。） 比如我们中国是东八区，北京时间是（GMT+08:00）
+
+获得本地与格林威治时间的时差：new Date().getTimezoneOffset()，单位为分钟。
+已知格林威治时间，换算本地正确时间
+
+本地时间 = 格林威治时间 - 时差
+已知本地时间，换算对应格林威治时间：
+
+格林威治时间 = 本地时间 + 时差
+已知本地时间，换算其他时区的时间
+
+因为时区间的差异是以小时为单位的。所以算出0时区的时间后，再减去或加上相应的小时即可（东N区便+N小时，西N区便-N小时）。 为了方便计算，东N区记做正数，西N区记做负数，即：目标时区时间 = 本地时间 + 时差 + 时区间隔
+例子：将本地时间转换为东八区时间
+
+var timezone = 8; //目标时区时间，东八区
+var offset_GMT = new Date().getTimezoneOffset(); // 本地时间和格林威治的时间差，单位为分钟
+var nowDate = new Date().getTime(); // 本地时间距 1970 年 1 月 1 日午夜（GMT 时间）之间的毫秒数
+var targetDate = new Date(nowDate + offset_GMT * 60 * 1000 + timezone * 60 * 60 * 1000);
+console.log("东8区现在是：" + targetDate);
+原文链接：https://blog.csdn.net/u012193330/article/details/79637660
