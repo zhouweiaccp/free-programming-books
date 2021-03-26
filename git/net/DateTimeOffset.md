@@ -13,6 +13,8 @@ targetTime = sourceTime.DateTime;
 //https://docs.microsoft.com/zh-cn/dotnet/standard/datetime/converting-between-datetime-and-offset?redirectedfrom=MSDN
 //https://docs.microsoft.com/zh-cn/dotnet/api/system.timezoneinfo?redirectedfrom=MSDN&view=netframework-4.7.2
 https://www.cnblogs.com/hantianwei/archive/2010/09/23/1833228.html C#日期时间格式化
+https://github.com/mattjohnsonpint/TimeZoneConverter
+https://github.com/mattjohnsonpint/TimeZoneNames
 
 ### C# 时间戳与DateTime/DateTimeOffset的相互转换
 1.获取当前时间戳：
