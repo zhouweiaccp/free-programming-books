@@ -11,7 +11,8 @@ DateTime targetTime;
 sourceTime = new DateTimeOffset(baseTime, TimeSpan.Zero);
 targetTime = sourceTime.DateTime;
 //https://docs.microsoft.com/zh-cn/dotnet/standard/datetime/converting-between-datetime-and-offset?redirectedfrom=MSDN
-
+//https://docs.microsoft.com/zh-cn/dotnet/api/system.timezoneinfo?redirectedfrom=MSDN&view=netframework-4.7.2
+https://www.cnblogs.com/hantianwei/archive/2010/09/23/1833228.html C#日期时间格式化
 
 ### C# 时间戳与DateTime/DateTimeOffset的相互转换
 1.获取当前时间戳：
@@ -27,3 +28,53 @@ b.13位时间戳转换 1 var DateTimeUnix = DateTimeOffset.FromUnixTimeMilliseco
 3             var DateTimeUnix = DateTimeOffset.FromUnixTimeMilliseconds(UninTimeStamp);
 4             //计算两个时间间隔
 5             TimeSpan timeSpan = new TimeSpan(DateTimeOffset.UtcNow.Ticks - DateTimeUnix.Ticks);
+
+
+## 时区转换
+```cs
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //转换成指定时区
+            string s = "Tue Mar 27 14:17:00 +0900 2012";
+            DateTime.TryParseExact(s, "ddd MMM dd HH:mm:ss zzz yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("en-US"),System.Globalization.DateTimeStyles.None, out DateTime dt);
+            Console.WriteLine(dt);
+            
+
+            Console.WriteLine("Hello World!");
+            DateTime utcTime1 = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now, TimeZoneInfo.Local);
+
+            //1.根据本地时间取得时区列表：
+
+            DateTimeOffset chinaDate = DateTimeOffset.Now; //本地当前时间
+            Console.WriteLine(chinaDate.ToString() + "<br/>");
+
+            System.Collections.ObjectModel.ReadOnlyCollection<TimeZoneInfo> zones = TimeZoneInfo.GetSystemTimeZones();//系统中地时区标识列表
+            foreach (TimeZoneInfo timeZoneInfo in zones)
+            {
+
+                //通过本地时间取得格林威治标准时间，并通过这个标准时间取得不同时区ID的名称及它的相应时间
+                DateTimeOffset easternDate = TimeZoneInfo.ConvertTime(chinaDate.UtcDateTime, TimeZoneInfo.FindSystemTimeZoneById(timeZoneInfo.Id));
+                Console.WriteLine(timeZoneInfo.Id + ":&nbsp;&nbsp;&nbsp;&nbsp;" + easternDate.ToString() + $",TimeOfDay:{easternDate.TimeOfDay}");
+            }
+
+            Console.ReadLine();
+        }
+        /// <summary>
+        /// 将指定时区中的时间转换为协调世界时 (UTC)。
+        /// </summary>
+        /// <param name="dateTime">要转的时区时间，此时间即为timeZone参数所在时区时间</param>
+        /// <param name="zoneId">时区标识符</param>
+        /// <returns></returns>
+        public static DateTime ConvertTimeToUtc(DateTime dateTime, string zoneId)
+        {
+            return TimeZoneInfo.ConvertTimeToUtc(dateTime, TimeZoneInfo.FindSystemTimeZoneById(zoneId));
+        }
+    }
+}
+```
