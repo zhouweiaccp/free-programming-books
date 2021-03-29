@@ -392,3 +392,11 @@ git checkout feature-nhibernate
 
 ## git SSL certificate problem: unable to get local issuer certificate
 git config --global http.sslVerify false
+
+## 批量删除分支
+git branch | grep  "feature" | xargs git branch -d
+git branch | grep -v -E 'master|develop' | xargs git branch -D
+git branch | grep  -E 'proj-' | xargs git branch -D
+
+批量删除远程分支
+git branch -r| grep -v -E 'master|develop' | sed 's/origin\///g' | xargs -I {} git push origin :{}
