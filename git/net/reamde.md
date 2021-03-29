@@ -230,7 +230,7 @@ private Task EmitConnection()
 - [Npoi](https://github.com/donnytian/Npoi.Mapper)
 - [MediatrTutorial](https://github.com/MoienTajik/MediatrTutorial)A simple implementation of CQRS in ASP.NET Core using MediatR framework in .NET 5
 - [LazyCache.cs](./LazyCache.cs)
-- []()
+- [linux_mac_window信息](https://github.com/Ryujinx/Ryujinx) To run this emulator, we recommend that your PC have at least 8GB of RAM; less than this amount can result in unpredictable behavior and may cause crashes or unacceptable performance.
 - []()
 - []()
 - []()
