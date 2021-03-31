@@ -268,3 +268,4 @@ AOF文件通常比RDB文件更大
 
 ## link
 - [性能调优](https://www.cnblogs.com/276815076/p/7245333.html)
+- [](./git/notebook/Redis/Redis.md)
