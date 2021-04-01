@@ -223,11 +223,19 @@ hset:添加hash数据
 hget:获取hash数据
 hmget:获取多个hash数据
 
+ HSET myhash field1 "Hello"
+HGET myhash field1
+https://redis.io/commands/hset
+
 6.sort set和hash很相似,也是映射形式的存储:
 zadd:添加
 zcard:查询
 zrange:数据排序
 
+
+
+## 使用redis incr计数来控制单位时间内对某接口的访问量
+https://zhangxueliang.blog.csdn.net/article/details/104251025
 
 ## redis Sentinel需要至少部署3个实例才能形成选举关系。
 
