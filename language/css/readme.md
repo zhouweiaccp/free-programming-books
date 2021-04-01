@@ -52,3 +52,10 @@ element1~element2	p~ul	选择前面有 <p> 元素的每个 <ul> 元素。	3
 :checked	input:checked	选择每个被选中的 <input> 元素。	3
 :not(selector)	:not(p)	选择非 <p> 元素的每个元素。	3
 ::selection	::selection	选择被用户选取的元素部分。	3
+
+
+
+
+## css3库
+- [css3库](http://css3lib.alloyteam.com/#progress_bar/demo1)
+- [腾讯 AlloyTeam 团队博客](http://alloyteam.github.io/)
