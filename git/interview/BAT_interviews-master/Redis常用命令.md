@@ -162,7 +162,15 @@ BGSAVE 命令执行之后立即返回 OK ，然后 Redis fork 出一个新子进
 redis> BGSAVE
 Background saving started
 
+# redis的5种数据类型
 1.基本用法
+string 字符串（可以为整形、浮点型和字符串，统称为元素）
+list 列表（实现队列,元素不唯一，先入先出原则）
+set 集合（各不相同的元素）
+hash hash散列值（hash的key必须是唯一的）
+sort set 有序集合
+
+string
 SET connections 10
 GET connections => 10
 DEL connections
@@ -170,7 +178,16 @@ DEL connections
 INCR connections => 11
 INCR connections => 12
 INCR connections => 13
+
+
 3 redis存储list数据
+list类型支持的常用命令：
+lpush:从左边推入
+lpop:从右边弹出
+rpush：从右变推入
+rpop:从右边弹出
+llen：查看某个list数据类型的长度
+
 RPUSH puts the new value at the end of the list.
 RPUSH friends "Alice"
 RPUSH friends "Bob"
@@ -186,16 +203,30 @@ LPOP friends => "Sam" （删除第list第一个参数）
 RPOP friends => "Bob"（删除第list最后一个参数）
 
 RPUSH redis:log 1
-# 在list尾部追加一个value
- 
-LRANGE redis:log 0 0
-# 取出list的第一个value
- 
-LPOP redis:log
-# 删除list的第一个value
-LRANGE redis:log 0 -1
-# 显示所有list value
-/opt/logstash/bin/logstash agent -f /etc/logstash2/conf.d -l /var/log/logstash2/logstash.log &
+LRANGE redis:log 0 0  # 在list尾部追加一个value
+LPOP redis:log # 取出list的第一个value
+LRANGE redis:log 0 -1  # 删除list的第一个value
+
+4 set类型支持的常用命令：
+sadd:添加数据
+scard:查看set数据中存在的元素个数
+sismember:判断set数据中是否存在某个元素
+srem:删除某个set数据中的元素
+
+sadd set1 1123
+scard set1 取值
+sismember set1 1  key set1中是否存在1
+
+
+5.hash数据类型支持的常用命令:
+hset:添加hash数据
+hget:获取hash数据
+hmget:获取多个hash数据
+
+6.sort set和hash很相似,也是映射形式的存储:
+zadd:添加
+zcard:查询
+zrange:数据排序
 
 
 ## redis Sentinel需要至少部署3个实例才能形成选举关系。
