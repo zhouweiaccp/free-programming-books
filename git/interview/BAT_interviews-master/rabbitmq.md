@@ -23,3 +23,4 @@ pause_if_all_down：适用于三机房，每个机房节点数不一样的集群
 autoheal：适用于网络不可靠，只关心服务的连续性而不是数据的完整性。适合有两个节点的集群；
  
 经过对比，采用pause_minority方式比较符合当前场景，以下使用这种方案进行测试。
+https://www.e-learn.cn/topic/2511682

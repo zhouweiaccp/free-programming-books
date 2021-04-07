@@ -309,3 +309,11 @@ docker image prune # 删除 dangling 或所有未被使用的镜像
 删除镜像：docker image rm $(docker image ls -a -q)
 删除数据卷：docker volume rm $(docker volume ls -q)
 删除 network：docker network rm $(docker network ls -q)
+
+
+
+## 解决日志过多的问题的解决方案是，再dockers打包镜像的时候，加入这个指令：
+sudo su -
+echo "find /path/to.log -type f -mtime +30 -delete -print >>/home/path/to/logs/cron/del-logs.log 2>&1" > /etc/cron.daily/del-logs.sh
+chmod u+x /etc/cron.daily/del-logs.sh
+把/path/to.log和/path/to/替换成相应的路径。
