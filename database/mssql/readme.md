@@ -99,6 +99,16 @@ lob物理读取：从磁盘中读取，image，text，ntext或大型数据的页
 lob预读：查询过程中，从磁盘放入缓存的image，text，ntext或大型数据的页数
 https://www.cnblogs.com/knowledgesea/p/3686105.html
 
+
+
+## SQL Server导入超大SQL文件的方法
+cd C:\Program Files\Microsoft SQL Server\100\Tools\Binn （具体目录路径跟你安装的SQL位置有关）
+
+键入：
+sqlcmd -S localhost -U username -P 123456 -d dbname -i db.sql
+参数说明：-S 服务器地址 -U 用户名 -P 密码 -d 数据库名称 -i 脚本文件路径
+
+osql -S serverIP -U sa -P 123 -i C:\script.sql
 ## 帮助文档
 - [sp_datatype_info](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-stored-procedures/sp-datatype-info-transact-sql?view=sql-server-ver15#examples)  EXEC sp_datatype_info
 - [sp_help]()EXEC sp_help;    exec sp_help @objname='Sys_PositionList'
