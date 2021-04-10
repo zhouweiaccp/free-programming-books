@@ -1,5 +1,9 @@
 
-
+## 学习资源
+- [RabbitMQ能为你做些什么](http://rabbitmq.mr-ping.com/description.html)
+- [windows-常见问题](https://www.rabbitmq.com/windows-quirks.html)
+- [RabbitMQ集群方案的原理](https://www.cnblogs.com/xishuai/p/rabbitmq-cluster.html)
+- [clustering](https://www.rabbitmq.com/clustering.html)
 
 
 ### 集群脑裂问题
@@ -9,6 +13,49 @@ rabbitmqctl add_user admin admin
  rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
 
 
+
+## 安全和端口
+
+SELinux和类似机制或许会通过绑定端口的方式阻止RabbitMQ。当这种情况发生时，RabbitMQ会启动失败。请确认以下的端口是可以被打开的：http://rabbitmq.mr-ping.com/installation/Installing_on_Debian_Ubuntu.html
+
+    4369 (epmd), 25672 (Erlang distribution)
+    5672, 5671 (启用了 或者 未启用 TLS 的 AMQP 0-9-1)
+    15672 (如果管理插件被启用)
+    61613, 61614 (如果 STOMP 被启用)
+    1883, 8883 (如果 MQTT 被启用)
+    
+    https://www.rabbitmq.com/clustering.html
+    4369: epmd, a helper discovery daemon used by RabbitMQ nodes and CLI tools
+    5672, 5671: used by AMQP 0-9-1 and 1.0 clients without and with TLS
+    25672: used for inter-node and CLI tools communication (Erlang distribution server port) and is allocated from a dynamic range (limited to a single port by default, computed as AMQP port + 20000). Unless external connections on these ports are really necessary (e.g. the cluster uses federation or CLI tools are used on machines outside the subnet), these ports should not be publicly exposed. See networking guide for details.
+    35672-35682: used by CLI tools (Erlang distribution client ports) for communication with nodes and is allocated from a dynamic range (computed as server distribution port + 10000 through server distribution port + 10010). See networking guide for details.
+    15672: HTTP API clients, management UI and rabbitmqadmin (only if the management plugin is enabled)
+    61613, 61614: STOMP clients without and with TLS (only if the STOMP plugin is enabled)
+    1883, 8883: MQTT clients without and with TLS, if the MQTT plugin is enabled
+    15674: STOMP-over-WebSockets clients (only if the Web STOMP plugin is enabled)
+    15675: MQTT-over-WebSockets clients (only if the Web MQTT plugin is enabled)
+    15692: Prometheus metrics (only if the Prometheus plugin is enabled)
+
+
+## 存储位置
+    Generic UNIX - $RABBITMQ_HOME/etc/rabbitmq/
+    Debian - /etc/rabbitmq/
+    RPM - /etc/rabbitmq/
+    Mac OS X (Homebrew) - ${install_prefix}/etc/rabbitmq/, the Homebrew prefix is usually /usr/local
+    Windows - %APPDATA%\RabbitMQ\
+RABBITMQ_BASE	%APPDATA%\RabbitMQ
+RABBITMQ_CONFIG_FILE	%RABBITMQ_BASE%\rabbitmq
+RABBITMQ_MNESIA_BASE	%RABBITMQ_BASE%\db
+RABBITMQ_MNESIA_DIR	%RABBITMQ_MNESIA_BASE%\%RABBITMQ_NODENAME%
+RABBITMQ_LOG_BASE	%RABBITMQ_BASE%\log
+RABBITMQ_LOGS	%RABBITMQ_LOG_BASE%\%RABBITMQ_NODENAME%.log
+RABBITMQ_SASL_LOGS	%RABBITMQ_LOG_BASE%\%RABBITMQ_NODENAME%-sasl.log
+RABBITMQ_PLUGINS_DIR	Installation-directory/plugins
+RABBITMQ_PLUGINS_EXPAND_DIR	%RABBITMQ_MNESIA_BASE%\%RABBITMQ_NODENAME%-plugins-expand
+RABBITMQ_ENABLED_PLUGINS_FILE	%RABBITMQ_BASE%\enabled_plugins
+
+- [Windows系统默认位置](https://blog.csdn.net/u011973222/article/details/86614312)
+- [RabbitMQ Environment Variables](http://previous.rabbitmq.com/v3_6_x/configure.html#means-of-configuration)
  ## 集群
  节点增加：
 1. rabbitmq-server -detached   --- .erlang.cooike的权限，400 属主rabbitmq
@@ -59,3 +106,18 @@ node3 上删除 /var/lib/rabbitmq/mnesia 数据库下所有文件， 重启
 rabbitmqctl add_user admin admin
 rabbitmqctl set_user_tags admin administrator
 rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
+
+
+## 更改集群节点类型：
+ rabbitmqctl stop_app
+ rabbitmqctl change_cluster_node_type ram
+ rabbitmqctl change_cluster_node_type disc
+ rabbitmqctl start_app
+ rabbitmqctl cluster_status
+
+如果出现错误：
+Error: unable to connect to node rabbit@manager1: nodedown
+解决方式：
+ /sbin/service rabbitmq-server stop
+ /sbin/service rabbitmq-server start
+ rabbitmqctl status
