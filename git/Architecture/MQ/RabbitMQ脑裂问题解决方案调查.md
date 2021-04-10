@@ -186,3 +186,29 @@ Finally, note that pause_minority mode will do nothing to defend against partiti
 最后，需要注意的是pause_minority模式将不会防止由于集群节点被挂起而导致的分区。这是因为挂起的节点将永远不会看到集群的其余部分的消失，因此将没有触发器将其从集群中断开。
 
 https://www.cnblogs.com/liyongsan/p/9640361.html
+
+
+2、解决办法：
+
+原因是rabbitmq集群在配置时未设置出现网络分区处理策略，先要将集群恢复正常，再设置出现网络分区处理策略，步骤如下：
+（1）首先需要挑选一个信任的分区，这个分区才有决定Mnesia内容的权限，发生在其他分区的改变将不被记录到Mnesia中而直接丢弃。
+（2）停止（stop）其他分区的节点，然后启动(start)这些节点，之后重新将这些节点加入到当前信任的分区之中。
+
+rabbitmqctl stop_app
+rabbitmqctl start_app
+
+    1
+    2
+
+（3）最后，你应该重启(restart)信任的分区中所有的节点，以去除告警。
+你也可以简单的关闭整个集群的节点，然后再启动每一个节点，当然，你要确保你启动的第一个节点在你所信任的分区之中。
+（4）设置出现网络分区处理策略，这里设置为autoheal，下面会详细说明其它策略
+在/etc/rabbitmq下新建rabbitmq.conf，加入：
+
+[
+ {rabbit,
+  [{tcp_listeners,[5672]},
+   {cluster_partition_handling, autoheal}
+]}
+].
+原文链接：https://blog.csdn.net/hhq163/article/details/92584790
