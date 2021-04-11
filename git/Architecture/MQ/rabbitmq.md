@@ -121,3 +121,57 @@ Error: unable to connect to node rabbit@manager1: nodedown
  /sbin/service rabbitmq-server stop
  /sbin/service rabbitmq-server start
  rabbitmqctl status
+
+
+
+##  RabbitMQ Performance Testing Tool 性能测试工具
+RabbitMQ Performance Testing Tool 介绍:
+https://www.rabbitmq.com/java-tools.html
+
+
+RabbitMQ Performance Testing Tool 下载:
+https://github.com/rabbitmq/rabbitmq-perf-test/releases
+
+解压文件(放到 RabbitMQ 安装目录下)
+rabbitmq-perf-test-1.1.0.zip
+
+测试（命令行执行）：
+> cd D:\Program Files\RabbitMQ Server\rabbitmq-perf-test-1.1.0\bin
+> runjava.bat com.rabbitmq.perf.PerfTest -a
+
+更多帮助：
+> runjava com.rabbitmq.perf.PerfTest --help
+usage: <program>
+ -?,--help                         show usage
+ -A,--multiAckEvery <arg>          multi ack every
+ -a,--autoack                      auto ack
+ -b,--heartbeat <arg>              heartbeat interval
+ -C,--pmessages <arg>              producer message count
+ -c,--confirm <arg>                max unconfirmed publishes
+ -D,--cmessages <arg>              consumer message count
+ -d,--id <arg>                     test ID
+ -e,--exchange <arg>               exchange name
+ -f,--flag <arg>                   message flag
+ -h,--uri <arg>                    connection URI
+ -i,--interval <arg>               sampling interval in seconds
+ -K,--randomRoutingKey             use random routing key per message
+ -k,--routingKey <arg>             routing key
+ -M,--framemax <arg>               frame max
+ -m,--ptxsize <arg>                producer tx size
+ -n,--ctxsize <arg>                consumer tx size
+ -p,--predeclared                  allow use of predeclared objects
+ -Q,--globalQos <arg>              channel prefetch count
+ -q,--qos <arg>                    consumer prefetch count
+ -R,--consumerRate <arg>           consumer rate limit
+ -r,--rate <arg>                   producer rate limit
+ -s,--size <arg>                   message size in bytes
+ -t,--type <arg>                   exchange type
+ -u,--queue <arg>                  queue name
+ -X,--producerChannelCount <arg>   channels per producer
+ -x,--producers <arg>              producer count
+ -Y,--consumerChannelCount <arg>   channels per consumer
+ -y,--consumers <arg>              consumer count
+ -z,--time <arg>                   run duration in seconds (unlimited by default)
+
+示例：100个生产者；100个消费者；echange名称为testex；转发类型为fanout；queue名称为testque；bingding为kk01;
+runjava.bat com.rabbitmq.perf.PerfTest -x100 -y100 -e"testex" -t"fanout" -u"testque" -k"kk01"
