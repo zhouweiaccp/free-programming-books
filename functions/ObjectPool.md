@@ -1,7 +1,7 @@
 
 
 Microsoft.Extensions.ObjectPool  git@github.com:aspnet/Extensions.git
-git@github.com:pomma89/ObjectPool.git
+https://gitlab.com/pomma89/object-pool stream string pool
 git@github.com:zhouweiaccp/SafeObjectPool.git
 
 
