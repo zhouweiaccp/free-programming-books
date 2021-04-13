@@ -397,6 +397,7 @@ git config --global http.sslVerify false
 git branch | grep  "feature" | xargs git branch -d
 git branch | grep -v -E 'master|develop' | xargs git branch -D
 git branch | grep  -E 'proj-' | xargs git branch -D
+git branch | grep  -G '\s[0-9].*' | xargs git branch -D  匹配数字 
 
 批量删除远程分支
 git branch -r| grep -v -E 'master|develop' | sed 's/origin\///g' | xargs -I {} git push origin :{}
