@@ -244,6 +244,13 @@ INSERT INTO order_record SELECT  *  FROM  order_today FORCE INDEX (idx_pay_suc_t
 使用insert into tablA select * from tableB语句时，一定要确保tableB后面的where，order或者其他条件，都需要有对应的索引，来避免出现tableB全部记录被锁定的情况
 
 
+
+
+## MySql 申明变量以及赋值
+mysql中变量不用事前申明，在用的时候直接用“@变量名”使用就可以了。
+第一种用法：set @num=1; 或set @num:=1; //这里要使用变量来保存数据，直接使用@num变量
+第二种用法：select @num:=1; 或 select @num:=字段名 from 表名 where ……
+注意上面两种赋值符号，使用set时可以用“=”或“：=”，但是使用select时必须用“：=赋值”
 ## MySQL自增主键归零的方法：
 truncate table table_name; -- 如果曾经的数据都不需要的话，可以直接清空所有数据，并将自增字段恢复从1开始计数：
   2.  当用户没有truncate的权限时且曾经的数据不需要时：
