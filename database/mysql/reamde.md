@@ -244,6 +244,13 @@ INSERT INTO order_record SELECT  *  FROM  order_today FORCE INDEX (idx_pay_suc_t
 使用insert into tablA select * from tableB语句时，一定要确保tableB后面的where，order或者其他条件，都需要有对应的索引，来避免出现tableB全部记录被锁定的情况
 
 
+
+
+## MySql 申明变量以及赋值
+mysql中变量不用事前申明，在用的时候直接用“@变量名”使用就可以了。
+第一种用法：set @num=1; 或set @num:=1; //这里要使用变量来保存数据，直接使用@num变量
+第二种用法：select @num:=1; 或 select @num:=字段名 from 表名 where ……
+注意上面两种赋值符号，使用set时可以用“=”或“：=”，但是使用select时必须用“：=赋值”
 ## MySQL自增主键归零的方法：
 truncate table table_name; -- 如果曾经的数据都不需要的话，可以直接清空所有数据，并将自增字段恢复从1开始计数：
   2.  当用户没有truncate的权限时且曾经的数据不需要时：
@@ -306,3 +313,7 @@ GRANT SELECT ON mysql.* TO 'admin'@'localhost';
 - [mysql注入](https://github.com/aleenzz/MYSQL_SQL_BYPASS_WIKI)  mysql注入,bypass的一些心得
 - [dbatools 性能测试](https://github.com/xiepaup/dbatools)  About-MySQL/Linux/Redis Tools
 - [死锁](https://github.com/aneasystone/mysql-deadlocks) 在工作过程中偶尔会遇到死锁问题，虽然这种问题遇到的概率不大，但每次遇到的时候要想彻底弄懂其原理并找到解决方案却并不容易
+
+
+## tidb 与 MySQL 兼容性对比
+https://docs.pingcap.com/zh/tidb/stable/mysql-compatibility#%E4%B8%8D%E6%94%AF%E6%8C%81%E7%9A%84%E5%8A%9F%E8%83%BD%E7%89%B9%E6%80%A7
