@@ -72,3 +72,14 @@ Spring Cloud的集成
 https://blog.csdn.net/ZYC88888/article/details/81453647 
 
 https://github.com/dyc87112/SpringCloud-Learning/tree/master/2-Dalston%E7%89%88%E6%95%99%E7%A8%8B%E7%A4%BA%E4%BE%8B
+
+
+## link
+- [dapr](https://mp.weixin.qq.com/s/N3NKPkhCEXTi8BZvUy_UMA )
+- [steeltoe](https://docs.steeltoe.io/guides/application-configuration/spring-config.html?tabs=cli)
+- [多key业务，数据库水平切分架构一次搞定](https://mp.weixin.qq.com/s/PCzRAZa9n4aJwHOX-kAhtA?)
+- []()
+- []()
+- []()
+- []()
+- []()

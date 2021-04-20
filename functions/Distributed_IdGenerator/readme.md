@@ -9,7 +9,7 @@
 - [Leaf](https://github.com/Meituan-Dianping/Leaf)
 - [ObjectId](./git/net/ObjectId.cs)
 - [snowflake](./snowflake)
-
+  - [雪花算法](https://gitee.com/yitter/idgenerator)雪花算法里最好用的主键ID生成工具
 ## 去重算法
 - [hash](DotnetSpider-master\src\DotnetSpider\Scheduler\Component\HashSetDuplicateRemover.cs)
 - [BloomFilter](DotnetSpider-master\src\DotnetSpider\Scheduler\Component\BloomFilterDuplicateRemover.cs) 布隆过滤器 同样是这个元素经过哈希函数计算后得到所有的偏移位置，若这些位置全都为1，则判断这个元素在这个集合中，若有一个不为1，则判断这个元素不在这个集合中。就是这么简单
