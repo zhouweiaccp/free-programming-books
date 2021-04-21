@@ -164,3 +164,9 @@ key in: adplus -crash -iis -o c:\ Path_to_Put_Files_in -quiet
 .reload
 
 链接：https://www.jianshu.com/p/57f0ab8702b5
+
+## link
+Visual Studio自带的Profile。【可以分析CPU、内存等占用情况；这款比较推荐】
+VMMap【可以分析CPU、内存等占用情况】 https://docs.microsoft.com/zh-cn/sysinternals/downloads/vmmap
+ANTS Performance Profiler【这款工具比较强大能分析调用链路逐级告诉你内存占用的地方以及内存占用大小】
+Window操作系统自带的资源监视器这个不用多说大家都会用
