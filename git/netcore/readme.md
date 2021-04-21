@@ -119,3 +119,5 @@ C:\Program Files (x86)\NuGet\Config\Microsoft.VisualStudio.Offline.config
     System.Data.SqlClient  4.8.2  
     System.Drawing.Common  4.7.0  
     System.Management  4.7.0  
+
+
