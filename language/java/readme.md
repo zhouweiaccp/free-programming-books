@@ -15,3 +15,34 @@
 - [toBeTopJavaer](https://github.com/hollischuang/toBeTopJavaer) Java工程师成神之路  http://hollischuang.gitee.io/tobetopjavaer/#/menu
     - [cxuanBlog](https://www.cnblogs.com/cxuanBlog)
 - [SpringBoot-Learning](https://gitee.com/didispace/SpringBoot-Learning/tree/master/2.1.x)   
+
+
+
+## Java中Long型数据类型对应MySQL数据库中哪种类型
+java类	 	mysql数据库
+java.lang.Byte	byte	TINYINT
+java.lang.Short	short	SMALLINT
+java.lang.Integer	integer	INGEGER
+java.lang.Long	long	BIGINT
+java.lang.Float	float	FLOAT
+java.lang.Double	double	DOUBLE
+java.lang.BigDecimal	big_decimal	NUMERIC
+java.lang.Boolean	boolean	BIT
+java.lang.String	string	VARCHAR
+java.lang.Boolean	yes_no	CHAR(1)('Y'或'N')
+java.lang.Boolean	true_false	CHAR(1)(‘Y’或'N')
+java.uitl.Date / java.sql.Date	date	DATE
+java.sql.Time	time	TIME
+java.sql.Timestamp	timestamp	TIMESTAMP
+java.uitl.Calendar	celendar	TIMESTAMP
+java.uitl.Calendar	calendar	TIMESTAMP
+java.io.Serializable	serializable	VARBINARY/BLOB
+java.sql.Clob	clob	CLOB
+java.sql.Blob	blob	BLOB
+java.lang.Class	class	VARCHAR
+java.uitl.Locale	locale	VARCHAR
+java.uitl.TimeZone	timezone	VARCHAR
+java.uitl.Currency	currency	VARCHAR
+
+## long 最大值
+9223372036854775807
