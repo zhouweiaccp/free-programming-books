@@ -317,3 +317,11 @@ GRANT SELECT ON mysql.* TO 'admin'@'localhost';
 
 ## tidb 与 MySQL 兼容性对比
 https://docs.pingcap.com/zh/tidb/stable/mysql-compatibility#%E4%B8%8D%E6%94%AF%E6%8C%81%E7%9A%84%E5%8A%9F%E8%83%BD%E7%89%B9%E6%80%A7
+
+
+## MySQL中中的整数类型int主要有如下几种：
+1、tinyint 的范围是-128~127；
+2、int的范围是-2^31 (-2,147,483,648) 到 2^31 – 1 (2,147,483,647) 的整型数据（所有数字），存储大小为4个字节；
+3、bigint的范围是 -2^63 (-9223372036854775808) 到 2^63-1 (9223372036854775807) 的整型数据（所有数字）。存储大小为 8 个字节；
+4、smallint unsigned的范围是 –2^15（2^15表示2的15次幂） 到2^15 – 1，即 –32768 到 32767；
+5、smallint 的范围是 0 到 2^16 – 1，即 0 到 65535，存储的字节是2个字节
