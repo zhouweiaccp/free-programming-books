@@ -233,7 +233,7 @@ private Task EmitConnection()
 - [linux_mac_window信息](https://github.com/Ryujinx/Ryujinx) To run this emulator, we recommend that your PC have at least 8GB of RAM; less than this amount can result in unpredictable behavior and may cause crashes or unacceptable performance.
 - [C# NModbus RTU通信实现](https://mp.weixin.qq.com/s/F0geNtNVqk_3DNaTb0tWug) odbus协议时应用于电子控制器上的一种通用语言。通过此协议，控制器相互之间、控制器经由网络/串口和其它设备之间可以进行通信。它已经成为了一种工业标准。有了这个通信协议，不同的厂商生成的控制设备就可以连城工业网络，进行集中监控。
 - [MiniExcel](https://github.com/shps951023/MiniExcel) 
-- []()
+- [GeneralUpdate](https://gitee.com/Juster-zhu/GeneralUpdate) GeneralUpdate是基于.net standard开发的一款（c/s应用）自动升级程序。该组件将更新的核心部分抽离出来方便应用于多种项目当中目前适用于wpf，控制台应用 qq群 580749909
 - []()
 
 
