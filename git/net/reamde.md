@@ -51,6 +51,7 @@ https://www.cnblogs.com/caca/archive/2008/04/03/1136815.html
   - [ASP.NET-Core---Intermediate](https://channel9.msdn.com/Series/ASP.NET-Core---Intermediate) 官网视频站点
   - [aspnetcore](https://gitter.im/DotNetStudyGroup/aspnetcore) 聊天
   - [dotnet-api-docs](https://github.com/dotnet/dotnet-api-docs).net语言所有类库示例
+- [C#书《C# 从现象到本质》代码](https://github.com/JusterZhu/CodeForCSharpBook) 多线程 task linq 并行
 - [dotnet-developer-projects](https://github.com/microsoft/dotnet/blob/master/dotnet-developer-projects.md#messaging)NET Open Source Developer Projects
 - [ews-managed-api](https://github.com/OfficeDev/ews-managed-api/blob/master/README.md)
    - [how-to-set-the-ews-service-url-by-using-the-ews-managed-api](https://docs.microsoft.com/en-us/exchange/client-developer/exchange-web-services/how-to-set-the-ews-service-url-by-using-the-ews-managed-api) https://computername.domain.contoso.com/EWS/Exchange.asmx
@@ -73,6 +74,12 @@ https://www.cnblogs.com/caca/archive/2008/04/03/1136815.html
 - [ef](https://docs.microsoft.com/en-us/ef/core/get-started/overview/install) Entity Framework Overview 
 - [NetEscapades.Extensions.Logging](https://github.com/andrewlock/NetEscapades.Extensions.Logging/tree/master/sample/NetCoreApp3)
 - [System.Threading.Tasks.Channels 主要专注于 存储 这块](https://www.cnblogs.com/ireadme/p/14502286.html) dotnet add package System.Threading.Channels
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
 - []()
 - []()
 - []()
