@@ -24,3 +24,26 @@ https://docs.microsoft.com/zh-cn/troubleshoot/aspnet/disable-debugging-applicati
 <compilation
  debug="false"
 />
+
+## runAllManagedModulesForAllRequests
+在某些 IIS 版本中，并不会将所有请求交给 UrlRoutingModule 处理，所以，我们可以在 Web.config 中进行如下设置：
+<system.webServer>
+    <modules>
+      <remove name="UrlRoutingModule-4.0" />
+      <add name="UrlRoutingModule-4.0" type="System.Web.Routing.UrlRoutingModule" preCondition="" />
+    </modules>
+</system.webServer>
+
+
+<system.webServer>
+    <modules runAllManagedModulesForAllRequests="true" >
+    </modules>  
+</system.webServer>
+
+
+%windir%\system32\inetsrv\config\applicationhost.config
+https://www.cnblogs.com/tianma3798/p/4257573.html
+https://docs.microsoft.com/en-us/iis/get-started/introduction-to-iis/iis-modules-overview
+
+## http-error-500-19
+https://docs.microsoft.com/zh-CN/troubleshoot/iis/http-error-500-19-webpage
