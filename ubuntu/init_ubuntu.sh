@@ -25,6 +25,9 @@ OS_command()
 		kill -9 $$
 	fi
 }
+# https://github.com/pythonchannel/wechat-spider/blob/6aa10c327a2dff58b5e4268d63316b8eaffbf833/Dockerfile
+cat /etc/apt/sources.list | awk -F[/:] '{print $4}' | sort | uniq | grep -v "^$" | xargs -I{} sed -i 's|{}|mirrors.aliyun.com|g' /etc/apt/sources.list && apt update && apt-get clean 
+#rm -rf /var/lib/apt/lists/*
 for Package in apache2 apache2-doc apache2-utils apache2.2-common apache2.2-bin apache2-mpm-prefork apache2-doc apache2-mpm-worker mysql-client mysql-server mysql-common php5 php5-common php5-cgi php5-mysql php5-curl php5-gd libmysql* mysql-*
 do
 	apt-get -y remove $Package 

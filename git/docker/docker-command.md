@@ -317,3 +317,20 @@ sudo su -
 echo "find /path/to.log -type f -mtime +30 -delete -print >>/home/path/to/logs/cron/del-logs.log 2>&1" > /etc/cron.daily/del-logs.sh
 chmod u+x /etc/cron.daily/del-logs.sh
 把/path/to.log和/path/to/替换成相应的路径。
+
+## docker 时区
+```Dockerfile
+FROM ubuntu:18.04
+ENV TZ=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN cat /etc/apt/sources.list | awk -F[/:] '{print $4}' | sort | uniq | grep -v "^$" | xargs -I{} sed -i 's|{}|mirrors.aliyun.com|g' /etc/apt/sources.list && \
+    apt update && \
+   apt install -y --no-install-recommends \
+        vim \
+        net-tools \
+        curl \
+        wget \
+        unzip \
+                tzdata \
+                cron
+```
