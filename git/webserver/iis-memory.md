@@ -47,3 +47,7 @@ https://docs.microsoft.com/en-us/iis/get-started/introduction-to-iis/iis-modules
 
 ## http-error-500-19
 https://docs.microsoft.com/zh-CN/troubleshoot/iis/http-error-500-19-webpage
+
+
+## 解决 Windows Server 中与 IIS Web 服务器相关的问题的数据收集策略
+https://docs.microsoft.com/zh-cn/troubleshoot/iis/data-collection-strategies
