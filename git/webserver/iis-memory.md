@@ -51,3 +51,25 @@ https://docs.microsoft.com/zh-CN/troubleshoot/iis/http-error-500-19-webpage
 
 ## 解决 Windows Server 中与 IIS Web 服务器相关的问题的数据收集策略
 https://docs.microsoft.com/zh-cn/troubleshoot/iis/data-collection-strategies
+
+
+## 使用JSON JavaScriptSerializer 进行序列化或反序列化时出错。字符串的长度超过了为 maxJsonLength属性
+“/”应用程序中的服务器错误。
+使用 JSON JavaScriptSerializer 进行序列化或反序列化时出错。字符串的长度超过了为 maxJsonLength 属性设置的值。
+说明: 执行当前 Web 请求期间，出现未经处理的异常。请检查堆栈跟踪信息，以了解有关该错误以及代码中导致错误的出处的详细信息。
+
+异常详细信息: System.InvalidOperationException: 使用 JSON JavaScriptSerializer 进行序列化或反序列化时出错。字符串的长度超过了为 maxJsonLength 属性设置的值。
+1.解决办法是在web.config增加如下节点到<configuration>下
+
+<system.web.extensions>
+    <scripting>
+      <webServices>
+        <jsonSerialization maxJsonLength="1024000000" />
+      </webServices>
+    </scripting>
+  </system.web.extensions>
+
+2.
+JavaScriptSerializer jsSerializer  = new JavaScriptSerializer();
+jsSerializer.MaxJsonLength = Int32.MaxValue;
+ 
