@@ -29,6 +29,12 @@ set-executionpolicy remotesigned
 ）然后在最底部文件夹Parameters里面，新建 DWORD（32）位值（D）。文件名 “AllowEncryptionOracle” ，值 : 2，保存，重启
 
 
+
+
+## software_reporter_tool
+%localappdata%\Google\Chrome\User Data\SwReporter
+右键单击software_reporter_tool.exe选择【属性】，转到【安全】选项卡，然后点击【高级】，接着点击【禁用继承】，最后选择【从此对象中删除所有继承的权限】，之后一路点击【确定】即可
+
 ## 由于系统缓冲区空间不足或队列已满，不能执行套接字上的操作
 原因：
 报错原因是socket的短连接关闭后会出现TIME_WAIT状态，这个状态在端口上多了的时候，那么这个端口就不允许再访问了。
