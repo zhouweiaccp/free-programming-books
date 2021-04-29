@@ -134,3 +134,7 @@ https://github.com/dotnet/diagnostics/blob/master/documentation/dotnet-dump-inst
 3. https://stackoverflow.com/questions/58213127/how-to-generate-a-reasonably-sized-memory-dump-file-of-a-net-core-process-on-li
 使用 .netcore 自带的 createdump 程序来抓取包，默认在 /usr/share/dotnet/shared/Microsoft.NETCore.App/版本下。可以抓2.x/3x 版本的 dump
 /usr/share/dotnet/shared/Microsoft.NETCore.App/5.0.5/createdump
+
+## net 分析dump包2种方式
+1. windbg
+2. sos [sos-dll-sos-debugging-extension](https://docs.microsoft.com/zh-cn/dotnet/framework/tools/sos-dll-sos-debugging-extension)
