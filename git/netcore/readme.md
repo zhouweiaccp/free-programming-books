@@ -121,3 +121,16 @@ C:\Program Files (x86)\NuGet\Config\Microsoft.VisualStudio.Offline.config
     System.Management  4.7.0  
 
 
+
+
+## net core 抓取dump包三种方式
+1. https://docs.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-dump
+https://github.com/dotnet/diagnostics/blob/master/documentation/dotnet-dump-instructions.md
+在Linux上，运行时版本必须为3.0或更高，windows 无限制。使用 dotnet-dump collect 命令收集需要程序为3.0才行，而使用 dotnet-dump analyze 则无限制。
+
+2. https://github.com/microsoft/ProcDump-for-Linux
+没运行时的限制，缺点是生成的文件大
+
+3. https://stackoverflow.com/questions/58213127/how-to-generate-a-reasonably-sized-memory-dump-file-of-a-net-core-process-on-li
+使用 .netcore 自带的 createdump 程序来抓取包，默认在 /usr/share/dotnet/shared/Microsoft.NETCore.App/版本下。可以抓2.x/3x 版本的 dump
+/usr/share/dotnet/shared/Microsoft.NETCore.App/5.0.5/createdump
