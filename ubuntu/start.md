@@ -252,6 +252,18 @@ free -m
 9、查看系统中文件存储使用情况
 df –h
 
+## 网络诊断
+ tracepath 用于跟踪路由信息
+       tracepath -n www.baidu.com
+curl/wget 用于探测http服务是否正常
+       curl -I www.baidu.com    
+       wget -nv  --spider www.baidu.com
+nslookup/dig 用于探测域名是否可以解析
+       nslookup www.baidu.com
+       dig www.baidu.com
+ping  用于icmp探测，探测主机是否在线
+        ping www.baidu.com
+
 
 ## 端口占用
  ss -tlnp |grep 80
