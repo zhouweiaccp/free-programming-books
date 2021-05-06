@@ -561,3 +561,22 @@ private static string DBTypeToCSharpType(string dbType)
     }
     return cSharpType;
 }
+
+
+## C# 自定义Exception
+```cs
+public class CheckRuleException : Exception
+    {
+        public readonly ECheckRuleExceptionType CheckRuleExceptionType;
+        public object Obj;
+ 
+        public CheckRuleException(ECheckRuleExceptionType checkRuleExceptionType, object obj=null) : base()
+        {
+            this.CheckRuleExceptionType = checkRuleExceptionType;
+            this.Obj = obj;
+        }
+        private CheckRuleException(string message) : base(message) { }
+        private CheckRuleException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+        private CheckRuleException(string message, Exception innerException) : base(message, innerException) { }
+    }
+```
