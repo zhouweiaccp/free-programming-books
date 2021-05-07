@@ -352,6 +352,95 @@ foreach (NetworkInterface adapter in nics)
          txtbReceivedSecond.Text = bytesReceivedSpeed.ToString() + " KB/s";
  
      }
+
+
+//      c# 获取本机IP地址
+// 1.常用的获取本机IP地址的方法如下： https://www.cnblogs.com/lcawen/p/13256412.html
+
+            try
+            {
+                string hostName = Dns.GetHostName();
+                IPHostEntry iPHostEntry = Dns.GetHostEntry(hostName);
+                var addressV = iPHostEntry.AddressList.FirstOrDefault(q => q.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);//ip4地址
+                if (addressV != null)
+                    return addressV.ToString();
+                return "127.0.0.1";
+            }
+            catch (Exception ex)
+            {
+                return "127.0.0.1";
+            }
+// 但是以上获取IP地址的方法，可能获取不到你想要的IP地址，比如，你本机开启了虚拟机，VPN等，都会增加IP地址
+
+// 2.以下通过Socket，连接UDP套接字并读取其本地终结点，可以拿到更精确的本机IP地址：
+
+string localIP;
+using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
+{
+    socket.Connect("8.8.8.8", 65530);
+    IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
+    localIP = endPoint.Address.ToString();
+}
+// To check if you're connected or not:
+// System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
+//https://stackoverflow.com/questions/6803073/get-local-ip-address
+private IPAddress LocalIPAddress()
+{
+    if (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+    {
+        return null;
+    }
+    IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
+    return host.AddressList.FirstOrDefault(ip => ip.AddressFamily == AddressFamily.InterNetwork);
+}
+
+public string GetLocalIpAddress()
+{
+    UnicastIPAddressInformation mostSuitableIp = null;
+
+    var networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
+
+    foreach (var network in networkInterfaces)
+    {
+        if (network.OperationalStatus != OperationalStatus.Up)
+            continue;
+
+        var properties = network.GetIPProperties();
+
+        if (properties.GatewayAddresses.Count == 0)
+            continue;
+
+        foreach (var address in properties.UnicastAddresses)
+        {
+            if (address.Address.AddressFamily != AddressFamily.InterNetwork)
+                continue;
+
+            if (IPAddress.IsLoopback(address.Address))
+                continue;
+
+            if (!address.IsDnsEligible)
+            {
+                if (mostSuitableIp == null)
+                    mostSuitableIp = address;
+                continue;
+            }
+
+            // The best IP is the IP got from DHCP server
+            if (address.PrefixOrigin != PrefixOrigin.Dhcp)
+            {
+                if (mostSuitableIp == null || !mostSuitableIp.IsDnsEligible)
+                    mostSuitableIp = address;
+                continue;
+            }
+
+            return address.Address.ToString();
+        }
+    }
+
+    return mostSuitableIp != null 
+        ? mostSuitableIp.Address.ToString()
+        : "";
+}
 ```
 
 
