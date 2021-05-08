@@ -159,3 +159,7 @@ DWORD 值 REG_DWORD由 4 字节长（32 位整数）的数字表示的数据。�
 
 链接 REG_LINK 一个 Unicode 字符串，它命名一个符号链接。
 QWORD值 REG_QWORD由 64 位整数数字表示的数据。此数据作为二进制值显示在注册表编辑器中，最初用在 Windows 2000 
+
+
+## window定时任务不生效 
+https://blog.csdn.net/ichen820/article/details/103508296

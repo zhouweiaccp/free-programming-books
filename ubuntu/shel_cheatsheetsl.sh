@@ -587,6 +587,9 @@ cut -d' ' -f3-7                    # 截取空格分隔的三到七列
 echo "hello" | cut -c1-3           # 显示 hel
 echo "hello sir" | cut -d' ' -f2   # 显示 sir
 ps | tr -s " " | cut -d " " -f 2,3,4  # cut 搭配 tr 压缩字符
+cat  passwd |cut -f1 -d ':'          #显示第一列
+cat  passwd |cut -f 1,3 -d ':'   # 显示第1 3列
+cat  passwd |cut -f 1-3 -d ':'    #显示1到3列
 
 
 ##############################################################################
