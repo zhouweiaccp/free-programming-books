@@ -54,3 +54,8 @@ User ID=root;Password=myPassword;Host=localhost;Port=3306;Database=myDataBase; D
 <add name="name" 
      connectionString= "metadata=res://*/Models.Model1.csdl|res://*/Models.Model1.ssdl|res://*/Models.Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=servername;initial catalog=DBname;user id=userName;password=password;multipleactiveresultsets=True;App=EntityFramework&quot;" 
      providerName="System.Data.EntityClient" /> 
+
+
+### sqlserver 连接字符
+https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring?view=dotnet-plat-ext-5.0
+User Id=inet;Password=somePassw0rd;Data Source=TEST11;Min Pool Size=5;Max Pool Size=15;Pooling=True
