@@ -156,3 +156,20 @@ CREATE TABLE table_1 ( a BIGINT, b VARCHAR ( 255 ), c INT );ALTER TABLE table_1 
 ————————————————
 版权声明：本文为CSDN博主「D_Guco」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
 原文链接：https://blog.csdn.net/D_Guco/article/details/106313357
+
+
+## 如何阅读扫表的执行计划
+https://docs.pingcap.com/zh/tidb/dev/explain-overview
+
+真正执行扫表（读盘或者读 TiKV Block Cache）操作的算子有如下几类：
+TableFullScan：这是大家所熟知的 “全表扫” 操作
+TableRangeScan：带有范围的表数据扫描操作
+TableRowIDScan：根据上层传递下来的 RowID 精确地扫描表数据
+IndexFullScan：另一种“全表扫”，只不过这里扫的是索引数据，不是表数据
+IndexRangeScan：带有范围的索引数据扫描操作
+TiDB 会汇聚 TiKV/TiFlash 上扫描的数据或者计算结果，这种“数据汇聚”算子目前有如下几类：
+
+TableReader：将 TiKV 上底层扫表算子 TableFullScan 或 TableRangeScan 得到的数据进行汇总。
+IndexReader：将 TiKV 上底层扫表算子 IndexFullScan 或 IndexRangeScan 得到的数据进行汇总。
+IndexLookUp：先汇总 Build 端 TiKV 扫描上来的 RowID，再去 Probe 端上根据这些 RowID 精确地读取 TiKV 上的数据。Build 端是 IndexFullScan 或 IndexRangeScan 类型的算子，Probe 端是 TableRowIDScan 类型的算子。
+IndexMerge：和 IndexLookupReader 类似，可以看做是它的扩展，可以同时读取多个索引的数据，有多个 Build 端，一个 Probe 端。执行过程也很类似，先汇总所有 Build 端 TiKV 扫描上来的 RowID，再去 Probe 端上根据这些 RowID 精确地读取 TiKV 上的数据。Build 端是 IndexFullScan 或 IndexRangeScan 类型的算子，Probe 端是 TableRowIDScan 类型的算

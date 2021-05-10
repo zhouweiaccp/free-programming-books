@@ -40,3 +40,17 @@ MYCAT监控
 支持对Mycat的JVM内存提供监控服务
 支持对线程的监控
 支持对操作系统的CPU、内存、磁盘、网络的监控
+
+
+## mysql连接字符
+User ID=root;Password=myPassword;Host=localhost;Port=3306;Database=myDataBase; Direct=true;Protocol=TCP;Compress=false;Pooling=true;Min Pool Size=0;Max Pool Size=100;Connection Lifetime=0;
+
+<!--Nhibernate-->
+<add name="name" 
+     connectionString="Server= servername;Initial Catalog=DBname;UID=username;Password=password;MultipleActiveResultSets=true" 
+     providerName="System.Data.SqlClient" /> 
+
+<!--Entity Framework-->
+<add name="name" 
+     connectionString= "metadata=res://*/Models.Model1.csdl|res://*/Models.Model1.ssdl|res://*/Models.Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=servername;initial catalog=DBname;user id=userName;password=password;multipleactiveresultsets=True;App=EntityFramework&quot;" 
+     providerName="System.Data.EntityClient" /> 
