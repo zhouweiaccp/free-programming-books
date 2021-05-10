@@ -2,7 +2,7 @@
 
 Microsoft.Extensions.ObjectPool  git@github.com:aspnet/Extensions.git
 https://gitlab.com/pomma89/object-pool stream string pool
-git@github.com:zhouweiaccp/SafeObjectPool.git
+
 
 
 https://stackoverflow.com/questions/2510975/c-sharp-object-pooling-pattern-implementation
@@ -28,3 +28,11 @@ https://github.com/yanggujun/commonsfornet/blob/master/src/Commons.Pool/GenericO
 
 ## PipeReader 
 [PipeReader ](https://github.com/davidfowl/TcpEcho/blob/master/src/Server/Program.cs)  ![](.\PipeReader.cs)
+
+
+## 数据库连接池
+- [SafeObjectPool](https://github.com/zhouweiaccp/SafeObjectPool)
+- [Mssql](https://github.com/2881099/dng.Mssql/blob/master/Mssql/SqlConnectionPool.cs)
+- [Mysql](https://github.com/zhouweiaccp/dng.Mysql)
+- [Npgsql](https://github.com/2881099/dng.Pgsql/blob/master/Npgsql/NpgsqlConnectionPool.cs)
+- [.NETCore + Mysql 生成器](https://github.com/zhouweiaccp/dotnetGen_mysql)
