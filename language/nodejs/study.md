@@ -49,3 +49,18 @@ yarn config set ignore-engines true
 ## npx 调用项目安装的模块
 node-modules/.bin/mocha --version
 npx mocha --version
+
+
+
+## 解决npm 安装部分依赖失败问题总结
+npm install -g nrm
+nrm ls
+
+* npm ---- https://registry.npmjs.org/
+  cnpm --- http://r.cnpmjs.org/
+  taobao - https://registry.npm.taobao.org/
+  nj ----- https://registry.nodejitsu.com/
+  rednpm - http://registry.mirror.cqupt.edu.cn/
+  npmMirror  https://skimdb.npmjs.com/registry/
+  edunpm - http://registry.enpmjs.org/
+nrm use taobao
