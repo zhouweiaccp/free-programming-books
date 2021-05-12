@@ -1,5 +1,5 @@
 --解决递归查询  1/2/2/21/2
---select dbo.SplitToTableval11(path,/')  from org_position  where position_identityID=3
+--select  dbo.SplitToTableval11('1\9\','\')  /PublicRoot/05-北京研发部
 --删除  func SplitToTableval11   select * from dbo.SplitToTableval11('1/3/',/') where value='1111'
  if object_id('SplitToTableval11') is not null
  begin 
@@ -33,7 +33,7 @@ BEGIN
                select  @temp=position_name from org_position where position_identityID=@ReturnText --  INSERT INTO @SplitStringsTable([value]) VALUES(@ReturnText);
 			   set @val=@val+'/'+@temp;
                  SELECT @CurrentIndex=@NextIndex+1;
-				 	 set @temp='/
+				 	 set @temp='/'
              END
      RETURN @val;
 END
