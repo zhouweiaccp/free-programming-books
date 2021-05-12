@@ -46,9 +46,9 @@ PriceDate DateTime
 SET IDENTITY_INSERT Orders ON
 INSERT INTO Orders (OrderID ,PriceDate ) VALUES(1,GETDATE())
 SET IDENTITY_INSERT Orders OFF
-
-
-
+## 连接数
+SELECT @@MAX_CONNECTIONS
+select * from sysprocesses where dbid in (select dbid from sysdatabases where name='master1')
 
 ## Could not allocate a new page for database 'TEMPDB' because of insufficient disk space in filegroup 'DEFAULT
 就是因为服务器由于磁盘空间不足或数据库文件限制了最大大小，导致SQL Server无法为数据库分配新的页面，请检查磁盘空间是否足够或给数据库文件设置自动增长
