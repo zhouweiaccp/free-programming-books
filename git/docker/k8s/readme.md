@@ -45,6 +45,36 @@ kubectl-dev exec -it edoc2-76f4c4c875-kztl8  -n it-ufm  /bin/sh
  kubectl get pod --all-namespaces
  kubectl-dev -n it-ufm  get deployment edoc2 -owide  # 运行对应镜像
 
+
+ ## 适用于 Docker 用户的 kubectl
+docker run -d --restart=always -e DOMAIN=cluster --name nginx-app -p 80:80 nginx
+kubectl create deployment --image=nginx nginx-app
+kubectl expose deployment nginx-app --port=80 --name=nginx-http
+
+
+docker ps -a
+kubectl get po
+kubectl get pods
+
+
+docker exec 55c103fa1296 cat /etc/hostname
+kubectl get po
+kubectl exec nginx-app-5jyvm -- cat /etc/hostname
+
+
+docker logs -f a9e
+kubectl logs -f nginx-app-zibvs
+kubectl logs --previous nginx-app-zibvs
+
+
+docker stop and docker rm
+kubectl delete deployment nginx-app
+
+
+kubectl version
+kubectl cluster-info
+https://kubernetes.io/zh/docs/reference/kubectl/docker-cli-to-kubectl/
+
 ## link
 - [concepts](https://kubernetes.io/zh/docs/concepts/)
 - [k8s-deploy](https://github.com/cookcodeblog/k8s-deploy/blob/master/kubeadm_v1.13.0/03_install_kubernetes.sh) kubernetes 安装手册
