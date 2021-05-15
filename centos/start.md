@@ -180,3 +180,22 @@ systemctl stop iptables.service #关闭防火墙
 CentOS防火墙的关闭，关闭其服务即可： 
 查看CentOS防火墙信息：/etc/init.d/iptables status 
 关闭CentOS防火墙服务：/etc/init.d/iptables stop 
+
+## NetworkManager 命令
+NetworkManager是2004年RedHat启动的项目，皆在能够让Linux用户更轻松的处理现代网络需求，尤其是无线网络，能够自动发现网卡并配置IP地址
+
+nmcli connection 网络连接管理
+$ nmcli connection show  # 查看所有网卡配置
+$ nmcli connection reload # 重新加载网卡配置，不会立即生效
+$ nmcli connection down ens160 && nmcli connection up ens160 # 立即生效Connection配置
+$ nmcli connection add type ethernet con-name ens160-con ifname ens160 ipv4.addr 1.1.1.2/24 ipv4.gateway 1.1.1.1 ipv4.method manual # 为device创建connection
+$ nmcli connection add type ethernet con-name ens160-con ifname ens160 ipv.method auto # dhcp
+$ nmcli connection modify ens160-con ipv.addr 1.1.1.3/24 && nmcli connection up ens160-con # 修改IP地址并立即生效
+​
+交互方式修改IP
+$ nmcli connection edit ens160-con
+​
+nmcli device 网卡设备管理
+$ nmcli device status # 查看所有网卡设备状态
+$ nmcli device show ens160 # 查看网卡配置
+$ nmcli device reapply ens160 # 立即生效网卡配置
