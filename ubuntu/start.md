@@ -265,6 +265,9 @@ ping  用于icmp探测，探测主机是否在线
         ping www.baidu.com
 
 
+## 查看多核CPU命令
+mpstat -P ALL  和  sar -P ALL 
+
 ## 端口占用
  ss -tlnp |grep 80
  netstat -anp |grep 80
