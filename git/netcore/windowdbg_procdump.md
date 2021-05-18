@@ -19,6 +19,11 @@ procdump -ma -c 50 -s 3 -n 2 5844(Process Name or PID)
 -n 在该工具退出之前要抓取多少个dump文件.
 
 -[如何在 NET 程序万种死法中有效的生成 Dump (上)](https://www.cnblogs.com/huangxincheng/p/14661031.html)
+https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/symbol-path
+https://docs.microsoft.com/zh-cn/dotnet/framework/tools/sos-dll-sos-debugging-extension
+
+.sympath srv*c:\MyServerSymbols*https://msdl.microsoft.com/download/symbols
+.load C:\Windows\Microsoft.NET\Framework\v4.0.30319\sos.dll
 !address -summary
 !dumpheap -stat -min 1024
 !dumpheap -type System.String -min 10240
