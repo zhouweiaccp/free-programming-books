@@ -242,7 +242,7 @@ private Task EmitConnection()
 - [MiniExcel](https://github.com/shps951023/MiniExcel) 
 - [GeneralUpdate](https://gitee.com/Juster-zhu/GeneralUpdate) GeneralUpdate是基于.net standard开发的一款（c/s应用）自动升级程序。该组件将更新的核心部分抽离出来方便应用于多种项目当中目前适用于wpf，控制台应用 qq群 580749909
 - [jint](https://github.com/sebastienros/jint.git) javascript interpreter for .NET
-- []()
+- [reactor](https://github.com/sinclairzx81/reactor) reactor模式 主要应用消息队列
 - []()
 - []()
 - []()
