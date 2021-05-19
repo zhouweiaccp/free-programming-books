@@ -243,6 +243,16 @@ private Task EmitConnection()
 - [GeneralUpdate](https://gitee.com/Juster-zhu/GeneralUpdate) GeneralUpdate是基于.net standard开发的一款（c/s应用）自动升级程序。该组件将更新的核心部分抽离出来方便应用于多种项目当中目前适用于wpf，控制台应用 qq群 580749909
 - [jint](https://github.com/sebastienros/jint.git) javascript interpreter for .NET
 - [reactor](https://github.com/sinclairzx81/reactor) reactor模式 主要应用消息队列
+- [](https://gitee.com/NewLifeX/Stardust)星尘 Stardust 星尘，轻量级分布式服务框架
+- [](https://gitee.com/NewLifeX/NewLife.Redis)
+- [](https://gitee.com/NewLifeX/NewLife.MQTT)高性能Redis协议封装，支持.Net Core，经过一年多日均80亿调用量验证
+- [](https://gitee.com/NewLifeX/XCoder)新生命码神工具，代码生成、网络工具、API工具、串口工具、正则工具、图标工具、加解密工具、地图接口
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
 - []()
 - []()
 - []()
