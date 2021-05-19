@@ -36,3 +36,9 @@ https://github.com/yanggujun/commonsfornet/blob/master/src/Commons.Pool/GenericO
 - [Mysql](https://github.com/zhouweiaccp/dng.Mysql)
 - [Npgsql](https://github.com/2881099/dng.Pgsql/blob/master/Npgsql/NpgsqlConnectionPool.cs)
 - [.NETCore + Mysql 生成器](https://github.com/zhouweiaccp/dotnetGen_mysql)
+- [Pool](https://github.com/NewLifeX/X/blob/master/NewLife.Core/Collections/ObjectPool.cs) 数据库连接池
+     ```cs
+     //重写
+         protected virtual T OnCreate() 
+          protected virtual Boolean OnPut(T value)
+     ```
