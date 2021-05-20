@@ -104,6 +104,138 @@ go
  --查看最大工作线程数
  SELECT max_workers_count FROM sys.dm_os_sys_infos
 
+
+
+-- Recommendations and best practices
+-- Let us now briefly look at the techniques to size the memory.
+
+-- 1 GB of memory reserved for Operating System
+-- 1 GB each for every 4 GB of RAM after the initial 4 GB, up to 16 GB of RAM
+-- 1 GB each for every 8 GB in more than 16 GB of RAM
+-- For example, if you have a 32 GB RAM Database Server, then memory to be given to Operating System would be
+
+-- 1 GB, the minimum allocation
+-- + 3 GB, since 16 GB – 4 GB = 12 GB; 12 GB divided by 4 GB (each 4 GB gets 1 GB) is 3GB.
+-- + 2 GB, as 32 GB – 16 GB = 16 GB; 16 divided by 8 (each 8 GB after 16 GB gets 1 GB) is 2 GB
+-- GB	MB	Recommended Setting	Command
+-- 16	16384	12288	EXEC sys.sp_configure ‘max server memory (MB)’, ‘12288’; RECONFIGURE;
+-- 32	32768	29491	EXEC sys.sp_configure ‘max server memory (MB)’, ‘29491’; RECONFIGURE;
+-- 64	65536	58982	EXEC sys.sp_configure ‘max server memory (MB)’, ‘58982’; RECONFIGURE;
+-- 128	131072	117964	EXEC sys.sp_configure ‘max server memory (MB)’, ‘117964’; RECONFIGURE;
+-- 256	262144	235929	EXEC sys.sp_configure ‘max server memory (MB)’, ‘235929’; RECONFIGURE;
+-- 512	524288	471859	EXEC sys.sp_configure ‘max server memory (MB)’, ‘471859’; RECONFIGURE;
+-- 1024	1048576	943718	EXEC sys.sp_configure ‘max server memory (MB)’, ‘943718’; RECONFIGURE;
+-- 2048	2097152	1887436	EXEC sys.sp_configure ‘max server memory (MB)’, ‘1887436’; RECONFIGURE;
+-- 4096	4194304	3774873	EXEC sys.sp_configure’max server memory (MB)’, ‘3774873’; RECONFIGURE;
+
+-- 系统内分配  https://codingsight.com/understanding-the-importance-of-memory-setting-in-sql-server/
+SELECT 
+	physical_memory_in_use_kb/1024 Physical_memory_in_use_MB, 
+    large_page_allocations_kb/1024 Large_page_allocations_MB, 
+    locked_page_allocations_kb/1024 Locked_page_allocations_MB,
+    virtual_address_space_reserved_kb/1024 VAS_reserved_MB, 
+    virtual_address_space_committed_kb/1024 VAS_committed_MB, 
+    virtual_address_space_available_kb/1024 VAS_available_MB,
+    page_fault_count Page_fault_count,
+    memory_utilization_percentage Memory_utilization_percentage, 
+    process_physical_memory_low Process_physical_memory_low, 
+    process_virtual_memory_low Process_virtual_memory_low
+FROM sys.dm_os_process_memory;
+
+-- TotalVisibleMemorySize: This field shows the total physical memory that is accessible to the operating system. Inaccessible chunks of memory may cause a smaller-than-installed number to be displayed here.
+-- FreePhysicalMemory: This tells us what amount of physical memory is free.
+-- TotalVirtualMemorySize: This is the total virtual memory available for the OS to use. This comprises the physical memory installed on the computer, along with the size of the pagefile.
+-- FreeVirtualMemory: Similar to FreePhysicalMemory, but includes the free space in the paging memory as well.
+
+
+
+-- Set "max server memory" in SQL Server using T-SQL https://www.mssqltips.com/sqlservertip/4182/setting-a-fixed-amount-of-memory-for-sql-server/
+-- 最大内存We can set "max server memory" also by using a T-SQL script:
+
+DECLARE @maxMem INT = 2147483647 --Max. memory for SQL Server instance in MB
+EXEC sp_configure 'show advanced options', 1
+RECONFIGURE
+
+EXEC sp_configure 'max server memory', @maxMem
+RECONFIGURE
+GO
+
+
+-- List the queries running on SQL Server This will show you the longest running SPIDs on a SQL 2000 or SQL 2005 server: 
+-- https://stackoverflow.com/questions/941763/list-the-queries-running-on-sql-server
+select
+    P.spid
+,   right(convert(varchar, 
+            dateadd(ms, datediff(ms, P.last_batch, getdate()), '1900-01-01'), 
+            121), 12) as 'batch_duration'
+,   P.program_name
+,   P.hostname
+,   P.loginame
+from master.dbo.sysprocesses P
+where P.spid > 50
+and      P.status not in ('background', 'sleeping')
+and      P.cmd not in ('AWAITING COMMAND'
+                    ,'MIRROR HANDLER'
+                    ,'LAZY WRITER'
+                    ,'CHECKPOINT SLEEP'
+                    ,'RA MANAGER')
+order by batch_duration desc
+go
+-- If you need to see the SQL running for a given spid from the results, use something like this:
+declare
+    @spid int
+,   @stmt_start int
+,   @stmt_end int
+,   @sql_handle binary(20)
+
+set @spid = XXX -- Fill this in
+
+select  top 1
+    @sql_handle = sql_handle
+,   @stmt_start = case stmt_start when 0 then 0 else stmt_start / 2 end
+,   @stmt_end = case stmt_end when -1 then -1 else stmt_end / 2 end
+from    sys.sysprocesses
+where   spid = @spid
+order by ecid
+
+SELECT
+    SUBSTRING(  text,
+            COALESCE(NULLIF(@stmt_start, 0), 1),
+            CASE @stmt_end
+                WHEN -1
+                    THEN DATALENGTH(text)
+                ELSE
+                    (@stmt_end - @stmt_start)
+                END
+        )
+FROM ::fn_get_sql(@sql_handle)
+
+
+-- I would suggest querying the sys views. something similar to
+
+SELECT * 
+FROM 
+   sys.dm_exec_sessions s
+   LEFT  JOIN sys.dm_exec_connections c
+        ON  s.session_id = c.session_id
+   LEFT JOIN sys.dm_db_task_space_usage tsu
+        ON  tsu.session_id = s.session_id
+   LEFT JOIN sys.dm_os_tasks t
+        ON  t.session_id = tsu.session_id
+        AND t.request_id = tsu.request_id
+   LEFT JOIN sys.dm_exec_requests r
+        ON  r.session_id = tsu.session_id
+        AND r.request_id = tsu.request_id
+   OUTER APPLY sys.dm_exec_sql_text(r.sql_handle) TSQL
+
+
+-- 连接信息 https://stackoverflow.com/questions/1248423/how-do-i-see-active-sql-server-connections
+SELECT conn.session_id, host_name, program_name,
+    nt_domain, login_name, connect_time, last_request_end_time 
+FROM sys.dm_exec_sessions AS sess
+JOIN sys.dm_exec_connections AS conn
+   ON sess.session_id = conn.session_id;
+
 --查看当前数据是否启用了快照隔离
 DBCC USEROPTIONS;
 

@@ -49,7 +49,7 @@ SET IDENTITY_INSERT Orders OFF
 ## 连接数
 SELECT @@MAX_CONNECTIONS
 select * from sysprocesses where dbid in (select dbid from sysdatabases where name='master1')
-
+<!--  https://docs.microsoft.com/en-us/sql/relational-databases/system-compatibility-views/sys-sysprocesses-transact-sql?view=sql-server-ver15 -->
 ## Could not allocate a new page for database 'TEMPDB' because of insufficient disk space in filegroup 'DEFAULT
 就是因为服务器由于磁盘空间不足或数据库文件限制了最大大小，导致SQL Server无法为数据库分配新的页面，请检查磁盘空间是否足够或给数据库文件设置自动增长
 
@@ -112,7 +112,7 @@ osql -S serverIP -U sa -P 123 -i C:\script.sql
 ## 帮助文档
 - [sp_datatype_info](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-stored-procedures/sp-datatype-info-transact-sql?view=sql-server-ver15#examples)  EXEC sp_datatype_info
 - [sp_help]()EXEC sp_help;    exec sp_help @objname='Sys_PositionList'
-- []()
+- [优化指南](https://docs.microsoft.com/zh-cn/sql/big-data-cluster/performance-guidelines-tuned?view=sql-server-ver15) 
 - []()
 - []()
 - []()
