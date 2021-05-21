@@ -135,6 +135,26 @@ https://github.com/dotnet/diagnostics/blob/master/documentation/dotnet-dump-inst
 使用 .netcore 自带的 createdump 程序来抓取包，默认在 /usr/share/dotnet/shared/Microsoft.NETCore.App/版本下。可以抓2.x/3x 版本的 dump
 /usr/share/dotnet/shared/Microsoft.NETCore.App/5.0.5/createdump
 
+
+4. docker dotnet-dump 
+```sh
+一、 vi docker-compose.yml，添加以下配置
+
+cap_add:
+  - SYS_PTRACE
+#二、查看docker版本，小于20.x版本需要进程升级
+
+#三、进入edoc2容器
+docker exec -it $(docker ps |grep edoc2:|awk '{print $1}') bash
+#四、查看线程情况
+top -n 1 -H -p $(pidof dotnet)  #返回结果截图给到研发
+
+cd /opt/tools/
+./dotnet-dump collect -p $(pidof dotnet) -o edoc2_$(date +%F).dump
+docker cp $(docker ps |grep edoc2:|awk '{print $1}'):/opt/tools/edoc2_$(date +%F).dump /opt/
+```
+
+
 ## net 分析dump包2种方式
 1. windbg
 2. sos [sos-dll-sos-debugging-extension](https://docs.microsoft.com/zh-cn/dotnet/framework/tools/sos-dll-sos-debugging-extension)

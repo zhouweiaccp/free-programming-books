@@ -304,8 +304,7 @@ mpstat -P ALL  和  sar -P ALL
 
 ## 网卡绑定
 ```sh
-
-   #!/bin/bash
+#!/bin/bash
 
 IPADDR="192.168.252.242"   #更改为本机的IP地址
 NETMASK="255.255.255.0"    #更好为本机IP的子网掩码
