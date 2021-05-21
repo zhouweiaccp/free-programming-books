@@ -264,7 +264,29 @@ nslookup/dig 用于探测域名是否可以解析
 ping  用于icmp探测，探测主机是否在线
         ping www.baidu.com
 
+## 安装s3cmd
+```sh
 
+yum -y install epel-release
+yum -y install s3cmd
+cat >> ~/.s3cfg <<eof
+[default]
+access_key = KMCHVEQCT5OPEP8DDUUL   #替换为自己的ak
+secret_key = 881ElYDcgJ3aEPWI6NtmWBEcg2QfhOEdd4OX2WSO  #替换为自己的sk
+host_base = 30.30.14.98:12001   #ip替换为自己环境的s3存储地址与端口
+host_bucket = 30.30.14.98:12001/%(bucket)   #ip替换为自己环境的s3存储地址与端口
+use_https = False
+eof
+
+s3cmd ls    #列出当前的存储bucket
+s3cmd ls s3://eDoc2    #列出eDoc2的存储桶中的文件
+s3cmd get s3://eDoc2/1.txt /opt/1.txt   #保存eDoc2桶中的1.txt至本地的/opt目录
+s3cmd put /opt/test.txt s3://eDoc2     #上传本地/opt/test.txt文件至eDoc2存储桶中
+s3cmd sync s3://eDoc2/  /opt/backup   #同步eDoc2桶中的所有文件至本地/opt/backup目录中
+s3cmd sync /opt/backup  s3://eDoc2/    #同步本地/opt/backup目录中的所有文件至eDoc2桶中
+
+s3cmd get s3://eDoc2/be0486d356044389a05e35655ef7a356 test.xlsx    #eDoc2为存储桶名，改为自己实际使用的，标红处为查询出来的存储路径名，test.xlsx为保存
+```
 ## 查看多核CPU命令
 mpstat -P ALL  和  sar -P ALL 
 
