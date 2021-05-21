@@ -299,6 +299,75 @@ mpstat -P ALL  和  sar -P ALL
    ## Linux命令行下抓包工具tcpdump的使用
    yum install -y tcpdump
    - [介绍](./tcpdump.md)
+
+
+
+## 网卡绑定
+```sh
+
+   #!/bin/bash
+
+IPADDR="192.168.252.242"   #更改为本机的IP地址
+NETMASK="255.255.255.0"    #更好为本机IP的子网掩码
+GATEWAY="192.168.252.1"    #更改为本机IP的网关
+DEVNAME1="ens33"     #需要做绑定的网卡1
+DEVNAME2="ens37"     #需要做绑定的网卡2
+#DNS1=114.114.114.114  #DNS地址，如需配置，取消注释，并更改为实际dns
+
+NETDIR="/etc/sysconfig/network-scripts"
+
+
+if [ ! -f "$NETDIR/ifcfg-$DEVNAME1.bak" ]; then
+    cp $NETDIR/ifcfg-$DEVNAME1{,.bak}
+fi
+
+if [ ! -f "$NETDIR/ifcfg-$DEVNAME2.bak" ]; then
+    cp $NETDIR/ifcfg-$DEVNAME2{,.bak}
+fi
+
+cat > $NETDIR/ifcfg-bond0 <<EOF
+DEVICE=bond0
+BOOTPROTO=none
+ONBOOT=yes
+BONDING_OPTS="mode=1 miimon=100"
+NM_CONTROLLED=no
+IPADDR=$IPADDR
+NETMASK=$NETMASK
+GATEWAY=$GATEWAY
+#DNS1=$DNS1
+EOF
+
+if [ x$DNS1 != x ]; then 
+sed -i 's/#DNS1/DNS1/' $NETDIR/ifcfg-bond0
+fi
+
+cat > $NETDIR/ifcfg-$DEVNAME1 <<EOF
+DEVICE=$DEVNAME1
+BOOTPROTO=none
+ONBOOT=yes
+NM_CONTROLLED=no
+MASTER=bond0
+SLAVE=yes
+EOF
+
+cat > $NETDIR/ifcfg-$DEVNAME2 <<EOF
+DEVICE=$DEVNAME2
+BOOTPROTO=none
+ONBOOT=yes
+NM_CONTROLLED=no
+MASTER=bond0
+SLAVE=yes
+EOF
+
+#echo "ifenslave bond0 $DEVNAME1 $DEVNAME2" >> /etc/rc.d/rc.local
+systemctl stop NetworkManager
+systemctl disable NetworkManager
+systemctl restart network.service
+exit 0
+
+bash bound.sh #进行网卡绑定 
+cat /proc/net/bonding/bond0
+```
   ##  DevOps
   * [kjyw](https://gitee.com/aqztcom/kjyw) kjyw 快捷运维 目基于shell、python，运维脚本工具库，收集各类运维常用工具脚本，实现快速安装nginx、mysql、php、redis、nagios、运维经常使用的脚本等等
   * [shell]( git@github.com:zhouweiaccp/shell.git) shell 语法
