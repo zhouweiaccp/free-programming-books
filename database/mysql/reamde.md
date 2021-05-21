@@ -325,3 +325,11 @@ https://docs.pingcap.com/zh/tidb/stable/mysql-compatibility#%E4%B8%8D%E6%94%AF%E
 3、bigint的范围是 -2^63 (-9223372036854775808) 到 2^63-1 (9223372036854775807) 的整型数据（所有数字）。存储大小为 8 个字节；
 4、smallint unsigned的范围是 –2^15（2^15表示2的15次幂） 到2^15 – 1，即 –32768 到 32767；
 5、smallint 的范围是 0 到 2^16 – 1，即 0 到 65535，存储的字节是2个字节
+
+## mysql 主从同步
+执行如下sql，查看数据库集群状态，如下为正常状态
+select * from  performance_schema.replication_group_members;
+
+查看从服务器状态：
+show slave status
+![](https://segmentfault.com/a/1190000022115647)
