@@ -300,7 +300,14 @@ mpstat -P ALL  和  sar -P ALL
    yum install -y tcpdump
    - [介绍](./tcpdump.md)
 
-
+##  cat << \EOF 新用法
+```sh
+# https://www.cnblogs.com/zhouandke/p/11070114.html
+cat << \EOF >> ~/.bash_profile
+# Add .NET Core SDK tools
+export PATH="$PATH:/home/****/.dotnet/tools"
+EOF
+```
 
 ## 网卡绑定
 ```sh

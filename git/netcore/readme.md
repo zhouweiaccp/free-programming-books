@@ -148,10 +148,11 @@ cap_add:
 docker exec -it $(docker ps |grep edoc2:|awk '{print $1}') bash
 #四、查看线程情况
 top -n 1 -H -p $(pidof dotnet)  #返回结果截图给到研发
-
+#  ./tools.tar.gz 解压到/opt/tools/
 cd /opt/tools/
 ./dotnet-dump collect -p $(pidof dotnet) -o edoc2_$(date +%F).dump
 docker cp $(docker ps |grep edoc2:|awk '{print $1}'):/opt/tools/edoc2_$(date +%F).dump /opt/
+#  https://www.cnblogs.com/zhouandke/p/11070114.html 使用dotnet-dump 查找 .net core 3.0 占用CPU 100%的原因
 ```
 
 
