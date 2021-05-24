@@ -1,5 +1,10 @@
 
 
+
+## link
+- [StringBuilderPooledObjectPolicy](https://github.com/dotnet/aspnetcore/blob/main/src/ObjectPool/src/StringBuilderPooledObjectPolicy.cs)
+- [StringBuilderPool.cs](https://github.com/NLog/NLog/blob/dev/src/NLog/Internal/ObjectPools/StringBuilderPool.cs)
+- [AdvancedStringBuilder](https://github.com/Taritsyn/AdvancedStringBuilder)
 Microsoft.Extensions.ObjectPool  git@github.com:aspnet/Extensions.git
 https://gitlab.com/pomma89/object-pool stream string pool
 
