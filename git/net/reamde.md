@@ -247,7 +247,7 @@ private Task EmitConnection()
 - [](https://gitee.com/NewLifeX/NewLife.Redis)
 - [](https://gitee.com/NewLifeX/NewLife.MQTT)高性能Redis协议封装，支持.Net Core，经过一年多日均80亿调用量验证
 - [](https://gitee.com/NewLifeX/XCoder)新生命码神工具，代码生成、网络工具、API工具、串口工具、正则工具、图标工具、加解密工具、地图接口
-- []()
+- [MagicOnion](https://github.com/Cysharp/MagicOnion) Unified Realtime/API framework for .NET platform and Unity
 - []()
 - []()
 - []()
