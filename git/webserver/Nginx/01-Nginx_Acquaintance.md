@@ -138,3 +138,14 @@ kill -HUP pid   # pid其实也被nginx记录了下来，可以使用该命令：
 
 ## 插件
 - [基于 nginx-rtmp-module 的流媒体服务器](https://github.com/winshining/nginx-http-flv-module/blob/master/README.CN.md)
+
+
+##  nginx记录响应与POST请求日志
+
+log_format  main  '$remote_addr | $remote_user | [$time_local] | "$request" | '
+                      '$status | $body_bytes_sent | "$http_referer"  | '
+                      '"$http_user_agent" | "$http_x_forwarded_for" |  "$request_body" | "$resp_body"';
+....省略一些配置.https://blog.csdn.net/xiaoyu411502/article/details/51049754/...
+ 
+$request_body变量由nginx自身提供，用于记录POST请求日志
+$resp_body变量由我们后面再server中定义，由ngx_lua获取
