@@ -292,7 +292,8 @@ mpstat -P ALL  和  sar -P ALL
 
 ## 端口占用
  ss -tlnp |grep 80
- netstat -anp |grep 80
+ netstat -tunlp | grep 80
+ lsof -i:80 #yum install -y lsof
   ## ifconfig: 未找到命令
    yum install net-tools -y
 
