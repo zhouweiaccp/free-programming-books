@@ -377,3 +377,27 @@ SELECT * FROM INFORMATION_SCHEMA.INNODB_TRX;
 SELECT * FROM INFORMATION_SCHEMA.INNODB_LOCKS;
 3：查看当前等锁的事务
 SELECT * FROM INFORMATION_SCHEMA.INNODB_LOCK_WAITS
+
+
+## -- 查询所有数据库占用磁盘空间大小的SQL语句 mb
+```sql
+select TABLE_SCHEMA, truncate(sum(data_length)/1024/1024,2) as data_size, truncate(sum(index_length)/1024/1024,2) as index_size
+from information_schema.tables
+group by TABLE_SCHEMA
+order by data_length desc;  
+
+-- 查询单个库中所有表磁盘占用大小的SQL语句：mb
+select TABLE_NAME, truncate(data_length/1024/1024,2) as data_size,
+truncate(index_length/1024/1024,2) as index_size
+from information_schema.tables where TABLE_SCHEMA = 'edoc2v5'
+group by TABLE_NAME
+order by data_length desc;
+
+-- 单数据库空间总数-- 总量
+SELECT (SUM(DATA_LENGTH)+SUM(INDEX_LENGTH))/1024/1024 as data_sum
+FROM information_schema.tables WHERE TABLE_SCHEMA= 'edoc2v5';
+
+-- 查行数等数据
+SELECT TABLE_NAME,DATA_LENGTH+INDEX_LENGTH,TABLE_ROWS
+FROM information_schema.tables WHERE TABLE_SCHEMA='edoc2v5';
+```
