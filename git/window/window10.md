@@ -163,3 +163,10 @@ QWORD值 REG_QWORD由 64 位整数数字表示的数据。此数据作为二进�
 
 ## window定时任务不生效 
 https://blog.csdn.net/ichen820/article/details/103508296
+
+
+## dos 环境变量
+Echo %path%
+set JAVA_HOME=C:\jdk
+set PATH=%JAVA_HOME%\bin;C:\Windows;C:\Windows\Command
+set CLASSPATH=%JAVA_HOME%\jre\lib\rt.jar;.
