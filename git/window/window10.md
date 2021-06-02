@@ -170,3 +170,15 @@ Echo %path%
 set JAVA_HOME=C:\jdk
 set PATH=%JAVA_HOME%\bin;C:\Windows;C:\Windows\Command
 set CLASSPATH=%JAVA_HOME%\jre\lib\rt.jar;.
+
+
+## 如何用批处理脚本把桌面和我的文档路径改到D盘
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v Personal /t REG_SZ /d "d:\Personal\Personal" /f
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v Desktop /t REG_SZ /d "d:\Personal\Desktop" /f
+
+reg.exe ADD "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /f /v Favorites /t REG_EXPAND_SZ /d "F:\Users\Joe\Favorites"
+reg.exe ADD "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /f /v Favorites /t REG_SZ /d "F:\Users\Joe\Favorites" 
+reg.exe ADD "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /f /v "My Video" /t REG_EXPAND_SZ /d ":\Media\Videos"
+reg.exe ADD "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /f /v "My Video" /t REG_SZ /d "f:\Media\Videos"
