@@ -3,8 +3,9 @@
 * [CancellationTokenSource](https://github.com/dotnet/corefx/blob/release/2.2/src/System.Data.SqlClient/src/System/Data/SqlClient/SNI/SNITcpHandle.cs#L180)
 * [SqlConnectionString](https://github.com/dotnet/corefx/blob/release/2.2/src/System.Data.SqlClient/src/System/Data/SqlClient/SqlConnectionString.cs#L35)
 
-
-
+## ConcurrentBag
+- [ConcurrentBag](https://referencesource.microsoft.com/#System/sys/system/collections/concurrent/ConcurrentBag.cs)
+- [C# ConcurrentBag的实现原理](https://www.cnblogs.com/InCerry/p/9497729.html)一个集合中的数据可能会存放在不同线程的本地存储空间中，所以如果线程访问自己本地存储的对象，那么是没有问题的，这就是实现线程安全的第一层，使用线程本地存储数据 ThreadLocalList
 ## tcp
 - [beetleX是基于dotnet](git@github.com:IKende/BeetleX.git)beetleX是基于dotnet core实现的轻量级高性能的TCP通讯组件，使用方便、性能高效和安全可靠是组件设计的出发点！开发人员可以在Beetlx组件的支持下快带地构建高性能的TCP通讯服务程序，在安全通讯方面只需要简单地设置一下SSL信息即可实现可靠安全的SSL服务
 - [DotNetty](https://github.com/Azure/DotNetty.git)
