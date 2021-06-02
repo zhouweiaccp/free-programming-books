@@ -159,3 +159,29 @@ docker cp $(docker ps |grep edoc2:|awk '{print $1}'):/opt/tools/edoc2_$(date +%F
 ## net 分析dump包2种方式
 1. windbg
 2. sos [sos-dll-sos-debugging-extension](https://docs.microsoft.com/zh-cn/dotnet/framework/tools/sos-dll-sos-debugging-extension)
+
+
+## Interlocked.CompareExchange
+```csharp
+//https://github.com/dotnet/extensions/tree/v3.1.15/src/ObjectPool/   src\ObjectPool\src\DefaultObjectPool.cs
+     public override T Get()
+        {
+            var item = _firstItem;
+            if (item == null || Interlocked.CompareExchange(ref _firstItem, null, item) != item)
+            {
+                var items = _items;
+                for (var i = 0; i < items.Length; i++)
+                {
+                    item = items[i].Element;
+                    if (item != null && Interlocked.CompareExchange(ref items[i].Element, null, item) == item)
+                    {
+                        return item;
+                    }
+                }
+
+                item = Create();
+            }
+
+            return item;
+        }
+```

@@ -155,3 +155,129 @@ WebUploader.Uploader.register({
     }
 });
 ```
+
+
+
+## netcore 上传源码分析
+```csharp
+//https://www.cnblogs.com/wucy/p/14824585.html 源码探究
+//https://github.com/dotnet/aspnetcore/blob/v5.0.6/src/Http/Http/src/Features/FormFeature.cs#L125
+//https://github.com/dotnet/aspnetcore/blob/v5.0.6/src/Http/WebUtilities/src/MultipartReader.cs#L68:46
+//https://github.com/dotnet/aspnetcore/blob/v5.0.6/src/Http/WebUtilities/src/MultipartReaderStream.cs#L148
+private async Task<IFormCollection> InnerReadFormAsync(CancellationToken cancellationToken)
+{
+    FormFileCollection? files = null;
+    using (cancellationToken.Register((state) => ((HttpContext)state!).Abort(), _request.HttpContext))
+    {
+        var contentType = ContentType;
+        // 判断ContentType为multipart/form-data的时候
+        if (HasMultipartFormContentType(contentType))
+        {
+            var formAccumulator = new KeyValueAccumulator();
+
+            //得到boundary数据
+            //Content-Type: multipart/form-data; boundary="----WebKitFormBoundarymx2fSWqWSd0OxQqq"
+            var boundary = GetBoundary(contentType, _options.MultipartBoundaryLengthLimit);
+            // 把针对文件上传的部分封装到MultipartReader
+            var multipartReader = new MultipartReader(boundary, _request.Body)
+            {
+                //Header个数限制
+                HeadersCountLimit = _options.MultipartHeadersCountLimit,
+                //Header长度限制
+                HeadersLengthLimit = _options.MultipartHeadersLengthLimit,
+                //Body长度限制
+                BodyLengthLimit = _options.MultipartBodyLengthLimit,
+            };
+
+            //获取下一个可解析的节点,可以理解为每一个要解析的上传文件信息
+            var section = await multipartReader.ReadNextSectionAsync(cancellationToken);
+            //不为null说明已从Body解析出的上传文件信息
+            while (section != null)
+            {
+                // 在这里解析内容配置并进一步传递它以避免重新分析
+                if (!ContentDispositionHeaderValue.TryParse(section.ContentDisposition, out var contentDisposition))
+                {
+                    throw new InvalidDataException("");
+                }
+
+                if (contentDisposition.IsFileDisposition())
+                {
+                    var fileSection = new FileMultipartSection(section, contentDisposition);
+                    // 如果尚未对整个正文执行缓冲，则为文件启用缓冲
+                    section.EnableRewind(
+                        _request.HttpContext.Response.RegisterForDispose,
+                        _options.MemoryBufferThreshold, _options.MultipartBodyLengthLimit);
+
+                    // 找到结尾
+                    await section.Body.DrainAsync(cancellationToken);
+
+                    var name = fileSection.Name;
+                    var fileName = fileSection.FileName;
+
+                    FormFile file;
+                    //判断Body默认的流是否被修改过,比如开启缓冲就会修改
+                    //如果Body不是默认流则直接服务Body
+                    if (section.BaseStreamOffset.HasValue)
+                    {
+                        file = new FormFile(_request.Body, section.BaseStreamOffset.GetValueOrDefault(), section.Body.Length, name, fileName);
+                    }
+                    else
+                    {
+                        // 如果没有被修改过则获取MultipartReaderStream的实例
+                        file = new FormFile(section.Body, 0, section.Body.Length, name, fileName);
+                    }
+                    file.Headers = new HeaderDictionary(section.Headers);
+
+                    //如果解析出来了文件信息则初始化FormFileCollection
+                    if (files == null)
+                    {
+                        files = new FormFileCollection();
+                    }
+                    if (files.Count >= _options.ValueCountLimit)
+                    {
+                        throw new InvalidDataException("");
+                    }
+                    files.Add(file);
+                }
+                else if (contentDisposition.IsFormDisposition())
+                {
+                    var formDataSection = new FormMultipartSection(section, contentDisposition);
+
+                    var key = formDataSection.Name;
+                    var value = await formDataSection.GetValueAsync();
+
+                    formAccumulator.Append(key, value);
+                    if (formAccumulator.ValueCount > _options.ValueCountLimit)
+                    {
+                        throw new InvalidDataException("");
+                    }
+                }
+                else
+                {
+                    //没解析出来类型
+                }
+                section = await multipartReader.ReadNextSectionAsync(cancellationToken);
+            }
+
+            if (formAccumulator.HasValues)
+            {
+                formFields = new FormCollection(formAccumulator.GetResults(), files);
+            }
+        }
+    }
+
+    // 如果可重置,则恢复读取位置为0(因为Body被读取到了尾部)
+    if (_request.Body.CanSeek)
+    {
+        _request.Body.Seek(0, SeekOrigin.Begin);
+    }
+
+    //通过files得到FormCollection
+    if (files != null)
+    {
+        Form = new FormCollection(null, files);
+    }
+    return Form;
+}
+
+```
