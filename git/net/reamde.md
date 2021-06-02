@@ -75,7 +75,7 @@ https://www.cnblogs.com/caca/archive/2008/04/03/1136815.html
 - [ef](https://docs.microsoft.com/en-us/ef/core/get-started/overview/install) Entity Framework Overview 
 - [NetEscapades.Extensions.Logging](https://github.com/andrewlock/NetEscapades.Extensions.Logging/tree/master/sample/NetCoreApp3)
 - [System.Threading.Tasks.Channels 主要专注于 存储 这块](https://www.cnblogs.com/ireadme/p/14502286.html) dotnet add package System.Threading.Channels
-- []()
+- [SPA模板](https://github.com/jasontaylordev/CleanArchitecture)This is a solution template for creating a Single Page App (SPA) with Angular and ASP.NET Core following the principles of Clean Architecture
 - []()
 - []()
 - []()
