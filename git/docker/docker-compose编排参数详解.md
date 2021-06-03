@@ -1,6 +1,5 @@
 
-
-https://docs.docker.com/compose/
+https://docs.docker.com/compose/compose-file/compose-file-v3/
 https://www.cnblogs.com/wutao666/p/11332186.html
 
 Compose是一个用于定义和运行多容器Docker应用程序的工具。使用Compose，您可以使用YAML文件来配置应用程序的服务。然后，使用单个命令，您可以从配置中创建并启动所有服务。
