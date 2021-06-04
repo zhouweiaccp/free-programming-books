@@ -335,3 +335,10 @@ curl - XPUT 'http://localhost:9200/_all/_settings?preserve_existing=true' - d '{
 "index.cache.field.max_size" : "50000",
 "index.cache.field.type" : "soft"
 }'
+
+## linux curl es查询示例
+查询 optSourceId=24
+curl -XGET http://es:9200/filelog_1 -H 'Content-Type: application/json' -d "{\"query\":{\"match\":{\"optSourceId\":\"24\"}}}"
+
+查询姓氏中包含“Smith”并且年龄大于30岁的员工：
+curl -H 'Content-Type: application/json' -X GET http://es:9200/employee/_search -d '{"query":{"bool":{"filter":{"range":{"age":{"gt":30}}},"must":{"match":{"last_name":"Smith"}}}}}'
