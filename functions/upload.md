@@ -35,6 +35,7 @@ https://blog.csdn.net/x746655242/article/details/52964623 基于node服务器的
 - [Http-Multipart-Data-Parser](git@github.com:Http-Multipart-Data-Parser/Http-Multipart-Data-Parser.git)
    - [应用](https://github.com/SimplifyNet/Simplify.Web.Multipart/blob/master/src/Simplify.Web.Multipart/Model/MultipartViewModel.cs)
 - [ASP.NET-WebApi-MultipartDataMediaFormatter](https://github.com/iLexDev/ASP.NET-WebApi-MultipartDataMediaFormatter)This is solution for automatic binding action parameters of custom types (including files) encoded as multipart/form-data. It works similar to ASP.NET MVC binding. This media type formatter can be used also for sending objects (using HttpClient) with automatic serialization to multipart/form-data
+- [ApiMultipartFormFormatter](https://github.com/redplane/ApiMultipartFormFormatter) This formatter which is for handling parameters and file uploaded to Web API controller
 https://github.com/Vodurden/Http-Multipart-Data-Parser
 https://github.com/iLexDev/ASP.NET-WebApi-MultipartDataMediaFormatter
 
