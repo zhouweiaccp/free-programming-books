@@ -185,3 +185,42 @@ docker cp $(docker ps |grep edoc2:|awk '{print $1}'):/opt/tools/edoc2_$(date +%F
             return item;
         }
 ```
+
+### FileExtensionContentTypeProvider
+```cs
+  services.AddSingleton(System.Text.Encodings.Web.HtmlEncoder.Create(System.Text.Unicode.UnicodeRanges.All));
+ //provider.Mappings.Add(".exe", "application/vnd.microsoft.portable-executable");
+            provider.Mappings.Add(".exe", "application/octet-stream");
+            provider.Mappings.Add(".msu", "application/octet-stream");
+            provider.Mappings.Add(".bcmap", "application/octet-stream");
+            provider.Mappings.Add(".dmg", "application/octet-stream");
+            provider.Mappings.Add(".ocf", "application/octet-stream");
+            provider.Mappings.Add(".properties", "application/octet-stream");
+            provider.Mappings.Add(".pkg", "application/octet-stream");
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                ContentTypeProvider = provider,
+                OnPrepareResponse = context =>
+                {
+                    context.Context.Response.Headers.Remove("If-Modified-Since");
+                    context.Context.Response.Headers.Remove("Content-Length");
+
+                }
+            });
+
+ //解决Multipart body length limit 134217728 exceeded
+            services.Configure<Microsoft.AspNetCore.Http.Features.FormOptions>(x =>
+            {
+                x.ValueLengthLimit = int.MaxValue;
+                x.MultipartBodyLengthLimit = int.MaxValue; // In case of multipart
+            });
+            services.Configure<KestrelServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
+            services.Configure<IISServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
+
+```
