@@ -250,7 +250,7 @@ private Task EmitConnection()
 - [](https://gitee.com/NewLifeX/NewLife.MQTT)高性能Redis协议封装，支持.Net Core，经过一年多日均80亿调用量验证
 - [](https://gitee.com/NewLifeX/XCoder)新生命码神工具，代码生成、网络工具、API工具、串口工具、正则工具、图标工具、加解密工具、地图接口
 - [MagicOnion](https://github.com/Cysharp/MagicOnion) Unified Realtime/API framework for .NET platform and Unity
-- []()
+- [CoreShop](https://gitee.com/CoreUnion/CoreShop)基于 Asp.Net Core 5.0、Uni-App开发，支持可视化布局的小程序商城系统，前后端分离，支持分布式部署，跨平台运行，拥有分销、代理、团购、拼团、秒杀、直播、优惠券、自定义表单等众多营销功能，拥有完整SKU、下单、售后、物流流程。支持一套代码编译发布微信小程序版、H5版、Android版、iOS版、支付宝小程序版、字节跳动小程序版、QQ小程序版等共10个平台
 - []()
 - []()
 - []()
