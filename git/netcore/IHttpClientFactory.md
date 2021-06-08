@@ -257,9 +257,11 @@ Console.WriteLine(content);
 ```
 
 
-### Creating an HttpClient and HttpMessageHandler
+### Creating an HttpClient and HttpMessageHandler 源码分析
 ```cs
 //https://andrewlock.net/exporing-the-code-behind-ihttpclientfactory/
+//https://github.com/dotnet/runtime/blob/main/src/libraries/Microsoft.Extensions.Http/src/DefaultHttpClientFactory.cs
+//https://www.cnblogs.com/lizhizhang/p/9502862.html
 // Created in the constructor
 readonly ConcurrentDictionary<string, Lazy<ActiveHandlerTrackingEntry>> _activeHandlers;;
 
@@ -286,7 +288,7 @@ private readonly IOptionsMonitor<HttpClientFactoryOptions> _optionsMonitor
 public HttpClient CreateClient(string name)
 {
     HttpMessageHandler handler = CreateHandler(name);
-    var client = new HttpClient(handler, disposeHandler: false);
+    var client = new HttpClient(handler, disposeHandler: false);//disposeHandler参数为false值时表示要重用内部的handler对象
 
     HttpClientFactoryOptions options = _optionsMonitor.Get(name);
     for (int i = 0; i < options.HttpClientActions.Count; i++)

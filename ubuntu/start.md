@@ -63,18 +63,18 @@ vim ~/.bashrc
 export PATH="/opt/STM/STLinux-2.3/devkit/sh4/bin:$PATH"
 
 5.永久添加环境变量(影响所有用户)
-# vim /etc/profile
+## vim /etc/profile
 在文档最后，添加:
 export PATH="/opt/STM/STLinux-2.3/devkit/sh4/bin:$PATH"
 保存，退出，然后运行：
 #source /etc/profile
 
-#显示时区
+## 显示时区
 echo `date +%z`
 时间不同步
 yum install -y ntp  && ntpdate ntp.aliyun.com
 
-#Linux下查看进程和端口信息
+## Linux下查看进程和端口信息
 netstat -aon |grep 301
  ps -ef |grep 11753
 
@@ -82,7 +82,8 @@ netstat -aon |grep 301
  wget https://bad.com/a.rpm --no-check-certificate
  apt-get install ca-certificates -y
 
-
+## tcp 连接
+netstat -n | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}' 
 
  ## xshell 使用命令上传、下载文件
  rpm -qa |grep lrzsz
@@ -96,10 +97,10 @@ sed '$i 添加的内容' file  #这是在最后一行行前添加字符串
 sed '$a添加的内容' file  #这是在最后一行行后添加字符串
  sed -i '$a\/etc\/install.sh' ho
 
-# 出包dpkg 后面一行加33333
+## 出包dpkg 后面一行加33333
  sed -i '/dpkg/a\3333333333' netocre.sh
 
- # 在包含小明的行前一行增加一行
+ ## 在包含小明的行前一行增加一行
  sed '/xiaoming/i\#!/bin/bash' test_sed
  删除文档的第一行
 	sed -i '1d' <file>
