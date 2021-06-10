@@ -93,7 +93,15 @@ netstat -n | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
 
 ## Linux禁止ping以及开启ping的方法
 /etc/sysctl.conf 中增加一行 net.ipv4.icmp_echo_ignore_all=1
-A.临时禁止PING的命令为：#echo 1 >/proc/sys/net/ipv4/icmp_echo_ignore_all     
+A.临时禁止PING的命令为：#echo 1 >/proc/sys/net/ipv4/icmp_echo_ignore_all 
+
+  B、防火墙设置（注：此处的方法的前提是内核配置是默认值，也就是没有禁止Ping）
+     这里以Iptables防火墙为例，其他防火墙操作方法可参考防火墙的官方文档。
+     1、允许PING设置      
+        iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
+        iptables -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT
+       或者也可以临时停止防火墙操作的。
+        service iptables stop    
 
  ## linux shell 最后一行添加内容
 sed '1i 添加的内容' file  #这是在第一行前添加字符串

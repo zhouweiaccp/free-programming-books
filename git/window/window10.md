@@ -1,6 +1,10 @@
 ## fsutil  10G
 fsutil file createnew y:\10G.dat 10737418240
 
+## windows10 如何禁ping，windows禁止icmp的方法
+netsh firewall set icmpsetting 8 disable
+入站规则",找到"文件和打印机共享"，鼠标右键“启用规则”，这样就打开了icmp
+
 ## Windows 10任务栏右键快速跳转列表显示数量修改
 HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
 选择Advanced项目，然后在右边空白处右键新建一个 32位的DWORD值。
