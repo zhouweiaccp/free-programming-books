@@ -91,6 +91,10 @@ netstat -n | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
  rz  #上传文件，使用#rz，然后会弹出选择对话框，选择好文件后，点击打开就能上传到当前目录
  sz error_logs #例如要下载当前目录下的error_logs
 
+## Linux禁止ping以及开启ping的方法
+/etc/sysctl.conf 中增加一行 net.ipv4.icmp_echo_ignore_all=1
+A.临时禁止PING的命令为：#echo 1 >/proc/sys/net/ipv4/icmp_echo_ignore_all     
+
  ## linux shell 最后一行添加内容
 sed '1i 添加的内容' file  #这是在第一行前添加字符串
 sed '$i 添加的内容' file  #这是在最后一行行前添加字符串
