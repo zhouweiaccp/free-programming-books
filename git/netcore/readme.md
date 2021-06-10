@@ -224,3 +224,20 @@ docker cp $(docker ps |grep edoc2:|awk '{print $1}'):/opt/tools/edoc2_$(date +%F
             });
 
 ```
+
+
+### .net core signalR 忽略https 证书
+```cs
+var connection = new HubConnectionBuilder().WithUrl(serverUrl, option =>
+             {
+                 option.HttpMessageHandlerFactory = (handler) =>
+                 {
+                     var newHandler = handler as HttpClientHandler;
+                     newHandler.ServerCertificateCustomValidationCallback = (request, cert, chain, errors) =>
+                     {
+                         return true;
+                     };
+                     return newHandler;
+                 };
+             }).Build();
+```

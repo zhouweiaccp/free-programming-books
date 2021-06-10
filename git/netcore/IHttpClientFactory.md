@@ -5,6 +5,7 @@
 windows将在此状态下保持连接240秒（由其设置[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\TcpTimedWaitDelay]）。Windows可以快速打开新套接字的速度有限，因此如果您耗尽连接池，那么您可能会看到如下错误：
 
 - [](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/fundamentals/http-requests/samples/5.x/HttpClientFactorySample/Startup2.cs)
+- [net5.0](https://github.com/RehanSaeed/HttpClientSample)优化
 
 
 ### https
@@ -52,6 +53,96 @@ services.AddHttpClient(/* etc */)
 ###　FormUrlEncodedContent
   FormUrlEncodedContent formUrlEncoded = new FormUrlEncodedContent(new new Dictionary<string, string>(){});
                 var response = client.PostAsync(SSOUrl + pingUrl, formUrlEncoded).Result;
+
+
+
+### ConfigurePrimaryHttpMessageHandler
+```cs
+
+///https://stackoverflow.com/questions/42712844/ignore-bad-certificate-net-core
+services.AddHttpClient(settings.HttpClientName, client => {
+// code to configure headers etc..
+}).ConfigurePrimaryHttpMessageHandler(() => {
+                  var handler = new HttpClientHandler();
+                  if (hostingEnvironment.IsDevelopment())
+                  {
+                      handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                  }
+                  return handler;
+              });
+```
+### ServerCertificateCustomValidationCallback
+```cs	
+X509Certificate2 clientCert = new X509Certificate2("cert.pfx");
+	HttpClientHandler clientHandler = new HttpClientHandler()
+	{
+		ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; },
+		ClientCertificateOptions = ClientCertificateOption.Manual,
+		SslProtocols = SslProtocols.Tls12
+	};
+	clientHandler.ClientCertificates.Add(clientCert);
+
+public static RemoteCertificateValidationCallback CreateCustomRootRemoteValidator(X509Certificate2Collection trustedRoots, X509Certificate2Collection intermediates = null)
+{
+    if (trustedRoots == null)
+        throw new ArgumentNullException(nameof(trustedRoots));
+    if (trustedRoots.Count == 0)
+            throw new ArgumentException("No trusted roots were provided", nameof(trustedRoots));
+
+    // Let's avoid complex state and/or race conditions by making copies of these collections.
+    // Then the delegates should be safe for parallel invocation (provided they are given distinct inputs, which they are).
+    X509Certificate2Collection roots = new X509Certificate2Collection(trustedRoots);
+    X509Certificate2Collection intermeds = null;
+
+    if (intermediates != null)
+    {
+            intermeds = new X509Certificate2Collection(intermediates);
+    }
+
+    intermediates = null;
+    trustedRoots = null;
+
+    return (sender, serverCert, chain, errors) =>
+    {
+        // Missing cert or the destination hostname wasn't valid for the cert.
+        if ((errors & ~SslPolicyErrors.RemoteCertificateChainErrors) != 0)
+        {
+            return false;
+        }
+
+        for (int i = 1; i < chain.ChainElements.Count; i++)
+        {
+            chain.ChainPolicy.ExtraStore.Add(chain.ChainElements[i].Certificate);
+        }
+
+        if (intermeds != null)
+        {
+            chain.ChainPolicy.ExtraStore.AddRange(intermeds);
+        }
+
+        chain.ChainPolicy.CustomTrustStore.Clear();
+        chain.ChainPolicy.TrustMode = X509ChainTrustMode.CustomRootTrust;
+        chain.ChainPolicy.CustomTrustStore.AddRange(roots);
+        return chain.Build((X509Certificate2)serverCert);
+    };
+}
+
+public static Func<HttpRequestMessage, X509Certificate2, X509Chain, SslPolicyErrors, bool> CreateCustomRootValidator(X509Certificate2Collection trustedRoots, X509Certificate2Collection intermediates = null)
+{
+    RemoteCertificateValidationCallback callback = CreateCustomRootRemoteValidator(trustedRoots, intermediates);
+    return (message, serverCert, chain, errors) => callback(null, serverCert, chain, errors);
+}
+
+using var handler = new HttpClientHandler();
+byte[] rootCertificateData = Convert.FromBase64String(@"MIIDdzCCAl+gAwIBAgI...9OhgQ="); // Set your own root certificates (format CER)
+var rootCertificate = new X509Certificate2(rootCertificateData);
+var rootCertificates = new X509Certificate2Collection(rootCertificate);
+handler.ServerCertificateCustomValidationCallback = CreateCustomRootValidator(rootCertificates);
+using var httpClient = new HttpClient(handler);
+
+// This should success
+var result = await httpClient.GetAsync("https://server.internal/");
+```
 ### 方法1
 ```cs
   public void Configure(IApplicationBuilder app, IHostingEnvironment env, IHttpContextAccessor accessor)
@@ -255,6 +346,7 @@ var result = await client.GetAsync(url);
 var content = await result.Content.ReadAsStringAsync();
 Console.WriteLine(content);
 ```
+
 
 
 ### Creating an HttpClient and HttpMessageHandler 源码分析
