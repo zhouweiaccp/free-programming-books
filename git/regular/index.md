@@ -4,7 +4,7 @@
 
 ## 常用正则表达式
 /^[\u4e00-\u9fa5_a-zA-Z0-9\s]+$/.test(' 2Admin istrat orw')     中 英 空格 _
-
+Regex regex = new Regex("token[ ]*=[^&#]*", RegexOptions.IgnoreCase); token=xxxxx# 中token=xxxxx
 
 
 ## 正则表达式[\w]+,\w+,[\w+] 三者区别？ [],[ABC]+,[\w./-]+ 表达什么？
@@ -15,6 +15,7 @@
 ## 正则表达式\w和\W
 \w :匹配包括下划线的任何单词字符,等价于 [A-Z a-z 0-9_]
 \W :匹配任何非单词字符,等价于 [^A-Z a-z 0-9_]
+
 
 
 ##  数字 字母
