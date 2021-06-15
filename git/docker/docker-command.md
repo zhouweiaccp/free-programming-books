@@ -209,7 +209,14 @@ docker service  update --mount-add type=bind,src=/root/anaconda-ks.cfg,dst=/app/
 docker service update --mount-rm /app/anaconda-ks.cfg indrive_orgsync  #去掉挂载
 [](https://docs.docker.com/engine/reference/commandline/service_update/)
 
+## docker 目录软链迁移
+一般默认为/var/lib/docker/，现在迁移到/data/docker
 
+systemctl stop docker
+mkdir /data/docker
+mv /var/lib/docker/* /data/docker/
+rm -rf /var/lib/docker
+ln -s /data/docker /var/lib/
 
 ## docker-compose -f docker-com.yml pull
 
