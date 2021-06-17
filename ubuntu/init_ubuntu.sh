@@ -144,3 +144,17 @@ sed -i 's@^@#@g' /etc/init/control-alt-delete.conf
 #sqlite
 apt-get install sqlite  -y
 apt-get install libsqlite3-dev -y
+
+## nodejs
+ apt-get install npm nodejs -y
+
+#  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+#  source ~/.nvm/nvm.sh
+#  nvm install node 
+
+# wget https://nodejs.org/dist/v12.18.1/node-v12.18.1-linux-x64.tar.xz    // 下载
+# tar xf node-v12.18.1-linux-x64.tar.xz                                   // 解压
+# cd node-v12.18.1-linux-x64                                              // 进入解压目录
+# cp /etc/profile /etc/profile.bak
+# export PATH=$PATH:/root/node-v12.18.1-linux-x64/bin
+# source /etc/profile
