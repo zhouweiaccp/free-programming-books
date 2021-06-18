@@ -1,3 +1,4 @@
+https://www.cnblogs.com/ms27946/p/understanding-task-valuetask.html
 
 .NET Framework 4 里面的命名空间为 System.Threading.Tasks的 Task 类。这个类以及它派生的 Task<TResult> 早已成为编程的主要部分，在 C#5 中的异步编程模式当作介绍了 async/await。在这篇文章里，我会覆盖新的类 ValueTask / ValueTask<TResult>，介绍它们在通用的使用上降低内存消耗来提高异步性能，这是非常重要的。
 
