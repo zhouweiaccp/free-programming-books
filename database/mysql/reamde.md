@@ -211,7 +211,15 @@ show variables like '%char%';
 
 ## 数据库中查询一下连接数的配置情况
 SELECT @@max_user_connections, @@max_connections, @@wait_timeout, @@interactive_timeout;
+show full processlist;
 
+## 修改最大连接数
+方法一：修改配置文件。推荐方法一
+进入MySQL安装目录 打开MySQL配置文件 my.ini 或 my.cnf查找 max_connections=100 修改为 max_connections=1000 服务里重起MySQL即可.
+方法二：命令行修改。不推荐方法二
+命令行登录MySQL后。设置新的MySQL最大连接数为200：
+MySQL> set global max_connections=200。
+这种方式有个问题，就是设置的最大连接数只在mysql当前服务进程有效，一旦mysql重启
 ## 数据库表执行计划
 explain select * from dms_user where user_name='xx';
 
