@@ -220,6 +220,10 @@ show full processlist;
 命令行登录MySQL后。设置新的MySQL最大连接数为200：
 MySQL> set global max_connections=200。
 这种方式有个问题，就是设置的最大连接数只在mysql当前服务进程有效，一旦mysql重启
+
+## my.cnf在哪里
+mysql --help|grep my.cnf
+
 ## 数据库表执行计划
 explain select * from dms_user where user_name='xx';
 
