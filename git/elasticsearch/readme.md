@@ -342,3 +342,75 @@ curl -XGET http://es:9200/filelog_1 -H 'Content-Type: application/json' -d "{\"q
 
 查询姓氏中包含“Smith”并且年龄大于30岁的员工：
 curl -H 'Content-Type: application/json' -X GET http://es:9200/employee/_search -d '{"query":{"bool":{"filter":{"range":{"age":{"gt":30}}},"must":{"match":{"last_name":"Smith"}}}}}'
+
+
+
+## max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+```bash
+echo "vm.max_map_count=262144" >> /etc/sysctl.conf
+echo "fs.file-max=65536" >> /etc/sysctl.conf
+echo "* - nofile 65535" >> /etc/security/limits.conf
+sysctl -p
+
+# 报错信息提示是数据目录读取操作没有权限，查看存储目录，es目录权限变成root ，要调整为 polkitd.input
+# 停止应用，停止中间件，执行修改es目录权限：
+# 先查询用户ＩＤ为999的用户名和用户组ID为999的用户组
+chown -R $(cat /etc/passwd|grep 999|awk -F ":" '{print $1}').$(cat /etc/group|grep 999|awk -F ":" '{print $1}') es
+chown -R polkitd.input es   #如果确定用户ID为999的用户为polkitd,用户组的ID为999用户组为input执行这个命令
+```
+## 解决Elasticsearch索引只读（read-only）
+原因为：es 的设置默认是 85% 和 90 %，95%
+
+当为85%时：Elasticsearch不会将碎片分配给磁盘使用率超过85%的节点（ cluster.routing.allocation.disk.watermark.low）
+
+当为90%时：Elasticsearch尝试重新分配给磁盘低于使用率90%的节点（cluster.routing.allocation.disk.watermark.high）
+
+当为85%时：Elasticsearch执行只读模块（cluster.routing.allocation.disk.watermark.flood_stage）
+
+1、扩大磁盘或者删除部分历史索引
+
+2、重置改只读索引快
+
+复制代码
+某一个索引重置只读模块
+PUT /twitter/_settings
+{
+  "index.blocks.read_only_allow_delete": null
+}
+所有索引重置只读模块
+PUT /_all/_settings
+{
+  "index.blocks.read_only_allow_delete": null
+}
+PUT /_cluster/settings
+{
+  "persistent" : {
+    "cluster.blocks.read_only" : false
+  }
+}
+复制代码
+修改默认设置
+
+复制代码
+可以修改为具体的磁盘空间值，也可以修改为百分之多少
+临时修改
+PUT _cluster/settings
+{
+  "transient": {
+    "cluster.routing.allocation.disk.watermark.low": "100gb",
+    "cluster.routing.allocation.disk.watermark.high": "50gb",
+    "cluster.routing.allocation.disk.watermark.flood_stage": "10gb",
+    "cluster.info.update.interval": "1m"
+  }
+}
+永久修改
+PUT _cluster/settings
+{
+  "persistent": {
+    "cluster.routing.allocation.disk.watermark.low": "100gb",
+    "cluster.routing.allocation.disk.watermark.high": "50gb",
+    "cluster.routing.allocation.disk.watermark.flood_stage": "10gb",
+    "cluster.info.update.interval": "1m"
+  }
+}
+https://www.elastic.co/guide/en/elasticsearch/reference/6.8/disk-allocator.html
