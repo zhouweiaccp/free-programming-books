@@ -4,9 +4,9 @@
 - [windows-常见问题](https://www.rabbitmq.com/windows-quirks.html)
 - [RabbitMQ集群方案的原理](https://www.cnblogs.com/xishuai/p/rabbitmq-cluster.html)
 - [clustering](https://www.rabbitmq.com/clustering.html)
--[消息队列RabbitMQ从入门安装到精通原理](https://www.jianshu.com/p/637192a049f1)  资料非常全部
--[非常强悍的 RabbitMQ 总结](https://www.jianshu.com/p/a1837c61d42f)
-
+- [消息队列RabbitMQ从入门安装到精通原理](https://www.jianshu.com/p/637192a049f1)  资料非常全部
+- [非常强悍的 RabbitMQ 总结](https://www.jianshu.com/p/a1837c61d42f)
+- [vipstone](https://www.cnblogs.com/vipstone/p/9295625.html) RabbitMQ系列（三）RabbitMQ交换器Exchange介绍与实践
 
 ### 集群脑裂问题
 - [Login was refused using authentication mechanism PLAIN. For details see the](https://stackoverflow.com/questions/26811924/spring-amqp-rabbitmq-3-3-5-access-refused-login-was-refused-using-authentica)
