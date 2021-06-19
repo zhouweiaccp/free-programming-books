@@ -177,3 +177,28 @@ usage: <program>
 
 示例：100个生产者；100个消费者；echange名称为testex；转发类型为fanout；queue名称为testque；bingding为kk01;
 runjava.bat com.rabbitmq.perf.PerfTest -x100 -y100 -e"testex" -t"fanout" -u"testque" -k"kk01"
+
+
+## 界面
+Ready：待消费的消息总数。
+Unacked：待应答（待确认）的消息总数。
+Total：总数 Ready+Unacked。
+
+
+## RabbitMQ队列中大量unacked消息的问题定位
+https://www.jianshu.com/p/5413766fa9c5
+最近在使用RabbitMQ时发现总有一些消息队列中存在大量的处于unacked状态的消息，一般来说，如果队列中ready状态的消息数比较多，可以认为是消费者的处理能力不足，可以通过增加消费者来解决，而unacked消息存在基本是有以下两点原因：
+
+消费者取走消息后没有及时做消息确认，对于开启手动确认机制的，不进行ack则消息会一直以unacked状态留在队列中。
+消费者处理能力不足。生产者投放消息的速度较快，当消费者按照prefetch_count设置的值取走相应数量的消息时，这些消息都会暂时处于unacked状态。
+我司目前对RabbitMQ的使用是基于Celery的，Celery对消息确认采用的是early ack，即在消费者执行task之前，就已经向RabbitMQ发送确认消息了，哪怕task产生异常也不会受到任何影响。所以队列中unacked的消息不是自定义task异常产生的。若是消费者处理能力不足，则ready状态的消息应该会有一定的堆积，但是也没有观察到这点，所以不能判定为消费者能力的限制。
+
+有没有可能是消费者挂掉导致的呢？消费者挂掉后，unacked的消息会变成ready状态的消息重新放在队列中，待下次消费者启动后可以直接读取，所以也不会是这个原因。
+
+通过以上分析，并没有发现消费者有何问题，只能尝试从生产者来分析了。Celery有两种生产消息的方式，delay和apply_async。
+
+delay直接向队列中投递消息，消费者立时可取，任务立即可执行
+apply_async投递的定时消息，消费者立时可取，任务定时执行
+任务定时执行是Celery的功能，原理是amqp消息的header中存放了任务的执行时间，Celery会根据这个时间来执行任务，哪怕消费者挂掉了，当再次启动时，定时任务仍然能够正常执行。
+
+但是，定时任务的ack消息并不是在消费者取走消息后就发送的，只有在任务真正执行前才会发送。这也是为什么clock_queue中存在这么多unacked消息的原因，不是真的除了什么问题，而是有这么多任务等待被执行呢
