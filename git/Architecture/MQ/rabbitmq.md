@@ -206,6 +206,7 @@ apply_async投递的定时消息，消费者立时可取，任务定时执行
 
 ## RabbitMQ管理页面各种属性详解
 https://blog.csdn.net/qq_27409289/article/details/89510687
+https://www.jianshu.com/p/7b6e575fd451
 2.1 overview->Totals
 
 
