@@ -202,3 +202,183 @@ apply_async投递的定时消息，消费者立时可取，任务定时执行
 任务定时执行是Celery的功能，原理是amqp消息的header中存放了任务的执行时间，Celery会根据这个时间来执行任务，哪怕消费者挂掉了，当再次启动时，定时任务仍然能够正常执行。
 
 但是，定时任务的ack消息并不是在消费者取走消息后就发送的，只有在任务真正执行前才会发送。这也是为什么clock_queue中存在这么多unacked消息的原因，不是真的除了什么问题，而是有这么多任务等待被执行呢
+
+
+## RabbitMQ管理页面各种属性详解
+https://blog.csdn.net/qq_27409289/article/details/89510687
+2.1 overview->Totals
+
+
+image.png
+
+所有队列的阻塞情况
+
+Ready：待消费的消息总数。
+Unacked：待应答的消息总数。
+Total：总数 Ready+Unacked。
+
+所有队列的消费情况。速率=(num1-num0)/(s1-s0) num1：s1时刻的个数。num0：s0时刻的个数。
+
+Publish：producter pub消息的速率。
+Publisher confirm：broker确认pub消息的速率。
+Deliver(manual ack)：customer手动确认的速率。
+Deliver( auto ack)：customer自动确认的速率。
+Consumer ack：customer正在确认的速率。
+Redelivered：正在传递'redelivered'标志集的消息的速率。
+Get (manual ack)：响应basic.get而要求确认的消息的传输速率。
+Get (auto ack)：响应于basic.get而发送不需要确认的消息的速率。
+Return：将basic.return发送给producter的速率。
+Disk read：queue从磁盘读取消息的速率。
+Disk write：queue从磁盘写入消息的速率。
+
+整体角色的个数
+
+Connections：client的tcp连接的总数。
+Channels：通道的总数。
+Exchange：交换器的总数。
+Queues：队列的总数。
+Consumers：消费者的总数。
+
+2.2 Overview->Nodes
+启动一个broker都会产生一个node。
+
+ 
+
+
+
+image.png
+
+broker的属性
+
+Name：broker名称
+File descriptors：broker打开的文件描述符和限制。
+Socket descriptors：broker管理的网络套接字数量和限制。当限制被耗尽时，RabbitMQ将停止接受新的网络连接。
+Erlang processes：erlang启动的进程数。
+Memory：当前broker占用的内存。
+Disk space：当前broker占用的硬盘。
+Uptime：当前broker持续运行的时长。
+Info：未知。
+Reset stats：未知。
+
+2.3 Overview->Ports and contexts
+
+
+image.png
+
+2.4 Overview->Export definitions
+定义由用户，虚拟主机，权限，参数，交换，队列和绑定组成。 它们不包括队列的内容或集群名称。 独占队列不会被导出。
+
+2.5 Overview->Export definitions
+导入的定义将与当前定义合并。 如果在导入过程中发生错误，则所做的任何更改都不会回滚。
+
+3 Connections
+当前所有客户端活动的连接。包括生成者和消费者。
+
+ 
+
+
+
+image.png
+
+连接的属性
+
+Virtual host：所属的虚拟主机。
+Name：名称。
+User name：使用的用户名。
+State：当前的状态，running：运行中；idle：空闲。
+SSL/TLS：是否使用ssl进行连接。
+Protocol：使用的协议。
+Channels：创建的channel的总数。
+From client：每秒发出的数据包。
+To client：每秒收到的数据包。
+
+4 Channels
+当前连接所有创建的通道。
+
+ 
+
+
+
+image.png
+
+通道的属性
+
+channel：名称。
+Virtual host：所属的虚拟主机。
+User name：使用的用户名。
+Mode：渠道保证模式。 可以是以下之一，或者不是：C: confirm。T：transactional(事务)。
+State ：当前的状态，running：运行中；idle：空闲。
+Unconfirmed：待confirm的消息总数。
+Prefetch：设置的prefetch的个数。
+Unacker：待ack的消息总数。
+publish：producter pub消息的速率。
+confirm：producter confirm消息的速率。
+deliver/get：consumer 获取消息的速率。
+ack：consumer ack消息的速率。
+
+5 Exchanges
+
+
+image.png
+
+交换器属性
+
+Virtual host：所属的虚拟主机。
+Name：名称。
+Type：exchange type，具体的type可以查看RabbitMq系列之一：基础概念。
+Features：功能。 可以是以下之一，或者不是：D: 持久化。T：Internal，存在改功能表示这个exchange不可以被client用来推送消息，仅用来进行exchange和exchange之间的绑定，否则可以推送消息也可以绑定。
+Message rate in：消息进入的速率。
+Message rate out：消息出去的速率。
+
+5.1 添加exchange
+
+
+image.png
+
+6 Queues
+
+
+image.png
+
+队列的属性
+
+Virtual host：所属的虚拟主机。
+Name：名称。
+Features：功能。 可以是以下之一，或者不是：D: 持久化。
+State：当前的状态，running：运行中；idle：空闲。
+Ready：待消费的消息总数。
+Unacked：待应答的消息总数。
+Total：总数 Ready+Unacked。
+incoming：消息进入的速率。
+deliver/get：消息获取的速率。
+ack：消息应答的速率。
+
+6.1 添加queue
+
+
+image.png
+
+7 Admin
+
+
+image.png
+
+用户属性
+
+Name：名称。
+Tags：角色标签，只能选取一个。
+Can access virtual hosts：允许进入的vhost。
+Has password：设置了密码。
+
+tags(原链接:https://www.cnblogs.com/java-zhao/p/5670476.html)
+
+administrator (超级管理员)
+可登陆管理控制台(启用management plugin的情况下)，可查看所有的信息，并且可以对用户，策略(policy)进行操作。
+monitoring(监控者)
+可登陆管理控制台(启用management plugin的情况下)，同时可以查看rabbitmq节点的相关信息(进程数，内存使用情况，磁盘使用情况等)
+policymaker(策略制定者)
+可登陆管理控制台(启用management plugin的情况下), 同时可以对policy进行管理。
+management(普通管理者)
+仅可登陆管理控制台(启用management plugin的情况下)，无法看到节点信息，也无法对策略进行管理。
+none(其他)
+无法登陆管理控制台，通常就是普通的生产者和消费者。
