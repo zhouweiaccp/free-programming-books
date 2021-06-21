@@ -1,4 +1,24 @@
 
+## 如何修改WSL的安装路径
+下载wsl的appx镜像https://docs.microsoft.com/zh-cn/windows/wsl/install-manual，比如下载的Ubuntu 18.04
+将下载的文件的后缀Appx改为zip，然后解压到你想要安装该wsl的位置。比如像安装到Z盘，则解压到Z盘。比如我当前所在目录是在Z，解压后的目录是Ubuntu18.04onWindows_1804  
+所以，这种安装方式相当于绿色版的wsl，解压到哪，就运行(安装)在哪。
+
+那么多版本的wsl也非常容易了，随便在哪个位置装都行。
+
+## 迁移已安装在系统盘的WSL
+```dos
+https://github.com/DDoSolitary/LxRunOffline/releases/tag/v3.4.1
+
+# 查看当前已经安装的wsl
+PS G:\桌面\LxRunOffline-v3.4.0> .\LxRunOffline.exe list
+Legacy
+Ubuntu-18.04
+ 
+# 移动指定的wsl
+# 比如移动Legacy到Z:\LegacyWSL目录下
+PS G:\桌面\LxRunOffline-v3.4.0> .\LxRunOffline.exe move -n Legacy -d ‘Z:\LegacyWSL\‘
+```
 
 ##　WSL-Ubuntu 的根目录在C盘下面
 C:\Users\sheny\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState\
