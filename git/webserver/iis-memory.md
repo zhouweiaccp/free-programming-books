@@ -73,3 +73,23 @@ https://docs.microsoft.com/zh-cn/troubleshoot/iis/data-collection-strategies
 JavaScriptSerializer jsSerializer  = new JavaScriptSerializer();
 jsSerializer.MaxJsonLength = Int32.MaxValue;
  
+
+## IIS 上传大小设置默认30M
+可以直接在网站根目录建一个web.config文件，web.config内容具体如下
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+        <security>
+            <requestFiltering>
+                <requestLimits maxAllowedContentLength="102400000" />
+            </requestFiltering>
+        </security>
+    </system.webServer>
+    <system.web>
+        <httpRuntime executionTimeout="1800" />
+    </system.web>
+</configuration>
+
+或 IIS修改配置编辑器
+设置上传文件大小限制。
+点击下拉菜单节(S)，选中system.webServer>security>requestFiltering
