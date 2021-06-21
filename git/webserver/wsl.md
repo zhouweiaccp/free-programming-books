@@ -33,6 +33,23 @@ if !errorlevel! equ 0 (
     )
 )
 ```
+## ssh 登录
+```bash
+ apt-get remove --purge openssh-server
+#重新安装ssh服务
+ apt-get install openssh-server ssh  
+
+#编辑sshd_config文件，修改几处配置才能正常使用用户名/密码的方式连接
+
+
+#需要找到并修改以下几项(其他博客有修改其他项成功的,但是我只改了这两项就OK了)
+#Port 222  #默认的是22，Windows自己的SSH服务也是的22端口，所以我改成了223
+#PermitRootLogin yes #默认是PermitRootLogin prohibit-password
+sed -ir 's/^#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+sed -ir 's/^#Port.*/Port 222/' /etc/ssh/sshd_config
+/etc/init.d/ssh start
+service ssh --full-restart
+```
 
 ##　　docker
 ```sh
