@@ -50,6 +50,20 @@ yarn config set ignore-engines true
 node-modules/.bin/mocha --version
 npx mocha --version
 
+## 更改源
+npm config set registry https://registry.npm.taobao.org/
+
+## ubuntu yarn
+```bash
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update && sudo apt-get install yarn
+```
+
+## 常用安装
+```bash
+npm install -g docsify-cli http-server
+```
 
 
 ## 解决npm 安装部分依赖失败问题总结
