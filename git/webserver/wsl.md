@@ -131,22 +131,72 @@ sudo apt update        // 更新软件源
 sudo apt install -y docker.io        // 安装docker
 sudo usermod -aG docker leo        // 添加当前用户leo到docker用户组，然后重启WSL，docker用户组为安装docker时自动创建
 sudo service docker start        // 启动docker
- 
 
 安装完docker并启动后，试运行查看docker本地镜像命令docker images，结果报错如下：
-
 Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
- 
 随后百度各种解决方案尝试，最后找到一个，步骤如下：
-
 以管理员身份运行WSL：
-
 然后运行如下命令：
-
 sudo cgroupfs-mount
- 
-
 然后重启WSL并重启docker
 
 sudo service docker restart
 原文链接：https://blog.csdn.net/Douz_lungfish/article/details/103543605
+
+## systemctl命令无法使用
+https://www.jianshu.com/p/a20c2d58eaac?utm_campaign=haruki
+https://links.jianshu.com/go?to=https%3A%2F%2Fforum.snapcraft.io%2Ft%2Frunning-snaps-on-wsl2-insiders-only-for-now%2F13033
+```bash
+apt install -y fontconfig daemonize
+
+
+# 编辑/etc/profile脚本，加入如下内容
+SYSTEMD_PID=$(ps -ef | grep '/lib/systemd/systemd --system-unit=basic.target$' | grep -v unshare | awk '{print $2}')
+
+if [ -z "$SYSTEMD_PID" ]; then
+   sudo /usr/bin/daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target
+   SYSTEMD_PID=$(ps -ef | grep '/lib/systemd/systemd --system-unit=basic.target$' | grep -v unshare | awk '{print $2}')
+fi
+
+if [ -n "$SYSTEMD_PID" ] && [ "$SYSTEMD_PID" != "1" ]; then
+    exec sudo /usr/bin/nsenter -t $SYSTEMD_PID -a su - $LOGNAME
+fi
+
+# 3修改/etc/sudoers文件，加入如下内容：
+%sudo ALL=(ALL) NOPASSWD: /usr/sbin/daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target
+%sudo ALL=(ALL) NOPASSWD: /usr/bin/nsenter -t [0-9]* -a su - [a-zA-Z0-9]*
+source /etc/profile
+
+# Vmmem 进程占用过多内存 我们可以通过WSL的配置文件，限制vmmem进程的内存占用。在%UserProfile%目录创建.wslconfig文件，添加如下内容
+
+
+# 可选）使用Podman取代Docker
+# Podman已成为CentOS8官方御用容器管理器，并且Kubernetes1.12已经放弃对Docker的支持。相比Docker，Podman无需守护进程，不强制要求使用root用户来管理容器，具有更好的灵活性和安全性。Podman使用方式和Docker完全相同，兼容Docker的镜像格式。
+# 经本人试验Podman可以完美的在WSL2 Ubuntu中运行。
+
+# 在WSL2中安装Podman的方法可参考如下链接：https://www.redhat.com/sysadmin/podman-windows-wsl2
+
+# 下面脚本为Podman的安装脚本：
+. /etc/os-release
+sudo sh -c "echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/x${NAME}_${VERSION_ID}/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list"
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/x${NAME}_${VERSION_ID}/Release.key -O Release.key
+sudo apt-key add - < Release.key
+sudo apt-get update -qq
+sudo apt-get -qq -y install podman
+sudo mkdir -p /etc/containers
+echo -e "[registries.search]\nregistries = ['docker.io', 'quay.io']" | sudo tee /etc/containers/registries.conf
+```
+
+
+## WSL2 系统占用磁盘空间不释放
+WSL2本质是虚拟机，它使用的是vhdx虚拟磁盘格式。它支持自动扩容，但是并不会自动缩容。
+
+我们可以使用diskpart命令，手工执行缩容操作。
+
+diskpart
+# open window Diskpart
+select vdisk file="D:\WSL\Ubuntu\ext4.vhdx"
+attach vdisk readonly
+compact vdisk
+detach vdisk
+exit
