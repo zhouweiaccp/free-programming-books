@@ -122,3 +122,31 @@ service docker restart
 curl -L https://get.daocloud.io/docker/compose/releases/download/1.25.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 ```
+
+## Win10 WSL运行docker报错：Cannot connect to the Docker daemon at unix:///var/run/docker.sock.
+
+我安装的子系统是Ubuntu 1804，安装docker步骤如下：
+
+sudo apt update        // 更新软件源
+sudo apt install -y docker.io        // 安装docker
+sudo usermod -aG docker leo        // 添加当前用户leo到docker用户组，然后重启WSL，docker用户组为安装docker时自动创建
+sudo service docker start        // 启动docker
+ 
+
+安装完docker并启动后，试运行查看docker本地镜像命令docker images，结果报错如下：
+
+Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+ 
+随后百度各种解决方案尝试，最后找到一个，步骤如下：
+
+以管理员身份运行WSL：
+
+然后运行如下命令：
+
+sudo cgroupfs-mount
+ 
+
+然后重启WSL并重启docker
+
+sudo service docker restart
+原文链接：https://blog.csdn.net/Douz_lungfish/article/details/103543605
