@@ -91,6 +91,11 @@ sed -ir 's/^#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
 sed -ir 's/^#Port.*/Port 222/' /etc/ssh/sshd_config
 /etc/init.d/ssh start
 service ssh --full-restart
+cat > /etc/init.wsl<< EFO
+#! /bin/sh
+/etc/init.d/ssh $1
+EFO
+chmod +x /etc/init.wsl
 ```
 
 ##　　docker
