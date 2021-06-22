@@ -13,7 +13,9 @@ Expand-Archive .\Ubuntu.zip .\Ubuntu
 
 # 如果需要在非默认分发版中更新忘记的密码，请使用命令：wsl -d Debian -u root，并将 Debian 替换为目标分发版的名称。
 ```
-
+## 关闭
+net stop LxssManager
+net start LxssManager
 
 ## 如何修改WSL的安装路径
 下载wsl的appx镜像https://docs.microsoft.com/zh-cn/windows/wsl/install-manual，比如下载的Ubuntu 18.04
