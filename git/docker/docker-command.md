@@ -341,3 +341,49 @@ RUN cat /etc/apt/sources.list | awk -F[/:] '{print $4}' | sort | uniq | grep -v 
                 tzdata \
                 cron
 ```
+
+
+## extra_hosts
+```Dockerfile
+version: '3.5'
+
+services:
+  edoc2:
+    hostname: edoc2
+    image: registry.xxx.com:5000/xe/edoc2:xx-v5.2.0.0
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/edoc2/ew/ew/data/edoc2Docs:/edoc2Docs
+    labels:
+      "type": "1"
+    extra_hosts:
+      - "ab.edoc2.com:192.168.1.1"
+    environment:
+      - LOGGER_ISDEBUG=false
+      - LOGGER_MINCALLTIMESPAN=1000
+      - PUBLISH_EXTERNAL_ADDRESS=http://localhost/
+      - PRODUCTION=edoc2
+      - NUMS=25
+      - ThreadCheck=true
+    env_file:
+      ./envfile.env
+    networks:
+      - edoc2
+    stop_signal: SIGKILL
+    healthcheck:
+      test: /bin/bash /opt/edoc2_check.sh
+      interval: 15s
+      timeout: 10s
+      retries: 3
+    deploy:
+      placement:
+        constraints:
+          - node.labels.nodetype == InDrive
+      mode: global
+      endpoint_mode: dnsrr
+      restart_policy:
+        condition: on-failure
+#      resources:
+#        limits:
+#          cpus: '8'
+```
