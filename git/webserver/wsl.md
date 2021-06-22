@@ -109,10 +109,11 @@ sudo add-apt-repository \
     "deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu \
     $(lsb_release -cs) \
     stable"
-
-
-    sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
+sudo apt-get update -y
+sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+systemctl daemon-reload
+systemctl restart docker.service
+service docker restart
 ```
 ## docker-compose
 ```bash

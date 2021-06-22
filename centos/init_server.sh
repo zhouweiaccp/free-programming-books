@@ -17,6 +17,16 @@ echo `date +%z`
 yum install -y ntp  && ntpdate ntp.aliyun.com
 yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo && yum -y install docker-ce-19.03.7-3.el7 &&systemctl start docker && systemctl enable docker
 
+
+# docker 离线
+# 二、考虑将docker相关的安装包通过拷贝的方式，传输到服务器
+# docker安装包下载地址：https://download.docker.com/linux/centos/7/x86_64/stable/Packages/
+# 需要下载一个selinux包：docker-ce-selinux-17.03.2.ce-1.el7.centos.noarch.rpm
+# 和docker包：docker-ce-17.03.2.ce-1.el7.centos.x86_64.rpm
+# 注意版本一定要对应，前面是centos的安装包。
+# 如果只下载了docker-cexxx.rpm包，那么执行：
+# yum localinstall dockerxxx.rpm
+
 ## Docker启动Get Permission Denied 
 # sudo groupadd docker     #添加docker用户组
 # sudo gpasswd -a $USER docker     #将登陆用户加入到docker用户组中
@@ -35,9 +45,9 @@ tar -zxvf jdk-8u201-linux-x64.tar.gz -C /usr/java/
 rm jdk-8u201-linux-x64.tar.gz
 # echo 'JAVA_HOME=/usr/java/jdk1.8.0_201' >> /etc/profile
 # source /etc/profile
-# echo "CLASSPATH=$JAVA_HOME/lib/" >> /etc/profile
+# echo "CLASSPATH=\$JAVA_HOME/lib/" >> /etc/profile
 # source /etc/profile
-# echo "PATH=$PATH:$JAVA_HOME/bin" >> /etc/profile
+# echo "PATH=$PATH:\$JAVA_HOME/bin" >> /etc/profile
 # source /etc/profile
 # echo "export PATH JAVA_HOME CLASSPATH" >> /etc/profile
 # source /etc/profile

@@ -158,3 +158,16 @@ apt-get install libsqlite3-dev -y
 # cp /etc/profile /etc/profile.bak
 # export PATH=$PATH:/root/node-v12.18.1-linux-x64/bin
 # source /etc/profile
+
+# docker 离线
+#wget https://download.docker.com/linux/ubuntu/dists/$(lsb_release -cs)/pool/stable/amd64/
+
+# ubuntu20.demo
+# https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/docker-ce_20.10.7~3-0~ubuntu-focal_amd64.deb
+# https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/docker-ce-cli_20.10.7~3-0~ubuntu-focal_amd64.deb
+# https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/containerd.io_1.4.6-1_amd64.deb
+# https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/
+# 1、下载离线包，网址：https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/
+#      离线安装docker需要下载3个包，containerd.io ，docker-ce-cli，docker-ce
+# 2、下载完毕后拷贝到ubuntu上用 dpkg 命令安装，先安装 containerd.io 跟 docker-ce-cli，最后安装docker-ce，命令
+#    sudo dpkg -i xxxx.deb

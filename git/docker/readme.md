@@ -67,6 +67,28 @@ service docker stop
 
 
 
+## docker 离线
+https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/
+1、下载离线包，网址：https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/
+     离线安装docker需要下载3个包，containerd.io ，docker-ce-cli，docker-ce
+2、下载完毕后拷贝到ubuntu上用 dpkg 命令安装，先安装 containerd.io 跟 docker-ce-cli，最后安装docker-ce，命令
+   sudo dpkg -i xxxx.deb
+
+ 在线安装过程参考官方文档地址：https://docs.docker.com/engine/install/centos/
+
+二、考虑将docker相关的安装包通过拷贝的方式，传输到服务器
+
+docker安装包下载地址：https://download.docker.com/linux/centos/7/x86_64/stable/Packages/
+
+需要下载一个selinux包：docker-ce-selinux-17.03.2.ce-1.el7.centos.noarch.rpm
+
+和docker包：docker-ce-17.03.2.ce-1.el7.centos.x86_64.rpm
+
+注意版本一定要对应，前面是centos的安装包。
+
+ 如果只下载了docker-cexxx.rpm包，那么执行：
+
+yum localinstall dockerxxx.rpm
 
 
 ## pouch
