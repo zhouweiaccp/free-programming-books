@@ -1,4 +1,20 @@
 
+## 启用适用于 Linux 的 Windows 子系统
+```powershell
+ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+#  https://docs.microsoft.com/zh-cn/windows/wsl/install-manual
+Rename-Item .\Ubuntu.appx .\Ubuntu.zip
+Expand-Archive .\Ubuntu.zip .\Ubuntu
+
+# 忘记密码
+# 如果忘记了 Linux 分发版的密码：
+
+# 请打开 PowerShell，并使用以下命令进入默认 WSL 分发版的根目录：wsl -u root
+
+# 如果需要在非默认分发版中更新忘记的密码，请使用命令：wsl -d Debian -u root，并将 Debian 替换为目标分发版的名称。
+```
+
+
 ## 如何修改WSL的安装路径
 下载wsl的appx镜像https://docs.microsoft.com/zh-cn/windows/wsl/install-manual，比如下载的Ubuntu 18.04
 将下载的文件的后缀Appx改为zip，然后解压到你想要安装该wsl的位置。比如像安装到Z盘，则解压到Z盘。比如我当前所在目录是在Z，解压后的目录是Ubuntu18.04onWindows_1804  
@@ -23,8 +39,14 @@ PS G:\桌面\LxRunOffline-v3.4.0> .\LxRunOffline.exe move -n Legacy -d ‘Z:\Leg
 ##　WSL-Ubuntu 的根目录在C盘下面
 C:\Users\sheny\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState\
 
-
-##. wsl2地址每次重新开机之后都会发生变化
+## 命令
+https://docs.microsoft.com/zh-cn/windows/wsl/wsl-config
+https://docs.microsoft.com/zh-cn/windows/wsl/reference
+ wsl --list
+ wsl -s <DistributionName> 设置默认分发版
+ wsl --unregister <DistributionName>  取消
+wsl -d <DistributionName>, wsl --distribution <DistributionName>  运行特定的分发版
+## wsl2地址每次重新开机之后都会发生变化
 一般来说这不是什么大问题，但是别忘了我们要wsl是干啥的，我们总是希望能够在windows中访问wsl中的一些服务，比如安装的mysql、redis等，如果wsl的ip地址总是变化，岂不是每次开机都要在windows中手动设置一次ip地址[ 1 ]？固定ip地址的方法比较简单，直接运行以下脚本即可，我这里安装了docker，有些小伙伴没安装docker则需要修改下脚本才行。
 https://www.cnblogs.com/kuangdaoyizhimei/p/14175143.html
 ```dos
