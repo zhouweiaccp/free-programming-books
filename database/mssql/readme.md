@@ -53,7 +53,27 @@ select * from sysprocesses where dbid in (select dbid from sysdatabases where na
 ## Could not allocate a new page for database 'TEMPDB' because of insufficient disk space in filegroup 'DEFAULT
 就是因为服务器由于磁盘空间不足或数据库文件限制了最大大小，导致SQL Server无法为数据库分配新的页面，请检查磁盘空间是否足够或给数据库文件设置自动增长
 
+## 删除数据库所有连接 (mssql,sqlserver)
+declare @spid int ;
+declare @ddlstring nvarchar(max);
+declare @dbname varchar(200);
+set @dbname='edoc2v4';
+declare tmpcur cursor
+for select distinct spid as spid from sys.sysprocesses
+where dbid=db_id(@dbname) ;
 
+OPEN tmpcur;
+fetch tmpcur into @spid ;
+while (@@FETCH_STATUS=0)
+begin
+set @ddlstring=N'Kill '+CONVERT( nvarchar,@spid);
+-- print @ddlstring;
+execute sp_executesql @ddlstring ;
+fetch tmpcur into @spid ;
+end ;
+
+close tmpcur ;
+deallocate tmpcur ;
 
 
 ## 收缩的数据库
