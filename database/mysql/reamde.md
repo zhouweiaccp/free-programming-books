@@ -413,3 +413,13 @@ FROM information_schema.tables WHERE TABLE_SCHEMA= 'edoc2v5';
 SELECT TABLE_NAME,DATA_LENGTH+INDEX_LENGTH,TABLE_ROWS
 FROM information_schema.tables WHERE TABLE_SCHEMA='edoc2v5';
 ```
+
+## mysql删除所有连接进程
+```sql
+SHOW FULL PROCESSLIST;
+    
+SELECT CONCAT('KILL ',id,';')  AS command  
+FROM information_schema.processlist    
+WHERE TIME>5000 AND `user`='root';
+kill 2;
+```
