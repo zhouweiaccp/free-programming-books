@@ -1,4 +1,8 @@
 #!/bin/bash
+# ./mydumper.sh -u efor11m -p 1qaz2WSX1qaz2WSX -h 192.168.251.67 -P 30001 -b edoc2v5 -o /opt/bak   备份demo
+
+# 2：还原：还原到另一台服务器，先建立要还原的数据库(edoc2v5)
+#  myloader -u efor11m -p 1qaz2WSX1qaz2WSX -h 192.168.251.67 -P 30001 -o -d /opt/bak/20210623180010/
 # mydumper 备份脚本
 # sh mydumper.sh -u user -p passwd -o /backdir [ -d 4(保存天数) -b databases -t table -h locahost —P port -s SockFile -c]
 # 参数说明：

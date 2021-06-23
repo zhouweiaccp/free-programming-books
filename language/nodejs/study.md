@@ -53,6 +53,18 @@ npx mocha --version
 ## 更改源
 npm config set registry https://registry.npm.taobao.org/
 
+## 升级
+```bash
+sudo npm install -g n
+# 最新版本
+n lastest
+# 稳定版本
+n stable
+# 安装指定版本
+n 10.12.0
+```
+
+
 ## ubuntu yarn
 ```bash
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
