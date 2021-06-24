@@ -25,6 +25,13 @@ OS_command()
 		kill -9 $$
 	fi
 }
+
+## aliyun.com chang port
+sed -ir 's/^#Port.*/Port 2202/' /etc/ssh/sshd_config
+/etc/init.d/ssh start
+service ssh --full-restart
+
+
 # https://github.com/pythonchannel/wechat-spider/blob/6aa10c327a2dff58b5e4268d63316b8eaffbf833/Dockerfile
 cat /etc/apt/sources.list | awk -F[/:] '{print $4}' | sort | uniq | grep -v "^$" | xargs -I{} sed -i 's|{}|mirrors.aliyun.com|g' /etc/apt/sources.list && apt update && apt-get clean 
 #rm -rf /var/lib/apt/lists/*

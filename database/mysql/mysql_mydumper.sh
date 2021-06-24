@@ -3,6 +3,10 @@
 
 # 2：还原：还原到另一台服务器，先建立要还原的数据库(edoc2v5)
 #  myloader -u efor11m -p 1qaz2WSX1qaz2WSX -h 192.168.251.67 -P 30001 -o -d /opt/bak/20210623180010/
+
+# wget https://github.com/maxbube/mydumper/releases/download/v0.10.5/mydumper_0.10.5-1.$(lsb_release -cs)_amd64.deb
+# dpkg -i mydumper_0.10.5-1.$(lsb_release -cs)_amd64.deb
+
 # mydumper 备份脚本
 # sh mydumper.sh -u user -p passwd -o /backdir [ -d 4(保存天数) -b databases -t table -h locahost —P port -s SockFile -c]
 # 参数说明：
@@ -102,6 +106,8 @@
 # #恢复数据
 # source tables.sql
 
+# mydumper.sh  如下
+
 PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 
 check_mydumper=$(yum list installed|grep mydumper |wc -l)
@@ -171,3 +177,12 @@ echo "`date` $cmd" >$log_dir
 del_save_days
 $cmd
 # mount_backup
+
+#chmod +x /opt/backup_script/mydumper.sh
+
+# crontab -e
+# 00 03 * * * /bin/sh /opt/backup_script/mydumper.sh -u repl -p Xjb0^DDy -h 192.168.20.26 -P 30001 -b edoc2v5 -d 15 -o /opt/backdir &> /dev/nul
+
+# 注：以上例子是每天凌晨进行数据备份，仅供参考，实际情况请根据客户需求更改
+
+# 上面的例子，备份远程主机的MySQL 192.168.20.26 上的edoc2v5库的数据，到 /opt/backdir 下，保留15天的数据

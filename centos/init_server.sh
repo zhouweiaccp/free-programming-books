@@ -15,6 +15,14 @@ yum install bash-completion -y
 echo `date +%z`
 #时间不同步
 yum install -y ntp  && ntpdate ntp.aliyun.com
+
+
+## aliyun.com chang port
+sed -ir 's/^#Port.*/Port 2202/' /etc/ssh/sshd_config
+# /etc/init.d/ssh start
+service ssh --full-restart
+
+
 yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo && yum -y install docker-ce-19.03.7-3.el7 &&systemctl start docker && systemctl enable docker
 
 
