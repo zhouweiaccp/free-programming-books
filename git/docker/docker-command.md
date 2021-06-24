@@ -215,7 +215,6 @@ https://www.cnblogs.com/wenghaojie/p/14841467.html
 docker system info
 docker swarm update --cert-expiry 867240h0m0s
 docker swarm ca --rotate
-docker service create --mode global --name logspout gliderlabs/logspout
 
 
 
