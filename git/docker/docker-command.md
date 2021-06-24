@@ -209,10 +209,14 @@ docker service  update --mount-add type=bind,src=/root/anaconda-ks.cfg,dst=/app/
 docker service update --mount-rm /app/anaconda-ks.cfg indrive_orgsync  #去掉挂载
 [](https://docs.docker.com/engine/reference/commandline/service_update/)
 
-## Error grabbing logs: rpc error: code = Unknown desc = warning: incomplete log stream. some logs could not be retrieved for the following reasons: node xw411xvzxn5sm29dd8u7culla is not available
+## Error grabbing logs: rpc error:
+ code = Unknown desc = warning: incomplete log stream. some logs could not be retrieved for the following reasons: node xw411xvzxn5sm29dd8u7culla is not available
+https://www.cnblogs.com/wenghaojie/p/14841467.html
 docker system info
 docker swarm update --cert-expiry 867240h0m0s
-https://www.cnblogs.com/wenghaojie/p/14841467.html
+docker swarm ca --rotate
+docker service create --mode global --name logspout gliderlabs/logspout
+
 
 
 
