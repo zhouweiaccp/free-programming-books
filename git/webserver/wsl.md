@@ -37,6 +37,13 @@ Ubuntu-18.04
 # 比如移动Legacy到Z:\LegacyWSL目录下
 PS G:\桌面\LxRunOffline-v3.4.0> .\LxRunOffline.exe move -n Legacy -d ‘Z:\LegacyWSL\‘
 ```
+## 为wsl2 添加全局配置文件来限制内存用量
+C:\Users\\<yourUserName>\\.wslconfig
+[wsl2] 
+memory=8GB
+processors=4 
+swap=512MB
+
 
 ##　WSL-Ubuntu 的根目录在C盘下面
 C:\Users\sheny\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState\
