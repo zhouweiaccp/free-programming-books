@@ -141,8 +141,8 @@ teamviewer/向日葵/pcanywhere都是通过本地登录的方式实现远程连�
 
 ## markdown
 * [typora](https://www.typora.io/)  typora+picGo经典教程 https://juejin.cn/post/6847902225881104397
-* []()
-* []()
+* [pandoc](https://github-releases.githubusercontent.com/571770/4d314200-d36a-11eb-9c30-5f118d130514?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20210625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210625T010112Z&X-Amz-Expires=300&X-Amz-Signature=ff90f3f049549eefc3b2d9460b64350f41a0cfafcba48f0711478e0394e62281&X-Amz-SignedHeaders=host&actor_id=1101957&key_id=0&repo_id=571770&response-content-disposition=attachment%3B%20filename%3Dpandoc-2.14.0.3-windows-x86_64.msi&response-content-type=application%2Foctet-stream)
+* [](https://github.com/Molunerfinn/picgo/releases)
 ## ftp
 * [filezilla](https://www.filezilla.cn/download/client)
 * [freesshd](http://www.freesshd.com/?ctt=download) window 下sftp
