@@ -621,6 +621,10 @@ sed -n '2p' file                   # 打印文件第二行
 sed -n '2,5p' file                 # 打印文件第二到第五行
 sed -i "\$a alias ll='ls -lth --time-style=\"+%Y-%m-%d %H:%M:%S\"'" ~/.bashrc &&  source  ~/.bashrc # 转义单引号 双引号
 
+sed -i -c -e '/^#/d' config_file ##sed去除注释行 kjyw\shell\sed\sed.sh
+sed -i -c -e '/^$/d' config_file ##sed去除空行
+sed -i -c -e '/^$/d;/^#/' config_file ##sed去空行和注释行
+
 ##############################################################################
 # 排序 - sort
 ##############################################################################

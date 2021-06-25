@@ -296,7 +296,9 @@ tab+ < > 左右移
 
 #  替换每一行中所有
 :%s/vivian/sky/g（等同于 :g/vivian/s//sky/g） 替换每一行中所有 vivian 为 sky
-
+sed -i -c -e '/^#/d' config_file ##sed去除注释行 kjyw\shell\sed\sed.sh
+sed -i -c -e '/^$/d' config_file ##sed去除空行
+sed -i -c -e '/^$/d;/^#/' config_file ##sed去空行和注释行
 ## 将命令结果插入文件：
      运行 :r! command ， command命令的结果插入光标下一行
             :nr! command,  command命令的结果插入n行后。

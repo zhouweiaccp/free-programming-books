@@ -28,6 +28,8 @@ local_root=/share
 tcp_wrappers=YES
 use_localtime=YES
 listen_port=801
+vsftpd_log_file=/var/log/vsftpdlogfile
+#allow_writeable_chroot=YES
 efo
  useradd ftpuser
 
