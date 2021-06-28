@@ -241,3 +241,5 @@ var connection = new HubConnectionBuilder().WithUrl(serverUrl, option =>
                  };
              }).Build();
 ```
+## netcore模板
+- [netcore模板](https://dotnetnew.azurewebsites.net/)
