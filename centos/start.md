@@ -199,3 +199,7 @@ nmcli device 网卡设备管理
 $ nmcli device status # 查看所有网卡设备状态
 $ nmcli device show ens160 # 查看网卡配置
 $ nmcli device reapply ens160 # 立即生效网卡配置
+
+
+## rockylinux
+- [rockylinux](https://rockylinux.org/)
